@@ -1,5 +1,5 @@
 {
- "package": "1.0.1",
+ "package": "1.0.2",
  "pack": "1.0.1",
  "knowledge_db": null,
  "files": {
@@ -10,7 +10,7 @@
   "capabilities/procedure_examples.py": "8b72dca27f14aafa0d969ed517ad12f93843e34ffbeefbd67686d00beccee5fa",
   "capabilities/procedures.py": "c8c465bef929d5d6e9dd661a2701d6586cc16267fde8f4535f99cbe550393e3d",
   "capabilities/procedures_certified.json": "67646e2a961b0cdbbe9dff834cb12012374f4b3be2b110a3d9d4edf7c599e2fb",
-  "chemistry_knowledge_public.sqlite": "87ad5d14b880ef53773dcc40573db8c959363e18a44cfb0cb8490c3c41359056",
+  "chemistry_knowledge_public.sqlite": "89874d26f820a610fdd8fcba8604d98c675419565b0c974208f13ee946e99ab3",
   "search/encoder.int8.onnx": "521452d928a72da4d241b1835ab0f46b0e81ff58ffff0367b9a7029bd129fbd9",
   "search/tokenizer.json": "b2f2deb461e6ad672b8e42aac29773e7a9be77d582cdf58808113ea43fda565e",
   "search/index.json": "d8f81d9706c9a0efa7d9643bcec3d39a6c3500766ce0f44937d85ad90f772507",

@@ -229,6 +229,14 @@ $$
 - **Assumes:** a neutral formula of element symbols with standard atomic weights
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Where the molar mass of glucose, C₆H₁₂O₆, comes from: each bar is one element's share, its mass percent (returned by the package) times the molar mass M = 180](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molar-mass-composition)
+
+*Where the molar mass of glucose, C₆H₁₂O₆, comes from: each bar is one element's share, its mass percent (returned by the package) times the molar mass M = 180.156 g/mol (returned by the package) — the shares add up to M. Marked: M = 180.156 g/mol; carbon 72.066, oxygen 95.994 g/mol.*
+
+![Molar masses of eight common substances, each returned by the package: H₂O 18](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molar-mass-by-substance)
+
+*Molar masses of eight common substances, each returned by the package: H₂O 18.02, NH₃ 17.03, CH₄ 16.04, CO₂ 44.01, NaCl 58.44, H₂SO₄ 98.08, CaCO₃ 100.1, C₆H₁₂O₆ 180.2 g/mol. Highlighted: the worked example H₂O.*
+
 ```python
 chemistry_ai999x.solve('molar_mass', formula='H2O')
 # -> M = 0.018015 kg/mol, M_g = 18.015   (SOLVED)
@@ -283,6 +291,10 @@ $$
 - **Assumes:** $m > 0$; a neutral formula
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Amount of substance in the same mass, 36 g, of eight substances, each returned by the package: H₂O 2, NH₃ 2](https://www.ai999x.com/?ax_fig=chemistry-ai999x/moles-from-mass-by-substance)
+
+*Amount of substance in the same mass, 36 g, of eight substances, each returned by the package: H₂O 2, NH₃ 2.11, CH₄ 2.24, CO₂ 0.818, NaCl 0.616, H₂SO₄ 0.367, CaCO₃ 0.36, C₆H₁₂O₆ 0.2 mol. Highlighted: the worked example H₂O.*
+
 ```python
 chemistry_ai999x.solve('moles_from_mass', formula='H2O', m=0.036)
 # -> n = 1.99833 mol, N = 1.20343e+24, M = 0.018015 kg/mol   (SOLVED)
@@ -327,6 +339,10 @@ $$
 - **Assumes:** $n > 0$; a neutral formula
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Mass of the same amount, 2](https://www.ai999x.com/?ax_fig=chemistry-ai999x/mass-from-moles-by-substance)
+
+*Mass of the same amount, 2.5 mol, of eight substances, each returned by the package: H₂O 45.04, NH₃ 42.58, CH₄ 40.11, CO₂ 110, NaCl 146.1, H₂SO₄ 245.2, CaCO₃ 250.2, C₆H₁₂O₆ 450.4 g. Highlighted: the worked example NaCl.*
+
 ```python
 chemistry_ai999x.solve('mass_from_moles', formula='NaCl', n=2.5)
 # -> m = 0.146108 kg, m_g = 146.107, N = 1.50554e+24   (SOLVED)
@@ -369,6 +385,10 @@ $$
 - **Assumes:** $m > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Number of molecules in 10 g of nine gases, each returned by the package — light molecules are many per gram](https://www.ai999x.com/?ax_fig=chemistry-ai999x/particles-from-mass-by-gas)
+
+*Number of molecules in 10 g of nine gases, each returned by the package — light molecules are many per gram. Highlighted: the worked example CO₂, 1.3684e+23 molecules.*
+
 ```python
 chemistry_ai999x.solve('particles_from_mass', formula='CO2', m=0.01)
 # -> N = 1.36839e+23, n = 0.227226 mol   (SOLVED)
@@ -408,6 +428,10 @@ $$
 - **Assumes:** $n > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![N (number of particles) against n (amount of substance) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/particles-from-moles-curve)
+
+*N (number of particles) against n (amount of substance) from 0.125 mol to 0.375 mol. 31 points computed by chemistry-ai999x; marked: the worked example, n = 0.25 mol, N = 1.5055e+23.*
+
 ```python
 chemistry_ai999x.solve('particles_from_moles', n=0.25)
 # -> N = 1.50554e+23   (SOLVED)
@@ -446,6 +470,10 @@ $$
 - **Method:** $n = N / N_A$
 - **Assumes:** $N > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![n (amount of substance) against N (number of particles) from 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/moles-from-particles-curve)
+
+*n (amount of substance) against N (number of particles) from 1.5050e+23 to 4.5150e+23. 31 points computed by chemistry-ai999x; marked: the worked example, N = 3.0100e+23, n = 0.499822 mol.*
 
 ```python
 chemistry_ai999x.solve('moles_from_particles', N=3.01e+23)
@@ -489,6 +517,10 @@ $$
 - **Assumes:** $m > 0$; the element occurs in the formula
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Number of oxygen atoms in 10 g of seven substances, each returned by the package: H₂O 3](https://www.ai999x.com/?ax_fig=chemistry-ai999x/atoms-of-element-by-substance)
+
+*Number of oxygen atoms in 10 g of seven substances, each returned by the package: H₂O 3.34e23, CO₂ 2.74e23, O₂ 3.76e23, O₃ 3.76e23, H₂SO₄ 2.46e23, CaCO₃ 1.81e23, C₆H₁₂O₆ 2.01e23. Highlighted: the worked example CO₂.*
+
 ```python
 chemistry_ai999x.solve('atoms_of_element', formula='CO2', element='O', m=0.01)
 # -> N_atoms = 2.73678e+23, n_element = 0.454452 mol   (SOLVED)
@@ -530,6 +562,14 @@ $$
 - **Method:** mass of the element per formula over the molar mass
 - **Assumes:** the element occurs in the formula
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Mass composition of H₂SO₄: the percent by mass of every element, returned by the package (H 2](https://www.ai999x.com/?ax_fig=chemistry-ai999x/mass-percent-composition)
+
+*Mass composition of H₂SO₄: the percent by mass of every element, returned by the package (H 2.055 %, S 32.7 %, O 65.25 %). Highlighted: the element asked in the worked example, O.*
+
+![Percent oxygen by mass in eight oxygen compounds, each returned by the package: H₂O 88](https://www.ai999x.com/?ax_fig=chemistry-ai999x/mass-percent-oxygen-share)
+
+*Percent oxygen by mass in eight oxygen compounds, each returned by the package: H₂O 88.81 %, CO₂ 72.71 %, H₂SO₄ 65.25 %, CaCO₃ 47.96 %, Fe₂O₃ 30.06 %, C₆H₁₂O₆ 53.28 %, KMnO₄ 40.5 %, SiO₂ 53.26 %.*
 
 ```python
 chemistry_ai999x.solve('mass_percent', formula='H2SO4', element='O')
@@ -575,6 +615,10 @@ $$
 - **Assumes:** $m > 0$; the element occurs in the formula
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Iron contained in 50 g of six iron compounds (ores and salts), each mass returned by the package with its mass fraction: FeO 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/mass-of-element-by-compound)
+
+*Iron contained in 50 g of six iron compounds (ores and salts), each mass returned by the package with its mass fraction: FeO 0.777, Fe₂O₃ 0.699, Fe₃O₄ 0.724, FeS₂ 0.465, FeCO₃ 0.482, FeSO₄ 0.368. Highlighted: the worked example, Fe₂O₃, 34.9715 g.*
+
 ```python
 chemistry_ai999x.solve('mass_of_element', formula='Fe2O3', element='Fe', m=0.05)
 # -> m_element = 0.0349715 kg, fraction = 0.699431   (SOLVED)
@@ -614,6 +658,10 @@ $$
 - **Method:** moles per 100 g, divided by the smallest, multiplied by the smallest k (1..12) giving whole numbers within 1.5%
 - **Assumes:** at least two elements; a whole-number ratio with subscripts up to 12 times the smallest
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Top: the stated composition, C 40 %, H 6](https://www.ai999x.com/?ax_fig=chemistry-ai999x/empirical-formula-mass-to-atoms)
+
+*Top: the stated composition, C 40 %, H 6.71 %, O 53.3 % by mass. Bottom: the whole-number atom ratio the package returns, C 1, H 2, O 1 — the empirical formula CH₂O. Hydrogen is a small mass share but two atoms.*
 
 ```python
 chemistry_ai999x.solve('empirical_formula', composition='C 40.0, H 6.71, O 53.3')
@@ -662,6 +710,10 @@ $$
 - **Assumes:** $M > 0$; M is a whole multiple of the empirical formula mass (within 2%)
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![From the empirical formula CH₂O to the molecular formula: for six stated molar masses the package returns the multiple and the formula — 30](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molecular-formula-multiples)
+
+*From the empirical formula CH₂O to the molecular formula: for six stated molar masses the package returns the multiple and the formula — 30.03 g/mol → CH₂O, 60.05 g/mol → C₂H₄O₂, 90.08 g/mol → C₃H₆O₃, 120.1 g/mol → C₄H₈O₄, 150.1 g/mol → C₅H₁₀O₅, 180.2 g/mol → C₆H₁₂O₆. The worked example (M = 180.16 g/mol) is C₆H₁₂O₆, glucose.*
+
 ```python
 chemistry_ai999x.solve('molecular_formula', empirical='CH2O', M=0.18016)
 # -> multiple = 6, formula = C6H12O6   (SOLVED)
@@ -702,6 +754,14 @@ $$
 - **Method:** exact rational null space of the element-conservation matrix, scaled to the smallest whole numbers
 - **Assumes:** one independent way to balance (a one-dimensional null space); neutral species
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![The balanced equation C₃H₈ + 5 O₂ -> 3 CO₂ + 4 H₂O: the coefficient of each reactant (left) and product (right), as returned by the package for the stated skeleton C3H8 + O2 -> CO2 + H2O](https://www.ai999x.com/?ax_fig=chemistry-ai999x/balance-equation-coefficients)
+
+*The balanced equation C₃H₈ + 5 O₂ -> 3 CO₂ + 4 H₂O: the coefficient of each reactant (left) and product (right), as returned by the package for the stated skeleton C3H8 + O2 -> CO2 + H2O.*
+
+![Atom balance of C₃H₈ + 5 O₂ -> 3 CO₂ + 4 H₂O: for each element, the atoms on the reactant and on the product side — each the returned coefficient times the subscript read from the formula (derived) — C 3 = 3; H 8 = 8; O 10 = 10](https://www.ai999x.com/?ax_fig=chemistry-ai999x/balance-equation-atom-balance)
+
+*Atom balance of C₃H₈ + 5 O₂ -> 3 CO₂ + 4 H₂O: for each element, the atoms on the reactant and on the product side — each the returned coefficient times the subscript read from the formula (derived) — C 3 = 3; H 8 = 8; O 10 = 10.*
 
 ```python
 chemistry_ai999x.solve('balance_equation', equation='C3H8 + O2 -> CO2 + H2O')
@@ -756,6 +816,14 @@ $$
 - **Assumes:** the equation balances uniquely; two different reactants and one product of the equation
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Masses before and after the reaction H2 + O2 -> H2O with 4 g of H₂ and 16 g of O₂ (the worked example)](https://www.ai999x.com/?ax_fig=chemistry-ai999x/limiting-reagent-before-after)
+
+*Masses before and after the reaction H2 + O2 -> H2O with 4 g of H₂ and 16 g of O₂ (the worked example). The package returns the limiting reactant (O₂, used up), the excess left (1.98387 g) and the product formed (18.0161 g of H₂O).*
+
+![limiting reagent (limiting) over m_a (mass of the first reactant) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/limiting-reagent-decision)
+
+*limiting reagent (limiting) over m_a (mass of the first reactant) from 0.0004 kg to 0.04 kg and m_b (mass of the second reactant) from 0.0016 kg to 0.16 kg (logarithmic axes): each of the 31 × 21 cells is one run of chemistry-ai999x, coloured by the verdict it returned — H2: 243 cells, O2: 408 cells. Other inputs as in the worked example: equation = H2 + O2 -> H2O, reactant_a = H2, reactant_b = O2, product = H2O. Marked: the worked example, m_a = 0.004 kg, m_b = 0.016 kg → O2.*
+
 ```python
 chemistry_ai999x.solve('limiting_reagent', equation='H2 + O2 -> H2O', reactant_a='H2', m_a=0.004, reactant_b='O2', m_b=0.016, product='H2O')
 # -> product_mass = 0.0180161 kg, limiting = O2, excess_left = 0.00198387 kg   (SOLVED)
@@ -799,6 +867,14 @@ $$
 - **Method:** balance the equation; moles of reactant times the coefficient ratio times the product's molar mass
 - **Assumes:** the equation balances uniquely; the other reactants are in excess
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Theoretical yield of every product of CH4 + O2 -> CO2 + H2O from 16 g of CH₄ (the other reactant in excess), each returned by the package: CO₂ 43](https://www.ai999x.com/?ax_fig=chemistry-ai999x/theoretical-yield-products)
+
+*Theoretical yield of every product of CH4 + O2 -> CO2 + H2O from 16 g of CH₄ (the other reactant in excess), each returned by the package: CO₂ 43.89 g, H₂O 35.93 g.*
+
+![product_mass (theoretical mass of product) against m (mass of the reactant) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/theoretical-yield-curve)
+
+*product_mass (theoretical mass of product) against m (mass of the reactant) from 0.008 kg to 0.024 kg. Other inputs as in the worked example: equation = CH4 + O2 -> CO2 + H2O, reactant = CH4, product = CO2. 31 points computed by chemistry-ai999x; marked: the worked example, m = 0.016 kg, product_mass = 0.043891 kg.*
 
 ```python
 chemistry_ai999x.solve('theoretical_yield', equation='CH4 + O2 -> CO2 + H2O', reactant='CH4', m=0.016, product='CO2')
@@ -845,6 +921,10 @@ $$
 - **Assumes:** the equation balances uniquely; the other reactants are in excess
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Percent yield of CaO from 100 g of CaCO₃ by CaCO3 -> CaO + CO2: the package's theoretical mass (56](https://www.ai999x.com/?ax_fig=chemistry-ai999x/percent-yield-yield-bars)
+
+*Percent yield of CaO from 100 g of CaCO₃ by CaCO3 -> CaO + CO2: the package's theoretical mass (56.0288 g) against the stated actual mass (50 g); right: the difference not obtained (6.02882 g, derived). Marked: percent yield 89.2398 %.*
+
 ```python
 chemistry_ai999x.solve('percent_yield', equation='CaCO3 -> CaO + CO2', reactant='CaCO3', m=0.1, product='CaO', actual=0.05)
 # -> percent_yield = 89.2398, theoretical_mass = 0.0560288 kg   (SOLVED)
@@ -886,6 +966,10 @@ $$
 - **Method:** P = nRT / V
 - **Assumes:** n, V, $T > 0$ (T in kelvin)
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Isotherms of 2 mol of ideal gas: pressure against volume at T = 200, 300 and 400 K, each computed by the package at 61 volumes from 4 L to 40 L](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ideal-gas-pressure-isotherms)
+
+*Isotherms of 2 mol of ideal gas: pressure against volume at T = 200, 300 and 400 K, each computed by the package at 61 volumes from 4 L to 40 L. Marked: the worked example, V = 10 L at 300 K, P = 498.868 kPa.*
 
 ```python
 chemistry_ai999x.solve('ideal_gas_pressure', n=2.0, V=0.01, T=300.0)
@@ -930,6 +1014,10 @@ $$
 - **Assumes:** n, P, $T > 0$ (T in kelvin)
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Volume of 1 mol of ideal gas against temperature (isobars) at 50](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ideal-gas-volume-isobars)
+
+*Volume of 1 mol of ideal gas against temperature (isobars) at 50.66, 101.325 and 202.65 kPa, computed by the package at 51 temperatures from 5 K to 500 K: straight lines through 0 K. Marked: the worked example, 273.15 K and 101.325 kPa, V = 22.414 L (the molar volume at 0 °C and 1 atm).*
+
 ```python
 chemistry_ai999x.solve('ideal_gas_volume', n=1.0, P=101325.0, T=273.15)
 # -> V = 0.022414 m^3, V_L = 22.414   (SOLVED)
@@ -970,6 +1058,10 @@ $$
 - **Method:** $n = PV / RT$
 - **Assumes:** P, V, $T > 0$ (T in kelvin)
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![n (amount of gas) against T (temperature) from 150 K to 450 K](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ideal-gas-moles-curve)
+
+*n (amount of gas) against T (temperature) from 150 K to 450 K. One curve for each value of P (pressure): 202650 Pa, 101325 Pa, 405300 Pa. Other inputs as in the worked example: V = 0.005 m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, T = 300 K, n = 0.40622 mol.*
 
 ```python
 chemistry_ai999x.solve('ideal_gas_moles', P=202650.0, V=0.005, T=300.0)
@@ -1012,6 +1104,10 @@ $$
 - **Method:** $T = PV / nR$
 - **Assumes:** P, V, $n > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Which isotherm passes through the state P = 101](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ideal-gas-temperature-isotherms)
+
+*Which isotherm passes through the state P = 101.325 kPa, V = 50 L of 2 mol? The package returns T = 304.665 K; drawn: that isotherm and those at half and twice the temperature, each from the package's ideal-gas pressure at 61 volumes from 10 L to 200 L. Marked: the state, T = 304.665 K.*
 
 ```python
 chemistry_ai999x.solve('ideal_gas_temperature', P=101325.0, V=0.05, n=2.0)
@@ -1056,6 +1152,14 @@ $$
 - **Assumes:** P, V, $T > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Mass of 5 L of different gases at 101](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ideal-gas-mass-by-gas)
+
+*Mass of 5 L of different gases at 101.325 kPa and 300 K, each from the package (the same amount of gas, so the mass follows the molar mass). Highlighted: the worked example, CO₂, 8.93867 g.*
+
+![m (mass of gas) against T (temperature) from 150 K to 450 K](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ideal-gas-mass-curve)
+
+*m (mass of gas) against T (temperature) from 150 K to 450 K. One curve for each value of P (pressure): 101325 Pa, 50662.5 Pa, 202650 Pa. Other inputs as in the worked example: formula = CO2, V = 0.005 m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, T = 300 K, m = 0.00893867 kg.*
+
 ```python
 chemistry_ai999x.solve('ideal_gas_mass', formula='CO2', P=101325.0, V=0.005, T=300.0)
 # -> m = 0.00893867 kg, n = 0.20311 mol   (SOLVED)
@@ -1091,6 +1195,14 @@ $$
 - **Method:** $\rho = PM / RT$
 - **Assumes:** P, $T > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Density of different gases at 101](https://www.ai999x.com/?ax_fig=chemistry-ai999x/gas-density-by-gas)
+
+*Density of different gases at 101.325 kPa and 298 K, each returned by the package (ideal gas: density proportional to molar mass). Highlighted: the worked example CO₂, 1.79973 kg/m³; air is about 1.2 kg/m³ at these conditions.*
+
+![rho (density) against T (temperature) from 149 K to 447 K](https://www.ai999x.com/?ax_fig=chemistry-ai999x/gas-density-curve)
+
+*rho (density) against T (temperature) from 149 K to 447 K. One curve for each value of P (pressure): 101325 Pa, 50662.5 Pa, 202650 Pa. Other inputs as in the worked example: formula = CO2. 31 points per curve computed by chemistry-ai999x; marked: the worked example, T = 298 K, rho = 1.79973 kg/m^3.*
 
 ```python
 chemistry_ai999x.solve('gas_density', formula='CO2', P=101325.0, T=298.0)
@@ -1134,6 +1246,10 @@ $$
 - **Assumes:** rho, P, $T > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![M (molar mass) against P (pressure) from 50662](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molar-mass-from-gas-density-curve)
+
+*M (molar mass) against P (pressure) from 50662.5 Pa to 151988 Pa. One curve for each value of rho (gas density): 1.25 kg/m^3, 0.625 kg/m^3, 2.5 kg/m^3. Other inputs as in the worked example: T = 273.0 K. 31 points per curve computed by chemistry-ai999x; marked: the worked example, P = 101325 Pa, M = 0.0280021 kg/mol.*
+
 ```python
 chemistry_ai999x.solve('molar_mass_from_gas_density', rho=1.25, P=101325.0, T=273.0)
 # -> M = 0.0280021 kg/mol, M_g = 28.0021   (SOLVED)
@@ -1172,6 +1288,10 @@ $$
 - **Assumes:** m, V, P, $T > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![M (molar mass) against V (volume) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molar-mass-from-gas-sample-curve)
+
+*M (molar mass) against V (volume) from 0.00025 m^3 to 0.00075 m^3. One curve for each value of m (mass of the sample): 0.001 kg, 0.0005 kg, 0.002 kg. Other inputs as in the worked example: P = 101325.0 Pa, T = 300.0 K. 31 points per curve computed by chemistry-ai999x; marked: the worked example, V = 0.0005 m^3, M = 0.0492344 kg/mol.*
+
 ```python
 chemistry_ai999x.solve('molar_mass_from_gas_sample', m=0.001, V=0.0005, P=101325.0, T=300.0)
 # -> M = 0.0492344 kg/mol, M_g = 49.2344   (SOLVED)
@@ -1207,6 +1327,10 @@ $$
 - **Method:** $V_{2} = P_{1}$ $V_{1} / P_{2}$
 - **Assumes:** P1, V1, $P_{2} > 0$; constant temperature and amount
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Boyle's law on a P–V diagram: the isotherm through state 1 (P1 = 101](https://www.ai999x.com/?ax_fig=chemistry-ai999x/boyle-final-volume-isotherm)
+
+*Boyle's law on a P–V diagram: the isotherm through state 1 (P1 = 101.325 kPa, V1 = 2 L), computed by the package at 61 volumes; arrow: raising the pressure to P2 = 303.975 kPa (the worked example). Marked: the returned V2 = 0.666667 L.*
 
 ```python
 chemistry_ai999x.solve('boyle_final_volume', P1=101325.0, V1=0.002, P2=303975.0)
@@ -1250,6 +1374,10 @@ $$
 - **Assumes:** P1, V1, $V_{2} > 0$; constant temperature and amount
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Boyle's law on a P–V diagram: the isotherm through state 1 (P1 = 101](https://www.ai999x.com/?ax_fig=chemistry-ai999x/boyle-final-pressure-isotherm)
+
+*Boyle's law on a P–V diagram: the isotherm through state 1 (P1 = 101.325 kPa, V1 = 4 L), each point the package's final pressure at 61 volumes from 0.6 to 6 L; arrow: the compression to V2 = 1 L (the worked example). Marked: P2 = 405.3 kPa.*
+
 ```python
 chemistry_ai999x.solve('boyle_final_pressure', P1=101325.0, V1=0.004, V2=0.001)
 # -> P2 = 405300 Pa   (SOLVED)
@@ -1286,6 +1414,10 @@ $$
 - **Assumes:** $V_{1} > 0$, T1, $T_{2} > 0$ K; constant pressure and amount
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Charles's law: volume against absolute temperature at constant pressure through state 1 (V1 = 2](https://www.ai999x.com/?ax_fig=chemistry-ai999x/charles-final-volume-state-line)
+
+*Charles's law: volume against absolute temperature at constant pressure through state 1 (V1 = 2.5 L, T1 = 298.15 K), the package's final volume at 41 temperatures from 200 K to 400 K; dashed: the same law toward 0 K, where the volume would vanish. Arrow: heating to T2 = 348.15 K. Marked: V2 = 2.91925 L.*
+
 ```python
 chemistry_ai999x.solve('charles_final_volume', V1=0.0025, T1=298.15, T2=348.15)
 # -> V2 = 0.00291925 m^3   (SOLVED)
@@ -1321,6 +1453,10 @@ $$
 - **Method:** $P_{2} = P_{1}$ $T_{2} / T_{1}$ (kelvin)
 - **Assumes:** $P_{1} > 0$, T1, $T_{2} > 0$ K; constant volume and amount
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Gay-Lussac's law: pressure against absolute temperature at constant volume through state 1 (P1 = 222](https://www.ai999x.com/?ax_fig=chemistry-ai999x/gay-lussac-final-pressure-state-line)
+
+*Gay-Lussac's law: pressure against absolute temperature at constant volume through state 1 (P1 = 222.915 kPa, T1 = 293.15 K, a tyre-like example), the package's final pressure at 41 temperatures from 200 K to 400 K; dashed: toward 0 K. Arrow: warming to T2 = 318.15 K. Marked: P2 = 241.925 kPa.*
 
 ```python
 chemistry_ai999x.solve('gay_lussac_final_pressure', P1=222915.00000000003, T1=293.15, T2=318.15)
@@ -1360,6 +1496,14 @@ $$
 - **Assumes:** all values > 0 (temperatures in kelvin); fixed amount of gas
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![The combined gas law on a P–V diagram: state 1 (P1 = 101](https://www.ai999x.com/?ax_fig=chemistry-ai999x/combined-gas-final-volume-pv-states)
+
+*The combined gas law on a P–V diagram: state 1 (P1 = 101.325 kPa, V1 = 4 L, T1 = 300 K) lies on the isotherm T1 and state 2 on the isotherm T2; each isotherm is P·V constant through its state, drawn with the package's Boyle relation at 61 volumes. Stated: P2 = 202.65 kPa, T2 = 400 K. Marked: the returned V2 = 2.667 L.*
+
+![V2 (final volume) against T1 (initial temperature) from 150 K to 450 K](https://www.ai999x.com/?ax_fig=chemistry-ai999x/combined-gas-final-volume-curve)
+
+*V2 (final volume) against T1 (initial temperature) from 150 K to 450 K. One curve for each value of P1 (initial pressure): 101325 Pa, 50662.5 Pa, 202650 Pa. Other inputs as in the worked example: V1 = 0.004 m^3, P2 = 202650.0 Pa, T2 = 400.0 K. 31 points per curve computed by chemistry-ai999x; marked: the worked example, T1 = 300 K, V2 = 0.00266667 m^3.*
+
 ```python
 chemistry_ai999x.solve('combined_gas_final_volume', P1=101325.0, V1=0.004, T1=300.0, P2=202650.0, T2=400.0)
 # -> V2 = 0.00266667 m^3   (SOLVED)
@@ -1397,6 +1541,14 @@ $$
 - **Method:** $P1V1/T_{1} = P2V2/T_{2}$ solved for P2
 - **Assumes:** all values > 0 (temperatures in kelvin); fixed amount of gas
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![The combined gas law on a P–V diagram: state 1 (P1 = 101](https://www.ai999x.com/?ax_fig=chemistry-ai999x/combined-gas-final-pressure-pv-states)
+
+*The combined gas law on a P–V diagram: state 1 (P1 = 101.325 kPa, V1 = 3 L, T1 = 300 K) lies on the isotherm T1 and state 2 on the isotherm T2; each isotherm is P·V constant through its state, drawn with the package's Boyle relation at 61 volumes. Stated: V2 = 1.5 L, T2 = 450 K. Marked: the returned P2 = 304 kPa.*
+
+![P2 (final pressure) against T1 (initial temperature) from 150 K to 450 K](https://www.ai999x.com/?ax_fig=chemistry-ai999x/combined-gas-final-pressure-curve)
+
+*P2 (final pressure) against T1 (initial temperature) from 150 K to 450 K. One curve for each value of P1 (initial pressure): 101325 Pa, 50662.5 Pa, 202650 Pa. Other inputs as in the worked example: V1 = 0.003 m^3, V2 = 0.0015 m^3, T2 = 450.0 K. 31 points per curve computed by chemistry-ai999x; marked: the worked example, T1 = 300 K, P2 = 303975 Pa.*
 
 ```python
 chemistry_ai999x.solve('combined_gas_final_pressure', P1=101325.0, V1=0.003, T1=300.0, V2=0.0015, T2=450.0)
@@ -1436,6 +1588,14 @@ $$
 - **Assumes:** all values > 0 (temperatures in kelvin); fixed amount of gas
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![The combined gas law on a P–V diagram: state 1 (P1 = 101](https://www.ai999x.com/?ax_fig=chemistry-ai999x/combined-gas-final-temperature-pv-states)
+
+*The combined gas law on a P–V diagram: state 1 (P1 = 101.325 kPa, V1 = 2 L, T1 = 300 K) lies on the isotherm T1 and state 2 on the isotherm T2; each isotherm is P·V constant through its state, drawn with the package's Boyle relation at 61 volumes. Stated: P2 = 202.65 kPa, V2 = 1.5 L. Marked: the returned T2 = 450 K.*
+
+![T2 (final temperature) against P1 (initial pressure) from 50662](https://www.ai999x.com/?ax_fig=chemistry-ai999x/combined-gas-final-temperature-curve)
+
+*T2 (final temperature) against P1 (initial pressure) from 50662.5 Pa to 151988 Pa. One curve for each value of V1 (initial volume): 0.002 m^3, 0.001 m^3, 0.004 m^3. Other inputs as in the worked example: T1 = 300.0 K, P2 = 202650.0 Pa, V2 = 0.0015 m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, P1 = 101325 Pa, T2 = 450 K.*
+
 ```python
 chemistry_ai999x.solve('combined_gas_final_temperature', P1=101325.0, V1=0.002, T1=300.0, P2=202650.0, V2=0.0015)
 # -> T2 = 450 K   (SOLVED)
@@ -1470,6 +1630,14 @@ $$
 - **Method:** $p = x$ P_total
 - **Assumes:** $0 < x  \leq  1$; P_total > 0
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Partial pressures in dry air at a total of 101](https://www.ai999x.com/?ax_fig=chemistry-ai999x/partial-pressure-air)
+
+*Partial pressures in dry air at a total of 101.325 kPa (logarithmic axis), each from the package with a stated mole fraction: N₂ 0.7808, O₂ 0.2095, Ar 0.00934, CO₂ 0.00042 (the worked example rounds oxygen to 0.21). Marked by value: O₂ 21227.6 Pa, CO₂ 42.5565 Pa.*
+
+![p (partial pressure) against x (mole fraction of the gas) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/partial-pressure-curve)
+
+*p (partial pressure) against x (mole fraction of the gas) from 0.02 to 0.98. One curve for each value of P_total (total pressure): 101325 Pa, 50662.5 Pa, 202650 Pa. 41 points per curve computed by chemistry-ai999x; marked: the worked example, x = 0.21, p = 21278.2 Pa.*
 
 ```python
 chemistry_ai999x.solve('partial_pressure', x=0.21, P_total=101325.0)
@@ -1507,6 +1675,10 @@ $$
 - **Assumes:** every amount > 0; P_total > 0
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Dalton's law: a mixture of 2, 1, 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/dalton-mixture-partial-pressures)
+
+*Dalton's law: a mixture of 2, 1, 0.5 mol of three gases at a total pressure of 354.637 kPa; each bar is a partial pressure returned by the package with its mole fraction, and the right-hand column stacks them back to the stated total.*
+
 ```python
 chemistry_ai999x.solve('dalton_mixture', moles='2.0, 1.0, 0.5', P_total=354637.5)
 # -> partial_pressures = [202650.0, 101325.0, 50662.5] Pa, mole_fractions = [0.5714285714285714, 0.2857142857142857, 0.14285714285714285]   (SOLVED)
@@ -1541,6 +1713,10 @@ $$
 - **Method:** square root of the inverse ratio of molar masses
 - **Assumes:** ideal gases at the same temperature and pressure
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Graham's law: how many times faster each gas effuses than O₂ (rate ratio = √(M_O₂ / M)), each ratio returned by the package](https://www.ai999x.com/?ax_fig=chemistry-ai999x/graham-rate-ratio-by-gas)
+
+*Graham's law: how many times faster each gas effuses than O₂ (rate ratio = √(M_O₂ / M)), each ratio returned by the package. Highlighted: the worked example, H₂ against O₂, ratio 3.98397.*
 
 ```python
 chemistry_ai999x.solve('graham_rate_ratio', formula_1='H2', formula_2='O2')
@@ -1584,6 +1760,10 @@ $$
 - **Assumes:** ratio > 0; same temperature and pressure
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![M (molar mass of the unknown gas) against ratio (rate of the unknown gas / rate of the known gas) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/graham-molar-mass-curve)
+
+*M (molar mass of the unknown gas) against ratio (rate of the unknown gas / rate of the known gas) from 0.75 to 2.25. Other inputs as in the worked example: formula_known = O2. 31 points computed by chemistry-ai999x; marked: the worked example, ratio = 1.5, M = 0.0142213 kg/mol.*
+
 ```python
 chemistry_ai999x.solve('graham_molar_mass', ratio=1.5, formula_known='O2')
 # -> M = 0.0142213 kg/mol, M_g = 14.2213   (SOLVED)
@@ -1624,6 +1804,10 @@ $$
 - **Assumes:** n, V, T, a, $b > 0$; $V > n$ b
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Pressure of 2 mol of gas at 300 K against volume, van der Waals (a = 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/van-der-waals-pressure-real-vs-ideal)
+
+*Pressure of 2 mol of gas at 300 K against volume, van der Waals (a = 0.368823 Pa·m⁶/mol², b = 4.2670e-05 m³/mol, CO₂-like) and ideal, both returned by the package at 71 volumes from 0.12 L to 20 L (logarithmic axes). At large volume the two agree; squeezed, attraction first lowers the pressure and the molecules' own volume then raises it. Marked: V = 5 L, P = 9.56049 bar (ideal 9.97736 bar).*
+
 ```python
 chemistry_ai999x.solve('van_der_waals_pressure', n=2.0, V=0.005, T=300.0, a=0.368823, b=4.267e-05)
 # -> P = 956049 Pa, P_ideal = 997736 Pa, P_atm = 9.43547   (SOLVED)
@@ -1659,6 +1843,10 @@ $$
 - **Method:** u_rms = sqrt(3RT/M), M in kg/mol
 - **Assumes:** $T > 0$ K; ideal gas
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Rms speed of gas molecules against temperature for four gases, each computed by the package at 46 temperatures from 100 K to 1000 K (it grows as √(T/M))](https://www.ai999x.com/?ax_fig=chemistry-ai999x/rms-speed-by-gas)
+
+*Rms speed of gas molecules against temperature for four gases, each computed by the package at 46 temperatures from 100 K to 1000 K (it grows as √(T/M)). At 300 K: H₂ 1927, He 1367, N₂ 516.8, CO₂ 412.4 m/s. Marked: the worked example, N₂ at 300 K, 516.834 m/s.*
 
 ```python
 chemistry_ai999x.solve('rms_speed', formula='N2', T=300.0)
@@ -1700,6 +1888,10 @@ $$
 - **Assumes:** $T > 0$ K; ideal gas
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Mean speed of gas molecules against temperature for four gases, each computed by the package at 46 temperatures from 100 K to 1000 K (it grows as √(T/M))](https://www.ai999x.com/?ax_fig=chemistry-ai999x/mean-speed-by-gas)
+
+*Mean speed of gas molecules against temperature for four gases, each computed by the package at 46 temperatures from 100 K to 1000 K (it grows as √(T/M)). At 300 K: H₂ 1775, He 1260, N₂ 476.2, CO₂ 379.9 m/s. Marked: the worked example, CO₂ at 300 K, 379.907 m/s.*
+
 ```python
 chemistry_ai999x.solve('mean_speed', formula='CO2', T=300.0)
 # -> u_mean = 379.907 m/s   (SOLVED)
@@ -1736,6 +1928,14 @@ $$
 - **Method:** moles of solute (m / M) over the volume of solution
 - **Assumes:** m, $V > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![c (molar concentration) against V (volume of solution) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molarity-from-mass-curve)
+
+*c (molar concentration) against V (volume of solution) from 0.000125 m^3 to 0.000375 m^3. One curve for each value of m (mass of solute): 0.00585 kg, 0.002925 kg, 0.0117 kg. Other inputs as in the worked example: formula = NaCl. 31 points per curve computed by chemistry-ai999x; marked: the worked example, V = 0.00025 m^3, c = 400.39 mol/m^3.*
+
+![c (molar concentration) over m (mass of solute) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molarity-from-mass-field)
+
+*c (molar concentration) over m (mass of solute) from 0.002925 kg to 0.008775 kg and V (volume of solution) from 0.000125 m^3 to 0.000375 m^3: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 133.463 mol/m^3 to dark 1201.17 mol/m^3); iso-lines at c = 200, 400, 600, 800, 1000 mol/m^3. Other inputs as in the worked example: formula = NaCl. Marked: the worked example, m = 0.00585 kg, V = 0.00025 m^3, c = 400.39 mol/m^3.*
 
 ```python
 chemistry_ai999x.solve('molarity_from_mass', formula='NaCl', m=0.00585, V=0.00025)
@@ -1779,6 +1979,14 @@ $$
 - **Assumes:** c, $V > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![m (mass of solute) against c (molar concentration) from 50 mol/m^3 to 150 mol/m^3](https://www.ai999x.com/?ax_fig=chemistry-ai999x/solute-mass-for-solution-curve)
+
+*m (mass of solute) against c (molar concentration) from 50 mol/m^3 to 150 mol/m^3. One curve for each value of V (volume of solution): 0.00025 m^3, 0.000125 m^3, 0.0005 m^3. Other inputs as in the worked example: formula = NaCl. 31 points per curve computed by chemistry-ai999x; marked: the worked example, c = 100 mol/m^3, m = 0.00146108 kg.*
+
+![m (mass of solute) over c (molar concentration) from 50 mol/m^3 to 150 mol/m^3 and V (volume of solution) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/solute-mass-for-solution-field)
+
+*m (mass of solute) over c (molar concentration) from 50 mol/m^3 to 150 mol/m^3 and V (volume of solution) from 0.000125 m^3 to 0.000375 m^3: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 0.000365269 kg to dark 0.00328742 kg); iso-lines at m = 5.00e-4, 0.001, 0.0015, 0.002, 0.0025, 0.003 kg. Other inputs as in the worked example: formula = NaCl. Marked: the worked example, c = 100 mol/m^3, V = 0.00025 m^3, m = 0.00146108 kg.*
+
 ```python
 chemistry_ai999x.solve('solute_mass_for_solution', formula='NaCl', c=100.0, V=0.00025)
 # -> m = 0.00146108 kg, m_g = 1.46108   (SOLVED)
@@ -1815,6 +2023,10 @@ $$
 - **Method:** moles of solute are conserved: c1 $V_{1} = c_{2}$ V2
 - **Assumes:** c1, V1, $V_{2} > 0$; $V_{2}  \geq  V_{1}$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![c2 (final concentration) against V2 (final volume) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/dilution-final-concentration-curve)
+
+*c2 (final concentration) against V2 (final volume) from 0.25 m^3 to 0.75 m^3. One curve for each value of c1 (initial concentration): 6000 mol/m^3, 3000 mol/m^3, 12000 mol/m^3. Other inputs as in the worked example: V1 = 0.025 m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, V2 = 0.5 m^3, c2 = 300 mol/m^3.*
 
 ```python
 chemistry_ai999x.solve('dilution_final_concentration', c1=6000.0, V1=0.025, V2=0.5)
@@ -1853,6 +2065,10 @@ $$
 - **Assumes:** $c_{1}  \geq  c_{2} > 0$; $V_{2} > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![V1 (volume of stock solution) against c1 (stock concentration) from 6000 mol/m^3 to 18000 mol/m^3](https://www.ai999x.com/?ax_fig=chemistry-ai999x/dilution-volume-curve)
+
+*V1 (volume of stock solution) against c1 (stock concentration) from 6000 mol/m^3 to 18000 mol/m^3. One curve for each value of c2 (target concentration): 100 mol/m^3, 50 mol/m^3, 200 mol/m^3. Other inputs as in the worked example: V2 = 0.5 m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, c1 = 12000 mol/m^3, V1 = 0.00416667 m^3.*
+
 ```python
 chemistry_ai999x.solve('dilution_volume', c1=12000.0, c2=100.0, V2=0.5)
 # -> V1 = 0.00416667 m^3, V1_mL = 4166.67   (SOLVED)
@@ -1888,6 +2104,14 @@ $$
 - **Method:** moles of solute per kilogram of solvent
 - **Assumes:** masses > 0
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![b (molality) against m_solvent (mass of solvent) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molality-curve)
+
+*b (molality) against m_solvent (mass of solvent) from 0.25 kg to 0.75 kg. One curve for each value of m_solute (mass of solute): 0.01 kg, 0.005 kg, 0.02 kg. Other inputs as in the worked example: formula = NaCl. 31 points per curve computed by chemistry-ai999x; marked: the worked example, m_solvent = 0.5 kg, b = 0.342214 mol/kg.*
+
+![b (molality) over m_solute (mass of solute) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molality-field)
+
+*b (molality) over m_solute (mass of solute) from 0.005 kg to 0.015 kg and m_solvent (mass of solvent) from 0.25 kg to 0.75 kg: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 0.114071 mol/kg to dark 1.02664 mol/kg); iso-lines at b = 0.2, 0.4, 0.6, 0.8 mol/kg. Other inputs as in the worked example: formula = NaCl. Marked: the worked example, m_solute = 0.01 kg, m_solvent = 0.5 kg, b = 0.342214 mol/kg.*
 
 ```python
 chemistry_ai999x.solve('molality', formula='NaCl', m_solute=0.01, m_solvent=0.5)
@@ -1926,6 +2150,14 @@ $$
 - **Method:** moles of each from its mass and molar mass
 - **Assumes:** masses > 0
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![x_solute (mole fraction of solute) against m_solvent (mass of solvent) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/mole-fraction-curve)
+
+*x_solute (mole fraction of solute) against m_solvent (mass of solvent) from 0.05 kg to 0.15 kg. One curve for each value of m_solute (mass of solute): 0.02 kg, 0.01 kg, 0.04 kg. Other inputs as in the worked example: formula_solute = C6H12O6, formula_solvent = H2O. 31 points per curve computed by chemistry-ai999x; marked: the worked example, m_solvent = 0.1 kg, x_solute = 0.0196072.*
+
+![x_solute (mole fraction of solute) over m_solute (mass of solute) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/mole-fraction-field)
+
+*x_solute (mole fraction of solute) over m_solute (mass of solute) from 0.01 kg to 0.03 kg and m_solvent (mass of solvent) from 0.05 kg to 0.15 kg: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 0.0066223 to dark 0.056602); iso-lines at x_solute = 0.01, 0.02, 0.03, 0.04, 0.05. Other inputs as in the worked example: formula_solute = C6H12O6, formula_solvent = H2O. Marked: the worked example, m_solute = 0.02 kg, m_solvent = 0.1 kg, x_solute = 0.0196072.*
 
 ```python
 chemistry_ai999x.solve('mole_fraction', formula_solute='C6H12O6', m_solute=0.02, formula_solvent='H2O', m_solvent=0.1)
@@ -1966,6 +2198,10 @@ $$
 - **Assumes:** nonvolatile, non-dissociating solute; ideal solution
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![P (vapor pressure of the solution) against m_solvent (mass of solvent) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/raoult-vapor-pressure-curve)
+
+*P (vapor pressure of the solution) against m_solvent (mass of solvent) from 0.05 kg to 5 kg on a logarithmic axis. One curve for each value of P0 (vapor pressure of the pure solvent): 3173.07 Pa, 1586.54 Pa, 6346.14 Pa. Other inputs as in the worked example: formula_solute = C12H22O11, m_solute = 0.05 kg, formula_solvent = H2O. 41 points per curve computed by chemistry-ai999x; marked: the worked example, m_solvent = 0.5 kg, P = 3156.46 Pa.*
+
 ```python
 chemistry_ai999x.solve('raoult_vapor_pressure', formula_solute='C12H22O11', m_solute=0.05, formula_solvent='H2O', m_solvent=0.5, P0=3173.0723684210525)
 # -> P = 3156.46 Pa, dP = 16.6124 Pa   (SOLVED)
@@ -2000,6 +2236,10 @@ $$
 - **Method:** $dT = i$ K b
 - **Assumes:** i, K, $b > 0$; dilute solution
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![dT (freezing-point change) against i (van 't Hoff factor) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/freezing-point-depression-curve)
+
+*dT (freezing-point change) against i (van 't Hoff factor) from 0.5 to 1.5. One curve for each value of K (cryoscopic constant): 1.86 K*kg/mol, 0.93 K*kg/mol, 3.72 K*kg/mol. Other inputs as in the worked example: b = 0.5 mol/kg. 31 points per curve computed by chemistry-ai999x; marked: the worked example, i = 1, dT = 0.93 K.*
 
 ```python
 chemistry_ai999x.solve('freezing_point_depression', i=1.0, K=1.86, b=0.5)
@@ -2042,6 +2282,10 @@ $$
 - **Method:** $dT = i$ K b
 - **Assumes:** i, K, $b > 0$; dilute solution
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![dT (boiling-point change) against i (van 't Hoff factor) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/boiling-point-elevation-curve)
+
+*dT (boiling-point change) against i (van 't Hoff factor) from 0.5 to 1.5. One curve for each value of K (ebullioscopic constant): 0.512 K*kg/mol, 0.256 K*kg/mol, 1.024 K*kg/mol. Other inputs as in the worked example: b = 0.5 mol/kg. 31 points per curve computed by chemistry-ai999x; marked: the worked example, i = 1, dT = 0.256 K.*
 
 ```python
 chemistry_ai999x.solve('boiling_point_elevation', i=1.0, K=0.512, b=0.5)
@@ -2088,6 +2332,10 @@ $$
 - **Assumes:** all inputs > 0; dilute solution
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![M (molar mass of solute) against m_solvent (mass of solvent) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molar-mass-from-freezing-point-curve)
+
+*M (molar mass of solute) against m_solvent (mass of solvent) from 0.05 kg to 0.15 kg. One curve for each value of m_solute (mass of solute): 0.002 kg, 0.001 kg, 0.004 kg. Other inputs as in the worked example: K = 1.86 K*kg/mol, dT = 0.372 K, i = 1.0. 31 points per curve computed by chemistry-ai999x; marked: the worked example, m_solvent = 0.1 kg, M = 0.1 kg/mol.*
+
 ```python
 chemistry_ai999x.solve('molar_mass_from_freezing_point', m_solute=0.002, m_solvent=0.1, K=1.86, dT=0.372, i=1.0)
 # -> M = 0.1 kg/mol, M_g = 100   (SOLVED)
@@ -2124,6 +2372,10 @@ $$
 - **Method:** $Pi = i$ c R T
 - **Assumes:** i, c, $T > 0$; dilute solution
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Pi (osmotic pressure) against i (van 't Hoff factor) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/osmotic-pressure-curve)
+
+*Pi (osmotic pressure) against i (van 't Hoff factor) from 0.5 to 1.5. One curve for each value of c (molar concentration): 100 mol/m^3, 50 mol/m^3, 200 mol/m^3. Other inputs as in the worked example: T = 298.15 K. 31 points per curve computed by chemistry-ai999x; marked: the worked example, i = 1, Pi = 247896 Pa.*
 
 ```python
 chemistry_ai999x.solve('osmotic_pressure', i=1.0, c=100.0, T=298.15)
@@ -2170,6 +2422,10 @@ $$
 - **Assumes:** all inputs > 0
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![M (molar mass) against V (volume of solution) from 5](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molar-mass-from-osmotic-pressure-curve)
+
+*M (molar mass) against V (volume of solution) from 5.0000e-05 m^3 to 0.00015 m^3. One curve for each value of m (mass of solute): 0.001 kg, 0.0005 kg, 0.002 kg. Other inputs as in the worked example: Pi = 333.30592105263156 Pa, T = 298.15 K, i = 1.0. 31 points per curve computed by chemistry-ai999x; marked: the worked example, V = 0.0001 m^3, M = 74.3748 kg/mol.*
+
 ```python
 chemistry_ai999x.solve('molar_mass_from_osmotic_pressure', m=0.001, V=0.0001, Pi=333.30592105263156, T=298.15, i=1.0)
 # -> M = 74.3748 kg/mol, M_g = 74374.8   (SOLVED)
@@ -2204,6 +2460,10 @@ $$
 - **Method:** $Kp = Kc$ $(RT)^{dn}$ with $R = 0.082057$ L·atm/(mol·K)
 - **Assumes:** Kc, $T > 0$; dn counts gaseous species only
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Kp (pressure equilibrium constant (atm basis)) against T (temperature) from 200 K to 600 K](https://www.ai999x.com/?ax_fig=chemistry-ai999x/kp-from-kc-curve)
+
+*Kp (pressure equilibrium constant (atm basis)) against T (temperature) from 200 K to 600 K. One curve for each value of dn (change in moles of gas (products - reactants)): -2, -1, -4. Other inputs as in the worked example: Kc = 0.5. 31 points per curve computed by chemistry-ai999x; marked: the worked example, T = 400 K, Kp = 0.000464104.*
 
 ```python
 chemistry_ai999x.solve('kp_from_kc', Kc=0.5, T=400.0, dn=-2.0)
@@ -2247,6 +2507,10 @@ $$
 - **Assumes:** Kp, $T > 0$; dn counts gaseous species only
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Kc (concentration equilibrium constant) against dn (change in moles of gas (products - reactants)) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/kc-from-kp-curve)
+
+*Kc (concentration equilibrium constant) against dn (change in moles of gas (products - reactants)) from 0.5 to 1.5. One curve for each value of Kp (pressure equilibrium constant (atm basis)): 1.8, 0.9, 3.6. Other inputs as in the worked example: T = 523.0 K. 31 points per curve computed by chemistry-ai999x; marked: the worked example, dn = 1, Kc = 0.0419424.*
+
 ```python
 chemistry_ai999x.solve('kc_from_kp', Kp=1.8, T=523.0, dn=1.0)
 # -> Kc = 0.0419424   (SOLVED)
@@ -2283,6 +2547,14 @@ $$
 - **Method:** the extent x solved from the mass-action expression by bisection between the limits set by the initial amounts
 - **Assumes:** one reaction, coefficients as written; no pure solids or liquids; $K > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![The plane vectors of the worked example as arrows from the origin: input initial = (0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/equilibrium-ice-vectors)
+
+*The plane vectors of the worked example as arrows from the origin: input initial = (0.1, 0); returned by chemistry-ai999x: equilibrium = (0.0898358, 0.0203284); also returned x = 0.0101642. Other inputs: equation = N2O4 ⇌ 2 NO2, K = 0.0046. Marked: the tip of each returned vector.*
+
+![x (extent of reaction (mol/L)) against K (equilibrium constant) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/equilibrium-ice-curve)
+
+*x (extent of reaction (mol/L)) against K (equilibrium constant) from 0.0023 to 0.0069. Other inputs as in the worked example: equation = N2O4 ⇌ 2 NO2, initial = 0.10, 0. 31 points computed by chemistry-ai999x; marked: the worked example, K = 0.0046, x = 0.0101642.*
 
 ```python
 chemistry_ai999x.solve('equilibrium_ice', equation='N2O4 ⇌ 2 NO2', initial='0.10, 0', K=0.0046)
@@ -2326,6 +2598,14 @@ $$
 - **Assumes:** $T > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![lnK (ln K) against T (temperature) from 149 K to 447 K](https://www.ai999x.com/?ax_fig=chemistry-ai999x/k-from-delta-g-curve)
+
+*lnK (ln K) against T (temperature) from 149 K to 447 K. One curve for each value of dG (standard Gibbs energy change): -33000 J/mol, -16500 J/mol, -66000 J/mol. 31 points per curve computed by chemistry-ai999x; marked: the worked example, T = 298 K, lnK = 13.3188.*
+
+![lnK (ln K) over T (temperature) from 149 K to 447 K and dG (standard Gibbs energy change) from -49500 J/mol to -16500 J/mol: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 4](https://www.ai999x.com/?ax_fig=chemistry-ai999x/k-from-delta-g-field)
+
+*lnK (ln K) over T (temperature) from 149 K to 447 K and dG (standard Gibbs energy change) from -49500 J/mol to -16500 J/mol: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 4.43958 to dark 39.9563); iso-lines at lnK = 10, 20, 30. Marked: the worked example, T = 298 K, dG = -33000 J/mol, lnK = 13.3188.*
+
 ```python
 chemistry_ai999x.solve('k_from_delta_g', dG=-33000.0, T=298.0)
 # -> K = 608499, lnK = 13.3188   (SOLVED)
@@ -2365,6 +2645,14 @@ $$
 - **Method:** dG° = -RT ln K
 - **Assumes:** K, $T > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![dG (standard Gibbs energy change) against T (temperature) from 149 K to 447 K](https://www.ai999x.com/?ax_fig=chemistry-ai999x/delta-g-from-k-curve)
+
+*dG (standard Gibbs energy change) against T (temperature) from 149 K to 447 K. One curve for each value of K (equilibrium constant): 100000, 50000, 200000. 31 points per curve computed by chemistry-ai999x; marked: the worked example, T = 298 K, dG = -28525.7 J/mol.*
+
+![dG (standard Gibbs energy change) over T (temperature) from 149 K to 447 K and K (equilibrium constant) from 50000 to 150000: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light -44295](https://www.ai999x.com/?ax_fig=chemistry-ai999x/delta-g-from-k-field)
+
+*dG (standard Gibbs energy change) over T (temperature) from 149 K to 447 K and K (equilibrium constant) from 50000 to 150000: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light -44295.5 J/mol to dark -13404.1 J/mol); iso-lines at dG = -40000, -30000, -20000 J/mol. Marked: the worked example, T = 298 K, K = 100000, dG = -28525.7 J/mol.*
 
 ```python
 chemistry_ai999x.solve('delta_g_from_k', K=100000.0, T=298.0)
@@ -2409,6 +2697,10 @@ $$
 - **Assumes:** K1, T1, $T_{2} > 0$; dH° independent of T
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Van 't Hoff equation: K at another temperature: K2 against T2 from 250 to 450, 81 runs of the package; other inputs as in the worked example (K1 = 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/vant-hoff-k2-curve)
+
+*Van 't Hoff equation: K at another temperature: K2 against T2 from 250 to 450, 81 runs of the package; other inputs as in the worked example (K1 = 1.8e-05, T1 = 298.0, dH = 50000.0). Marked: the worked example, T2 = 350, K2 = 0.000360875.*
+
 ```python
 chemistry_ai999x.solve('vant_hoff_k2', K1=1.8e-05, T1=298.0, T2=350.0, dH=50000.0)
 # -> K2 = 0.000360875, lnK2 = -7.92698   (SOLVED)
@@ -2444,6 +2736,10 @@ $$
 - **Method:** $dG = dG$° + RT ln Q
 - **Assumes:** T, $Q > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Gibbs energy change at non-standard conditions: dG against Q from 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/delta-g-nonstandard-curve)
+
+*Gibbs energy change at non-standard conditions: dG against Q from 1.0000e-10 to 1.0000e+10 (logarithmic axis), 81 runs of the package; other inputs as in the worked example (dG0 = -33000.0, T = 298.0). Marked: the worked example, Q = 100, dG = -21589.7.*
 
 ```python
 chemistry_ai999x.solve('delta_g_nonstandard', dG0=-33000.0, T=298.0, Q=100.0)
@@ -2481,6 +2777,10 @@ $$
 - **Method:** s = (Ksp / (x^x y^y))^(1/(x+y))
 - **Assumes:** Ksp > 0; no common ion, no side reactions
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Molar solubility from Ksp: s_molL against Ksp from 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ksp-molar-solubility-curve)
+
+*Molar solubility from Ksp: s_molL against Ksp from 1.0000e-20 to 0.0001 (logarithmic axis), 81 runs of the package per curve (MX (x = 1, y = 1); MX₂ (x = 1, y = 2); MX₃ (x = 1, y = 3)); other inputs as in the worked example (x = 1, y = 2). Marked: the worked example, Ksp = 3.9000e-11, s_molL = 0.000213633.*
 
 ```python
 chemistry_ai999x.solve('ksp_molar_solubility', Ksp=3.9e-11, x=1, y=2)
@@ -2525,6 +2825,10 @@ $$
 - **Assumes:** $s > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Ksp (solubility product) against s (molar solubility) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ksp-from-solubility-curve)
+
+*Ksp (solubility product) against s (molar solubility) from 0.75 mol/m^3 to 2.25 mol/m^3. One curve for each value of y (anions per formula unit): 2, 3, 4. Other inputs as in the worked example: x = 1. 31 points per curve computed by chemistry-ai999x; marked: the worked example, s = 1.5 mol/m^3, Ksp = 1.3500e-08.*
+
 ```python
 chemistry_ai999x.solve('ksp_from_solubility', s=1.5, x=1, y=2)
 # -> Ksp = 1.35e-08, pKsp = 7.86967   (SOLVED)
@@ -2564,6 +2868,10 @@ $$
 - **Assumes:** Ksp > 0; the common ion comes from a fully dissolved salt
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![s (molar solubility) against c_common (concentration of the common ion) from 50 mol/m^3 to 150 mol/m^3](https://www.ai999x.com/?ax_fig=chemistry-ai999x/common-ion-solubility-curve)
+
+*s (molar solubility) against c_common (concentration of the common ion) from 50 mol/m^3 to 150 mol/m^3. One curve for each value of x (cations per formula unit): 1, 2, 3. Other inputs as in the worked example: Ksp = 3.9e-11, y = 2, common = anion. 31 points per curve computed by chemistry-ai999x; marked: the worked example, c_common = 100 mol/m^3, s = 3.9000e-06 mol/m^3.*
+
 ```python
 chemistry_ai999x.solve('common_ion_solubility', Ksp=3.9e-11, x=1, y=2, c_common=100.0, common='anion')
 # -> s = 3.9e-06 mol/m^3, s_molL = 3.9e-09, log10_s = -8.40894   (SOLVED)
@@ -2600,6 +2908,10 @@ $$
 - **Method:** $pH = -log10$[H3O+]; pOH = 14 - pH (25 °C)
 - **Assumes:** [H3O+] > 0 (mol/L); 25 °C $(Kw = 1.0e-14)$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![pH (pH) against h (hydronium ion concentration) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ph-from-hydronium-curve)
+
+*pH (pH) against h (hydronium ion concentration) from 0.1 mol/m^3 to 10 mol/m^3 on a logarithmic axis. 41 points computed by chemistry-ai999x; marked: the worked example, h = 1 mol/m^3, pH = 3.*
 
 ```python
 chemistry_ai999x.solve('ph_from_hydronium', h=1.0)
@@ -2643,6 +2955,10 @@ $$
 - **Assumes:** 25 °C $(Kw = 1.0e-14)$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![h ([H3O+]) against pH (pH) from 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/hydronium-from-ph-curve)
+
+*h ([H3O+]) against pH (pH) from 1.6 to 4.8, logarithmic output axis. Outputs with the same unit drawn together: oh ([OH-]). 31 points computed by chemistry-ai999x; marked: the worked example, pH = 3.2, h = 0.630957 mol/m^3.*
+
 ```python
 chemistry_ai999x.solve('hydronium_from_ph', pH=3.2)
 # -> h = 0.630957 mol/m^3, h_molL = 0.000630957, pOH = 10.8, oh = 1.58489e-08 mol/m^3   (SOLVED)
@@ -2683,6 +2999,10 @@ $$
 - **Assumes:** [OH-] > 0; 25 °C
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![pH from the hydroxide concentration: pH against oh from 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ph-from-hydroxide-curve)
+
+*pH from the hydroxide concentration: pH against oh from 1.0000e-14 to 1 (logarithmic axis), 81 runs of the package; other inputs as in the worked example (). Marked: the worked example, oh = 0.1, pH = 10.*
+
 ```python
 chemistry_ai999x.solve('ph_from_hydroxide', oh=0.1)
 # -> pH = 10, pOH = 4   (SOLVED)
@@ -2717,6 +3037,10 @@ $$
 - **Method:** charge balance [H3O+] = c + Kw/[H3O+] solved exactly
 - **Assumes:** monoprotic strong acid; 25 °C
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![pH (pH) against c (acid concentration) from 1 mol/m^3 to 100 mol/m^3 on a logarithmic axis](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ph-strong-acid-curve)
+
+*pH (pH) against c (acid concentration) from 1 mol/m^3 to 100 mol/m^3 on a logarithmic axis. 41 points computed by chemistry-ai999x; marked: the worked example, c = 10 mol/m^3, pH = 2.*
 
 ```python
 chemistry_ai999x.solve('ph_strong_acid', c=10.0)
@@ -2760,6 +3084,10 @@ $$
 - **Assumes:** strong base fully dissociated; 25 °C
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![pH (pH) against c (base concentration) from 5 mol/m^3 to 15 mol/m^3](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ph-strong-base-curve)
+
+*pH (pH) against c (base concentration) from 5 mol/m^3 to 15 mol/m^3. One curve for each value of n_oh (hydroxide ions per formula unit): 1, 2, 3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, c = 10 mol/m^3, pH = 12.*
+
 ```python
 chemistry_ai999x.solve('ph_strong_base', c=10.0, n_oh=1)
 # -> pH = 12, pOH = 2   (SOLVED)
@@ -2802,6 +3130,14 @@ $$
 - **Method:** exact charge balance (no 5% approximation), solved by bisection
 - **Assumes:** monoprotic acid; 25 °C
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![pH (pH) against Ka (acid dissociation constant) from 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ph-weak-acid-curve)
+
+*pH (pH) against Ka (acid dissociation constant) from 1.8000e-06 to 0.00018 on a logarithmic axis. One curve for each value of c (acid concentration): 100 mol/m^3, 50 mol/m^3, 200 mol/m^3. 41 points per curve computed by chemistry-ai999x; marked: the worked example, Ka = 1.8000e-05, pH = 2.87528.*
+
+![pH (pH) over c (acid concentration) from 10 mol/m^3 to 1000 mol/m^3 and Ka (acid dissociation constant) from 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ph-weak-acid-field)
+
+*pH (pH) over c (acid concentration) from 10 mol/m^3 to 1000 mol/m^3 and Ka (acid dissociation constant) from 1.8000e-06 to 0.00018 (logarithmic axes): each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 1.87528 to dark 3.87528); iso-lines at pH = 2, 2.5, 3, 3.5. Marked: the worked example, c = 100 mol/m^3, Ka = 1.8000e-05, pH = 2.87528.*
 
 ```python
 chemistry_ai999x.solve('ph_weak_acid', Ka=1.8e-05, c=100.0)
@@ -2847,6 +3183,14 @@ $$
 - **Assumes:** 25 °C
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![pH (pH) against Kb (base dissociation constant) from 9](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ph-weak-base-curve)
+
+*pH (pH) against Kb (base dissociation constant) from 9.0000e-06 to 2.7000e-05. One curve for each value of c (base concentration): 100 mol/m^3, 50 mol/m^3, 200 mol/m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, Kb = 1.8000e-05, pH = 11.1247.*
+
+![pH (pH) over c (base concentration) from 50 mol/m^3 to 150 mol/m^3 and Kb (base dissociation constant) from 9](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ph-weak-base-field)
+
+*pH (pH) over c (base concentration) from 50 mol/m^3 to 150 mol/m^3 and Kb (base dissociation constant) from 9.0000e-06 to 2.7000e-05: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 10.8237 to dark 11.3008); iso-lines at pH = 10.9, 11, 11.1, 11.2. Marked: the worked example, c = 100 mol/m^3, Kb = 1.8000e-05, pH = 11.1247.*
+
 ```python
 chemistry_ai999x.solve('ph_weak_base', Kb=1.8e-05, c=100.0)
 # -> pH = 11.1247, pOH = 2.87528, percent_ionized = 1.33267   (SOLVED)
@@ -2883,6 +3227,14 @@ $$
 - **Assumes:** monoprotic weak acid; 25 °C
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![pKa (pKa) against pH (measured pH) from 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ka-from-ph-curve)
+
+*pKa (pKa) against pH (measured pH) from 1.435 to 4.305. One curve for each value of c (acid concentration): 100 mol/m^3, 50 mol/m^3, 200 mol/m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, pH = 2.87, pKa = 4.7341.*
+
+![pKa (pKa) over pH (measured pH) from 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ka-from-ph-field)
+
+*pKa (pKa) over pH (measured pH) from 1.435 to 4.305 and c (acid concentration) from 10 mol/m^3 to 1000 mol/m^3 (logarithmic vertical axis): each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its sign and magnitude (second colour negative); iso-lines at pKa = 2, 4, 6, 8; blank cells: inputs the capability refuses. Marked: the worked example, pH = 2.87, c = 100 mol/m^3, pKa = 4.7341.*
+
 ```python
 chemistry_ai999x.solve('ka_from_ph', pH=2.87, c=100.0)
 # -> Ka = 1.84458e-05, pKa = 4.7341   (SOLVED)
@@ -2918,6 +3270,10 @@ $$
 - **Method:** Henderson-Hasselbalch equation
 - **Assumes:** both concentrations well above Ka and [H3O+]
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![pH (pH) against Ka (acid dissociation constant) from 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/buffer-ph-curve)
+
+*pH (pH) against Ka (acid dissociation constant) from 1.7378e-06 to 0.00017378 on a logarithmic axis. One curve for each value of c_base (conjugate base concentration): 150 mol/m^3, 75 mol/m^3, 300 mol/m^3. Other inputs as in the worked example: c_acid = 100.0 mol/m^3. 41 points per curve computed by chemistry-ai999x; marked: the worked example, Ka = 1.7378e-05, pH = 4.93609.*
 
 ```python
 chemistry_ai999x.solve('buffer_ph', Ka=1.7378008287493764e-05, c_base=150.0, c_acid=100.0)
@@ -2956,6 +3312,10 @@ $$
 - **Method:** moles of titrant = ratio x moles of analyte
 - **Assumes:** complete neutralization; the acid's protons and base's hydroxides from the formulas
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![V_eq (titrant volume at equivalence) against c_t (titrant concentration) from 50 mol/m^3 to 150 mol/m^3](https://www.ai999x.com/?ax_fig=chemistry-ai999x/titration-equivalence-volume-curve)
+
+*V_eq (titrant volume at equivalence) against c_t (titrant concentration) from 50 mol/m^3 to 150 mol/m^3. One curve for each value of V_a (volume of the analyte): 2.5000e-05 m^3, 1.2500e-05 m^3, 5.0000e-05 m^3. Other inputs as in the worked example: c_a = 150.0 mol/m^3, ratio = 1.0. 31 points per curve computed by chemistry-ai999x; marked: the worked example, c_t = 100 mol/m^3, V_eq = 3.7500e-05 m^3.*
 
 ```python
 chemistry_ai999x.solve('titration_equivalence_volume', c_t=100.0, V_a=2.5e-05, c_a=150.0, ratio=1.0)
@@ -2999,6 +3359,10 @@ $$
 - **Method:** excess strong acid or base after mixing, with water's ionization (exact at the equivalence point too)
 - **Assumes:** strong monoprotic acid titrated with a strong monohydroxide base; 25 °C
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Titration curve of a strong acid (100](https://www.ai999x.com/?ax_fig=chemistry-ai999x/titration-ph-strong-acid-strong-base-titration)
+
+*Titration curve of a strong acid (100.0 mol/m³, 25 mL) with a strong base (100.0 mol/m³): the pH the package returned for 121 added volumes from 0 to twice the equivalence volume (equivalence at c_a·V_a/c_b = 25 mL, computed from the stated inputs). Marked: the worked example, V_b = 10 mL, pH = 1.36798.*
 
 ```python
 chemistry_ai999x.solve('titration_ph_strong_acid_strong_base', c_a=100.0, V_a=2.5e-05, c_b=100.0, V_b=1e-05)
@@ -3048,6 +3412,10 @@ $$
 
 *pH against volume of 0.100 M NaOH added to 25.0 mL of 0.100 M acid, computed by the package at 101 volumes for a strong acid and a weak acid (Ka = 1.8e-5). Shaded: the weak acid's buffer region, 10 % to 90 % neutralised (pH 3.79886 to 5.69915); at half-equivalence pH = 4.7452 (= pKa). Marked: equivalence V_b = 25 mL, pH = 8.7219.*
 
+![pH (pH) against c_b (base concentration) from 10 mol/m^3 to 1000 mol/m^3 on a logarithmic axis](https://www.ai999x.com/?ax_fig=chemistry-ai999x/titration-ph-weak-acid-strong-base-curve)
+
+*pH (pH) against c_b (base concentration) from 10 mol/m^3 to 1000 mol/m^3 on a logarithmic axis. One curve for each value of V_a (acid volume): 2.5000e-05 m^3, 1.2500e-05 m^3, 5.0000e-05 m^3. Other inputs as in the worked example: Ka = 1.8e-05, c_a = 100.0 mol/m^3, V_b = 1.25e-05 m^3. 41 points per curve computed by chemistry-ai999x; marked: the worked example, c_b = 100 mol/m^3, pH = 4.7452.*
+
 ```python
 chemistry_ai999x.solve('titration_ph_weak_acid_strong_base', Ka=1.8e-05, c_a=100.0, V_a=2.5e-05, c_b=100.0, V_b=1.25e-05)
 # -> pH = 4.7452   (SOLVED)
@@ -3088,6 +3456,10 @@ $$
 - **Method:** exact charge balance of H2A, solved by bisection
 - **Assumes:** 25 °C
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![pH (pH) against Ka1 (first dissociation constant) from 2](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ph-diprotic-acid-curve)
+
+*pH (pH) against Ka1 (first dissociation constant) from 2.1500e-07 to 6.4500e-07. One curve for each value of c (acid concentration): 100 mol/m^3, 50 mol/m^3, 200 mol/m^3. Other inputs as in the worked example: Ka2 = 4.8e-11. 31 points per curve computed by chemistry-ai999x; marked: the worked example, Ka1 = 4.3000e-07, pH = 3.68372.*
 
 ```python
 chemistry_ai999x.solve('ph_diprotic_acid', Ka1=4.3e-07, Ka2=4.8e-11, c=100.0)
@@ -3130,6 +3502,14 @@ $$
 - **Assumes:** salt of a weak monoprotic acid and a strong base; 25 °C
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![pH (pH) against Ka (acid dissociation constant) from 9](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ph-salt-of-weak-acid-curve)
+
+*pH (pH) against Ka (acid dissociation constant) from 9.0000e-06 to 2.7000e-05. One curve for each value of c (salt concentration): 100 mol/m^3, 50 mol/m^3, 200 mol/m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, Ka = 1.8000e-05, pH = 8.87239.*
+
+![pH (pH) over c (salt concentration) from 50 mol/m^3 to 150 mol/m^3 and Ka (acid dissociation constant) from 9](https://www.ai999x.com/?ax_fig=chemistry-ai999x/ph-salt-of-weak-acid-field)
+
+*pH (pH) over c (salt concentration) from 50 mol/m^3 to 150 mol/m^3 and Ka (acid dissociation constant) from 9.0000e-06 to 2.7000e-05: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 8.6339 to dark 9.11092); iso-lines at pH = 8.7, 8.8, 8.9, 9, 9.1. Marked: the worked example, c = 100 mol/m^3, Ka = 1.8000e-05, pH = 8.87239.*
+
 ```python
 chemistry_ai999x.solve('ph_salt_of_weak_acid', Ka=1.8e-05, c=100.0)
 # -> pH = 8.87239, Kb = 5.55556e-10   (SOLVED)
@@ -3166,6 +3546,10 @@ $$
 - **Method:** [A] = [A]$0 - k$ t
 - **Assumes:** [A]0, k, $t > 0$; [A] stays >= 0
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![A (concentration at time t) against A0 (initial concentration) from 250 mol/m^3 to 750 mol/m^3](https://www.ai999x.com/?ax_fig=chemistry-ai999x/zero-order-concentration-curve)
+
+*A (concentration at time t) against A0 (initial concentration) from 250 mol/m^3 to 750 mol/m^3. One curve for each value of k (zero-order rate constant): 2 mol/(m^3*s), 1 mol/(m^3*s), 4 mol/(m^3*s). Other inputs as in the worked example: t = 100.0 s. 31 points per curve computed by chemistry-ai999x; marked: the worked example, A0 = 500 mol/m^3, A = 300 mol/m^3.*
 
 ```python
 chemistry_ai999x.solve('zero_order_concentration', A0=500.0, k=2.0, t=100.0)
@@ -3209,6 +3593,10 @@ $$
 
 *Reactant concentration against time from A0 = 500 mol/m³ for zero-, first- and second-order rate laws with the same initial rate (2 mol/(m³·s)), each computed by the package at up to 121 times. At t = 200 s: 100, 224.664 and 277.778 mol/m³; marked: t = 200 s, [A] = 224.664 mol/m³ (first order).*
 
+![A (concentration at time t) against k (first-order rate constant) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/first-order-concentration-curve)
+
+*A (concentration at time t) against k (first-order rate constant) from 0.0015 1/s to 0.15 1/s on a logarithmic axis. One curve for each value of A0 (initial concentration): 800 mol/m^3, 400 mol/m^3, 1600 mol/m^3. Other inputs as in the worked example: t = 60.0 s. 41 points per curve computed by chemistry-ai999x; marked: the worked example, k = 0.015 1/s, A = 325.256 mol/m^3.*
+
 ```python
 chemistry_ai999x.solve('first_order_concentration', A0=800.0, k=0.015, t=60.0)
 # -> A = 325.256 mol/m^3, A_molL = 0.325256, fraction_left = 0.40657   (SOLVED)
@@ -3246,6 +3634,10 @@ $$
 - **Assumes:** [A]0, k, $t > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![A (concentration at time t) against k (second-order rate constant) from 5](https://www.ai999x.com/?ax_fig=chemistry-ai999x/second-order-concentration-curve)
+
+*A (concentration at time t) against k (second-order rate constant) from 5.0000e-05 m^3/(mol*s) to 0.005 m^3/(mol*s) on a logarithmic axis. One curve for each value of t (elapsed time): 30 s, 15 s, 60 s. Other inputs as in the worked example: A0 = 200.0 mol/m^3. 41 points per curve computed by chemistry-ai999x; marked: the worked example, k = 0.0005 m^3/(mol*s), A = 50 mol/m^3.*
+
 ```python
 chemistry_ai999x.solve('second_order_concentration', A0=200.0, k=0.0005, t=30.0)
 # -> A = 50 mol/m^3, A_molL = 0.05   (SOLVED)
@@ -3278,6 +3670,10 @@ $$
 - **Method:** $t_{1}/2 = ln$ $2 / k$
 - **Assumes:** $k > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![t_half (half-life) against k (first-order rate constant) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/first-order-half-life-curve)
+
+*t_half (half-life) against k (first-order rate constant) from 0.0125 1/s to 0.0375 1/s. 31 points computed by chemistry-ai999x; marked: the worked example, k = 0.025 1/s, t_half = 27.7259 s.*
 
 ```python
 chemistry_ai999x.solve('first_order_half_life', k=0.025)
@@ -3314,6 +3710,10 @@ $$
 - **Method:** $t = ln$([A]0/[A]) / k
 - **Assumes:** 0 < [A] < [A]0; $k > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![t (time needed) against k (first-order rate constant) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/first-order-time-curve)
+
+*t (time needed) against k (first-order rate constant) from 0.015 1/s to 0.045 1/s. One curve for each value of A0 (initial concentration): 500 mol/m^3, 250 mol/m^3, 1000 mol/m^3. Other inputs as in the worked example: A = 100.0 mol/m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, k = 0.03 1/s, t = 53.6479 s.*
 
 ```python
 chemistry_ai999x.solve('first_order_time', A0=500.0, A=100.0, k=0.03)
@@ -3352,6 +3752,10 @@ $$
 - **Assumes:** k1, T1, T2, $Ea > 0$; Ea independent of T
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Arrhenius equation: rate constant at another temperature: k2 against T2 from 250 to 450, 81 runs of the package; other inputs as in the worked example (k1 = 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/arrhenius-k2-curve)
+
+*Arrhenius equation: rate constant at another temperature: k2 against T2 from 250 to 450, 81 runs of the package; other inputs as in the worked example (k1 = 0.0012, T1 = 300.0, Ea = 75000.0). Marked: the worked example, T2 = 350, k2 = 0.0880375.*
+
 ```python
 chemistry_ai999x.solve('arrhenius_k2', k1=0.0012, T1=300.0, T2=350.0, Ea=75000.0)
 # -> k2 = 0.0880375, ratio = 73.3646   (SOLVED)
@@ -3389,6 +3793,10 @@ $$
 - **Method:** two-point Arrhenius equation solved for Ea
 - **Assumes:** k1, $k_{2} > 0$; $T_{1}  \neq  T_{2}$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Ea (activation energy) against T1 (first temperature) from 30 K to 300 K on a logarithmic axis](https://www.ai999x.com/?ax_fig=chemistry-ai999x/activation-energy-curve)
+
+*Ea (activation energy) against T1 (first temperature) from 30 K to 300 K on a logarithmic axis. One curve for each value of k1 (rate constant at T1): 0.001, 0.0005, 0.002. Other inputs as in the worked example: k2 = 0.005, T2 = 320.0 K. 21 points per curve computed by chemistry-ai999x; marked: the worked example, T1 = 300 K, Ea = 64231.7 J/mol.*
 
 ```python
 chemistry_ai999x.solve('activation_energy', k1=0.001, T1=300.0, k2=0.005, T2=320.0)
@@ -3429,6 +3837,10 @@ $$
 
 *Arrhenius plot: the rate constant (logarithmic axis) against 1000/T for A = 1.0000e+13 1/s and Ea = 100 kJ/mol, computed by the package at 61 temperatures from 350 K to 650 K — a straight line of slope −Ea/R. Marked: T = 500 K, k = 357.5 1/s.*
 
+![k (rate constant (units of A)) against T (temperature) from 450 K to 550 K](https://www.ai999x.com/?ax_fig=chemistry-ai999x/arrhenius-rate-constant-curve)
+
+*k (rate constant (units of A)) against T (temperature) from 450 K to 550 K. One curve for each value of Ea (activation energy): 100000 J/mol, 50000 J/mol, 200000 J/mol. Other inputs as in the worked example: A = 10000000000000.0. 31 points per curve computed by chemistry-ai999x; marked: the worked example, T = 500 K, k = 357.5.*
+
 ```python
 chemistry_ai999x.solve('arrhenius_rate_constant', A=10000000000000.0, Ea=100000.0, T=500.0)
 # -> k = 357.5   (SOLVED)
@@ -3464,6 +3876,10 @@ $$
 - **Method:** ratio of the two rate laws
 - **Assumes:** $c_{1}  \neq  c_{2}$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![order (reaction order) against c2 (concentration in experiment 2) from 100 mol/m^3 to 300 mol/m^3](https://www.ai999x.com/?ax_fig=chemistry-ai999x/reaction-order-from-rates-curve)
+
+*order (reaction order) against c2 (concentration in experiment 2) from 100 mol/m^3 to 300 mol/m^3. One curve for each value of c1 (concentration in experiment 1): 100 mol/m^3, 50 mol/m^3, 200 mol/m^3. Other inputs as in the worked example: r1 = 2.0 mol/(m^3*s), r2 = 8.0 mol/(m^3*s). 30 points per curve computed by chemistry-ai999x; marked: the worked example, c2 = 200 mol/m^3, order = 2.*
 
 ```python
 chemistry_ai999x.solve('reaction_order_from_rates', c1=100.0, r1=2.0, c2=200.0, r2=8.0)
@@ -3511,6 +3927,10 @@ $$
 
 *How the starting 1000 mol/m³ of A divides between A, B and C over time (stacked shares, k1 = 0.1 1/s, k2 = 0.05 1/s), each concentration computed by the package at 80 times. B is largest near t = 14 s (499.977 mol/m³, a share of 0.499977); at t = 80 s the shares are 0.000335463, 0.0359604 and 0.963704.*
 
+![B (intermediate concentration) against t (elapsed time) from 1 s to 100 s on a logarithmic axis](https://www.ai999x.com/?ax_fig=chemistry-ai999x/consecutive-first-order-curve)
+
+*B (intermediate concentration) against t (elapsed time) from 1 s to 100 s on a logarithmic axis. One curve for each value of A0 (initial concentration of A (B and C start at 0)): 1000 mol/m^3, 500 mol/m^3, 2000 mol/m^3. Other inputs as in the worked example: k1 = 0.1 1/s, k2 = 0.05 1/s. 41 points per curve computed by chemistry-ai999x; marked: the worked example, t = 10 s, B = 477.302 mol/m^3.*
+
 ```python
 chemistry_ai999x.solve('consecutive_first_order', A0=1000.0, k1=0.1, k2=0.05, t=10.0)
 # -> B = 477.302 mol/m^3, A = 367.879 mol/m^3, C = 154.818 mol/m^3   (SOLVED)
@@ -3552,6 +3972,10 @@ $$
 - **Assumes:** no phase change
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![q (heat absorbed (negative: released)) against m (mass) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/calorimetry-heat-curve)
+
+*q (heat absorbed (negative: released)) against m (mass) from 0.025 kg to 0.075 kg. One curve for each value of T2 (final temperature): 353.15 K, 176.575 K, 706.3 K. Other inputs as in the worked example: c = 4184.0 J/(kg*K), T1 = 293.15 K. 31 points per curve computed by chemistry-ai999x; marked: the worked example, m = 0.05 kg, q = 12552 J.*
+
 ```python
 chemistry_ai999x.solve('calorimetry_heat', m=0.05, c=4184.0, T1=293.15, T2=353.15)
 # -> q = 12552 J   (SOLVED)
@@ -3592,6 +4016,10 @@ $$
 - **Assumes:** no heat lost to the calorimeter or surroundings; constant pressure
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![dH (reaction enthalpy) against n (moles of the reaction (limiting reactant)) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/enthalpy-from-calorimetry-curve)
+
+*dH (reaction enthalpy) against n (moles of the reaction (limiting reactant)) from 0.005 mol to 0.5 mol on a logarithmic axis. One curve for each value of T2 (final temperature): 301.95 K, 150.975 K, 603.9 K. Other inputs as in the worked example: m = 0.1 kg, c = 4180.0 J/(kg*K), T1 = 295.15 K. 41 points per curve computed by chemistry-ai999x; marked: the worked example, n = 0.05 mol, dH = -56848 J/mol.*
+
 ```python
 chemistry_ai999x.solve('enthalpy_from_calorimetry', m=0.1, c=4180.0, T1=295.15, T2=301.95, n=0.05)
 # -> dH = -56848 J/mol, dH_kJ = -56.848, q_solution = 2842.4 J   (SOLVED)
@@ -3626,6 +4054,10 @@ $$
 - **Method:** coefficient-weighted sum of formation enthalpies, products minus reactants
 - **Assumes:** the equation as written conserves every element; one value per species, in kJ/mol
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![dH (standard reaction enthalpy) as value 4 of values (standard enthalpy of formation of each species in the order written (kJ/mol)) moves from -590](https://www.ai999x.com/?ax_fig=chemistry-ai999x/reaction-enthalpy-from-formation-sensitivity)
+
+*dH (standard reaction enthalpy) as value 4 of values (standard enthalpy of formation of each species in the order written (kJ/mol)) moves from -590.25 to 196.75, the other values as given (-74.8, 0, -393.5, -285.8); 41 runs of chemistry-ai999x. Other inputs: equation = CH4 + 2 O2 -> CO2 + 2 H2O. Marked: the worked example, values[4] = -285.8, dH = -890300 J/mol.*
 
 ```python
 chemistry_ai999x.solve('reaction_enthalpy_from_formation', equation='CH4 + 2 O2 -> CO2 + 2 H2O', values='-74.8, 0, -393.5, -285.8')
@@ -3665,6 +4097,14 @@ $$
 - **Assumes:** dH and dS taken as constant
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Gibbs energy change (dG = dH - T dS): dG against T from 100 to 1000, 81 runs of the package; other inputs as in the worked example (dH = -92200](https://www.ai999x.com/?ax_fig=chemistry-ai999x/gibbs-free-energy-curve)
+
+*Gibbs energy change (dG = dH - T dS): dG against T from 100 to 1000, 81 runs of the package; other inputs as in the worked example (dH = -92200.0, dS = -198.7). Marked: the worked example, T = 298, dG = -32987.4.*
+
+![spontaneous / non-spontaneous (spontaneity) over dH (standard enthalpy change) from -138300 J/mol to -46100 J/mol and T (temperature) from 29](https://www.ai999x.com/?ax_fig=chemistry-ai999x/gibbs-free-energy-decision)
+
+*spontaneous / non-spontaneous (spontaneity) over dH (standard enthalpy change) from -138300 J/mol to -46100 J/mol and T (temperature) from 29.8 K to 2980 K (logarithmic vertical axis): each of the 31 × 21 cells is one run of chemistry-ai999x, coloured by the verdict it returned — non-spontaneous: 273 cells, spontaneous: 378 cells. Other inputs as in the worked example: dS = -198.7 J/(mol*K). Marked: the worked example, dH = -92200 J/mol, T = 298 K → spontaneous.*
+
 ```python
 chemistry_ai999x.solve('gibbs_free_energy', dH=-92200.0, dS=-198.7, T=298.0)
 # -> dG = -32987.4 J/mol, dG_kJ = -32.9874, spontaneity = spontaneous   (SOLVED)
@@ -3700,6 +4140,14 @@ $$
 - **Method:** $T = dH / dS$
 - **Assumes:** dH and dS of the same sign
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![T (temperature where dG = 0) against dS (entropy change) from 80](https://www.ai999x.com/?ax_fig=chemistry-ai999x/crossover-temperature-curve)
+
+*T (temperature where dG = 0) against dS (entropy change) from 80.5 J/(mol*K) to 241.5 J/(mol*K). One curve for each value of dH (standard enthalpy change): 178000 J/mol, 89000 J/mol, 356000 J/mol. 31 points per curve computed by chemistry-ai999x; marked: the worked example, dS = 161 J/(mol*K), T = 1105.59 K.*
+
+![T (temperature where dG = 0) over dH (standard enthalpy change) from 89000 J/mol to 267000 J/mol and dS (entropy change) from 80](https://www.ai999x.com/?ax_fig=chemistry-ai999x/crossover-temperature-field)
+
+*T (temperature where dG = 0) over dH (standard enthalpy change) from 89000 J/mol to 267000 J/mol and dS (entropy change) from 80.5 J/(mol*K) to 241.5 J/(mol*K): each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 368.53 K to dark 3316.77 K); iso-lines at T = 500, 1000, 1500, 2000, 2500, 3000 K. Marked: the worked example, dH = 178000 J/mol, dS = 161 J/(mol*K), T = 1105.59 K.*
 
 ```python
 chemistry_ai999x.solve('crossover_temperature', dH=178000.0, dS=161.0)
@@ -3738,6 +4186,14 @@ $$
 - **Assumes:** dH is per mole of the given reactant
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![q (enthalpy change (negative: heat released)) against m (mass of the reactant) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/heat-from-reaction-mass-curve)
+
+*q (enthalpy change (negative: heat released)) against m (mass of the reactant) from 0.005 kg to 0.015 kg. One curve for each value of dH (standard enthalpy change): -890000 J/mol, -445000 J/mol, -1.78e+06 J/mol. Other inputs as in the worked example: formula = CH4. 31 points per curve computed by chemistry-ai999x; marked: the worked example, m = 0.01 kg, q = -554759 J.*
+
+![q (enthalpy change (negative: heat released)) over m (mass of the reactant) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/heat-from-reaction-mass-field)
+
+*q (enthalpy change (negative: heat released)) over m (mass of the reactant) from 0.005 kg to 0.015 kg and dH (standard enthalpy change) from -1.335e+06 J/mol to -445000 J/mol: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light -1.24821e+06 J to dark -138690 J); iso-lines at q = -1.20e6, -1.00e6, -8.00e5, -6.00e5, -4.00e5, -2.00e5 J. Other inputs as in the worked example: formula = CH4. Marked: the worked example, m = 0.01 kg, dH = -890000 J/mol, q = -554759 J.*
+
 ```python
 chemistry_ai999x.solve('heat_from_reaction_mass', formula='CH4', m=0.01, dH=-890000.0)
 # -> q = -554759 J, heat_released = 554759 J   (SOLVED)
@@ -3773,6 +4229,10 @@ $$
 - **Method:** integrated Clausius-Clapeyron equation
 - **Assumes:** dHvap constant; ideal vapor
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Clausius-Clapeyron: vapor pressure at another temperature: P2 against T2 from 273](https://www.ai999x.com/?ax_fig=chemistry-ai999x/clausius-clapeyron-pressure-curve)
+
+*Clausius-Clapeyron: vapor pressure at another temperature: P2 against T2 from 273.15 to 373.15, 81 runs of the package; other inputs as in the worked example (P1 = 3173.0723684210525, T1 = 298.15, dH = 43900.0). Marked: the worked example, T2 = 323.15, P2 = 12487.6.*
 
 ```python
 chemistry_ai999x.solve('clausius_clapeyron_pressure', P1=3173.0723684210525, T1=298.15, T2=323.15, dH=43900.0)
@@ -3810,6 +4270,10 @@ $$
 - **Assumes:** $T_{1}  \neq  T_{2}$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![dH (enthalpy of vaporization) against T1 (first temperature) from 30 K to 3000 K on a logarithmic axis](https://www.ai999x.com/?ax_fig=chemistry-ai999x/clausius-clapeyron-enthalpy-curve)
+
+*dH (enthalpy of vaporization) against T1 (first temperature) from 30 K to 3000 K on a logarithmic axis. One curve for each value of T2 (second temperature): 340 K, 170 K, 680 K. Other inputs as in the worked example: P1 = 13332.236842105263 Pa, P2 = 53328.94736842105 Pa. 41 points per curve computed by chemistry-ai999x; marked: the worked example, T1 = 300 K, dH = 29392 J/mol.*
+
 ```python
 chemistry_ai999x.solve('clausius_clapeyron_enthalpy', P1=13332.236842105263, T1=300.0, P2=53328.94736842105, T2=340.0)
 # -> dH = 29392 J/mol   (SOLVED)
@@ -3844,6 +4308,14 @@ $$
 - **Method:** $dG = -n$ F E
 - **Assumes:** $n > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![dG (Gibbs energy change) against n (electrons transferred) from 1 to 3](https://www.ai999x.com/?ax_fig=chemistry-ai999x/delta-g-from-cell-potential-curve)
+
+*dG (Gibbs energy change) against n (electrons transferred) from 1 to 3. One curve for each value of E (cell potential): 1.1 V, 0.55 V, 2.2 V. 31 points per curve computed by chemistry-ai999x; marked: the worked example, n = 2, dG = -212268 J/mol.*
+
+![dG (Gibbs energy change) over n (electrons transferred) from 1 to 3 and E (cell potential) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/delta-g-from-cell-potential-field)
+
+*dG (Gibbs energy change) over n (electrons transferred) from 1 to 3 and E (cell potential) from 0.55 V to 1.65 V: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light -477602 J/mol to dark -53066.9 J/mol); iso-lines at dG = -4.00e5, -3.00e5, -2.00e5, -1.00e5 J/mol. Marked: the worked example, n = 2, E = 1.1 V, dG = -212268 J/mol.*
 
 ```python
 chemistry_ai999x.solve('delta_g_from_cell_potential', n=2.0, E=1.1)
@@ -3882,6 +4354,10 @@ $$
 - **Assumes:** n, $T > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![lnK (ln K) against T (temperature) from 149 K to 447 K](https://www.ai999x.com/?ax_fig=chemistry-ai999x/k-from-cell-potential-curve)
+
+*lnK (ln K) against T (temperature) from 149 K to 447 K. One curve for each value of n (electrons transferred): 2, 1, 4. Other inputs as in the worked example: E = 0.46 V. 31 points per curve computed by chemistry-ai999x; marked: the worked example, T = 298 K, lnK = 35.826.*
+
 ```python
 chemistry_ai999x.solve('k_from_cell_potential', n=2.0, E=0.46, T=298.0)
 # -> lnK = 35.826, K = 3.62282e+15   (SOLVED)
@@ -3917,6 +4393,10 @@ $$
 - **Method:** $E = E$° - (RT/nF) ln Q
 - **Assumes:** n, Q, $T > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Nernst equation: E against Q from 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/nernst-potential-curve)
+
+*Nernst equation: E against Q from 1.0000e-06 to 1e+06 (logarithmic axis), 81 runs of the package; other inputs as in the worked example (E0 = 1.1, n = 2.0, T = 298.0). Marked: the worked example, Q = 0.01, E = 1.15913.*
 
 ```python
 chemistry_ai999x.solve('nernst_potential', E0=1.1, n=2.0, Q=0.01, T=298.0)
@@ -3956,6 +4436,10 @@ $$
 - **Assumes:** 100% current efficiency
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![m (mass deposited) against n (electrons transferred) from 1 to 3](https://www.ai999x.com/?ax_fig=chemistry-ai999x/electrolysis-mass-curve)
+
+*m (mass deposited) against n (electrons transferred) from 1 to 3. One curve for each value of I (current): 2 A, 1 A, 4 A. Other inputs as in the worked example: metal = Cu, t = 1800.0 s. 31 points per curve computed by chemistry-ai999x; marked: the worked example, n = 2, m = 0.00118549 kg.*
+
 ```python
 chemistry_ai999x.solve('electrolysis_mass', metal='Cu', I=2.0, t=1800.0, n=2.0)
 # -> m = 0.00118549 kg, m_g = 1.18549   (SOLVED)
@@ -3993,6 +4477,10 @@ $$
 - **Assumes:** 100% current efficiency
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![t (time needed) against I (current) from 2](https://www.ai999x.com/?ax_fig=chemistry-ai999x/electrolysis-time-curve)
+
+*t (time needed) against I (current) from 2.5 A to 7.5 A. One curve for each value of m (mass to deposit): 0.01 kg, 0.005 kg, 0.02 kg. Other inputs as in the worked example: metal = Ni, n = 2.0. 31 points per curve computed by chemistry-ai999x; marked: the worked example, I = 5 A, t = 6575.59 s.*
+
 ```python
 chemistry_ai999x.solve('electrolysis_time', metal='Ni', m=0.01, I=5.0, n=2.0)
 # -> t = 6575.59 s   (SOLVED)
@@ -4029,6 +4517,10 @@ $$
 - **Assumes:** $\lambda > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![E (energy per photon) against lam (wavelength) from 2](https://www.ai999x.com/?ax_fig=chemistry-ai999x/photon-energy-curve)
+
+*E (energy per photon) against lam (wavelength) from 2.5000e-07 m to 7.5000e-07 m. 31 points computed by chemistry-ai999x; marked: the worked example, lam = 5.0000e-07 m, E = 3.9729e-19 J.*
+
 ```python
 chemistry_ai999x.solve('photon_energy', lam=5e-07)
 # -> E = 3.97289e-19 J, E_eV = 2.47968, E_molar = 239253 J/mol, nu = 5.99585e+14 Hz   (SOLVED)
@@ -4063,6 +4555,10 @@ $$
 - **Method:** $\lambda = h$ c / E
 - **Assumes:** $E > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![lam (wavelength) against E (photon energy) from 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/photon-wavelength-curve)
+
+*lam (wavelength) against E (photon energy) from 1.5000e-19 J to 4.5000e-19 J. 31 points computed by chemistry-ai999x; marked: the worked example, E = 3.0000e-19 J, lam = 6.6215e-07 m.*
 
 ```python
 chemistry_ai999x.solve('photon_wavelength', E=3e-19)
@@ -4106,6 +4602,10 @@ $$
 - **Assumes:** dilute solution, monochromatic light
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![A (absorbance) against eps (molar absorptivity) from 750 m^2/mol to 2250 m^2/mol](https://www.ai999x.com/?ax_fig=chemistry-ai999x/beer-lambert-absorbance-curve)
+
+*A (absorbance) against eps (molar absorptivity) from 750 m^2/mol to 2250 m^2/mol. One curve for each value of l (path length): 0.01 m, 0.005 m, 0.02 m. Other inputs as in the worked example: c = 0.02 mol/m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, eps = 1500 m^2/mol, A = 0.3.*
+
 ```python
 chemistry_ai999x.solve('beer_lambert_absorbance', eps=1500.0, l=0.01, c=0.02)
 # -> A = 0.3, T_percent = 50.1187   (SOLVED)
@@ -4141,6 +4641,10 @@ $$
 - **Method:** c = A / (epsilon l)
 - **Assumes:** dilute solution
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![c (concentration) against eps (molar absorptivity) from 625 m^2/mol to 1875 m^2/mol](https://www.ai999x.com/?ax_fig=chemistry-ai999x/beer-lambert-concentration-curve)
+
+*c (concentration) against eps (molar absorptivity) from 625 m^2/mol to 1875 m^2/mol. One curve for each value of A (absorbance): 0.45, 0.225, 0.9. Other inputs as in the worked example: l = 0.01 m. 31 points per curve computed by chemistry-ai999x; marked: the worked example, eps = 1250 m^2/mol, c = 0.036 mol/m^3.*
 
 ```python
 chemistry_ai999x.solve('beer_lambert_concentration', A=0.45, eps=1250.0, l=0.01)
@@ -4182,6 +4686,10 @@ $$
 
 *The hydrogen line spectrum: wavelength of the first six lines of three series, computed by the package (Rydberg formula), each drawn at its photon energy (also computed by the package). Ranges: Lyman 121.568–93.0758 nm; Balmer 656.47–389.019 nm; Paschen 1875.63–923.16 nm. Marked: Hα (n = 3 → 2), λ = 656.47 nm, E = 1.88865 eV.*
 
+![lam (wavelength) against n_upper (upper level) from 1 to 11](https://www.ai999x.com/?ax_fig=chemistry-ai999x/hydrogen-transition-wavelength-curve)
+
+*lam (wavelength) against n_upper (upper level) from 1 to 11. One curve for each value of n_lower (lower level): 2, 3. 9 points per curve computed by chemistry-ai999x; marked: the worked example, n_upper = 3, lam = 6.5647e-07 m.*
+
 ```python
 chemistry_ai999x.solve('hydrogen_transition_wavelength', n_upper=3, n_lower=2)
 # -> lam = 6.5647e-07 m, lam_nm = 656.47, E = 3.02595e-19 J   (SOLVED)
@@ -4220,6 +4728,10 @@ $$
 - **Method:** $(2C + 2 + N - H - X)/2$ (Si as C, P and B as N, O and S ignored)
 - **Assumes:** a neutral organic formula
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Degree of unsaturation (rings plus π bonds) of eight molecules, each returned by the package from its formula: ethane 0, ethene 1, ethyne 2, cyclohexane 1, benzene 4, pyridine 4, naphthalene 7, vinyl chloride 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/degree-of-unsaturation-by-molecule)
+
+*Degree of unsaturation (rings plus π bonds) of eight molecules, each returned by the package from its formula: ethane 0, ethene 1, ethyne 2, cyclohexane 1, benzene 4, pyridine 4, naphthalene 7, vinyl chloride 1. The worked example, C₆H₆ (benzene), gives 4: one ring and three double bonds.*
 
 ```python
 chemistry_ai999x.solve('degree_of_unsaturation', formula='C6H6')
@@ -4268,6 +4780,10 @@ $$
 - **Method:** harmonic oscillator with the reduced mass of the most abundant isotopes
 - **Assumes:** harmonic approximation; most abundant isotopes (1H, 12C, 16O, 35Cl ...)
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![wavenumber (wavenumber) against k (bond force constant) from 258 N/m to 774 N/m](https://www.ai999x.com/?ax_fig=chemistry-ai999x/vibrational-wavenumber-curve)
+
+*wavenumber (wavenumber) against k (bond force constant) from 258 N/m to 774 N/m. Other inputs as in the worked example: molecule = HCl. 31 points computed by chemistry-ai999x; marked: the worked example, k = 516 N/m, wavenumber = 299004 1/m.*
 
 ```python
 chemistry_ai999x.solve('vibrational_wavenumber', molecule='HCl', k=516.0)

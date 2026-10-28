@@ -4,7 +4,7 @@
 
 **[Install](https://pypi.org/project/chemistry-ai999x/)** · **[Capability guide](https://huggingface.co/AI999X/chemistry-ai999x/tree/main/docs)** · **[Evaluation](https://huggingface.co/AI999X/chemistry-ai999x/tree/main/evaluation)** · **[AI999X on Hugging Face](https://huggingface.co/AI999X)** · **[Website](https://ai999x.com)** · **[Support: Buy Me a Coffee](https://buymeacoffee.com/ibnuljaiffarabi)**
 
-License: Apache-2.0 · Author: Ibnul Jaif Farabi (creator and engineer) · Organization: AI999X · Version 1.0.1
+License: Apache-2.0 · Author: Ibnul Jaif Farabi (creator and engineer) · Organization: AI999X · Version 1.0.2
 
 Field: **Physical Sciences** · Tasks: Question Answering, Token Classification, Text Classification, Sentence Similarity, Feature Extraction
 
@@ -27,7 +27,7 @@ chemistry-ai999x is an offline, deterministic Python solver that answers chemist
 
 | Property | Value |
 |---|---|
-| Package | `chemistry-ai999x` 1.0.1 (import `chemistry_ai999x`) |
+| Package | `chemistry-ai999x` 1.0.2 (import `chemistry_ai999x`) |
 | Type | Deterministic neuro-symbolic chemistry engine (rule-based reading + certified symbolic capabilities) |
 | Capabilities | 103 certified procedures |
 | Knowledge pack | version 1.0.1 |
@@ -61,7 +61,7 @@ chemistry.ask("Who created you?").message
 # -> chemistry-ai999x was created and engineered by Ibnul Jaif Farabi at AI999X.
 ```
 
-Command line: `chemistry-ai999x "<question>"`, `chemistry-ai999x --capabilities`. The outputs above were produced by running this exact code on chemistry-ai999x 1.0.1.
+Command line: `chemistry-ai999x "<question>"`, `chemistry-ai999x --capabilities`. The outputs above were produced by running this exact code on chemistry-ai999x 1.0.2.
 
 ## Find the right capability, and draw it
 
@@ -222,10 +222,10 @@ _Arrhenius plot: the rate constant (logarithmic axis) against 1000/T for A = 1.0
 ## Citation
 
 ```bibtex
-@software{chemistry_ai999x_1_0_1,
+@software{chemistry_ai999x_1_0_2,
   title  = {chemistry-ai999x: an offline, verified chemistry solver},
   author = {Farabi, Ibnul Jaif}, organization = {AI999X},
-  year   = {2026}, version = {1.0.1},
+  year   = {2026}, version = {1.0.2},
   url    = {https://huggingface.co/AI999X/chemistry-ai999x}
 }
 ```

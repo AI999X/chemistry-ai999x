@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chemistry-ai999x"
-version = "1.0.1"
+version = "1.0.2"
 description = "Offline chemistry solver: stoichiometry, gas laws, solutions, chemical equilibrium, acids and bases, kinetics, thermochemistry, electrochemistry, molecular properties and spectroscopy, with steps, LaTeX and honest refusals"
 readme = "README.md"
 requires-python = ">=3.10"
