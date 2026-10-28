@@ -3044,6 +3044,10 @@ $$
 - **Assumes:** weak monoprotic acid, strong monohydroxide base; 25 °C
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![pH against volume of 0](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/figures/titration-ph-weak-acid-strong-base-titration.svg)
+
+*pH against volume of 0.100 M NaOH added to 25.0 mL of 0.100 M acid, computed by the package at 101 volumes for a strong acid and a weak acid (Ka = 1.8e-5). Shaded: the weak acid's buffer region, 10 % to 90 % neutralised (pH 3.79886 to 5.69915); at half-equivalence pH = 4.7452 (= pKa). Marked: equivalence V_b = 25 mL, pH = 8.7219.*
+
 ```python
 chemistry_ai999x.solve('titration_ph_weak_acid_strong_base', Ka=1.8e-05, c_a=100.0, V_a=2.5e-05, c_b=100.0, V_b=1.25e-05)
 # -> pH = 4.7452   (SOLVED)
@@ -3200,6 +3204,10 @@ $$
 - **Method:** [A] = [A]0 exp(-k t)
 - **Assumes:** [A]0, k, $t > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Reactant concentration against time from A0 = 500 mol/m³ for zero-, first- and second-order rate laws with the same initial rate (2 mol/(m³·s)), each computed by the package at up to 121 times](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/figures/first-order-concentration-kinetics.svg)
+
+*Reactant concentration against time from A0 = 500 mol/m³ for zero-, first- and second-order rate laws with the same initial rate (2 mol/(m³·s)), each computed by the package at up to 121 times. At t = 200 s: 100, 224.664 and 277.778 mol/m³; marked: t = 200 s, [A] = 224.664 mol/m³ (first order).*
 
 ```python
 chemistry_ai999x.solve('first_order_concentration', A0=800.0, k=0.015, t=60.0)
@@ -3417,6 +3425,10 @@ $$
 - **Assumes:** A, Ea, $T > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
+![Arrhenius plot: the rate constant (logarithmic axis) against 1000/T for A = 1](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/figures/arrhenius-rate-constant-arrhenius.svg)
+
+*Arrhenius plot: the rate constant (logarithmic axis) against 1000/T for A = 1.0000e+13 1/s and Ea = 100 kJ/mol, computed by the package at 61 temperatures from 350 K to 650 K — a straight line of slope −Ea/R. Marked: T = 500 K, k = 357.5 1/s.*
+
 ```python
 chemistry_ai999x.solve('arrhenius_rate_constant', A=10000000000000.0, Ea=100000.0, T=500.0)
 # -> k = 357.5   (SOLVED)
@@ -3490,6 +3502,14 @@ $$
 - **Method:** analytic solution of the linear rate equations (the $k_{1} = k_{2}$ limit included)
 - **Assumes:** both steps first order; B and C absent at $t = 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![The consecutive first-order reaction A → B → C with k1 = 0](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/figures/consecutive-first-order-scheme.svg)
+
+*The consecutive first-order reaction A → B → C with k1 = 0.1 1/s and k2 = 0.05 1/s, starting from A0 = 1000 mol/m³: the concentrations the package returns at t = 10 s are A = 367.879, B = 477.302 and C = 154.818 mol/m³.*
+
+![How the starting 1000 mol/m³ of A divides between A, B and C over time (stacked shares, k1 = 0](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/figures/consecutive-first-order-shares.svg)
+
+*How the starting 1000 mol/m³ of A divides between A, B and C over time (stacked shares, k1 = 0.1 1/s, k2 = 0.05 1/s), each concentration computed by the package at 80 times. B is largest near t = 14 s (499.977 mol/m³, a share of 0.499977); at t = 80 s the shares are 0.000335463, 0.0359604 and 0.963704.*
 
 ```python
 chemistry_ai999x.solve('consecutive_first_order', A0=1000.0, k1=0.1, k2=0.05, t=10.0)
@@ -4157,6 +4177,10 @@ $$
 - **Method:** Rydberg formula with the hydrogen Rydberg constant (reduced-mass corrected)
 - **Assumes:** hydrogen atom
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![The hydrogen line spectrum: wavelength of the first six lines of three series, computed by the package (Rydberg formula), each drawn at its photon energy (also computed by the package)](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/figures/hydrogen-transition-wavelength-spectrum.svg)
+
+*The hydrogen line spectrum: wavelength of the first six lines of three series, computed by the package (Rydberg formula), each drawn at its photon energy (also computed by the package). Ranges: Lyman 121.568–93.0758 nm; Balmer 656.47–389.019 nm; Paschen 1875.63–923.16 nm. Marked: Hα (n = 3 → 2), λ = 656.47 nm, E = 1.88865 eV.*
 
 ```python
 chemistry_ai999x.solve('hydrogen_transition_wavelength', n_upper=3, n_lower=2)

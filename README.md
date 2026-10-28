@@ -4,7 +4,9 @@
 
 **[Install](https://pypi.org/project/chemistry-ai999x/)** · **[Capability guide](https://huggingface.co/AI999X/chemistry-ai999x/tree/main/docs)** · **[Evaluation](https://huggingface.co/AI999X/chemistry-ai999x/tree/main/evaluation)** · **[AI999X on Hugging Face](https://huggingface.co/AI999X)** · **[Website](https://ai999x.com)** · **[Support: Buy Me a Coffee](https://buymeacoffee.com/ibnuljaiffarabi)**
 
-License: Apache-2.0 · Author: Ibnul Jaif Farabi (creator and engineer) · Organization: AI999X · Version 1.0.0
+License: Apache-2.0 · Author: Ibnul Jaif Farabi (creator and engineer) · Organization: AI999X · Version 1.0.1
+
+Field: **Physical Sciences** · Tasks: Question Answering, Token Classification, Text Classification, Sentence Similarity, Feature Extraction
 
 chemistry-ai999x is an offline, deterministic Python solver that answers chemistry questions with verified results from 103 certified capabilities, gives 377 documented answers identically on Windows and Linux, and refuses rather than guesses when an answer cannot be verified.
 
@@ -25,7 +27,7 @@ chemistry-ai999x is an offline, deterministic Python solver that answers chemist
 
 | Property | Value |
 |---|---|
-| Package | `chemistry-ai999x` 1.0.0 (import `chemistry_ai999x`) |
+| Package | `chemistry-ai999x` 1.0.1 (import `chemistry_ai999x`) |
 | Type | Deterministic neuro-symbolic chemistry engine (rule-based reading + certified symbolic capabilities) |
 | Capabilities | 103 certified procedures |
 | Knowledge pack | version 1.0.1 |
@@ -59,7 +61,7 @@ chemistry.ask("Who created you?").message
 # -> chemistry-ai999x was created and engineered by Ibnul Jaif Farabi at AI999X.
 ```
 
-Command line: `chemistry-ai999x "<question>"`, `chemistry-ai999x --capabilities`. The outputs above were produced by running this exact code on chemistry-ai999x 1.0.0.
+Command line: `chemistry-ai999x "<question>"`, `chemistry-ai999x --capabilities`. The outputs above were produced by running this exact code on chemistry-ai999x 1.0.1.
 
 ## Find the right capability, and draw it
 
@@ -69,7 +71,7 @@ Command line: `chemistry-ai999x "<question>"`, `chemistry-ai999x --capabilities`
 import chemistry_ai999x as chemistry
 
 chemistry.search("Solve x^2 - 5x + 6 = 0", k=2)
-# -> Roots of a quadratic equation (algebra-ai999x, 0.67); Solution of two linear equations in two unknowns (algebra-ai999x, 0.57)
+# -> Roots of a quadratic equation (math-foundations-ai999x, 0.63); Roots of a cubic equation (math-foundations-ai999x, 0.59)
 ```
 
 ## How every answer is verified
@@ -80,6 +82,122 @@ chemistry.search("Solve x^2 - 5x + 6 = 0", k=2)
 4. **Checking** — dimensions, substitution back into the defining equation, and agreement between independent readings; any disagreement becomes a refusal, never a number.
 
 Capabilities are certified before they ship: each must reproduce hand-worked reference cases, reject a deliberately wrong variant (a control), and leave every benchmark answer unchanged.
+
+## Worked examples
+
+Each question was put to `chemistry-ai999x`; the answer is the one it returned, with the steps it took.
+
+**pH of a weak acid** · _Acids and bases_
+
+> What is the pH of 0.10 M acetic acid (Ka = 1.8 × 10^-5)?
+
+→ **pH = 2.87527706, h = 1.332670977 mol/m^3, percent_ionized = 1.332670969**
+
+<details><summary>Steps</summary>
+
+- pH of a weak acid: Ka = 1.8e-05, c = 100 mol/m^3 → pH = 2.87527706, h = 1.332670977 mol/m^3, percent_ionized = 1.332670969
+
+</details>
+
+**Balancing a chemical equation** · _Stoichiometry_
+
+> Balance the equation C3H8 + O2 -> CO2 + H2O.
+
+→ **coefficients = [1, 5, 3, 4], balanced = C3H8 + 5 O2 -> 3 CO2 + 4 H2O**
+
+<details><summary>Steps</summary>
+
+- Balancing a chemical equation: equation = C3H8 + O2 -> CO2 + H2O → coefficients = [1, 5, 3, 4], balanced = C3H8 + 5 O2 -> 3 CO2 + 4 H2O
+
+</details>
+
+**Molar mass of a formula** · _Stoichiometry_
+
+> What is the molar mass of CuSO4·5H2O?
+
+→ **M = 0.249684 kg/mol, M_g = 249.684**
+
+<details><summary>Steps</summary>
+
+- Molar mass of a formula: formula = CuSO4·5H2O → M = 0.249684 kg/mol, M_g = 249.684 kg/mol
+
+</details>
+
+**Ideal gas law: pressure** · _Gases_
+
+`m.solve("ideal_gas_pressure", n="2.0 mol", V="10 L", T="300 K")`
+
+→ **P = 498867.7571 Pa, P_atm = 4.923441965**
+
+<details><summary>Steps</summary>
+
+- Ideal gas law: pressure: n = 2 mol, V = 10 L, T = 300 K → P = 498867.7571 Pa, P_atm = 4.923441965 Pa
+
+</details>
+
+**Arrhenius equation: rate constant at another temperature** · _Kinetics_
+
+> A reaction has k = 1.2e-3 s^-1 at 300 K and Ea = 75.0 kJ/mol. What is k at 350 K?
+
+→ **k2 = 0.08803749544, ratio = 73.36457954**
+
+<details><summary>Steps</summary>
+
+- Arrhenius equation: rate constant at another temperature: k1 = 0.0012, T1 = 300 K, Ea = 75000 J/mol, T2 = 350 K → k2 = 0.08803749544, ratio = 73.36457954
+
+</details>
+
+**Gibbs energy from a cell potential** · _Electrochemistry_
+
+> A cell has E° = 1.10 V and n = 2. What is ΔG°?
+
+→ **dG = -212267.7307 J/mol, dG_kJ = -212.2677307**
+
+<details><summary>Steps</summary>
+
+- Gibbs energy from a cell potential: n = 2, E = 1.1 V → dG = -212267.7307 J/mol, dG_kJ = -212.2677307 J/mol
+
+</details>
+
+## Figures
+
+Every point was computed by `chemistry-ai999x`.
+
+**Titration curve with the buffer region**
+
+![Titration curve with the buffer region — computed by chemistry-ai999x](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/figures/titration-ph-weak-acid-strong-base-titration.svg)
+
+_pH against volume of 0.100 M NaOH added to 25.0 mL of 0.100 M acid, computed by the package at 101 volumes for a strong acid and a weak acid (Ka = 1.8e-5). Shaded: the weak acid's buffer region, 10 % to 90 % neutralised (pH 3.79886 to 5.69915); at half-equivalence pH = 4.7452 (= pKa). Marked: equivalence V_b = 25 mL, pH = 8.7219._
+
+**Reaction scheme A → B → C with its rate constants**
+
+![Reaction scheme A → B → C with its rate constants — computed by chemistry-ai999x](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/figures/consecutive-first-order-scheme.svg)
+
+_The consecutive first-order reaction A → B → C with k1 = 0.1 1/s and k2 = 0.05 1/s, starting from A0 = 1000 mol/m³: the concentrations the package returns at t = 10 s are A = 367.879, B = 477.302 and C = 154.818 mol/m³._
+
+**Species shares over time, stacked**
+
+![Species shares over time, stacked — computed by chemistry-ai999x](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/figures/consecutive-first-order-shares.svg)
+
+_How the starting 1000 mol/m³ of A divides between A, B and C over time (stacked shares, k1 = 0.1 1/s, k2 = 0.05 1/s), each concentration computed by the package at 80 times. B is largest near t = 14 s (499.977 mol/m³, a share of 0.499977); at t = 80 s the shares are 0.000335463, 0.0359604 and 0.963704._
+
+**Hydrogen line spectrum: Lyman, Balmer and Paschen series**
+
+![Hydrogen line spectrum: Lyman, Balmer and Paschen series — computed by chemistry-ai999x](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/figures/hydrogen-transition-wavelength-spectrum.svg)
+
+_The hydrogen line spectrum: wavelength of the first six lines of three series, computed by the package (Rydberg formula), each drawn at its photon energy (also computed by the package). Ranges: Lyman 121.568–93.0758 nm; Balmer 656.47–389.019 nm; Paschen 1875.63–923.16 nm. Marked: Hα (n = 3 → 2), λ = 656.47 nm, E = 1.88865 eV._
+
+**Concentration against time: zero, first and second order**
+
+![Concentration against time: zero, first and second order — computed by chemistry-ai999x](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/figures/first-order-concentration-kinetics.svg)
+
+_Reactant concentration against time from A0 = 500 mol/m³ for zero-, first- and second-order rate laws with the same initial rate (2 mol/(m³·s)), each computed by the package at up to 121 times. At t = 200 s: 100, 224.664 and 277.778 mol/m³; marked: t = 200 s, [A] = 224.664 mol/m³ (first order)._
+
+**Arrhenius plot: rate constant against inverse temperature**
+
+![Arrhenius plot: rate constant against inverse temperature — computed by chemistry-ai999x](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/figures/arrhenius-rate-constant-arrhenius.svg)
+
+_Arrhenius plot: the rate constant (logarithmic axis) against 1000/T for A = 1.0000e+13 1/s and Ea = 100 kJ/mol, computed by the package at 61 temperatures from 350 K to 650 K — a straight line of slope −Ea/R. Marked: T = 500 K, k = 357.5 1/s._
 
 ## Capabilities
 
@@ -104,10 +222,10 @@ Capabilities are certified before they ship: each must reproduce hand-worked ref
 ## Citation
 
 ```bibtex
-@software{chemistry_ai999x_1_0_0,
+@software{chemistry_ai999x_1_0_1,
   title  = {chemistry-ai999x: an offline, verified chemistry solver},
   author = {Farabi, Ibnul Jaif}, organization = {AI999X},
-  year   = {2026}, version = {1.0.0},
+  year   = {2026}, version = {1.0.1},
   url    = {https://huggingface.co/AI999X/chemistry-ai999x}
 }
 ```
