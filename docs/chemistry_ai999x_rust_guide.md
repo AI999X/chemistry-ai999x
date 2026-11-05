@@ -1,6 +1,6 @@
 # chemistry: the Chemistry program — user guide
 
-**chemistry-ai999x 1.0.3**, Rust build: command line, desktop app and browser. **Creator / engineer:** Ibnul Jaif Farabi · **Company:** AI999X · support@ai999x.com
+**chemistry-ai999x 1.1.0**, Rust build: command line, desktop app and browser. **Creator / engineer:** Ibnul Jaif Farabi · **Company:** AI999X · support@ai999x.com
 
 Chemistry covers stoichiometry, gas laws, solutions, chemical equilibrium, acids and bases, kinetics, thermochemistry, electrochemistry, molecular properties and spectroscopy. This guide is about `chemistry`, the model as a self-contained program for Windows and Linux: 103 capabilities in 10 topics, answered on your own computer with no network, no Python and nothing else to install. The same compiled model runs in the AI999X desktop app and in the browser on the model's page (https://www.ai999x.com/models/chemistry-ai999x/); the Python package (`pip install chemistry-ai999x`) has its own guide. Every command output printed here is what the program printed.
 
@@ -17,24 +17,24 @@ Chemistry covers stoichiometry, gas laws, solutions, chemical equilibrium, acids
 
 ## 1. Get it
 
-Version 1.4.0 of the AI999X desktop app and of the command-line bundle. Checksums for every file: https://www.ai999x.com/downloads/desktop/1.4.0/SHA256SUMS; the newest version is always under https://www.ai999x.com/downloads/desktop/latest/. Full instructions: https://www.ai999x.com/desktop-cli/
+Version 1.4.0 of the AI999X desktop app and of the command-line bundle. Checksums for every file: https://downloads.ai999x.com/desktop/1.4.0/SHA256SUMS; the newest version is always under https://downloads.ai999x.com/desktop/latest/. Full instructions: https://www.ai999x.com/desktop-cli/
 
 | what | system | download |
 |---|---|---|
-| Desktop app: Chemistry | Windows x86-64 | https://www.ai999x.com/downloads/desktop/1.4.0/ai999x-chemistry-1.4.0-windows-x86_64.zip |
-| Desktop app: Chemistry | Linux x86-64 | https://www.ai999x.com/downloads/desktop/1.4.0/ai999x-chemistry-1.4.0-linux-x86_64.tar.gz |
-| Desktop app: all models | Windows x86-64 | https://www.ai999x.com/downloads/desktop/1.4.0/ai999x-1.4.0-windows-x86_64.zip |
-| Desktop app: all models | Linux x86-64 | https://www.ai999x.com/downloads/desktop/1.4.0/ai999x-1.4.0-linux-x86_64.tar.gz |
-| Command line | Windows x86-64 | https://www.ai999x.com/downloads/desktop/1.4.0/ai999x-cli-1.4.0-windows-x86_64.zip |
-| Command line | Linux x86-64 | https://www.ai999x.com/downloads/desktop/1.4.0/ai999x-cli-1.4.0-linux-x86_64.tar.gz |
+| Desktop app: Chemistry | Windows x86-64 | https://downloads.ai999x.com/desktop/1.4.0/ai999x-chemistry-1.4.0-windows-x86_64.zip |
+| Desktop app: Chemistry | Linux x86-64 | https://downloads.ai999x.com/desktop/1.4.0/ai999x-chemistry-1.4.0-linux-x86_64.tar.gz |
+| Desktop app: all models | Windows x86-64 | https://downloads.ai999x.com/desktop/1.4.0/ai999x-1.4.0-windows-x86_64.zip |
+| Desktop app: all models | Linux x86-64 | https://downloads.ai999x.com/desktop/1.4.0/ai999x-1.4.0-linux-x86_64.tar.gz |
+| Command line | Windows x86-64 | https://downloads.ai999x.com/desktop/1.4.0/ai999x-cli-1.4.0-windows-x86_64.zip |
+| Command line | Linux x86-64 | https://downloads.ai999x.com/desktop/1.4.0/ai999x-cli-1.4.0-linux-x86_64.tar.gz |
 
 ### Desktop app
 
 Chemistry in its own app: search, questions in words, input forms, live figures and explanations. Windows: Download ai999x-chemistry-1.4.0-windows-x86_64.zip, right-click it → Extract All, then open the folder and start ai999x-chemistry.exe. If Windows SmartScreen asks, choose More info → Run anyway. Linux:
 
 ```shell
-curl -LO https://www.ai999x.com/downloads/desktop/1.4.0/ai999x-chemistry-1.4.0-linux-x86_64.tar.gz
-curl -LO https://www.ai999x.com/downloads/desktop/1.4.0/SHA256SUMS
+curl -LO https://downloads.ai999x.com/desktop/1.4.0/ai999x-chemistry-1.4.0-linux-x86_64.tar.gz
+curl -LO https://downloads.ai999x.com/desktop/1.4.0/SHA256SUMS
 sha256sum -c --ignore-missing SHA256SUMS
 tar xzf ai999x-chemistry-1.4.0-linux-x86_64.tar.gz
 ./ai999x-chemistry-1.4.0-linux-x86_64/ai999x-chemistry
@@ -43,8 +43,8 @@ tar xzf ai999x-chemistry-1.4.0-linux-x86_64.tar.gz
 It opens on this model: type a question or pick a capability, fill in the form and press Compute. The AI999X desktop app with every model works the same way (choose the model first). Windows: Download ai999x-1.4.0-windows-x86_64.zip, right-click it → Extract All, then open the folder and start ai999x.exe. If Windows SmartScreen asks, choose More info → Run anyway. Linux:
 
 ```shell
-curl -LO https://www.ai999x.com/downloads/desktop/1.4.0/ai999x-1.4.0-linux-x86_64.tar.gz
-curl -LO https://www.ai999x.com/downloads/desktop/1.4.0/SHA256SUMS
+curl -LO https://downloads.ai999x.com/desktop/1.4.0/ai999x-1.4.0-linux-x86_64.tar.gz
+curl -LO https://downloads.ai999x.com/desktop/1.4.0/SHA256SUMS
 sha256sum -c --ignore-missing SHA256SUMS
 tar xzf ai999x-1.4.0-linux-x86_64.tar.gz
 ./ai999x-1.4.0-linux-x86_64/ai999x
@@ -55,8 +55,8 @@ tar xzf ai999x-1.4.0-linux-x86_64.tar.gz
 The bundle holds one program per model; `chemistry` is this one. The checksum line should print OK.
 
 ```shell
-curl -LO https://www.ai999x.com/downloads/desktop/1.4.0/ai999x-cli-1.4.0-linux-x86_64.tar.gz
-curl -LO https://www.ai999x.com/downloads/desktop/1.4.0/SHA256SUMS
+curl -LO https://downloads.ai999x.com/desktop/1.4.0/ai999x-cli-1.4.0-linux-x86_64.tar.gz
+curl -LO https://downloads.ai999x.com/desktop/1.4.0/SHA256SUMS
 sha256sum -c --ignore-missing SHA256SUMS
 mkdir -p ~/.local/share && tar xzf ai999x-cli-1.4.0-linux-x86_64.tar.gz -C ~/.local/share
 echo 'export PATH="$HOME/.local/share/ai999x-cli-1.4.0-linux-x86_64:$PATH"' >> ~/.bashrc && source ~/.bashrc
@@ -69,8 +69,8 @@ The fourth line should print True.
 
 ```powershell
 $F = "ai999x-cli-1.4.0-windows-x86_64.zip"
-Invoke-WebRequest "https://www.ai999x.com/downloads/desktop/1.4.0/$F" -OutFile $F
-Invoke-WebRequest "https://www.ai999x.com/downloads/desktop/1.4.0/SHA256SUMS" -OutFile SHA256SUMS
+Invoke-WebRequest "https://downloads.ai999x.com/desktop/1.4.0/$F" -OutFile $F
+Invoke-WebRequest "https://downloads.ai999x.com/desktop/1.4.0/SHA256SUMS" -OutFile SHA256SUMS
 (Get-FileHash $F -Algorithm SHA256).Hash.ToLower() -eq ((Select-String -SimpleMatch $F SHA256SUMS).Line -split ' ')[0]
 Expand-Archive $F -DestinationPath "$env:LOCALAPPDATA\AI999X" -Force
 $D = "$env:LOCALAPPDATA\AI999X\ai999x-cli-1.4.0-windows-x86_64"; $env:Path += ";$D"
@@ -99,40 +99,7 @@ $ chemistry --version
 chemistry-ai999x 1.0.3 (Rust build, ax-engine 0.1.0)
 ```
 
-### 2.2 Ask in words
-
-Write the question as you would say it: the program reads the quantities and their units, picks the capability and answers.
-
-```shell
-$ chemistry ask "What is the pH of 0.10 M acetic acid (Ka = 1.8 × 10^-5)?"
-Read as: pH of a weak acid
-pH = 2.87527706
-h = 1.332670977 mol/m^3
-percent_ionized = 1.332670969
-  by: pH of a weak acid  (exact charge balance (no 5% approximation), solved by bisection)
-  Ka = 1.8e-05
-  c = 100 mol/m^3
-  assumes: monoprotic acid; 25 °C
-```
-
-### 2.3 Find a capability
-
-Search the capabilities by what you want to know; the first column is the id to pass to info and solve.
-
-```shell
-$ chemistry search "ph of a weak acid"
-ph_weak_acid                         pH of a weak acid  (acids and bases / weak acids)
-ka_from_ph                           Ka from the pH of a weak acid  (acids and bases / weak acids)
-ph_salt_of_weak_acid                 pH of a salt of a weak acid  (acids and bases / salt hydrolysis)
-titration_ph_weak_acid_strong_base   pH during a weak acid - strong base titration  (acids and bases / titrations)
-ph_weak_base                         pH of a weak base  (acids and bases / weak bases)
-ph_diprotic_acid                     pH of a diprotic acid  (acids and bases / polyprotic acids)
-ph_strong_acid                       pH of a strong monoprotic acid  (acids and bases / strong acids)
-titration_ph_strong_acid_strong_base pH during a strong acid - strong base titration  (acids and bases / titrations)
-… 6 more
-```
-
-### 2.4 List the capabilities
+### 2.2 List the capabilities
 
 Every capability the program answers: its id (what you pass to solve) and its name.
 
@@ -146,10 +113,10 @@ balance_equation                         Balancing a chemical equation
 beer_lambert_absorbance                  Beer-Lambert law: absorbance
 beer_lambert_concentration               Beer-Lambert law: concentration
 boiling_point_elevation                  Boiling-point elevation
-… 95 more
+… 92 more
 ```
 
-### 2.5 What a capability needs
+### 2.3 What a capability needs
 
 The equation or method, every input and output with its SI unit. Read this before solve: it tells you the input names.
 
@@ -164,7 +131,7 @@ pH of a weak acid
   out  percent_ionized percent ionization []
 ```
 
-### 2.6 Solve
+### 2.4 Solve
 
 Inputs as name=value, each with any unit of the right kind. The answer lists every output, the method used, each input converted to SI, and the conditions the answer assumes.
 
@@ -174,12 +141,12 @@ pH = 2.87527706
 h = 1.332670977 mol/m^3
 percent_ionized = 1.332670969
   by: pH of a weak acid  (exact charge balance (no 5% approximation), solved by bisection)
-  Ka = 1.8e-05
-  c = 100 mol/m^3
+  Ka = 1.8e-05   []
+  c = 100 mol/m^3   []
   assumes: monoprotic acid; 25 °C
 ```
 
-### 2.7 Machine-readable answer
+### 2.5 Machine-readable answer
 
 --json prints the same answer as one line of JSON (values in SI): for scripts and other programs.
 
@@ -188,7 +155,7 @@ $ chemistry solve ph_weak_acid Ka=1.8e-05 "c=100 mol/m^3" --json
 {"outcome":"SOLVED","message":"","value":2.8752770603192666,"unit":"","solved_for":"pH","si":[["Ka",0.000018],["c",100.0]],"values":[["pH",2.8752770603192666,""],["h",1.332670976855007,"mol/m^3"],["percent_ionized",1.3326709693512784,""]],"target":"pH","phrase":"pH","assumptions":["monoprotic acid","25 °C"],"name":"pH of a weak acid","equation":"exact charge balance (no 5% approximation), solved by bisection"}
 ```
 
-### 2.8 When an input is missing
+### 2.6 When an input is missing
 
 No number is guessed: the answer names what is missing, shows a complete call, and the program exits with status 1.
 
@@ -197,35 +164,7 @@ $ chemistry solve ph_weak_acid Ka=1.8e-05
 NEEDS_INPUT: ph_weak_acid needs c (acid concentration). Example: solve('ph_weak_acid', Ka=1.8e-05, c='100 mol/m^3').
 ```
 
-### 2.9 Draw the figures
-
-The live figures for your own inputs, written as SVG files into the folder given with --out (here the current folder); open them in any browser. Without --out the SVG text comes back as JSON.
-
-```shell
-$ chemistry figures ph_weak_acid Ka=1.8e-05 "c=100 mol/m^3" --out .
-[
-  {
-    "slug": "ph-weak-acid-field",
-    "title": "pH of a weak acid over concentration and Ka",
-    "caption": "pH (pH) over c from 10 to 1000 and Ka from 1.8e-06 to 0.00018 (logarithmic axes): each of the 21 x 15 cells is one run of the model, shaded by its value (light 1.875 to dark 3.875); iso-lines at pH = 2, 2.5, 3, 3.5. Marked: the inputs given, c = 100, Ka = 1.8e-05, pH = 2.875. Your inputs: Ka = 1.8e-05, c = 100 mol/m^3.",
-    "file": ".\\ph-weak-acid-field.svg"
-  },
-  {
-    "slug": "ph-weak-acid-live-1",
-    "title": "PH as acid concentration varies",
-    "caption": "PH as c runs from 25 to 175 mol/m^3, every other input as you entered it (41 solutions). Marked: your c = 100 mol/m^3 gives pH = 2.875. Your inputs: Ka = 1.8e-05, c = 100 mol/m^3.",
-    "file": ".\\ph-weak-acid-live-1.svg"
-  },
-  {
-    "slug": "ph-weak-acid-live-2",
-    "title": "PH as acid dissociation constant varies",
-    "caption": "PH as Ka runs from 4.5e-06 to 3.15e-05, every other input as you entered it (29 solutions). Marked: your Ka = 1.8e-05 gives pH = 2.875. Your inputs: Ka = 1.8e-05, c = 100 mol/m^3.",
-    "file": ".\\ph-weak-acid-live-2.svg"
-  }
-]
-```
-
-### 2.10 Many questions at once
+### 2.7 Many questions at once
 
 One JSON request per line in, one JSON answer per line out, in order: for scripts, notebooks and agents (the program starts once). In PowerShell: Get-Content cases.jsonl | chemistry batch
 
@@ -298,30 +237,6 @@ answers = [json.loads(line) for line in out.splitlines()]
 
 `chemistry figures <capability> name=value ... --out DIR` draws the live figures for those inputs and writes each as an SVG file into DIR (an existing folder); without `--out` the SVG text comes back as JSON. The desktop app and the model page draw the same figures as soon as you press Compute.
 
-```shell
-$ chemistry figures ph_weak_acid Ka=1.8e-05 "c=100 mol/m^3" --out .
-[
-  {
-    "slug": "ph-weak-acid-field",
-    "title": "pH of a weak acid over concentration and Ka",
-    "caption": "pH (pH) over c from 10 to 1000 and Ka from 1.8e-06 to 0.00018 (logarithmic axes): each of the 21 x 15 cells is one run of the model, shaded by its value (light 1.875 to dark 3.875); iso-lines at pH = 2, 2.5, 3, 3.5. Marked: the inputs given, c = 100, Ka = 1.8e-05, pH = 2.875. Your inputs: Ka = 1.8e-05, c = 100 mol/m^3.",
-    "file": ".\\ph-weak-acid-field.svg"
-  },
-  {
-    "slug": "ph-weak-acid-live-1",
-    "title": "PH as acid concentration varies",
-    "caption": "PH as c runs from 25 to 175 mol/m^3, every other input as you entered it (41 solutions). Marked: your c = 100 mol/m^3 gives pH = 2.875. Your inputs: Ka = 1.8e-05, c = 100 mol/m^3.",
-    "file": ".\\ph-weak-acid-live-1.svg"
-  },
-  {
-    "slug": "ph-weak-acid-live-2",
-    "title": "PH as acid dissociation constant varies",
-    "caption": "PH as Ka runs from 4.5e-06 to 3.15e-05, every other input as you entered it (29 solutions). Marked: your Ka = 1.8e-05 gives pH = 2.875. Your inputs: Ka = 1.8e-05, c = 100 mol/m^3.",
-    "file": ".\\ph-weak-acid-live-2.svg"
-  }
-]
-```
-
 ## 7. In a web page or Node.js: WebAssembly
 
 The same model is a WebAssembly module, `chemistry_ai999x.wasm` (https://www.ai999x.com/compute/rust/chemistry_ai999x.wasm), with a small loader, `ax-wasm.js` (https://www.ai999x.com/compute/rust/ax-wasm.js). It runs in a browser, a Web Worker or Node.js, with no server.
@@ -366,9 +281,9 @@ $$
 $ chemistry solve buffer_ph Ka=1.737800829e-05 "c_base=150 mol/m^3" "c_acid=100 mol/m^3"
 pH = 4.936091259
   by: Buffer pH (Henderson-Hasselbalch)  (Henderson-Hasselbalch equation)
-  Ka = 1.737800829e-05
-  c_base = 150 mol/m^3
-  c_acid = 100 mol/m^3
+  Ka = 1.737800829e-05   []
+  c_base = 150 mol/m^3   []
+  c_acid = 100 mol/m^3   []
   assumes: both concentrations well above Ka and [H3O+]
 ```
 
@@ -401,7 +316,7 @@ h_molL = 0.0006309573445
 pOH = 10.8
 oh = 1.584893192e-08 mol/m^3
   by: Hydronium concentration from pH  ([H3O+] = 10^-pH)
-  pH = 3.2
+  pH = 3.2   []
   assumes: 25 °C (Kw = 1.0e-14)
 ```
 
@@ -431,8 +346,8 @@ $ chemistry solve ka_from_ph pH=2.87 "c=100 mol/m^3"
 Ka = 1.844583597e-05
 pKa = 4.734101658
   by: Ka from the pH of a weak acid  ([A-] from the charge balance at the measured pH, then the mass-action expression)
-  pH = 2.87
-  c = 100 mol/m^3
+  pH = 2.87   []
+  c = 100 mol/m^3   []
   assumes: monoprotic weak acid; 25 °C
 ```
 
@@ -462,10 +377,10 @@ $$
 $ chemistry solve titration_ph_strong_acid_strong_base "V_a=2.5e-05 m^3" "c_a=100 mol/m^3" "c_b=100 mol/m^3" "V_b=1e-05 m^3"
 pH = 1.367976785
   by: pH during a strong acid - strong base titration  (excess strong acid or base after mixing, with water's ionization (exact at the equivalence point too))
-  V_a = 2.5e-05 m^3
-  c_a = 100 mol/m^3
-  c_b = 100 mol/m^3
-  V_b = 1e-05 m^3
+  V_a = 2.5e-05 m^3   []
+  c_a = 100 mol/m^3   []
+  c_b = 100 mol/m^3   []
+  V_b = 1e-05 m^3   []
   assumes: strong monoprotic acid titrated with a strong monohydroxide base; 25 °C
 ```
 
@@ -496,11 +411,11 @@ $$
 $ chemistry solve titration_ph_weak_acid_strong_base "V_a=2.5e-05 m^3" "c_a=100 mol/m^3" "c_b=100 mol/m^3" "V_b=1.25e-05 m^3" Ka=1.8e-05
 pH = 4.745196013
   by: pH during a weak acid - strong base titration  (exact charge balance after mixing, solved by bisection (before, at and after equivalence))
-  V_a = 2.5e-05 m^3
-  c_a = 100 mol/m^3
-  c_b = 100 mol/m^3
-  V_b = 1.25e-05 m^3
-  Ka = 1.8e-05
+  V_a = 2.5e-05 m^3   []
+  c_a = 100 mol/m^3   []
+  c_b = 100 mol/m^3   []
+  V_b = 1.25e-05 m^3   []
+  Ka = 1.8e-05   []
   assumes: weak monoprotic acid, strong monohydroxide base; 25 °C
 ```
 
@@ -531,7 +446,7 @@ pH = 3
 pOH = 11
 oh = 1e-08 mol/m^3
   by: pH from the hydronium concentration  (pH = -log10[H3O+]; pOH = 14 - pH (25 °C))
-  h = 1 mol/m^3
+  h = 1 mol/m^3   []
   assumes: [H3O+] > 0 (mol/L); 25 °C (Kw = 1.0e-14)
 ```
 
@@ -560,7 +475,7 @@ $ chemistry solve ph_from_hydroxide "oh=0.1 mol/m^3"
 pH = 10
 pOH = 4
   by: pH from the hydroxide concentration  (pOH = -log10[OH-]; pH = 14 - pOH (25 °C))
-  oh = 0.1 mol/m^3
+  oh = 0.1 mol/m^3   []
   assumes: [OH-] > 0; 25 °C
 ```
 
@@ -589,9 +504,9 @@ $$
 $ chemistry solve ph_diprotic_acid Ka1=4.3e-07 Ka2=4.8e-11 "c=100 mol/m^3"
 pH = 3.683715907
   by: pH of a diprotic acid  (exact charge balance of H2A, solved by bisection)
-  Ka1 = 4.3e-07
-  Ka2 = 4.8e-11
-  c = 100 mol/m^3
+  Ka1 = 4.3e-07   []
+  Ka2 = 4.8e-11   []
+  c = 100 mol/m^3   []
   assumes: 25 °C
 ```
 
@@ -621,8 +536,8 @@ $ chemistry solve ph_salt_of_weak_acid Ka=1.8e-05 "c=100 mol/m^3"
 pH = 8.87238665
 Kb = 5.555555556e-10
   by: pH of a salt of a weak acid  (the anion as a weak base with Kb = Kw/Ka, exact charge balance)
-  Ka = 1.8e-05
-  c = 100 mol/m^3
+  Ka = 1.8e-05   []
+  c = 100 mol/m^3   []
   assumes: salt of a weak monoprotic acid and a strong base; 25 °C
 ```
 
@@ -652,7 +567,7 @@ $ chemistry solve ph_strong_base n_oh=1 "c=10 mol/m^3"
 pH = 12
 pOH = 2
   by: pH of a strong base  (charge balance with water's ionization, [OH-] = n c + Kw/[OH-])
-  c = 10 mol/m^3
+  c = 10 mol/m^3   []
   assumes: strong base fully dissociated; 25 °C
 ```
 
@@ -681,7 +596,7 @@ $ chemistry solve ph_strong_acid "c=10 mol/m^3"
 pH = 2
 h = 10 mol/m^3
   by: pH of a strong monoprotic acid  (charge balance [H3O+] = c + Kw/[H3O+] solved exactly)
-  c = 10 mol/m^3
+  c = 10 mol/m^3   []
   assumes: monoprotic strong acid; 25 °C
 ```
 
@@ -713,8 +628,8 @@ pH = 2.87527706
 h = 1.332670977 mol/m^3
 percent_ionized = 1.332670969
   by: pH of a weak acid  (exact charge balance (no 5% approximation), solved by bisection)
-  Ka = 1.8e-05
-  c = 100 mol/m^3
+  Ka = 1.8e-05   []
+  c = 100 mol/m^3   []
   assumes: monoprotic acid; 25 °C
 ```
 
@@ -746,8 +661,8 @@ pH = 11.12472294
 pOH = 2.87527706
 percent_ionized = 1.332670969
   by: pH of a weak base  (exact charge balance for [OH-], solved by bisection; pH = 14 - pOH)
-  Kb = 1.8e-05
-  c = 100 mol/m^3
+  Kb = 1.8e-05   []
+  c = 100 mol/m^3   []
   assumes: 25 °C
 ```
 
@@ -779,10 +694,10 @@ $ chemistry solve titration_equivalence_volume "c_t=100 mol/m^3" "V_a=2.5e-05 m^
 V_eq = 3.75e-05 m^3
 V_eq_mL = 37.5
   by: Titration: equivalence-point volume  (moles of titrant = ratio x moles of analyte)
-  c_t = 100 mol/m^3
-  V_a = 2.5e-05 m^3
-  c_a = 150 mol/m^3
-  ratio = 1
+  c_t = 100 mol/m^3   []
+  V_a = 2.5e-05 m^3   []
+  c_a = 150 mol/m^3   []
+  ratio = 1   []
   assumes: complete neutralization; the acid's protons and base's hydroxides from the formulas
 ```
 
@@ -815,9 +730,9 @@ $ chemistry solve k_from_cell_potential n=2 "E=0.46 V" "T=298 K"
 lnK = 35.8260291
 K = 3.622819917e+15
   by: Equilibrium constant from a standard cell potential  (ln K = n F E° / (R T))
-  n = 2
-  E = 0.46 V
-  T = 298 K
+  n = 2   []
+  E = 0.46 V   []
+  T = 298 K   []
   assumes: n, T > 0
 ```
 
@@ -847,8 +762,8 @@ $ chemistry solve delta_g_from_cell_potential n=2 "E=1.1 V"
 dG = -212267.7307 J/mol
 dG_kJ = -212.2677307
   by: Gibbs energy from a cell potential  (dG = -n F E)
-  n = 2
-  E = 1.1 V
+  n = 2   []
+  E = 1.1 V   []
   assumes: n > 0
 ```
 
@@ -880,9 +795,9 @@ $ chemistry solve electrolysis_mass n=2 metal=Cu "I=2 A" "t=1800 s"
 m = 0.001185494183 kg
 m_g = 1.185494183
   by: Mass deposited in electrolysis (Faraday's law)  (charge / (n F) gives moles of metal; times its molar mass)
-  n = 2
-  I = 2 A
-  t = 1800 s
+  n = 2   []
+  I = 2 A   []
+  t = 1800 s   []
   metal = Cu
   assumes: 100% current efficiency
 ```
@@ -913,10 +828,10 @@ $$
 $ chemistry solve nernst_potential n=2 Q=0.01 "E0=1.1 V" "T=298 K"
 E = 1.159129586 V
   by: Nernst equation  (E = E° - (RT/nF) ln Q)
-  n = 2
-  Q = 0.01
-  E0 = 1.1 V
-  T = 298 K
+  n = 2   []
+  Q = 0.01   []
+  E0 = 1.1 V   []
+  T = 298 K   []
   assumes: n, Q, T > 0
 ```
 
@@ -946,9 +861,9 @@ $$
 $ chemistry solve electrolysis_time n=2 metal=Ni "I=5 A" "m=0.01 kg"
 t = 6575.593827 s
   by: Time for electrolysis (Faraday's law)  (t = m n F / (M I))
-  n = 2
-  I = 5 A
-  m = 0.01 kg
+  n = 2   []
+  I = 5 A   []
+  m = 0.01 kg   []
   metal = Ni
   assumes: 100% current efficiency
 ```
@@ -982,7 +897,7 @@ $ chemistry solve equilibrium_ice "equation=N2O4 ⇌ 2 NO2" "initial=[0.1, 0]" K
 x = 0.0101642097
 equilibrium = [0.08983579029909557,0.020328419401808878]
   by: Equilibrium concentrations (ICE table)  (the extent x solved from the mass-action expression by bisection between the limits set by the initial amounts)
-  K = 0.0046
+  K = 0.0046   []
   equation = N2O4 ⇌ 2 NO2
   assumes: one reaction, coefficients as written; no pure solids or liquids; K > 0
 ```
@@ -1013,8 +928,8 @@ $ chemistry solve k_from_delta_g "dG=-33000 J/mol" "T=298 K"
 K = 608499.1084
 lnK = 13.31875073
   by: Equilibrium constant from the standard Gibbs energy  (ln K = -dG°/(RT))
-  dG = -33000 J/mol
-  T = 298 K
+  dG = -33000 J/mol   []
+  T = 298 K   []
   assumes: T > 0
 ```
 
@@ -1043,9 +958,9 @@ $$
 $ chemistry solve delta_g_nonstandard "dG0=-33000 J/mol" Q=100 "T=298 K"
 dG = -21589.72442 J/mol
   by: Gibbs energy change at non-standard conditions  (dG = dG° + RT ln Q)
-  dG0 = -33000 J/mol
-  Q = 100
-  T = 298 K
+  dG0 = -33000 J/mol   []
+  Q = 100   []
+  T = 298 K   []
   assumes: T, Q > 0
 ```
 
@@ -1074,9 +989,9 @@ $$
 $ chemistry solve kc_from_kp dn=1 Kp=1.8 "T=523 K"
 Kc = 0.0419423967
   by: Kc from Kp  (Kc = Kp / (RT)^dn with R = 0.082057 L·atm/(mol·K))
-  dn = 1
-  Kp = 1.8
-  T = 523 K
+  dn = 1   []
+  Kp = 1.8   []
+  T = 523 K   []
   assumes: Kp, T > 0; dn counts gaseous species only
 ```
 
@@ -1105,9 +1020,9 @@ $$
 $ chemistry solve kp_from_kc dn=-2 Kc=0.5 "T=400 K"
 Kp = 0.000464103535
   by: Kp from Kc  (Kp = Kc (RT)^dn with R = 0.082057 L·atm/(mol·K))
-  dn = -2
-  Kc = 0.5
-  T = 400 K
+  dn = -2   []
+  Kc = 0.5   []
+  T = 400 K   []
   assumes: Kc, T > 0; dn counts gaseous species only
 ```
 
@@ -1137,7 +1052,7 @@ $ chemistry solve ksp_from_solubility x=1 y=2 "s=1.5 mol/m^3"
 Ksp = 1.35e-08
 pKsp = 7.869666232
   by: Ksp from molar solubility  (Ksp = (x s)^x (y s)^y)
-  s = 1.5 mol/m^3
+  s = 1.5 mol/m^3   []
   assumes: s > 0
 ```
 
@@ -1169,7 +1084,7 @@ s = 0.2136329341 mol/m^3
 s_molL = 0.0002136329341
 log10_s = -3.670331795
   by: Molar solubility from Ksp  (s = (Ksp / (x^x y^y))^(1/(x+y)))
-  Ksp = 3.9e-11
+  Ksp = 3.9e-11   []
   assumes: Ksp > 0; no common ion, no side reactions
 ```
 
@@ -1203,8 +1118,8 @@ s = 3.899999392e-06 mol/m^3
 s_molL = 3.899999392e-09
 log10_s = -8.408935461
   by: Molar solubility with a common ion  (the solubility s solved from the Ksp expression with the common ion's concentration, by bisection)
-  c_common = 100 mol/m^3
-  Ksp = 3.9e-11
+  c_common = 100 mol/m^3   []
+  Ksp = 3.9e-11   []
   common = anion
   assumes: Ksp > 0; the common ion comes from a fully dissolved salt
 ```
@@ -1233,8 +1148,8 @@ $$
 $ chemistry solve delta_g_from_k K=100000 "T=298 K"
 dG = -28525.68894 J/mol
   by: Standard Gibbs energy from the equilibrium constant  (dG° = -RT ln K)
-  K = 100000
-  T = 298 K
+  K = 100000   []
+  T = 298 K   []
   assumes: K, T > 0
 ```
 
@@ -1266,10 +1181,10 @@ $ chemistry solve vant_hoff_k2 K1=1.8e-05 "T1=298 K" "dH=50000 J/mol" "T2=350 K"
 K2 = 0.0003608751648
 lnK2 = -7.926978463
   by: Van 't Hoff equation: K at another temperature  (integrated van 't Hoff equation (dH° constant))
-  K1 = 1.8e-05
-  T1 = 298 K
-  dH = 50000 J/mol
-  T2 = 350 K
+  K1 = 1.8e-05   []
+  T1 = 298 K   []
+  dH = 50000 J/mol   []
+  T2 = 350 K   []
   assumes: K1, T1, T2 > 0; dH° independent of T
 ```
 
@@ -1300,9 +1215,9 @@ $$
 $ chemistry solve boyle_final_pressure "V2=0.001 m^3" "P1=101325 Pa" "V1=0.004 m^3"
 P2 = 405300 Pa
   by: Boyle's law: final pressure  (P2 = P1 V1 / V2)
-  V2 = 0.001 m^3
-  P1 = 101325 Pa
-  V1 = 0.004 m^3
+  V2 = 0.001 m^3   []
+  P1 = 101325 Pa   []
+  V1 = 0.004 m^3   []
   assumes: P1, V1, V2 > 0; constant temperature and amount
 ```
 
@@ -1331,9 +1246,9 @@ $$
 $ chemistry solve boyle_final_volume "P2=303975 Pa" "V1=0.002 m^3" "P1=101325 Pa"
 V2 = 0.0006666666667 m^3
   by: Boyle's law: final volume  (V2 = P1 V1 / P2)
-  P2 = 303975 Pa
-  V1 = 0.002 m^3
-  P1 = 101325 Pa
+  P2 = 303975 Pa   []
+  V1 = 0.002 m^3   []
+  P1 = 101325 Pa   []
   assumes: P1, V1, P2 > 0; constant temperature and amount
 ```
 
@@ -1362,9 +1277,9 @@ $$
 $ chemistry solve charles_final_volume "T2=348.15 K" "V1=0.0025 m^3" "T1=298.15 K"
 V2 = 0.002919252054 m^3
   by: Charles's law: final volume  (V2 = V1 T2 / T1 (kelvin))
-  T2 = 348.15 K
-  V1 = 0.0025 m^3
-  T1 = 298.15 K
+  T2 = 348.15 K   []
+  V1 = 0.0025 m^3   []
+  T1 = 298.15 K   []
   assumes: V1 > 0, T1, T2 > 0 K; constant pressure and amount
 ```
 
@@ -1395,11 +1310,11 @@ $$
 $ chemistry solve combined_gas_final_pressure "V2=0.0015 m^3" "T2=450 K" "P1=101325 Pa" "T1=300 K" "V1=0.003 m^3"
 P2 = 303975 Pa
   by: Combined gas law: final pressure  (P1V1/T1 = P2V2/T2 solved for P2)
-  V2 = 0.0015 m^3
-  T2 = 450 K
-  P1 = 101325 Pa
-  T1 = 300 K
-  V1 = 0.003 m^3
+  V2 = 0.0015 m^3   []
+  T2 = 450 K   []
+  P1 = 101325 Pa   []
+  T1 = 300 K   []
+  V1 = 0.003 m^3   []
   assumes: all values > 0 (temperatures in kelvin); fixed amount of gas
 ```
 
@@ -1430,11 +1345,11 @@ $$
 $ chemistry solve combined_gas_final_temperature "P1=101325 Pa" "V1=0.002 m^3" "T1=300 K" "P2=202650 Pa" "V2=0.0015 m^3"
 T2 = 450 K
   by: Combined gas law: final temperature  (P1V1/T1 = P2V2/T2 solved for T2)
-  P1 = 101325 Pa
-  V1 = 0.002 m^3
-  T1 = 300 K
-  P2 = 202650 Pa
-  V2 = 0.0015 m^3
+  P1 = 101325 Pa   []
+  V1 = 0.002 m^3   []
+  T1 = 300 K   []
+  P2 = 202650 Pa   []
+  V2 = 0.0015 m^3   []
   assumes: all values > 0 (temperatures in kelvin); fixed amount of gas
 ```
 
@@ -1465,11 +1380,11 @@ $$
 $ chemistry solve combined_gas_final_volume "P1=101325 Pa" "T1=300 K" "P2=202650 Pa" "T2=400 K" "V1=0.004 m^3"
 V2 = 0.002666666667 m^3
   by: Combined gas law: final volume  (P1V1/T1 = P2V2/T2 solved for V2)
-  P1 = 101325 Pa
-  T1 = 300 K
-  P2 = 202650 Pa
-  T2 = 400 K
-  V1 = 0.004 m^3
+  P1 = 101325 Pa   []
+  T1 = 300 K   []
+  P2 = 202650 Pa   []
+  T2 = 400 K   []
+  V1 = 0.004 m^3   []
   assumes: all values > 0 (temperatures in kelvin); fixed amount of gas
 ```
 
@@ -1498,8 +1413,8 @@ $$
 $ chemistry solve gas_density formula=CO2 "P=101325 Pa" "T=298 K"
 rho = 1.799731275 kg/m^3
   by: Density of an ideal gas  (rho = PM / RT)
-  P = 101325 Pa
-  T = 298 K
+  P = 101325 Pa   []
+  T = 298 K   []
   formula = CO2
   assumes: P, T > 0
 ```
@@ -1529,9 +1444,9 @@ $$
 $ chemistry solve gay_lussac_final_pressure "T2=318.15 K" "P1=222915 Pa" "T1=293.15 K"
 P2 = 241925.3189 Pa
   by: Gay-Lussac's law: final pressure  (P2 = P1 T2 / T1 (kelvin))
-  T2 = 318.15 K
-  P1 = 222915 Pa
-  T1 = 293.15 K
+  T2 = 318.15 K   []
+  P1 = 222915 Pa   []
+  T1 = 293.15 K   []
   assumes: P1 > 0, T1, T2 > 0 K; constant volume and amount
 ```
 
@@ -1561,7 +1476,7 @@ $ chemistry solve graham_molar_mass ratio=1.5 formula_known=O2
 M = 0.01422133333 kg/mol
 M_g = 14.22133333
   by: Graham's law: molar mass of an unknown gas  (M_x = M_known / ratio^2)
-  ratio = 1.5
+  ratio = 1.5   []
   formula_known = O2
   assumes: ratio > 0; same temperature and pressure
 ```
@@ -1590,8 +1505,8 @@ $$
 $ chemistry solve graham_rate_ratio formula_1=H2 formula_2=O2
 ratio = 3.98397086
   by: Graham's law: ratio of effusion rates  (square root of the inverse ratio of molar masses)
-  formula_1 = H2
   formula_2 = O2
+  formula_1 = H2
   assumes: ideal gases at the same temperature and pressure
 ```
 
@@ -1620,9 +1535,9 @@ $$
 $ chemistry solve ideal_gas_moles "V=0.005 m^3" "P=202650 Pa" "T=300 K"
 n = 0.4062198792 mol
   by: Ideal gas law: amount  (n = PV / RT)
-  V = 0.005 m^3
-  P = 202650 Pa
-  T = 300 K
+  V = 0.005 m^3   []
+  P = 202650 Pa   []
+  T = 300 K   []
   assumes: P, V, T > 0 (T in kelvin)
 ```
 
@@ -1653,9 +1568,9 @@ $ chemistry solve ideal_gas_pressure "n=2 mol" "V=0.01 m^3" "T=300 K"
 P = 498867.7571 Pa
 P_atm = 4.923441965
   by: Ideal gas law: pressure  (P = nRT / V)
-  n = 2 mol
-  V = 0.01 m^3
-  T = 300 K
+  n = 2 mol   []
+  V = 0.01 m^3   []
+  T = 300 K   []
   assumes: n, V, T > 0 (T in kelvin)
 ```
 
@@ -1686,9 +1601,9 @@ $ chemistry solve ideal_gas_temperature "n=2 mol" "V=0.05 m^3" "P=101325 Pa"
 T = 304.6649094 K
 T_C = 31.51490937
   by: Ideal gas law: temperature  (T = PV / nR)
-  n = 2 mol
-  V = 0.05 m^3
-  P = 101325 Pa
+  n = 2 mol   []
+  V = 0.05 m^3   []
+  P = 101325 Pa   []
   assumes: P, V, n > 0
 ```
 
@@ -1719,9 +1634,9 @@ $ chemistry solve ideal_gas_volume "n=1 mol" "P=101325 Pa" "T=273.15 K"
 V = 0.02241396955 m^3
 V_L = 22.41396955
   by: Ideal gas law: volume  (V = nRT / P)
-  n = 1 mol
-  P = 101325 Pa
-  T = 273.15 K
+  n = 1 mol   []
+  P = 101325 Pa   []
+  T = 273.15 K   []
   assumes: n, P, T > 0 (T in kelvin)
 ```
 
@@ -1753,9 +1668,9 @@ $ chemistry solve ideal_gas_mass formula=CO2 "V=0.005 m^3" "P=101325 Pa" "T=300 
 m = 0.008938665331 kg
 n = 0.2031099396 mol
   by: Mass of a gas sample (ideal gas)  (n = PV/RT, then m = nM)
-  V = 0.005 m^3
-  P = 101325 Pa
-  T = 300 K
+  V = 0.005 m^3   []
+  P = 101325 Pa   []
+  T = 300 K   []
   formula = CO2
   assumes: P, V, T > 0
 ```
@@ -1784,7 +1699,7 @@ $$
 $ chemistry solve mean_speed formula=CO2 "T=300 K"
 u_mean = 379.9067648 m/s
   by: Mean speed of gas molecules  (mean of the Maxwell-Boltzmann speed distribution)
-  T = 300 K
+  T = 300 K   []
   formula = CO2
   assumes: T > 0 K; ideal gas
 ```
@@ -1817,10 +1732,10 @@ $ chemistry solve molar_mass_from_gas_sample "m=0.001 kg" "V=0.0005 m^3" "P=1013
 M = 0.04923441965 kg/mol
 M_g = 49.23441965
   by: Molar mass from a gas sample  (M = mRT / PV)
-  m = 0.001 kg
-  V = 0.0005 m^3
-  P = 101325 Pa
-  T = 300 K
+  m = 0.001 kg   []
+  V = 0.0005 m^3   []
+  P = 101325 Pa   []
+  T = 300 K   []
   assumes: m, V, P, T > 0
 ```
 
@@ -1851,9 +1766,9 @@ $ chemistry solve molar_mass_from_gas_density "rho=1.25 kg/m^3" "P=101325 Pa" "T
 M = 0.02800207618 kg/mol
 M_g = 28.00207618
   by: Molar mass from gas density  (M = rho R T / P)
-  rho = 1.25 kg/m^3
-  P = 101325 Pa
-  T = 273 K
+  rho = 1.25 kg/m^3   []
+  P = 101325 Pa   []
+  T = 273 K   []
   assumes: rho, P, T > 0
 ```
 
@@ -1881,8 +1796,8 @@ $$
 $ chemistry solve partial_pressure x=0.21 "P_total=101325 Pa"
 p = 21278.25 Pa
   by: Partial pressure (Dalton's law)  (p = x P_total)
-  x = 0.21
-  P_total = 101325 Pa
+  x = 0.21   []
+  P_total = 101325 Pa   []
   assumes: 0 < x <= 1; P_total > 0
 ```
 
@@ -1912,7 +1827,7 @@ $ chemistry solve dalton_mixture "moles=[2, 1, 0.5]" "P_total=354637.5 Pa"
 partial_pressures = [202650.0,101325.0,50662.5] Pa
 mole_fractions = [0.5714285714285714,0.2857142857142857,0.14285714285714285]
   by: Partial pressures in a gas mixture  (mole fractions from the amounts, times the total pressure)
-  P_total = 354637.5 Pa
+  P_total = 354637.5 Pa   []
   assumes: every amount > 0; P_total > 0
 ```
 
@@ -1940,7 +1855,7 @@ $$
 $ chemistry solve rms_speed formula=N2 "T=300 K"
 u_rms = 516.8336537 m/s
   by: Root-mean-square speed of gas molecules  (u_rms = sqrt(3RT/M), M in kg/mol)
-  T = 300 K
+  T = 300 K   []
   formula = N2
   assumes: T > 0 K; ideal gas
 ```
@@ -1976,11 +1891,11 @@ P = 956048.888 Pa
 P_ideal = 997735.5142 Pa
 P_atm = 9.435468916
   by: Van der Waals equation: pressure  (the van der Waals equation solved for P)
-  a = 0.368823 Pa*m^6/mol^2
-  b = 4.267e-05 m^3/mol
-  n = 2 mol
-  V = 0.005 m^3
-  T = 300 K
+  a = 0.368823 Pa*m^6/mol^2   []
+  b = 4.267e-05 m^3/mol   []
+  n = 2 mol   []
+  V = 0.005 m^3   []
+  T = 300 K   []
   assumes: n, V, T, a, b > 0; V > n b
 ```
 
@@ -2014,10 +1929,10 @@ $ chemistry solve activation_energy k1=0.001 "T1=300 K" k2=0.005 "T2=320 K"
 Ea = 64231.73452 J/mol
 Ea_kJ = 64.23173452
   by: Activation energy from two rate constants  (two-point Arrhenius equation solved for Ea)
-  k1 = 0.001
-  T1 = 300 K
-  k2 = 0.005
-  T2 = 320 K
+  k1 = 0.001   []
+  T1 = 300 K   []
+  k2 = 0.005   []
+  T2 = 320 K   []
   assumes: k1, k2 > 0; T1 != T2
 ```
 
@@ -2046,9 +1961,9 @@ $$
 $ chemistry solve arrhenius_rate_constant A=1e+13 "Ea=100000 J/mol" "T=500 K"
 k = 357.4999422
   by: Arrhenius equation: rate constant  (k = A exp(-Ea/RT))
-  A = 1e+13
-  Ea = 100000 J/mol
-  T = 500 K
+  A = 1e+13   []
+  Ea = 100000 J/mol   []
+  T = 500 K   []
   assumes: A, Ea, T > 0
 ```
 
@@ -2080,10 +1995,10 @@ $ chemistry solve arrhenius_k2 k1=0.0012 "T1=300 K" "Ea=75000 J/mol" "T2=350 K"
 k2 = 0.08803749544
 ratio = 73.36457954
   by: Arrhenius equation: rate constant at another temperature  (two-point Arrhenius equation)
-  k1 = 0.0012
-  T1 = 300 K
-  Ea = 75000 J/mol
-  T2 = 350 K
+  k1 = 0.0012   []
+  T1 = 300 K   []
+  Ea = 75000 J/mol   []
+  T2 = 350 K   []
   assumes: k1, T1, T2, Ea > 0; Ea independent of T
 ```
 
@@ -2117,10 +2032,10 @@ B = 477.3024371 mol/m^3
 A = 367.8794412 mol/m^3
 C = 154.8181217 mol/m^3
   by: Consecutive first-order reactions (A -> B -> C)  (analytic solution of the linear rate equations (the k1 = k2 limit included))
-  k1 = 0.1 1/s
-  k2 = 0.05 1/s
-  A0 = 1000 mol/m^3
-  t = 10 s
+  k1 = 0.1 1/s   []
+  k2 = 0.05 1/s   []
+  A0 = 1000 mol/m^3   []
+  t = 10 s   []
   assumes: both steps first order; B and C absent at t = 0
 ```
 
@@ -2153,9 +2068,9 @@ A = 325.2557278 mol/m^3
 A_molL = 0.3252557278
 fraction_left = 0.4065696597
   by: First-order integrated rate law  ([A] = [A]0 exp(-k t))
-  k = 0.015 1/s
-  A0 = 800 mol/m^3
-  t = 60 s
+  k = 0.015 1/s   []
+  A0 = 800 mol/m^3   []
+  t = 60 s   []
   assumes: [A]0, k, t > 0
 ```
 
@@ -2182,7 +2097,7 @@ $$
 $ chemistry solve first_order_half_life "k=0.025 1/s"
 t_half = 27.72588722 s
   by: Half-life of a first-order reaction  (t1/2 = ln 2 / k)
-  k = 0.025 1/s
+  k = 0.025 1/s   []
   assumes: k > 0
 ```
 
@@ -2212,10 +2127,10 @@ $$
 $ chemistry solve reaction_order_from_rates "c1=100 mol/m^3" "r1=2 mol/(m^3*s)" "c2=200 mol/m^3" "r2=8 mol/(m^3*s)"
 order = 2
   by: Reaction order from initial rates  (ratio of the two rate laws)
-  c1 = 100 mol/m^3
-  r1 = 2 mol/(m^3*s)
-  c2 = 200 mol/m^3
-  r2 = 8 mol/(m^3*s)
+  c1 = 100 mol/m^3   []
+  r1 = 2 mol/(m^3*s)   []
+  c2 = 200 mol/m^3   []
+  r2 = 8 mol/(m^3*s)   []
   assumes: c1 != c2
 ```
 
@@ -2246,9 +2161,9 @@ $ chemistry solve second_order_concentration "k=0.0005 m^3/(mol*s)" "A0=200 mol/
 A = 50 mol/m^3
 A_molL = 0.05
   by: Second-order integrated rate law  (1/[A] = 1/[A]0 + k t)
-  k = 0.0005 m^3/(mol*s)
-  A0 = 200 mol/m^3
-  t = 30 s
+  k = 0.0005 m^3/(mol*s)   []
+  A0 = 200 mol/m^3   []
+  t = 30 s   []
   assumes: [A]0, k, t > 0
 ```
 
@@ -2277,9 +2192,9 @@ $$
 $ chemistry solve first_order_time "k=0.03 1/s" "A0=500 mol/m^3" "A=100 mol/m^3"
 t = 53.64793041 s
   by: Time to reach a concentration (first order)  (t = ln([A]0/[A]) / k)
-  k = 0.03 1/s
-  A0 = 500 mol/m^3
-  A = 100 mol/m^3
+  k = 0.03 1/s   []
+  A0 = 500 mol/m^3   []
+  A = 100 mol/m^3   []
   assumes: 0 < [A] < [A]0; k > 0
 ```
 
@@ -2310,9 +2225,9 @@ $ chemistry solve zero_order_concentration "k=2 mol/(m^3*s)" "A0=500 mol/m^3" "t
 A = 300 mol/m^3
 A_molL = 0.3
   by: Zero-order integrated rate law  ([A] = [A]0 - k t)
-  k = 2 mol/(m^3*s)
-  A0 = 500 mol/m^3
-  t = 100 s
+  k = 2 mol/(m^3*s)   []
+  A0 = 500 mol/m^3   []
+  t = 100 s   []
   assumes: [A]0, k, t > 0; [A] stays >= 0
 ```
 
@@ -2372,9 +2287,9 @@ $$
 $ chemistry solve boiling_point_elevation "K=0.512 K*kg/mol" "b=0.5 mol/kg" i=1
 dT = 0.256 K
   by: Boiling-point elevation  (dT = i K b)
-  K = 0.512 K*kg/mol
-  b = 0.5 mol/kg
-  i = 1
+  K = 0.512 K*kg/mol   []
+  b = 0.5 mol/kg   []
+  i = 1   []
   assumes: i, K, b > 0; dilute solution
 ```
 
@@ -2405,9 +2320,9 @@ $ chemistry solve dilution_final_concentration "V2=0.0005 m^3" "V1=2.5e-05 m^3" 
 c2 = 300 mol/m^3
 c2_molL = 0.3
   by: Dilution: final concentration  (moles of solute are conserved: c1 V1 = c2 V2)
-  V2 = 0.0005 m^3
-  V1 = 2.5e-05 m^3
-  c1 = 6000 mol/m^3
+  V2 = 0.0005 m^3   []
+  V1 = 2.5e-05 m^3   []
+  c1 = 6000 mol/m^3   []
   assumes: c1, V1, V2 > 0; V2 >= V1
 ```
 
@@ -2438,9 +2353,9 @@ $ chemistry solve dilution_volume "c1=12000 mol/m^3" "c2=100 mol/m^3" "V2=0.0005
 V1 = 4.166666667e-06 m^3
 V1_mL = 4.166666667
   by: Dilution: volume of stock needed  (c1 V1 = c2 V2 solved for V1)
-  c1 = 12000 mol/m^3
-  c2 = 100 mol/m^3
-  V2 = 0.0005 m^3
+  c1 = 12000 mol/m^3   []
+  c2 = 100 mol/m^3   []
+  V2 = 0.0005 m^3   []
   assumes: c1 >= c2 > 0; V2 > 0
 ```
 
@@ -2469,9 +2384,9 @@ $$
 $ chemistry solve freezing_point_depression "K=1.86 K*kg/mol" "b=0.5 mol/kg" i=1
 dT = 0.93 K
   by: Freezing-point depression  (dT = i K b)
-  K = 1.86 K*kg/mol
-  b = 0.5 mol/kg
-  i = 1
+  K = 1.86 K*kg/mol   []
+  b = 0.5 mol/kg   []
+  i = 1   []
   assumes: i, K, b > 0; dilute solution
 ```
 
@@ -2502,8 +2417,8 @@ $ chemistry solve solute_mass_for_solution formula=NaCl "V=0.00025 m^3" "c=100 m
 m = 0.001461075 kg
 m_g = 1.461075
   by: Mass of solute for a solution  (m = c V M)
-  V = 0.00025 m^3
-  c = 100 mol/m^3
+  V = 0.00025 m^3   []
+  c = 100 mol/m^3   []
   formula = NaCl
   assumes: c, V > 0
 ```
@@ -2533,8 +2448,8 @@ $$
 $ chemistry solve molality formula=NaCl "m_solvent=0.5 kg" "m_solute=0.01 kg"
 b = 0.3422137809 mol/kg
   by: Molality of a solution  (moles of solute per kilogram of solvent)
-  m_solvent = 0.5 kg
-  m_solute = 0.01 kg
+  m_solvent = 0.5 kg   []
+  m_solute = 0.01 kg   []
   formula = NaCl
   assumes: masses > 0
 ```
@@ -2568,11 +2483,11 @@ $ chemistry solve molar_mass_from_freezing_point "m_solvent=0.1 kg" "dT=0.372 K"
 M = 0.1 kg/mol
 M_g = 100
   by: Molar mass from freezing-point depression  (b = dT/(i Kf); M = m_solute / (b m_solvent))
-  m_solvent = 0.1 kg
-  dT = 0.372 K
-  K = 1.86 K*kg/mol
-  m_solute = 0.002 kg
-  i = 1
+  m_solvent = 0.1 kg   []
+  dT = 0.372 K   []
+  K = 1.86 K*kg/mol   []
+  m_solute = 0.002 kg   []
+  i = 1   []
   assumes: all inputs > 0; dilute solution
 ```
 
@@ -2605,11 +2520,11 @@ $ chemistry solve molar_mass_from_osmotic_pressure "m=0.001 kg" "V=0.0001 m^3" "
 M = 74.37482723 kg/mol
 M_g = 74374.82723
   by: Molar mass from osmotic pressure  (c = Pi/(i R T); M = m / (c V))
-  m = 0.001 kg
-  V = 0.0001 m^3
-  Pi = 333.3059211 Pa
-  T = 298.15 K
-  i = 1
+  m = 0.001 kg   []
+  V = 0.0001 m^3   []
+  Pi = 333.3059211 Pa   []
+  T = 298.15 K   []
+  i = 1   []
   assumes: all inputs > 0
 ```
 
@@ -2640,8 +2555,8 @@ $ chemistry solve molarity_from_mass formula=NaCl "m=0.00585 kg" "V=0.00025 m^3"
 c = 400.3901237 mol/m^3
 c_molL = 0.4003901237
   by: Molarity from a dissolved mass  (moles of solute (m / M) over the volume of solution)
-  m = 0.00585 kg
-  V = 0.00025 m^3
+  m = 0.00585 kg   []
+  V = 0.00025 m^3   []
   formula = NaCl
   assumes: m, V > 0
 ```
@@ -2674,8 +2589,8 @@ $ chemistry solve mole_fraction "m_solute=0.02 kg" formula_solute=C6H12O6 "m_sol
 x_solute = 0.01960720291
 x_solvent = 0.9803927971
   by: Mole fraction in a solution  (moles of each from its mass and molar mass)
-  m_solute = 0.02 kg
-  m_solvent = 0.1 kg
+  m_solute = 0.02 kg   []
+  m_solvent = 0.1 kg   []
   formula_solvent = H2O
   formula_solute = C6H12O6
   assumes: masses > 0
@@ -2708,9 +2623,9 @@ $ chemistry solve osmotic_pressure "c=100 mol/m^3" "T=298.15 K" i=1
 Pi = 247895.703 Pa
 Pi_atm = 2.44654037
   by: Osmotic pressure  (Pi = i c R T)
-  c = 100 mol/m^3
-  T = 298.15 K
-  i = 1
+  c = 100 mol/m^3   []
+  T = 298.15 K   []
+  i = 1   []
   assumes: i, c, T > 0; dilute solution
 ```
 
@@ -2743,11 +2658,11 @@ $ chemistry solve raoult_vapor_pressure "m_solute=0.05 kg" formula_solute=C12H22
 P = 3156.460003 Pa
 dP = 16.61236498 Pa
   by: Vapor pressure of a solution (Raoult's law)  (Raoult's law with the solvent mole fraction from the masses)
-  m_solute = 0.05 kg
-  m_solvent = 0.5 kg
-  P0 = 3173.072368 Pa
-  formula_solvent = H2O
+  m_solute = 0.05 kg   []
+  m_solvent = 0.5 kg   []
+  P0 = 3173.072368 Pa   []
   formula_solute = C12H22O11
+  formula_solvent = H2O
   assumes: nonvolatile, non-dissociating solute; ideal solution
 ```
 
@@ -2780,9 +2695,9 @@ $ chemistry solve beer_lambert_absorbance "l=0.01 m" "c=0.02 mol/m^3" "eps=1500 
 A = 0.3
 T_percent = 50.11872336
   by: Beer-Lambert law: absorbance  (A = epsilon l c)
-  l = 0.01 m
-  c = 0.02 mol/m^3
-  eps = 1500 m^2/mol
+  l = 0.01 m   []
+  c = 0.02 mol/m^3   []
+  eps = 1500 m^2/mol   []
   assumes: dilute solution, monochromatic light
 ```
 
@@ -2813,9 +2728,9 @@ $ chemistry solve beer_lambert_concentration A=0.45 "l=0.01 m" "eps=1250 m^2/mol
 c = 0.036 mol/m^3
 c_molL = 3.6e-05
   by: Beer-Lambert law: concentration  (c = A / (epsilon l))
-  A = 0.45
-  l = 0.01 m
-  eps = 1250 m^2/mol
+  A = 0.45   []
+  l = 0.01 m   []
+  eps = 1250 m^2/mol   []
   assumes: dilute solution
 ```
 
@@ -2848,7 +2763,7 @@ E_eV = 2.479683969
 E_molar = 239253.1313 J/mol
 nu = 5.99584916e+14 Hz
   by: Energy of a photon from its wavelength  (E = h c / lambda)
-  lam = 5e-07 m
+  lam = 5e-07 m   []
   assumes: lambda > 0
 ```
 
@@ -2911,7 +2826,7 @@ wavenumber = 299003.9985 1/m
 wavenumber_cm = 2990.039985
 nu = 8.963914367e+13 Hz
   by: Vibrational wavenumber of a diatomic molecule  (harmonic oscillator with the reduced mass of the most abundant isotopes)
-  k = 516 N/m
+  k = 516 N/m   []
   molecule = HCl
   assumes: harmonic approximation; most abundant isotopes (1H, 12C, 16O, 35Cl ...)
 ```
@@ -2941,7 +2856,7 @@ $ chemistry solve photon_wavelength "E=3e-19 J"
 lam = 6.62148619e-07 m
 lam_nm = 662.148619
   by: Wavelength of a photon from its energy  (lambda = h c / E)
-  E = 3e-19 J
+  E = 3e-19 J   []
   assumes: E > 0
 ```
 
@@ -2974,7 +2889,7 @@ $ chemistry solve atoms_of_element element=O formula=CO2 "m=0.01 kg"
 N_atoms = 2.736776914e+23
 n_element = 0.4544524984 mol
   by: Atoms of an element in a mass of compound  (moles of compound times the number of X atoms per formula, times N_A)
-  m = 0.01 kg
+  m = 0.01 kg   []
   element = O
   formula = CO2
   assumes: m > 0; the element occurs in the formula
@@ -3070,12 +2985,12 @@ product_mass = 0.01801612601 kg
 limiting = O2
 excess_left = 0.001983873992 kg
   by: Limiting reagent and theoretical yield  (balance the equation, moles of each reactant over its coefficient; the smallest is the extent)
-  m_a = 0.004 kg
-  m_b = 0.016 kg
-  equation = H2 + O2 -> H2O
+  m_a = 0.004 kg   []
+  m_b = 0.016 kg   []
+  product = H2O
   reactant_b = O2
   reactant_a = H2
-  product = H2O
+  equation = H2 + O2 -> H2O
   assumes: the equation balances uniquely; two different reactants and one product of the equation
 ```
 
@@ -3107,7 +3022,7 @@ m = 0.1461075 kg
 m_g = 146.1075
 N = 1.50553519e+24
   by: Mass from moles  (m = n M with M from the formula)
-  n = 2.5 mol
+  n = 2.5 mol   []
   formula = NaCl
   assumes: n > 0; a neutral formula
 ```
@@ -3139,7 +3054,7 @@ $ chemistry solve mass_of_element element=Fe formula=Fe2O3 "m=0.05 kg"
 m_element = 0.03497153807 kg
 fraction = 0.6994307614
   by: Mass of an element in a sample  (the sample mass times the element's mass fraction)
-  m = 0.05 kg
+  m = 0.05 kg   []
   element = Fe
   formula = Fe2O3
   assumes: m > 0; the element occurs in the formula
@@ -3169,10 +3084,10 @@ $$
 ```shell
 $ chemistry solve mass_percent element=O formula=H2SO4
 percent = 65.24944178
-composition = {"H":2.055485883828342,"S":32.69507233964457,"O":65.24944177652708}
+composition = {"H":2.055485883828342,"O":65.24944177652708,"S":32.69507233964457}
   by: Mass percent of an element  (mass of the element per formula over the molar mass)
-  element = O
   formula = H2SO4
+  element = O
   assumes: the element occurs in the formula
 ```
 
@@ -3231,7 +3146,7 @@ $ chemistry solve molecular_formula empirical=CH2O "M=0.18016 kg/mol"
 multiple = 6
 formula = C6H12O6
   by: Molecular formula from the empirical formula  (n = M / M(empirical), rounded (must be within 2% of a whole number))
-  M = 0.18016 kg/mol
+  M = 0.18016 kg/mol   []
   empirical = CH2O
   assumes: M > 0; M is a whole multiple of the empirical formula mass (within 2%)
 ```
@@ -3264,7 +3179,7 @@ n = 1.998334721 mol
 N = 1.203425298e+24
 M = 0.018015 kg/mol
   by: Moles from a mass  (n = m / M with M from the formula)
-  m = 0.036 kg
+  m = 0.036 kg   []
   formula = H2O
   assumes: m > 0; a neutral formula
 ```
@@ -3292,7 +3207,7 @@ $$
 $ chemistry solve moles_from_particles N=3.01e+23
 n = 0.4998222592 mol
   by: Moles from a number of particles  (n = N / N_A)
-  N = 3.01e+23
+  N = 3.01e+23   []
   assumes: N > 0
 ```
 
@@ -3322,7 +3237,7 @@ $ chemistry solve particles_from_mass formula=CO2 "m=0.01 kg"
 N = 1.368388457e+23
 n = 0.2272262492 mol
   by: Number of molecules in a mass  (N = (m / M) N_A)
-  m = 0.01 kg
+  m = 0.01 kg   []
   formula = CO2
   assumes: m > 0
 ```
@@ -3350,7 +3265,7 @@ $$
 $ chemistry solve particles_from_moles "n=0.25 mol"
 N = 1.50553519e+23
   by: Number of particles in an amount  (N = n N_A)
-  n = 0.25 mol
+  n = 0.25 mol   []
   assumes: n > 0
 ```
 
@@ -3378,18 +3293,7 @@ $$
 
 **Applies when:** the equation balances uniquely; the other reactants are in excess.
 
-```shell
-$ chemistry solve percent_yield "equation=CaCO3 -> CaO + CO2" "m=0.1 kg" reactant=CaCO3 "actual=0.05 kg" product=CaO
-percent_yield = 89.23979528
-theoretical_mass = 0.05602881522 kg
-  by: Percent yield of a reaction  (theoretical yield from the balanced equation, then actual / theoretical x 100)
-  m = 0.1 kg
-  actual = 0.05 kg
-  equation = CaCO3 -> CaO + CO2
-  reactant = CaCO3
-  product = CaO
-  assumes: the equation balances uniquely; the other reactants are in excess
-```
+*Not in `chemistry` 1.1.0 yet:* use the Python package or the model's page in the browser.
 
 **What the worked example means:** This calculation determines the efficiency of the reaction by comparing the actual mass of product obtained, 0.05 kg, to the theoretical mass predicted from stoichiometry, 0.0560288 kg. The result, 89.2398, indicates how much of the expected product was successfully isolated. A value near one hundred suggests high efficiency, while lower values imply losses due to incomplete reaction or purification steps.
 
@@ -3414,17 +3318,7 @@ $$
 
 **Applies when:** the equation balances uniquely; the other reactants are in excess.
 
-```shell
-$ chemistry solve theoretical_yield "equation=CH4 + O2 -> CO2 + H2O" "m=0.016 kg" reactant=CH4 product=CO2
-product_mass = 0.04389104282 kg
-n_product = 0.9973197033 mol
-  by: Theoretical yield from one reactant  (balance the equation; moles of reactant times the coefficient ratio times the product's molar mass)
-  m = 0.016 kg
-  reactant = CH4
-  product = CO2
-  equation = CH4 + O2 -> CO2 + H2O
-  assumes: the equation balances uniquely; the other reactants are in excess
-```
+*Not in `chemistry` 1.1.0 yet:* use the Python package or the model's page in the browser.
 
 **What the worked example means:** This calculation determines the maximum possible mass of a product, denoted as 0.043891 kg, that can be formed from a specific mass of one reactant, given as 0.016 kg. The process assumes that all other necessary reactants are present in excess and that the chemical reaction proceeds completely according to its balanced stoichiometry. Converting the input mass into moles, applying the ratio of coefficients between the reactant and the product, and then converting back to mass using the product's molar mass gives the theoretical limit for this reaction scenario.
 
@@ -3454,10 +3348,10 @@ $$
 $ chemistry solve clausius_clapeyron_enthalpy "P1=13332.23684 Pa" "T1=300 K" "P2=53328.94737 Pa" "T2=340 K"
 dH = 29392.04624 J/mol
   by: Clausius-Clapeyron: enthalpy of vaporization  (two-point Clausius-Clapeyron equation)
-  P1 = 13332.23684 Pa
-  T1 = 300 K
-  P2 = 53328.94737 Pa
-  T2 = 340 K
+  P1 = 13332.23684 Pa   []
+  T1 = 300 K   []
+  P2 = 53328.94737 Pa   []
+  T2 = 340 K   []
   assumes: T1 != T2
 ```
 
@@ -3487,10 +3381,10 @@ $$
 $ chemistry solve clausius_clapeyron_pressure "T1=298.15 K" "dH=43900 J/mol" "T2=323.15 K" "P1=3173.072368 Pa"
 P2 = 12487.5781 Pa
   by: Clausius-Clapeyron: vapor pressure at another temperature  (integrated Clausius-Clapeyron equation)
-  T1 = 298.15 K
-  dH = 43900 J/mol
-  T2 = 323.15 K
-  P1 = 3173.072368 Pa
+  T1 = 298.15 K   []
+  dH = 43900 J/mol   []
+  T2 = 323.15 K   []
+  P1 = 3173.072368 Pa   []
   assumes: dHvap constant; ideal vapor
 ```
 
@@ -3523,9 +3417,9 @@ dG = -32987.4 J/mol
 dG_kJ = -32.9874
 spontaneity = spontaneous
   by: Gibbs energy change (dG = dH - T dS)  (dG = dH - T dS)
-  dH = -92200 J/mol
-  dS = -198.7 J/(mol*K)
-  T = 298 K
+  dH = -92200 J/mol   []
+  dS = -198.7 J/(mol*K)   []
+  T = 298 K   []
   assumes: dH and dS taken as constant
 ```
 
@@ -3555,10 +3449,10 @@ $$
 $ chemistry solve calorimetry_heat "T1=293.15 K" "T2=353.15 K" "m=0.05 kg" "c=4184 J/(kg*K)"
 q = 12552 J
   by: Heat from a temperature change  (q = m c dT)
-  T1 = 293.15 K
-  T2 = 353.15 K
-  m = 0.05 kg
-  c = 4184 J/(kg*K)
+  T1 = 293.15 K   []
+  T2 = 353.15 K   []
+  m = 0.05 kg   []
+  c = 4184 J/(kg*K)   []
   assumes: no phase change
 ```
 
@@ -3589,8 +3483,8 @@ $ chemistry solve heat_from_reaction_mass formula=CH4 "dH=-890000 J/mol" "m=0.01
 q = -554759.085 J
 heat_released = 554759.085 J
   by: Heat of reaction for a given mass  (moles of reactant times its molar enthalpy)
-  dH = -890000 J/mol
-  m = 0.01 kg
+  dH = -890000 J/mol   []
+  m = 0.01 kg   []
   formula = CH4
   assumes: dH is per mole of the given reactant
 ```
@@ -3626,11 +3520,11 @@ dH = -56848 J/mol
 dH_kJ = -56.848
 q_solution = 2842.4 J
   by: Reaction enthalpy from coffee-cup calorimetry  (heat gained by the solution, with the opposite sign, per mole)
-  T1 = 295.15 K
-  T2 = 301.95 K
-  n = 0.05 mol
-  m = 0.1 kg
-  c = 4180 J/(kg*K)
+  T1 = 295.15 K   []
+  T2 = 301.95 K   []
+  n = 0.05 mol   []
+  m = 0.1 kg   []
+  c = 4180 J/(kg*K)   []
   assumes: no heat lost to the calorimeter or surroundings; constant pressure
 ```
 
@@ -3655,14 +3549,7 @@ $$
 
 **Applies when:** the equation as written conserves every element; one value per species, in kJ/mol.
 
-```shell
-$ chemistry solve reaction_enthalpy_from_formation "equation=CH4 + 2 O2 -> CO2 + 2 H2O" "values=[-74.8, 0, -393.5, -285.8]"
-dH = -890300 J/mol
-dH_kJ = -890.3
-  by: Reaction enthalpy from enthalpies of formation (Hess's law)  (coefficient-weighted sum of formation enthalpies, products minus reactants)
-  equation = CH4 + 2 O2 -> CO2 + 2 H2O
-  assumes: the equation as written conserves every element; one value per species, in kJ/mol
-```
+*Not in `chemistry` 1.1.0 yet:* use the Python package or the model's page in the browser.
 
 **What the worked example means:** This calculation determines the heat change for the balanced chemical equation by applying Hess's Law. It sums the standard enthalpies of formation for all product species, each multiplied by its stoichiometric coefficient, and subtracts the corresponding sum for all reactant species. The resulting value, -890.3, represents the energy released or absorbed under standard conditions.
 
@@ -3690,8 +3577,8 @@ $ chemistry solve crossover_temperature "dH=178000 J/mol" "dS=161 J/(mol*K)"
 T = 1105.590062 K
 T_C = 832.4400621
   by: Temperature at which dG = 0  (T = dH / dS)
-  dH = 178000 J/mol
-  dS = 161 J/(mol*K)
+  dH = 178000 J/mol   []
+  dS = 161 J/(mol*K)   []
   assumes: dH and dS of the same sign
 ```
 

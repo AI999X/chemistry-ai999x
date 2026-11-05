@@ -4,7 +4,7 @@
 
 **[Desktop app & command line](https://www.ai999x.com/desktop-cli/)** · **[Compute in your browser](https://www.ai999x.com/models/chemistry-ai999x/#try)** · **[Install (Python)](https://pypi.org/project/chemistry-ai999x/)** · **[Guides](https://huggingface.co/AI999X/chemistry-ai999x/tree/main/docs)** · **[Evaluation](https://huggingface.co/AI999X/chemistry-ai999x/tree/main/evaluation)** · **[AI999X on Hugging Face](https://huggingface.co/AI999X)** · **[Website](https://ai999x.com)** · **[Support: Buy Me a Coffee](https://buymeacoffee.com/ibnuljaiffarabi)**
 
-License: Apache-2.0 · Author: Ibnul Jaif Farabi (creator and engineer) · Organization: AI999X · Version 1.0.3
+License: Apache-2.0 · Author: Ibnul Jaif Farabi (creator and engineer) · Organization: AI999X · Version 1.1.0
 
 Field: **Physical Sciences** · Tasks: Question Answering, Token Classification, Text Classification, Sentence Similarity, Feature Extraction
 
@@ -20,26 +20,13 @@ chemistry-ai999x is an offline, deterministic Python solver that answers chemist
 
 | Way to run it | For | Get it |
 |---|---|---|
-| **AI999X Chemistry desktop app** 1.2.0 | Windows, Linux — this model in its own app: search, ask in words, forms, live figures, explanations, offline | [Windows (x86-64)](https://www.ai999x.com/downloads/desktop/1.2.0/ai999x-chemistry-1.2.0-windows-x86_64.zip) · [Linux (x86-64)](https://www.ai999x.com/downloads/desktop/1.2.0/ai999x-chemistry-1.2.0-linux-x86_64.tar.gz) |
-| **AI999X desktop app** 1.2.0 | Windows, Linux — every AI999X model in one app: search, ask in words, forms, live figures, explanations, offline | [Windows (x86-64)](https://www.ai999x.com/downloads/desktop/1.2.0/ai999x-1.2.0-windows-x86_64.zip) · [Linux (x86-64)](https://www.ai999x.com/downloads/desktop/1.2.0/ai999x-1.2.0-linux-x86_64.tar.gz) |
-| **Command line** (`chemistry`) | Windows, Linux — one program per model, offline, no Python | [Windows (x86-64)](https://www.ai999x.com/downloads/desktop/1.2.0/ai999x-cli-1.2.0-windows-x86_64.zip) · [Linux (x86-64)](https://www.ai999x.com/downloads/desktop/1.2.0/ai999x-cli-1.2.0-linux-x86_64.tar.gz) |
+| **AI999X Chemistry desktop app** 1.4.0 | Windows, Linux — this model in its own app: search, ask in words, forms, live figures, explanations, offline | [Windows (x86-64)](https://downloads.ai999x.com/desktop/1.4.0/ai999x-chemistry-1.4.0-windows-x86_64.zip) · [Linux (x86-64)](https://downloads.ai999x.com/desktop/1.4.0/ai999x-chemistry-1.4.0-linux-x86_64.tar.gz) |
+| **AI999X desktop app** 1.4.0 | Windows, Linux — every AI999X model in one app: search, ask in words, forms, live figures, explanations, offline | [Windows (x86-64)](https://downloads.ai999x.com/desktop/1.4.0/ai999x-1.4.0-windows-x86_64.zip) · [Linux (x86-64)](https://downloads.ai999x.com/desktop/1.4.0/ai999x-1.4.0-linux-x86_64.tar.gz) |
+| **Command line** (`chemistry`) | Windows, Linux — one program per model, offline, no Python | [Windows (x86-64)](https://downloads.ai999x.com/desktop/1.4.0/ai999x-cli-1.4.0-windows-x86_64.zip) · [Linux (x86-64)](https://downloads.ai999x.com/desktop/1.4.0/ai999x-cli-1.4.0-linux-x86_64.tar.gz) |
 | **In your browser** | any device — nothing to install | [Compute on the model page](https://www.ai999x.com/models/chemistry-ai999x/#try) |
 | **Python** | Python 3.10+ | `pip install chemistry-ai999x` |
 
-Checksums: [SHA256SUMS](https://www.ai999x.com/downloads/desktop/1.2.0/SHA256SUMS) · every version: [https://www.ai999x.com/downloads/desktop/latest/](https://www.ai999x.com/downloads/desktop/latest/) · install guide: [desktop & command line](https://www.ai999x.com/desktop-cli/)
-
-## Rust versions
-
-Chemistry also comes as native programs compiled from Rust, version 1.2.0 of the AI999X desktop app and command line: they run offline on your computer and need no Python. Each file is in this repository's `rust/` folder, on the [GitHub release v1.0.3](https://github.com/AI999X/chemistry-ai999x/releases/tag/v1.0.3) and on the website.
-
-| Program | System | File | Size | Download | Use |
-|---|---|---|---|---|---|
-| Desktop app (Chemistry) | Windows x86-64 | `ai999x-chemistry-1.2.0-windows-x86_64.zip` | 7.2 MB | [Hub](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/rust/ai999x-chemistry-1.2.0-windows-x86_64.zip) · [GitHub](https://github.com/AI999X/chemistry-ai999x/releases/download/v1.0.3/ai999x-chemistry-1.2.0-windows-x86_64.zip) · [website](https://www.ai999x.com/downloads/desktop/1.2.0/ai999x-chemistry-1.2.0-windows-x86_64.zip) | unzip, then double-click `ai999x-chemistry.exe` (no installer) |
-| Desktop app (Chemistry) | Linux x86-64 | `ai999x-chemistry-1.2.0-linux-x86_64.tar.gz` | 8.1 MB | [Hub](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/rust/ai999x-chemistry-1.2.0-linux-x86_64.tar.gz) · [GitHub](https://github.com/AI999X/chemistry-ai999x/releases/download/v1.0.3/ai999x-chemistry-1.2.0-linux-x86_64.tar.gz) · [website](https://www.ai999x.com/downloads/desktop/1.2.0/ai999x-chemistry-1.2.0-linux-x86_64.tar.gz) | extract, then run `./ai999x-chemistry` (X11 or Wayland desktop) |
-| Command line (`chemistry`) | Windows x86-64 | `ai999x-chemistry-cli-1.2.0-windows-x86_64.zip` | 2.9 MB | [Hub](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/rust/ai999x-chemistry-cli-1.2.0-windows-x86_64.zip) · [GitHub](https://github.com/AI999X/chemistry-ai999x/releases/download/v1.0.3/ai999x-chemistry-cli-1.2.0-windows-x86_64.zip) · [website (all models)](https://www.ai999x.com/downloads/desktop/1.2.0/ai999x-cli-1.2.0-windows-x86_64.zip) | unzip, then `chemistry.exe ask "<question>"` or `chemistry.exe solve <capability> name=value` |
-| Command line (`chemistry`) | Linux x86-64 | `ai999x-chemistry-cli-1.2.0-linux-x86_64.tar.gz` | 2.9 MB | [Hub](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/rust/ai999x-chemistry-cli-1.2.0-linux-x86_64.tar.gz) · [GitHub](https://github.com/AI999X/chemistry-ai999x/releases/download/v1.0.3/ai999x-chemistry-cli-1.2.0-linux-x86_64.tar.gz) · [website (all models)](https://www.ai999x.com/downloads/desktop/1.2.0/ai999x-cli-1.2.0-linux-x86_64.tar.gz) | extract, then `./chemistry ask "<question>"` or `./chemistry solve <capability> name=value` |
-
-The command-line archive holds `chemistry` with a README of its commands and examples, the licence and the notice. Checksums: [`rust/SHA256SUMS`](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/rust/SHA256SUMS) (`sha256sum -c SHA256SUMS`).
+Checksums: [SHA256SUMS](https://downloads.ai999x.com/desktop/1.4.0/SHA256SUMS) · every version: [https://downloads.ai999x.com/desktop/latest/](https://downloads.ai999x.com/desktop/latest/) · install guide: [desktop & command line](https://www.ai999x.com/desktop-cli/)
 
 ## Quick start
 
@@ -50,11 +37,11 @@ Download **AI999X Chemistry** for your system (above), unpack it and start it; t
 Linux, from a terminal:
 
 ```bash
-curl -LO https://www.ai999x.com/downloads/desktop/1.2.0/ai999x-chemistry-1.2.0-linux-x86_64.tar.gz
-curl -LO https://www.ai999x.com/downloads/desktop/1.2.0/SHA256SUMS
+curl -LO https://downloads.ai999x.com/desktop/1.4.0/ai999x-chemistry-1.4.0-linux-x86_64.tar.gz
+curl -LO https://downloads.ai999x.com/desktop/1.4.0/SHA256SUMS
 sha256sum -c --ignore-missing SHA256SUMS
-tar xzf ai999x-chemistry-1.2.0-linux-x86_64.tar.gz
-./ai999x-chemistry-1.2.0-linux-x86_64/ai999x-chemistry
+tar xzf ai999x-chemistry-1.4.0-linux-x86_64.tar.gz
+./ai999x-chemistry-1.4.0-linux-x86_64/ai999x-chemistry
 ```
 
 ### Command line
@@ -62,23 +49,23 @@ tar xzf ai999x-chemistry-1.2.0-linux-x86_64.tar.gz
 Linux:
 
 ```bash
-curl -LO https://www.ai999x.com/downloads/desktop/1.2.0/ai999x-cli-1.2.0-linux-x86_64.tar.gz
-curl -LO https://www.ai999x.com/downloads/desktop/1.2.0/SHA256SUMS
+curl -LO https://downloads.ai999x.com/desktop/1.4.0/ai999x-cli-1.4.0-linux-x86_64.tar.gz
+curl -LO https://downloads.ai999x.com/desktop/1.4.0/SHA256SUMS
 sha256sum -c --ignore-missing SHA256SUMS
-mkdir -p ~/.local/share && tar xzf ai999x-cli-1.2.0-linux-x86_64.tar.gz -C ~/.local/share
-echo 'export PATH="$HOME/.local/share/ai999x-cli-1.2.0-linux-x86_64:$PATH"' >> ~/.bashrc && source ~/.bashrc
+mkdir -p ~/.local/share && tar xzf ai999x-cli-1.4.0-linux-x86_64.tar.gz -C ~/.local/share
+echo 'export PATH="$HOME/.local/share/ai999x-cli-1.4.0-linux-x86_64:$PATH"' >> ~/.bashrc && source ~/.bashrc
 chemistry --version
 ```
 
 Windows (PowerShell):
 
 ```powershell
-$F = "ai999x-cli-1.2.0-windows-x86_64.zip"
-Invoke-WebRequest "https://www.ai999x.com/downloads/desktop/1.2.0/$F" -OutFile $F
-Invoke-WebRequest "https://www.ai999x.com/downloads/desktop/1.2.0/SHA256SUMS" -OutFile SHA256SUMS
+$F = "ai999x-cli-1.4.0-windows-x86_64.zip"
+Invoke-WebRequest "https://downloads.ai999x.com/desktop/1.4.0/$F" -OutFile $F
+Invoke-WebRequest "https://downloads.ai999x.com/desktop/1.4.0/SHA256SUMS" -OutFile SHA256SUMS
 (Get-FileHash $F -Algorithm SHA256).Hash.ToLower() -eq ((Select-String -SimpleMatch $F SHA256SUMS).Line -split ' ')[0]
 Expand-Archive $F -DestinationPath "$env:LOCALAPPDATA\AI999X" -Force
-$D = "$env:LOCALAPPDATA\AI999X\ai999x-cli-1.2.0-windows-x86_64"; $env:Path += ";$D"
+$D = "$env:LOCALAPPDATA\AI999X\ai999x-cli-1.4.0-windows-x86_64"; $env:Path += ";$D"
 [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$D", "User")
 chemistry --version
 ```
@@ -123,26 +110,6 @@ percent_ionized = 1.332670969
   Ka = 1.8e-05
   c = 100 mol/m^3
   assumes: monoprotic acid; 25 °C
-```
-
-**Draw the figures** — The live figures for your own inputs, written as SVG files into the folder given with --out (here the current folder); open them in any browser. Without --out the SVG text comes back as JSON.
-
-```console
-$ chemistry figures ph_weak_acid Ka=1.8e-05 "c=100 mol/m^3" --out .
-[
-  {
-    "slug": "ph-weak-acid-live-1",
-    "title": "PH as acid concentration varies",
-    "caption": "PH as c runs from 25 to 175 mol/m^3, every other input as you entered it (41 solutions). Marked: your c = 100 mol/m^3 gives pH = 2.875. Your inputs: Ka = 1.8e-05, c = 100 mol/m^3.",
-    "file": "./ph-weak-acid-live-1.svg"
-  },
-  {
-    "slug": "ph-weak-acid-live-2",
-    "title": "PH as acid dissociation constant varies",
-    "caption": "PH as Ka runs from 4.5e-06 to 3.15e-05, every other input as you entered it (29 solutions). Marked: your Ka = 1.8e-05 gives pH = 2.875. Your inputs: Ka = 1.8e-05, c = 100 mol/m^3.",
-    "file": "./ph-weak-acid-live-2.svg"
-  }
-]
 ```
 
 **Many questions at once** — One JSON request per line in, one JSON answer per line out, in order: for scripts, notebooks and agents (the program starts once). In PowerShell: Get-Content cases.jsonl | chemistry batch
@@ -315,7 +282,7 @@ _What this means:_ This calculation determines the pH at any point during a titr
 
 | Property | Value |
 |---|---|
-| Package | `chemistry-ai999x` 1.0.3 (import `chemistry_ai999x`) |
+| Package | `chemistry-ai999x` 1.1.0 (import `chemistry_ai999x`) |
 | Type | Deterministic neuro-symbolic chemistry engine (rule-based reading + certified symbolic capabilities) |
 | Capabilities | 103 certified procedures |
 | Knowledge pack | version 1.0.1 |
@@ -349,7 +316,7 @@ chemistry.ask("Who created you?").message
 # -> chemistry-ai999x was created and engineered by Ibnul Jaif Farabi at AI999X.
 ```
 
-The Python package also installs a Python command, `chemistry-ai999x "<question>"`; for the native program use `chemistry` (above). The outputs above were produced by running this exact code on chemistry-ai999x 1.0.3.
+The Python package also installs a Python command, `chemistry-ai999x "<question>"`; for the native program use `chemistry` (above). The outputs above were produced by running this exact code on chemistry-ai999x 1.1.0.
 
 ## Find the right capability, and draw it
 
@@ -510,10 +477,10 @@ _Arrhenius plot: the rate constant (logarithmic axis) against 1000/T for A = 1.0
 ## Citation
 
 ```bibtex
-@software{chemistry_ai999x_1_0_3,
+@software{chemistry_ai999x_1_1_0,
   title  = {chemistry-ai999x: an offline, verified chemistry solver},
   author = {Farabi, Ibnul Jaif}, organization = {AI999X},
-  year   = {2026}, version = {1.0.3},
+  year   = {2026}, version = {1.1.0},
   url    = {https://huggingface.co/AI999X/chemistry-ai999x}
 }
 ```
