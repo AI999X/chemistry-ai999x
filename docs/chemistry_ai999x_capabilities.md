@@ -208,7 +208,7 @@ Call `solve("<id>", **inputs)` with plain numbers; the result's `values` holds e
 
 <a id="molar_mass"></a>
 
-### Molar mass of a formula — `molar_mass`
+### Molar mass of a formula: `molar_mass`
 
 The molar mass of a chemical formula (parentheses, brackets and hydrates are read).
 
@@ -229,9 +229,9 @@ $$
 - **Assumes:** a neutral formula of element symbols with standard atomic weights
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
-![Where the molar mass of glucose, C₆H₁₂O₆, comes from: each bar is one element's share, its mass percent (returned by the package) times the molar mass M = 180](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molar-mass-composition)
+![Where the molar mass of H₂O (the worked example) comes from: each bar is one element's share, its mass percent (returned by the package) times the molar mass M = 18](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molar-mass-composition)
 
-*Where the molar mass of glucose, C₆H₁₂O₆, comes from: each bar is one element's share, its mass percent (returned by the package) times the molar mass M = 180.156 g/mol (returned by the package) — the shares add up to M. Marked: M = 180.156 g/mol; carbon 72.066, oxygen 95.994 g/mol.*
+*Where the molar mass of H₂O (the worked example) comes from: each bar is one element's share, its mass percent (returned by the package) times the molar mass M = 18.015 g/mol (returned by the package), the shares add up to M. Marked: M = 18.015 g/mol; H 2.016 g/mol, O 15.999 g/mol.*
 
 ![Molar masses of eight common substances, each returned by the package: H₂O 18](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molar-mass-by-substance)
 
@@ -268,7 +268,7 @@ chemistry_ai999x.solve('molar_mass', formula='K4[Fe(CN)6]')
 
 <a id="moles_from_mass"></a>
 
-### Moles from a mass — `moles_from_mass`
+### Moles from a mass: `moles_from_mass`
 
 The amount of substance (and number of formula units) in a given mass of a compound.
 
@@ -316,7 +316,7 @@ chemistry_ai999x.solve('moles_from_mass', formula='NaCl', m=0.01)
 
 <a id="mass_from_moles"></a>
 
-### Mass from moles — `mass_from_moles`
+### Mass from moles: `mass_from_moles`
 
 The mass of a given amount (moles) of a compound.
 
@@ -363,7 +363,7 @@ chemistry_ai999x.solve('mass_from_moles', formula='H2SO4', n=0.15)
 
 <a id="particles_from_mass"></a>
 
-### Number of molecules in a mass — `particles_from_mass`
+### Number of molecules in a mass: `particles_from_mass`
 
 The number of molecules (formula units) in a given mass of a compound.
 
@@ -385,9 +385,9 @@ $$
 - **Assumes:** $m > 0$
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
-![Number of molecules in 10 g of nine gases, each returned by the package — light molecules are many per gram](https://www.ai999x.com/?ax_fig=chemistry-ai999x/particles-from-mass-by-gas)
+![Number of molecules in 10 g of nine gases, each returned by the package, light molecules are many per gram](https://www.ai999x.com/?ax_fig=chemistry-ai999x/particles-from-mass-by-gas)
 
-*Number of molecules in 10 g of nine gases, each returned by the package — light molecules are many per gram. Highlighted: the worked example CO₂, 1.3684e+23 molecules.*
+*Number of molecules in 10 g of nine gases, each returned by the package, light molecules are many per gram. Highlighted: the worked example CO₂, 1.3684e+23 molecules.*
 
 ```python
 chemistry_ai999x.solve('particles_from_mass', formula='CO2', m=0.01)
@@ -408,7 +408,7 @@ chemistry_ai999x.solve('particles_from_mass', formula='NaCl', m=0.005)
 
 <a id="particles_from_moles"></a>
 
-### Number of particles in an amount — `particles_from_moles`
+### Number of particles in an amount: `particles_from_moles`
 
 The number of particles in a given amount of substance (Avogadro's number).
 
@@ -451,7 +451,7 @@ chemistry_ai999x.solve('particles_from_moles', n=2.0)
 
 <a id="moles_from_particles"></a>
 
-### Moles from a number of particles — `moles_from_particles`
+### Moles from a number of particles: `moles_from_particles`
 
 The amount of substance that contains a given number of particles.
 
@@ -494,7 +494,7 @@ chemistry_ai999x.solve('moles_from_particles', N=1.204e+24)
 
 <a id="atoms_of_element"></a>
 
-### Atoms of an element in a mass of compound — `atoms_of_element`
+### Atoms of an element in a mass of compound: `atoms_of_element`
 
 How many atoms of one element a given mass of a compound contains.
 
@@ -541,7 +541,7 @@ chemistry_ai999x.solve('atoms_of_element', formula='CH4', element='H', m=0.005)
 
 <a id="mass_percent"></a>
 
-### Mass percent of an element — `mass_percent`
+### Mass percent of an element: `mass_percent`
 
 The percentage by mass of an element in a compound (and the full percent composition).
 
@@ -567,9 +567,9 @@ $$
 
 *Mass composition of H₂SO₄: the percent by mass of every element, returned by the package (H 2.055 %, S 32.7 %, O 65.25 %). Highlighted: the element asked in the worked example, O.*
 
-![Percent oxygen by mass in eight oxygen compounds, each returned by the package: H₂O 88](https://www.ai999x.com/?ax_fig=chemistry-ai999x/mass-percent-oxygen-share)
+![Percent O by mass in 8 compounds containing it, each returned by the package: H₂SO₄ 65](https://www.ai999x.com/?ax_fig=chemistry-ai999x/mass-percent-oxygen-share)
 
-*Percent oxygen by mass in eight oxygen compounds, each returned by the package: H₂O 88.81 %, CO₂ 72.71 %, H₂SO₄ 65.25 %, CaCO₃ 47.96 %, Fe₂O₃ 30.06 %, C₆H₁₂O₆ 53.28 %, KMnO₄ 40.5 %, SiO₂ 53.26 %.*
+*Percent O by mass in 8 compounds containing it, each returned by the package: H₂SO₄ 65.25 %, H₂O 88.81 %, CO₂ 72.71 %, CaCO₃ 47.96 %, Fe₂O₃ 30.06 %, C₆H₁₂O₆ 53.28 %, KMnO₄ 40.5 %, SiO₂ 53.26 %. Highlighted: the worked example, H₂SO₄.*
 
 ```python
 chemistry_ai999x.solve('mass_percent', formula='H2SO4', element='O')
@@ -592,7 +592,7 @@ chemistry_ai999x.solve('mass_percent', formula='NH4NO3', element='N')
 
 <a id="mass_of_element"></a>
 
-### Mass of an element in a sample — `mass_of_element`
+### Mass of an element in a sample: `mass_of_element`
 
 The mass of one element contained in a given mass of a compound.
 
@@ -638,7 +638,7 @@ chemistry_ai999x.solve('mass_of_element', formula='NH4NO3', element='N', m=10.0)
 
 <a id="empirical_formula"></a>
 
-### Empirical formula from percent composition — `empirical_formula`
+### Empirical formula from percent composition, `empirical_formula`
 
 The simplest whole-number formula of a compound from its mass percentages.
 
@@ -661,7 +661,7 @@ $$
 
 ![Top: the stated composition, C 40 %, H 6](https://www.ai999x.com/?ax_fig=chemistry-ai999x/empirical-formula-mass-to-atoms)
 
-*Top: the stated composition, C 40 %, H 6.71 %, O 53.3 % by mass. Bottom: the whole-number atom ratio the package returns, C 1, H 2, O 1 — the empirical formula CH₂O. Hydrogen is a small mass share but two atoms.*
+*Top: the stated composition, C 40 %, H 6.71 %, O 53.3 % by mass. Bottom: the whole-number atom ratio the package returns, C 1, H 2, O 1, the empirical formula CH₂O. Hydrogen is a small mass share but two atoms.*
 
 ```python
 chemistry_ai999x.solve('empirical_formula', composition='C 40.0, H 6.71, O 53.3')
@@ -688,7 +688,7 @@ chemistry_ai999x.solve('empirical_formula', composition='Fe 69.94, O 30.06')
 
 <a id="molecular_formula"></a>
 
-### Molecular formula from the empirical formula — `molecular_formula`
+### Molecular formula from the empirical formula, `molecular_formula`
 
 The molecular formula from an empirical formula and the molar mass.
 
@@ -710,9 +710,9 @@ $$
 - **Assumes:** $M > 0$; M is a whole multiple of the empirical formula mass (within 2%)
 - **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
 
-![From the empirical formula CH₂O to the molecular formula: for six stated molar masses the package returns the multiple and the formula — 30](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molecular-formula-multiples)
+![From the empirical formula CH₂O to the molecular formula: for six stated molar masses the package returns the multiple and the formula, 30](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molecular-formula-multiples)
 
-*From the empirical formula CH₂O to the molecular formula: for six stated molar masses the package returns the multiple and the formula — 30.03 g/mol → CH₂O, 60.05 g/mol → C₂H₄O₂, 90.08 g/mol → C₃H₆O₃, 120.1 g/mol → C₄H₈O₄, 150.1 g/mol → C₅H₁₀O₅, 180.2 g/mol → C₆H₁₂O₆. The worked example (M = 180.16 g/mol) is C₆H₁₂O₆, glucose.*
+*From the empirical formula CH₂O to the molecular formula: for six stated molar masses the package returns the multiple and the formula, 30.03 g/mol → CH₂O, 60.05 g/mol → C₂H₄O₂, 90.08 g/mol → C₃H₆O₃, 120.1 g/mol → C₄H₈O₄, 150.1 g/mol → C₅H₁₀O₅, 180.2 g/mol → C₆H₁₂O₆. The worked example (M = 180.16 g/mol) is C₆H₁₂O₆, glucose.*
 
 ```python
 chemistry_ai999x.solve('molecular_formula', empirical='CH2O', M=0.18016)
@@ -734,7 +734,7 @@ chemistry_ai999x.solve('molecular_formula', empirical='CH', M=0.07811)
 
 <a id="balance_equation"></a>
 
-### Balancing a chemical equation — `balance_equation`
+### Balancing a chemical equation: `balance_equation`
 
 The smallest whole-number coefficients that balance a chemical equation.
 
@@ -759,9 +759,9 @@ $$
 
 *The balanced equation C₃H₈ + 5 O₂ -> 3 CO₂ + 4 H₂O: the coefficient of each reactant (left) and product (right), as returned by the package for the stated skeleton C3H8 + O2 -> CO2 + H2O.*
 
-![Atom balance of C₃H₈ + 5 O₂ -> 3 CO₂ + 4 H₂O: for each element, the atoms on the reactant and on the product side — each the returned coefficient times the subscript read from the formula (derived) — C 3 = 3; H 8 = 8; O 10 = 10](https://www.ai999x.com/?ax_fig=chemistry-ai999x/balance-equation-atom-balance)
+![Atom balance of C₃H₈ + 5 O₂ -> 3 CO₂ + 4 H₂O: for each element, the atoms on the reactant and on the product side (each the returned coefficient times the subscript read from the formula (derived)), C 3 = 3; H 8 = 8; O 10 = 10](https://www.ai999x.com/?ax_fig=chemistry-ai999x/balance-equation-atom-balance)
 
-*Atom balance of C₃H₈ + 5 O₂ -> 3 CO₂ + 4 H₂O: for each element, the atoms on the reactant and on the product side — each the returned coefficient times the subscript read from the formula (derived) — C 3 = 3; H 8 = 8; O 10 = 10.*
+*Atom balance of C₃H₈ + 5 O₂ -> 3 CO₂ + 4 H₂O: for each element, the atoms on the reactant and on the product side (each the returned coefficient times the subscript read from the formula (derived)), C 3 = 3; H 8 = 8; O 10 = 10.*
 
 ```python
 chemistry_ai999x.solve('balance_equation', equation='C3H8 + O2 -> CO2 + H2O')
@@ -789,7 +789,7 @@ chemistry_ai999x.solve('balance_equation', equation='Cu + HNO3 -> Cu(NO3)2 + NO 
 
 <a id="limiting_reagent"></a>
 
-### Limiting reagent and theoretical yield — `limiting_reagent`
+### Limiting reagent and theoretical yield: `limiting_reagent`
 
 Which of two reactants limits a reaction, the mass of a product formed and the excess left over.
 
@@ -822,7 +822,7 @@ $$
 
 ![limiting reagent (limiting) over m_a (mass of the first reactant) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/limiting-reagent-decision)
 
-*limiting reagent (limiting) over m_a (mass of the first reactant) from 0.0004 kg to 0.04 kg and m_b (mass of the second reactant) from 0.0016 kg to 0.16 kg (logarithmic axes): each of the 31 × 21 cells is one run of chemistry-ai999x, coloured by the verdict it returned — H2: 243 cells, O2: 408 cells. Other inputs as in the worked example: equation = H2 + O2 -> H2O, reactant_a = H2, reactant_b = O2, product = H2O. Marked: the worked example, m_a = 0.004 kg, m_b = 0.016 kg → O2.*
+*limiting reagent (limiting) over m_a (mass of the first reactant) from 0.0004 kg to 0.04 kg and m_b (mass of the second reactant) from 0.0016 kg to 0.16 kg (logarithmic axes): each of the 31 × 21 cells is one run of chemistry-ai999x, coloured by the verdict it returned, H2: 243 cells, O2: 408 cells. Other inputs as in the worked example: equation = H2 + O2 -> H2O, reactant_a = H2, reactant_b = O2, product = H2O. Marked: the worked example, m_a = 0.004 kg, m_b = 0.016 kg → O2.*
 
 ```python
 chemistry_ai999x.solve('limiting_reagent', equation='H2 + O2 -> H2O', reactant_a='H2', m_a=0.004, reactant_b='O2', m_b=0.016, product='H2O')
@@ -844,7 +844,7 @@ chemistry_ai999x.solve('limiting_reagent', equation='N2 + H2 -> NH3', reactant_a
 
 <a id="theoretical_yield"></a>
 
-### Theoretical yield from one reactant — `theoretical_yield`
+### Theoretical yield from one reactant: `theoretical_yield`
 
 The mass of a product formed from a given mass of one reactant (in excess of the others).
 
@@ -896,7 +896,7 @@ chemistry_ai999x.solve('theoretical_yield', equation='Fe2O3 + CO -> Fe + CO2', r
 
 <a id="percent_yield"></a>
 
-### Percent yield of a reaction — `percent_yield`
+### Percent yield of a reaction: `percent_yield`
 
 The percent yield from the mass of reactant used and the mass of product obtained.
 
@@ -944,7 +944,7 @@ chemistry_ai999x.solve('percent_yield', equation='N2 + H2 -> NH3', reactant='N2'
 
 <a id="ideal_gas_pressure"></a>
 
-### Ideal gas law: pressure — `ideal_gas_pressure`
+### Ideal gas law: pressure, `ideal_gas_pressure`
 
 The pressure of an ideal gas from its amount, volume and temperature (PV = nRT).
 
@@ -991,7 +991,7 @@ chemistry_ai999x.solve('ideal_gas_pressure', n=0.5, V=0.005, T=298.15)
 
 <a id="ideal_gas_volume"></a>
 
-### Ideal gas law: volume — `ideal_gas_volume`
+### Ideal gas law: volume, `ideal_gas_volume`
 
 The volume of an ideal gas from its amount, pressure and temperature.
 
@@ -1037,7 +1037,7 @@ chemistry_ai999x.solve('ideal_gas_volume', n=0.25, P=202650.0, T=350.0)
 
 <a id="ideal_gas_moles"></a>
 
-### Ideal gas law: amount — `ideal_gas_moles`
+### Ideal gas law: amount, `ideal_gas_moles`
 
 The amount (moles) of an ideal gas from its pressure, volume and temperature.
 
@@ -1082,7 +1082,7 @@ chemistry_ai999x.solve('ideal_gas_moles', P=101325.0, V=0.0224, T=273.15)
 
 <a id="ideal_gas_temperature"></a>
 
-### Ideal gas law: temperature — `ideal_gas_temperature`
+### Ideal gas law: temperature, `ideal_gas_temperature`
 
 The temperature of an ideal gas from its pressure, volume and amount.
 
@@ -1128,7 +1128,7 @@ chemistry_ai999x.solve('ideal_gas_temperature', P=150000.0, V=0.002, n=0.1)
 
 <a id="ideal_gas_mass"></a>
 
-### Mass of a gas sample (ideal gas) — `ideal_gas_mass`
+### Mass of a gas sample (ideal gas): `ideal_gas_mass`
 
 The mass of a named gas that fills a volume at a given pressure and temperature.
 
@@ -1174,7 +1174,7 @@ chemistry_ai999x.solve('ideal_gas_mass', formula='CO2', P=101325.0, V=0.005, T=3
 
 <a id="gas_density"></a>
 
-### Density of an ideal gas — `gas_density`
+### Density of an ideal gas: `gas_density`
 
 The density of a named gas at a given pressure and temperature (ideal gas).
 
@@ -1223,7 +1223,7 @@ chemistry_ai999x.solve('gas_density', formula='N2', P=200000.0, T=350.0)
 
 <a id="molar_mass_from_gas_density"></a>
 
-### Molar mass from gas density — `molar_mass_from_gas_density`
+### Molar mass from gas density: `molar_mass_from_gas_density`
 
 The molar mass of a gas from its density at a known pressure and temperature.
 
@@ -1264,7 +1264,7 @@ chemistry_ai999x.solve('molar_mass_from_gas_density', rho=1.25, P=101325.0, T=27
 
 <a id="molar_mass_from_gas_sample"></a>
 
-### Molar mass from a gas sample — `molar_mass_from_gas_sample`
+### Molar mass from a gas sample: `molar_mass_from_gas_sample`
 
 The molar mass of a gas from a sample's mass, volume, pressure and temperature.
 
@@ -1306,7 +1306,7 @@ chemistry_ai999x.solve('molar_mass_from_gas_sample', m=0.001, V=0.0005, P=101325
 
 <a id="boyle_final_volume"></a>
 
-### Boyle's law: final volume — `boyle_final_volume`
+### Boyle's law: final volume, `boyle_final_volume`
 
 The volume of a gas after a pressure change at constant temperature $(P1V1 = P2V2)$.
 
@@ -1352,7 +1352,7 @@ chemistry_ai999x.solve('boyle_final_volume', P1=100000.0, V1=0.005, P2=250000.0)
 
 <a id="boyle_final_pressure"></a>
 
-### Boyle's law: final pressure — `boyle_final_pressure`
+### Boyle's law: final pressure, `boyle_final_pressure`
 
 The pressure of a gas after a volume change at constant temperature.
 
@@ -1392,7 +1392,7 @@ chemistry_ai999x.solve('boyle_final_pressure', P1=101325.0, V1=0.004, V2=0.001)
 
 <a id="charles_final_volume"></a>
 
-### Charles's law: final volume — `charles_final_volume`
+### Charles's law: final volume, `charles_final_volume`
 
 The volume of a gas after a temperature change at constant pressure $(V_{1}/T_{1} = V_{2}/T_{2})$.
 
@@ -1432,7 +1432,7 @@ chemistry_ai999x.solve('charles_final_volume', V1=0.0025, T1=298.15, T2=348.15)
 
 <a id="gay_lussac_final_pressure"></a>
 
-### Gay-Lussac's law: final pressure — `gay_lussac_final_pressure`
+### Gay-Lussac's law: final pressure, `gay_lussac_final_pressure`
 
 The pressure of a gas after a temperature change at constant volume $(P_{1}/T_{1} = P_{2}/T_{2})$.
 
@@ -1472,7 +1472,7 @@ chemistry_ai999x.solve('gay_lussac_final_pressure', P1=222915.00000000003, T1=29
 
 <a id="combined_gas_final_volume"></a>
 
-### Combined gas law: final volume — `combined_gas_final_volume`
+### Combined gas law: final volume, `combined_gas_final_volume`
 
 The volume of a fixed amount of gas after its pressure and temperature change.
 
@@ -1518,7 +1518,7 @@ chemistry_ai999x.solve('combined_gas_final_volume', P1=101325.0, V1=0.004, T1=30
 
 <a id="combined_gas_final_pressure"></a>
 
-### Combined gas law: final pressure — `combined_gas_final_pressure`
+### Combined gas law: final pressure, `combined_gas_final_pressure`
 
 The pressure of a fixed amount of gas after its volume and temperature change.
 
@@ -1564,7 +1564,7 @@ chemistry_ai999x.solve('combined_gas_final_pressure', P1=101325.0, V1=0.003, T1=
 
 <a id="combined_gas_final_temperature"></a>
 
-### Combined gas law: final temperature — `combined_gas_final_temperature`
+### Combined gas law: final temperature, `combined_gas_final_temperature`
 
 The temperature of a fixed amount of gas after its pressure and volume change.
 
@@ -1610,7 +1610,7 @@ chemistry_ai999x.solve('combined_gas_final_temperature', P1=101325.0, V1=0.002, 
 
 <a id="partial_pressure"></a>
 
-### Partial pressure (Dalton's law) — `partial_pressure`
+### Partial pressure (Dalton's law): `partial_pressure`
 
 The partial pressure of a gas in a mixture from its mole fraction and the total pressure.
 
@@ -1653,7 +1653,7 @@ chemistry_ai999x.solve('partial_pressure', x=0.21, P_total=101325.0)
 
 <a id="dalton_mixture"></a>
 
-### Partial pressures in a gas mixture — `dalton_mixture`
+### Partial pressures in a gas mixture: `dalton_mixture`
 
 Mole fractions and partial pressures of every gas in a mixture from the amounts and the total pressure.
 
@@ -1693,7 +1693,7 @@ chemistry_ai999x.solve('dalton_mixture', moles='2.0, 1.0, 0.5', P_total=354637.5
 
 <a id="graham_rate_ratio"></a>
 
-### Graham's law: ratio of effusion rates — `graham_rate_ratio`
+### Graham's law: ratio of effusion rates, `graham_rate_ratio`
 
 How many times faster one gas effuses (or diffuses) than another.
 
@@ -1738,7 +1738,7 @@ chemistry_ai999x.solve('graham_rate_ratio', formula_1='He', formula_2='CH4')
 
 <a id="graham_molar_mass"></a>
 
-### Graham's law: molar mass of an unknown gas — `graham_molar_mass`
+### Graham's law: molar mass of an unknown gas, `graham_molar_mass`
 
 The molar mass of a gas from how fast it effuses relative to a known gas.
 
@@ -1778,7 +1778,7 @@ chemistry_ai999x.solve('graham_molar_mass', ratio=1.5, formula_known='O2')
 
 <a id="van_der_waals_pressure"></a>
 
-### Van der Waals equation: pressure — `van_der_waals_pressure`
+### Van der Waals equation: pressure, `van_der_waals_pressure`
 
 The pressure of a real gas from the van der Waals equation (and the ideal-gas pressure for comparison).
 
@@ -1823,7 +1823,7 @@ chemistry_ai999x.solve('van_der_waals_pressure', n=2.0, V=0.005, T=300.0, a=0.36
 
 <a id="rms_speed"></a>
 
-### Root-mean-square speed of gas molecules — `rms_speed`
+### Root-mean-square speed of gas molecules: `rms_speed`
 
 The root-mean-square speed of the molecules of an ideal gas at a temperature.
 
@@ -1867,7 +1867,7 @@ chemistry_ai999x.solve('rms_speed', formula='O2', T=298.15)
 
 <a id="mean_speed"></a>
 
-### Mean speed of gas molecules — `mean_speed`
+### Mean speed of gas molecules: `mean_speed`
 
 The mean (average) speed of the molecules of an ideal gas (Maxwell-Boltzmann distribution).
 
@@ -1906,7 +1906,7 @@ chemistry_ai999x.solve('mean_speed', formula='CO2', T=300.0)
 
 <a id="molarity_from_mass"></a>
 
-### Molarity from a dissolved mass — `molarity_from_mass`
+### Molarity from a dissolved mass: `molarity_from_mass`
 
 The molar concentration of a solution made by dissolving a mass of a compound to a final volume.
 
@@ -1956,7 +1956,7 @@ chemistry_ai999x.solve('molarity_from_mass', formula='C6H12O6', m=0.09, V=0.5)
 
 <a id="solute_mass_for_solution"></a>
 
-### Mass of solute for a solution — `solute_mass_for_solution`
+### Mass of solute for a solution: `solute_mass_for_solution`
 
 The mass of a compound needed to prepare a volume of solution of a given molarity.
 
@@ -2001,7 +2001,7 @@ chemistry_ai999x.solve('solute_mass_for_solution', formula='NaCl', c=100.0, V=0.
 
 <a id="dilution_final_concentration"></a>
 
-### Dilution: final concentration — `dilution_final_concentration`
+### Dilution: final concentration, `dilution_final_concentration`
 
 The concentration after diluting a volume of solution to a larger volume $(c1V1 = c2V2)$.
 
@@ -2042,7 +2042,7 @@ chemistry_ai999x.solve('dilution_final_concentration', c1=6000.0, V1=0.025, V2=0
 
 <a id="dilution_volume"></a>
 
-### Dilution: volume of stock needed — `dilution_volume`
+### Dilution: volume of stock needed, `dilution_volume`
 
 The volume of a stock solution needed to prepare a volume of a more dilute solution.
 
@@ -2083,7 +2083,7 @@ chemistry_ai999x.solve('dilution_volume', c1=12000.0, c2=100.0, V2=0.5)
 
 <a id="molality"></a>
 
-### Molality of a solution — `molality`
+### Molality of a solution: `molality`
 
 The molality (moles of solute per kilogram of solvent) from the masses of solute and solvent.
 
@@ -2127,7 +2127,7 @@ chemistry_ai999x.solve('molality', formula='NaCl', m_solute=0.01, m_solvent=0.5)
 
 <a id="mole_fraction"></a>
 
-### Mole fraction in a solution — `mole_fraction`
+### Mole fraction in a solution: `mole_fraction`
 
 The mole fractions of solute and solvent from their masses.
 
@@ -2173,7 +2173,7 @@ chemistry_ai999x.solve('mole_fraction', formula_solute='C6H12O6', m_solute=0.02,
 
 <a id="raoult_vapor_pressure"></a>
 
-### Vapor pressure of a solution (Raoult's law) — `raoult_vapor_pressure`
+### Vapor pressure of a solution (Raoult's law), `raoult_vapor_pressure`
 
 The vapor pressure of a solvent above a solution of a nonvolatile solute, from the masses of both.
 
@@ -2215,7 +2215,7 @@ chemistry_ai999x.solve('raoult_vapor_pressure', formula_solute='C12H22O11', m_so
 
 <a id="freezing_point_depression"></a>
 
-### Freezing-point depression — `freezing_point_depression`
+### Freezing-point depression: `freezing_point_depression`
 
 The change of the freezing point of a solvent caused by a solute (dT = i K b).
 
@@ -2261,7 +2261,7 @@ chemistry_ai999x.solve('freezing_point_depression', i=2.0, K=1.86, b=0.2)
 
 <a id="boiling_point_elevation"></a>
 
-### Boiling-point elevation — `boiling_point_elevation`
+### Boiling-point elevation: `boiling_point_elevation`
 
 The change of the boiling point of a solvent caused by a solute (dT = i K b).
 
@@ -2307,7 +2307,7 @@ chemistry_ai999x.solve('boiling_point_elevation', i=2.0, K=0.512, b=0.2)
 
 <a id="molar_mass_from_freezing_point"></a>
 
-### Molar mass from freezing-point depression — `molar_mass_from_freezing_point`
+### Molar mass from freezing-point depression: `molar_mass_from_freezing_point`
 
 The molar mass of a solute from the freezing-point depression it causes.
 
@@ -2350,7 +2350,7 @@ chemistry_ai999x.solve('molar_mass_from_freezing_point', m_solute=0.002, m_solve
 
 <a id="osmotic_pressure"></a>
 
-### Osmotic pressure — `osmotic_pressure`
+### Osmotic pressure: `osmotic_pressure`
 
 The osmotic pressure of a dilute solution (van 't Hoff equation).
 
@@ -2397,7 +2397,7 @@ chemistry_ai999x.solve('osmotic_pressure', i=2.0, c=150.0, T=310.0)
 
 <a id="molar_mass_from_osmotic_pressure"></a>
 
-### Molar mass from osmotic pressure — `molar_mass_from_osmotic_pressure`
+### Molar mass from osmotic pressure: `molar_mass_from_osmotic_pressure`
 
 The molar mass of a solute (e.g. a protein) from the osmotic pressure of its solution.
 
@@ -2439,7 +2439,7 @@ chemistry_ai999x.solve('molar_mass_from_osmotic_pressure', m=0.001, V=0.0001, Pi
 
 <a id="kp_from_kc"></a>
 
-### Kp from Kc — `kp_from_kc`
+### Kp from Kc: `kp_from_kc`
 
 The pressure equilibrium constant from the concentration one (Kp = Kc $(RT)^{dn}$, atm and mol/L).
 
@@ -2485,7 +2485,7 @@ chemistry_ai999x.solve('kp_from_kc', Kc=4.0, T=500.0, dn=1.0)
 
 <a id="kc_from_kp"></a>
 
-### Kc from Kp — `kc_from_kp`
+### Kc from Kp: `kc_from_kp`
 
 The concentration equilibrium constant from the pressure one $(Kc = Kp / (RT)^{dn})$.
 
@@ -2525,7 +2525,7 @@ chemistry_ai999x.solve('kc_from_kp', Kp=1.8, T=523.0, dn=1.0)
 
 <a id="equilibrium_ice"></a>
 
-### Equilibrium concentrations (ICE table) — `equilibrium_ice`
+### Equilibrium concentrations (ICE table): `equilibrium_ice`
 
 Equilibrium concentrations (or partial pressures) from the initial ones and K, for any one reaction as written.
 
@@ -2576,7 +2576,7 @@ chemistry_ai999x.solve('equilibrium_ice', equation='H2 + I2 ⇌ 2 HI', initial='
 
 <a id="k_from_delta_g"></a>
 
-### Equilibrium constant from the standard Gibbs energy — `k_from_delta_g`
+### Equilibrium constant from the standard Gibbs energy, `k_from_delta_g`
 
 The equilibrium constant from the standard Gibbs energy change (K = exp(-dG°/RT)).
 
@@ -2625,7 +2625,7 @@ chemistry_ai999x.solve('k_from_delta_g', dG=10000.0, T=500.0)
 
 <a id="delta_g_from_k"></a>
 
-### Standard Gibbs energy from the equilibrium constant — `delta_g_from_k`
+### Standard Gibbs energy from the equilibrium constant, `delta_g_from_k`
 
 The standard Gibbs energy change from the equilibrium constant (dG° = -RT ln K).
 
@@ -2673,7 +2673,7 @@ chemistry_ai999x.solve('delta_g_from_k', K=0.25, T=400.0)
 
 <a id="vant_hoff_k2"></a>
 
-### Van 't Hoff equation: K at another temperature — `vant_hoff_k2`
+### Van 't Hoff equation: K at another temperature, `vant_hoff_k2`
 
 The equilibrium constant at a second temperature from K at a first one and the reaction enthalpy.
 
@@ -2715,7 +2715,7 @@ chemistry_ai999x.solve('vant_hoff_k2', K1=1.8e-05, T1=298.0, T2=350.0, dH=50000.
 
 <a id="delta_g_nonstandard"></a>
 
-### Gibbs energy change at non-standard conditions — `delta_g_nonstandard`
+### Gibbs energy change at non-standard conditions, `delta_g_nonstandard`
 
 The Gibbs energy change of a reaction at a given reaction quotient (dG = dG° + RT ln Q).
 
@@ -2755,7 +2755,7 @@ chemistry_ai999x.solve('delta_g_nonstandard', dG0=-33000.0, T=298.0, Q=100.0)
 
 <a id="ksp_molar_solubility"></a>
 
-### Molar solubility from Ksp — `ksp_molar_solubility`
+### Molar solubility from Ksp: `ksp_molar_solubility`
 
 The molar solubility of a sparingly soluble salt MxAy in pure water from its solubility product.
 
@@ -2803,7 +2803,7 @@ chemistry_ai999x.solve('ksp_molar_solubility', Ksp=1.8e-10, x=1, y=1)
 
 <a id="ksp_from_solubility"></a>
 
-### Ksp from molar solubility — `ksp_from_solubility`
+### Ksp from molar solubility: `ksp_from_solubility`
 
 The solubility product of a salt MxAy from its molar solubility.
 
@@ -2843,7 +2843,7 @@ chemistry_ai999x.solve('ksp_from_solubility', s=1.5, x=1, y=2)
 
 <a id="common_ion_solubility"></a>
 
-### Molar solubility with a common ion — `common_ion_solubility`
+### Molar solubility with a common ion: `common_ion_solubility`
 
 The molar solubility of a salt MxAy in a solution that already contains one of its ions.
 
@@ -2887,7 +2887,7 @@ chemistry_ai999x.solve('common_ion_solubility', Ksp=3.9e-11, x=1, y=2, c_common=
 
 <a id="ph_from_hydronium"></a>
 
-### pH from the hydronium concentration — `ph_from_hydronium`
+### pH from the hydronium concentration, `ph_from_hydronium`
 
 pH, pOH and [OH-] from the hydronium (hydrogen ion) concentration at 25 °C.
 
@@ -2932,7 +2932,7 @@ chemistry_ai999x.solve('ph_from_hydronium', h=0.025)
 
 <a id="hydronium_from_ph"></a>
 
-### Hydronium concentration from pH — `hydronium_from_ph`
+### Hydronium concentration from pH: `hydronium_from_ph`
 
 [H3O+], [OH-] and pOH from the pH at 25 °C.
 
@@ -2978,7 +2978,7 @@ chemistry_ai999x.solve('hydronium_from_ph', pH=9.5)
 
 <a id="ph_from_hydroxide"></a>
 
-### pH from the hydroxide concentration — `ph_from_hydroxide`
+### pH from the hydroxide concentration, `ph_from_hydroxide`
 
 pOH and pH from the hydroxide ion concentration at 25 °C.
 
@@ -3017,7 +3017,7 @@ chemistry_ai999x.solve('ph_from_hydroxide', oh=0.1)
 
 <a id="ph_strong_acid"></a>
 
-### pH of a strong monoprotic acid — `ph_strong_acid`
+### pH of a strong monoprotic acid, `ph_strong_acid`
 
 The pH of a strong monoprotic acid solution (water's own ionization included, so dilute solutions are right).
 
@@ -3062,7 +3062,7 @@ chemistry_ai999x.solve('ph_strong_acid', c=1e-05)
 
 <a id="ph_strong_base"></a>
 
-### pH of a strong base — `ph_strong_base`
+### pH of a strong base, `ph_strong_base`
 
 The pH and pOH of a strong (group 1 or 2) hydroxide solution.
 
@@ -3108,7 +3108,7 @@ chemistry_ai999x.solve('ph_strong_base', c=5.0, n_oh=2)
 
 <a id="ph_weak_acid"></a>
 
-### pH of a weak acid — `ph_weak_acid`
+### pH of a weak acid, `ph_weak_acid`
 
 The pH and percent ionization of a weak monoprotic acid from Ka (or pKa) and its concentration.
 
@@ -3160,7 +3160,7 @@ chemistry_ai999x.solve('ph_weak_acid', Ka=6.309573444801929e-05, c=50.0)
 
 <a id="ph_weak_base"></a>
 
-### pH of a weak base — `ph_weak_base`
+### pH of a weak base, `ph_weak_base`
 
 The pH, pOH and percent ionization of a weak base from Kb (or pKb) and its concentration.
 
@@ -3205,7 +3205,7 @@ chemistry_ai999x.solve('ph_weak_base', Kb=1.8e-05, c=100.0)
 
 <a id="ka_from_ph"></a>
 
-### Ka from the pH of a weak acid — `ka_from_ph`
+### Ka from the pH of a weak acid: `ka_from_ph`
 
 The acid dissociation constant of a weak monoprotic acid from the pH of a solution of known concentration.
 
@@ -3249,7 +3249,7 @@ chemistry_ai999x.solve('ka_from_ph', pH=2.87, c=100.0)
 
 <a id="buffer_ph"></a>
 
-### Buffer pH (Henderson-Hasselbalch) — `buffer_ph`
+### Buffer pH (Henderson-Hasselbalch): `buffer_ph`
 
 The pH of a buffer from the acid's Ka (or pKa) and the concentrations of the weak acid and its conjugate base.
 
@@ -3289,7 +3289,7 @@ chemistry_ai999x.solve('buffer_ph', Ka=1.7378008287493764e-05, c_base=150.0, c_a
 
 <a id="titration_equivalence_volume"></a>
 
-### Titration: equivalence-point volume — `titration_equivalence_volume`
+### Titration: equivalence-point volume, `titration_equivalence_volume`
 
 The volume of titrant needed to reach the equivalence point of a neutralization.
 
@@ -3337,7 +3337,7 @@ chemistry_ai999x.solve('titration_equivalence_volume', c_t=100.0, V_a=2e-05, c_a
 
 <a id="titration_ph_strong_acid_strong_base"></a>
 
-### pH during a strong acid - strong base titration — `titration_ph_strong_acid_strong_base`
+### pH during a strong acid - strong base titration, `titration_ph_strong_acid_strong_base`
 
 The pH after adding a volume of strong base to a strong monoprotic acid (exact, any point of the titration).
 
@@ -3384,7 +3384,7 @@ chemistry_ai999x.solve('titration_ph_strong_acid_strong_base', c_a=100.0, V_a=2.
 
 <a id="titration_ph_weak_acid_strong_base"></a>
 
-### pH during a weak acid - strong base titration — `titration_ph_weak_acid_strong_base`
+### pH during a weak acid - strong base titration, `titration_ph_weak_acid_strong_base`
 
 The pH after adding strong base to a weak monoprotic acid, at any point (exact charge balance).
 
@@ -3435,7 +3435,7 @@ chemistry_ai999x.solve('titration_ph_weak_acid_strong_base', Ka=1.8e-05, c_a=100
 
 <a id="ph_diprotic_acid"></a>
 
-### pH of a diprotic acid — `ph_diprotic_acid`
+### pH of a diprotic acid, `ph_diprotic_acid`
 
 The pH of a diprotic acid H2A from both dissociation constants, solved exactly.
 
@@ -3480,7 +3480,7 @@ chemistry_ai999x.solve('ph_diprotic_acid', Ka1=0.059, Ka2=6.4e-05, c=100.0)
 
 <a id="ph_salt_of_weak_acid"></a>
 
-### pH of a salt of a weak acid — `ph_salt_of_weak_acid`
+### pH of a salt of a weak acid, `ph_salt_of_weak_acid`
 
 The pH of a solution of a salt of a weak acid and a strong base (e.g. sodium acetate) from the acid's Ka.
 
@@ -3524,7 +3524,7 @@ chemistry_ai999x.solve('ph_salt_of_weak_acid', Ka=1.8e-05, c=100.0)
 
 <a id="zero_order_concentration"></a>
 
-### Zero-order integrated rate law — `zero_order_concentration`
+### Zero-order integrated rate law: `zero_order_concentration`
 
 The concentration of a reactant after a time in a zero-order reaction.
 
@@ -3565,7 +3565,7 @@ chemistry_ai999x.solve('zero_order_concentration', A0=500.0, k=2.0, t=100.0)
 
 <a id="first_order_concentration"></a>
 
-### First-order integrated rate law — `first_order_concentration`
+### First-order integrated rate law: `first_order_concentration`
 
 The concentration of a reactant after a time in a first-order reaction.
 
@@ -3611,7 +3611,7 @@ chemistry_ai999x.solve('first_order_concentration', A0=800.0, k=0.015, t=60.0)
 
 <a id="second_order_concentration"></a>
 
-### Second-order integrated rate law — `second_order_concentration`
+### Second-order integrated rate law: `second_order_concentration`
 
 The concentration of a reactant after a time in a second-order reaction (rate = k[A]^2).
 
@@ -3651,7 +3651,7 @@ chemistry_ai999x.solve('second_order_concentration', A0=200.0, k=0.0005, t=30.0)
 
 <a id="first_order_half_life"></a>
 
-### Half-life of a first-order reaction — `first_order_half_life`
+### Half-life of a first-order reaction: `first_order_half_life`
 
 The half-life of a first-order reaction from its rate constant.
 
@@ -3689,7 +3689,7 @@ chemistry_ai999x.solve('first_order_half_life', k=0.025)
 
 <a id="first_order_time"></a>
 
-### Time to reach a concentration (first order) — `first_order_time`
+### Time to reach a concentration (first order), `first_order_time`
 
 How long a first-order reaction takes to bring a reactant from one concentration to another.
 
@@ -3728,7 +3728,7 @@ chemistry_ai999x.solve('first_order_time', A0=500.0, A=100.0, k=0.03)
 
 <a id="arrhenius_k2"></a>
 
-### Arrhenius equation: rate constant at another temperature — `arrhenius_k2`
+### Arrhenius equation: rate constant at another temperature, `arrhenius_k2`
 
 The rate constant at a second temperature from the rate constant at a first one and the activation energy.
 
@@ -3770,7 +3770,7 @@ chemistry_ai999x.solve('arrhenius_k2', k1=0.0012, T1=300.0, T2=350.0, Ea=75000.0
 
 <a id="activation_energy"></a>
 
-### Activation energy from two rate constants — `activation_energy`
+### Activation energy from two rate constants: `activation_energy`
 
 The Arrhenius activation energy from rate constants measured at two temperatures.
 
@@ -3811,7 +3811,7 @@ chemistry_ai999x.solve('activation_energy', k1=0.001, T1=300.0, k2=0.005, T2=320
 
 <a id="arrhenius_rate_constant"></a>
 
-### Arrhenius equation: rate constant — `arrhenius_rate_constant`
+### Arrhenius equation: rate constant, `arrhenius_rate_constant`
 
 The rate constant from the pre-exponential factor, the activation energy and the temperature.
 
@@ -3835,7 +3835,7 @@ $$
 
 ![Arrhenius plot: the rate constant (logarithmic axis) against 1000/T for A = 1](https://huggingface.co/AI999X/chemistry-ai999x/resolve/main/figures/arrhenius-rate-constant-arrhenius.svg)
 
-*Arrhenius plot: the rate constant (logarithmic axis) against 1000/T for A = 1.0000e+13 1/s and Ea = 100 kJ/mol, computed by the package at 61 temperatures from 350 K to 650 K — a straight line of slope −Ea/R. Marked: T = 500 K, k = 357.5 1/s.*
+*Arrhenius plot: the rate constant (logarithmic axis) against 1000/T for A = 1.0000e+13 1/s and Ea = 100 kJ/mol, computed by the package at 61 temperatures from 350 K to 650 K, a straight line of slope −Ea/R. Marked: T = 500 K, k = 357.5 1/s.*
 
 ![k (rate constant (units of A)) against T (temperature) from 450 K to 550 K](https://www.ai999x.com/?ax_fig=chemistry-ai999x/arrhenius-rate-constant-curve)
 
@@ -3854,7 +3854,7 @@ chemistry_ai999x.solve('arrhenius_rate_constant', A=10000000000000.0, Ea=100000.
 
 <a id="reaction_order_from_rates"></a>
 
-### Reaction order from initial rates — `reaction_order_from_rates`
+### Reaction order from initial rates: `reaction_order_from_rates`
 
 The order with respect to one reactant from two initial-rate experiments (other concentrations fixed).
 
@@ -3894,7 +3894,7 @@ chemistry_ai999x.solve('reaction_order_from_rates', c1=100.0, r1=2.0, c2=200.0, 
 
 <a id="consecutive_first_order"></a>
 
-### Consecutive first-order reactions (A -> B -> C) — `consecutive_first_order`
+### Consecutive first-order reactions (A -> B -> C), `consecutive_first_order`
 
 Concentrations of the reactant and the intermediate of A -> B -> C (both steps first order) at a time.
 
@@ -3949,7 +3949,7 @@ chemistry_ai999x.solve('consecutive_first_order', A0=1000.0, k1=0.1, k2=0.1, t=1
 
 <a id="calorimetry_heat"></a>
 
-### Heat from a temperature change — `calorimetry_heat`
+### Heat from a temperature change: `calorimetry_heat`
 
 The heat absorbed (positive) or released (negative) by a mass of substance whose temperature changes.
 
@@ -3990,7 +3990,7 @@ chemistry_ai999x.solve('calorimetry_heat', m=0.05, c=4184.0, T1=293.15, T2=353.1
 
 <a id="enthalpy_from_calorimetry"></a>
 
-### Reaction enthalpy from coffee-cup calorimetry — `enthalpy_from_calorimetry`
+### Reaction enthalpy from coffee-cup calorimetry, `enthalpy_from_calorimetry`
 
 The molar enthalpy of a reaction from the temperature change of the solution it takes place in.
 
@@ -4033,7 +4033,7 @@ chemistry_ai999x.solve('enthalpy_from_calorimetry', m=0.1, c=4180.0, T1=295.15, 
 
 <a id="reaction_enthalpy_from_formation"></a>
 
-### Reaction enthalpy from enthalpies of formation (Hess's law) — `reaction_enthalpy_from_formation`
+### Reaction enthalpy from enthalpies of formation (Hess's law), `reaction_enthalpy_from_formation`
 
 The standard reaction enthalpy from the standard enthalpies of formation of every species (balanced equation).
 
@@ -4073,7 +4073,7 @@ chemistry_ai999x.solve('reaction_enthalpy_from_formation', equation='CH4 + 2 O2 
 
 <a id="gibbs_free_energy"></a>
 
-### Gibbs energy change (dG = dH - T dS) — `gibbs_free_energy`
+### Gibbs energy change (dG = dH - T dS), `gibbs_free_energy`
 
 The Gibbs energy change of a process from its enthalpy and entropy changes, and whether it is spontaneous.
 
@@ -4103,7 +4103,7 @@ $$
 
 ![spontaneous / non-spontaneous (spontaneity) over dH (standard enthalpy change) from -138300 J/mol to -46100 J/mol and T (temperature) from 29](https://www.ai999x.com/?ax_fig=chemistry-ai999x/gibbs-free-energy-decision)
 
-*spontaneous / non-spontaneous (spontaneity) over dH (standard enthalpy change) from -138300 J/mol to -46100 J/mol and T (temperature) from 29.8 K to 2980 K (logarithmic vertical axis): each of the 31 × 21 cells is one run of chemistry-ai999x, coloured by the verdict it returned — non-spontaneous: 273 cells, spontaneous: 378 cells. Other inputs as in the worked example: dS = -198.7 J/(mol*K). Marked: the worked example, dH = -92200 J/mol, T = 298 K → spontaneous.*
+*spontaneous / non-spontaneous (spontaneity) over dH (standard enthalpy change) from -138300 J/mol to -46100 J/mol and T (temperature) from 29.8 K to 2980 K (logarithmic vertical axis): each of the 31 × 21 cells is one run of chemistry-ai999x, coloured by the verdict it returned, non-spontaneous: 273 cells, spontaneous: 378 cells. Other inputs as in the worked example: dS = -198.7 J/(mol*K). Marked: the worked example, dH = -92200 J/mol, T = 298 K → spontaneous.*
 
 ```python
 chemistry_ai999x.solve('gibbs_free_energy', dH=-92200.0, dS=-198.7, T=298.0)
@@ -4119,7 +4119,7 @@ chemistry_ai999x.solve('gibbs_free_energy', dH=-92200.0, dS=-198.7, T=298.0)
 
 <a id="crossover_temperature"></a>
 
-### Temperature at which dG = 0 — `crossover_temperature`
+### Temperature at which dG = 0, `crossover_temperature`
 
 The temperature at which a reaction changes between spontaneous and non-spontaneous $(dG = 0)$.
 
@@ -4163,7 +4163,7 @@ chemistry_ai999x.solve('crossover_temperature', dH=178000.0, dS=161.0)
 
 <a id="heat_from_reaction_mass"></a>
 
-### Heat of reaction for a given mass — `heat_from_reaction_mass`
+### Heat of reaction for a given mass: `heat_from_reaction_mass`
 
 The heat of a reaction for a given mass of a reactant, from its molar enthalpy (per mole of that reactant).
 
@@ -4207,7 +4207,7 @@ chemistry_ai999x.solve('heat_from_reaction_mass', formula='CH4', m=0.01, dH=-890
 
 <a id="clausius_clapeyron_pressure"></a>
 
-### Clausius-Clapeyron: vapor pressure at another temperature — `clausius_clapeyron_pressure`
+### Clausius-Clapeyron: vapor pressure at another temperature, `clausius_clapeyron_pressure`
 
 The vapor pressure of a liquid at a second temperature from one known point and the enthalpy of vaporization.
 
@@ -4247,7 +4247,7 @@ chemistry_ai999x.solve('clausius_clapeyron_pressure', P1=3173.0723684210525, T1=
 
 <a id="clausius_clapeyron_enthalpy"></a>
 
-### Clausius-Clapeyron: enthalpy of vaporization — `clausius_clapeyron_enthalpy`
+### Clausius-Clapeyron: enthalpy of vaporization, `clausius_clapeyron_enthalpy`
 
 The enthalpy of vaporization from vapor pressures at two temperatures.
 
@@ -4287,7 +4287,7 @@ chemistry_ai999x.solve('clausius_clapeyron_enthalpy', P1=13332.236842105263, T1=
 
 <a id="delta_g_from_cell_potential"></a>
 
-### Gibbs energy from a cell potential — `delta_g_from_cell_potential`
+### Gibbs energy from a cell potential: `delta_g_from_cell_potential`
 
 The (standard) Gibbs energy change of a cell reaction from its potential (dG = -nFE).
 
@@ -4331,7 +4331,7 @@ chemistry_ai999x.solve('delta_g_from_cell_potential', n=2.0, E=1.1)
 
 <a id="k_from_cell_potential"></a>
 
-### Equilibrium constant from a standard cell potential — `k_from_cell_potential`
+### Equilibrium constant from a standard cell potential, `k_from_cell_potential`
 
 The equilibrium constant of a cell reaction from its standard potential (ln K = nFE°/RT).
 
@@ -4371,7 +4371,7 @@ chemistry_ai999x.solve('k_from_cell_potential', n=2.0, E=0.46, T=298.0)
 
 <a id="nernst_potential"></a>
 
-### Nernst equation — `nernst_potential`
+### Nernst equation: `nernst_potential`
 
 The cell potential at non-standard conditions from E°, the electrons transferred and the reaction quotient.
 
@@ -4412,7 +4412,7 @@ chemistry_ai999x.solve('nernst_potential', E0=1.1, n=2.0, Q=0.01, T=298.0)
 
 <a id="electrolysis_mass"></a>
 
-### Mass deposited in electrolysis (Faraday's law) — `electrolysis_mass`
+### Mass deposited in electrolysis (Faraday's law), `electrolysis_mass`
 
 The mass of a metal deposited by a current flowing for a time.
 
@@ -4454,7 +4454,7 @@ chemistry_ai999x.solve('electrolysis_mass', metal='Cu', I=2.0, t=1800.0, n=2.0)
 
 <a id="electrolysis_time"></a>
 
-### Time for electrolysis (Faraday's law) — `electrolysis_time`
+### Time for electrolysis (Faraday's law): `electrolysis_time`
 
 How long a current must flow to deposit a given mass of a metal.
 
@@ -4494,7 +4494,7 @@ chemistry_ai999x.solve('electrolysis_time', metal='Ni', m=0.01, I=5.0, n=2.0)
 
 <a id="photon_energy"></a>
 
-### Energy of a photon from its wavelength — `photon_energy`
+### Energy of a photon from its wavelength: `photon_energy`
 
 The energy (per photon and per mole of photons) and frequency of light of a given wavelength.
 
@@ -4535,7 +4535,7 @@ chemistry_ai999x.solve('photon_energy', lam=5e-07)
 
 <a id="photon_wavelength"></a>
 
-### Wavelength of a photon from its energy — `photon_wavelength`
+### Wavelength of a photon from its energy: `photon_wavelength`
 
 The wavelength of a photon of a given energy.
 
@@ -4579,7 +4579,7 @@ chemistry_ai999x.solve('photon_wavelength', E=4.005441585e-19)
 
 <a id="beer_lambert_absorbance"></a>
 
-### Beer-Lambert law: absorbance — `beer_lambert_absorbance`
+### Beer-Lambert law: absorbance, `beer_lambert_absorbance`
 
 The absorbance of a solution from its molar absorptivity, path length and concentration.
 
@@ -4619,7 +4619,7 @@ chemistry_ai999x.solve('beer_lambert_absorbance', eps=1500.0, l=0.01, c=0.02)
 
 <a id="beer_lambert_concentration"></a>
 
-### Beer-Lambert law: concentration — `beer_lambert_concentration`
+### Beer-Lambert law: concentration, `beer_lambert_concentration`
 
 The concentration of a solution from its absorbance, molar absorptivity and path length.
 
@@ -4659,7 +4659,7 @@ chemistry_ai999x.solve('beer_lambert_concentration', A=0.45, eps=1250.0, l=0.01)
 
 <a id="hydrogen_transition_wavelength"></a>
 
-### Hydrogen atom transition wavelength (Rydberg) — `hydrogen_transition_wavelength`
+### Hydrogen atom transition wavelength (Rydberg), `hydrogen_transition_wavelength`
 
 The wavelength of the photon emitted or absorbed in a transition between two levels of hydrogen.
 
@@ -4709,7 +4709,7 @@ chemistry_ai999x.solve('hydrogen_transition_wavelength', n_upper=2, n_lower=1)
 
 <a id="degree_of_unsaturation"></a>
 
-### Degree of unsaturation — `degree_of_unsaturation`
+### Degree of unsaturation: `degree_of_unsaturation`
 
 The number of rings plus pi bonds implied by a molecular formula.
 
@@ -4758,7 +4758,7 @@ chemistry_ai999x.solve('degree_of_unsaturation', formula='C4H8Cl2')
 
 <a id="vibrational_wavenumber"></a>
 
-### Vibrational wavenumber of a diatomic molecule — `vibrational_wavenumber`
+### Vibrational wavenumber of a diatomic molecule, `vibrational_wavenumber`
 
 The harmonic vibrational wavenumber of a diatomic molecule from its bond force constant.
 

@@ -1,5 +1,5 @@
 {
- "package": "1.1.0",
+ "package": "1.5.0",
  "pack": "1.0.1",
  "knowledge_db": null,
  "files": {
@@ -10,13 +10,7 @@
   "capabilities/procedure_examples.py": "8b72dca27f14aafa0d969ed517ad12f93843e34ffbeefbd67686d00beccee5fa",
   "capabilities/procedures.py": "c8c465bef929d5d6e9dd661a2701d6586cc16267fde8f4535f99cbe550393e3d",
   "capabilities/procedures_certified.json": "67646e2a961b0cdbbe9dff834cb12012374f4b3be2b110a3d9d4edf7c599e2fb",
-  "chemistry_knowledge_public.sqlite": "5335eaf4e1cc9f428459bf854e66bedb2ac4f9845c580efcda9e03ea821264f5",
-  "search/encoder.int8.onnx": "521452d928a72da4d241b1835ab0f46b0e81ff58ffff0367b9a7029bd129fbd9",
-  "search/tokenizer.json": "b2f2deb461e6ad672b8e42aac29773e7a9be77d582cdf58808113ea43fda565e",
-  "search/index.json": "cbd28f9d940abc33d3bfd4a61beed818eda670deffcfe40b46845d84423f9ef9",
-  "reader/reader.int8.onnx": "ecee16f238097a01129c8c071809cc24d3edb25c7d73ca29bd5c383981ca0c33",
-  "reader/tokenizer.json": "a54ec88bce54ad97ea91cd47911b41025e80d47e13af62d47cf5758a65ba8387",
-  "reader/labels.json": "328c9073146573ae8e9890ac487d5a4cfe6914fef45fb0047633ac580f8fff80"
+  "chemistry_knowledge_public.sqlite": "a838fcadbc3776d29863c2ead839c4b9ab0840f06845189f806dd68b47a46214"
  },
  "engine": [
   "__init__.py",
