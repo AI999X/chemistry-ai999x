@@ -2276,7 +2276,7 @@ _proc("molarity_from_mass", name="Molarity from a dissolved mass", topic="soluti
       latex=r"c = \frac{m}{M V}", method="moles of solute (m / M) over the volume of solution",
       conditions=["m, V > 0"],
       templates=["What is the molarity of a solution made by dissolving 5.85 g of NaCl in 250 mL of solution?"],
-      examples=[{"formula": "NaCl", "m": 0.00585, "V": 0.00025}, {"formula": "C6H12O6", "m": 0.09, "V": 0.5}],
+      examples=[{"formula": "NaCl", "m": 0.00585, "V": 0.00025}, {"formula": "C6H12O6", "m": 0.09, "V": 5e-4}],
       questions=["What is the molarity of a solution made by dissolving 5.85 g of NaCl in 250 mL of solution?",
                  "Find the concentration of a solution of 90.0 g of C6H12O6 in 0.500 L of solution."])
 
@@ -2334,7 +2334,7 @@ _proc("dilution_final_concentration", name="Dilution: final concentration", topi
       latex=r"c_2 = \frac{c_1 V_1}{V_2}", method="moles of solute are conserved: c1 V1 = c2 V2",
       conditions=["c1, V1, V2 > 0", "V2 >= V1"],
       templates=["25.0 mL of 6.0 M HCl is diluted to 500 mL. What is the new concentration?"],
-      examples=[{"c1": 6000.0, "V1": 0.025, "V2": 0.5}],
+      examples=[{"c1": 6000.0, "V1": 2.5e-5, "V2": 5e-4}],
       questions=["25.0 mL of 6.0 M HCl is diluted to 500 mL. What is the new concentration?",
                  "A 10.0 mL sample of 2.00 M NaOH is diluted to a total volume of 250 mL. Find the final molarity."])
 
@@ -2365,7 +2365,7 @@ _proc("dilution_volume", name="Dilution: volume of stock needed", topic="solutio
       need=_has("molar_concentration", "molar_concentration", "volume", exactly=True),
       latex=r"V_1 = \frac{c_2 V_2}{c_1}", method="c1 V1 = c2 V2 solved for V1", conditions=["c1 >= c2 > 0", "V2 > 0"],
       templates=["What volume of 12.0 M HCl is needed to prepare 500 mL of 0.100 M HCl?"],
-      examples=[{"c1": 12000.0, "c2": 100.0, "V2": 0.5}],
+      examples=[{"c1": 12000.0, "c2": 100.0, "V2": 5e-4}],
       questions=["What volume of 12.0 M HCl is needed to prepare 500 mL of 0.100 M HCl?",
                  "C1 = 2.0 M, C2 = 0.50 M, V2 = 100 mL. What volume of stock solution is needed?"])
 
@@ -4625,6 +4625,1124 @@ _proc("vibrational_wavenumber", name="Vibrational wavenumber of a diatomic molec
       examples=[{"molecule": "HCl", "k": 516.0}, {"molecule": "CO", "k": 1902.0}],
       questions=["What is the vibrational wavenumber of HCl if its force constant is 516 N/m?",
                  "Find the vibrational frequency of CO with a force constant of 1902 N/m."])
+
+
+# ====================================================================================================================
+# CORE GAPS (curriculum gap report 2026-11-12, part 1): isotopes, standard cell potentials, bond enthalpies, Henry's
+# law, the reaction quotient and the precipitation test, entropy and Gibbs energy from tabulated values, nuclear
+# chemistry, conjugate acid-base constants, specific rotation and enantiomeric excess.
+# Data: 1H atomic mass 1.007825031898 u (AME2020); neutron mass 1.00866491606 u, atomic mass constant energy
+# equivalent 931.49410372 MeV (CODATA 2022); year = 365.25 d (3.15576e7 s), as the question reader uses.
+# Lists carry no unit: bond enthalpies and tabulated formation values in kJ/mol, standard molar entropies in
+# J/(mol K), concentrations in a list in mol/L, isotope masses in u (the reader has no unit "u").
+# ====================================================================================================================
+M_H1_U = 1.007825031898       # atomic mass of 1H (u)
+M_N_U = 1.00866491606         # neutron mass (u)
+M_P_U = 1.007276466621        # proton mass (u): used only by the wrong variant (electrons forgotten)
+U_MEV = 931.49410372          # energy equivalent of 1 u (MeV)
+MEV_J = 1.602176634e-13       # 1 MeV in J
+YEAR_S = 3.15576e7            # one year (365.25 d) in s
+LN2 = math.log(2.0)
+_NUMX = r"[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?"
+
+
+# --- isotopes: average atomic mass, and the abundances of two isotopes ----------------------------------------------
+def _abundance_scale(abundances):
+    s = 0.0
+    for f in abundances:
+        s += f
+    if abs(s - 1.0) <= 0.002:
+        return 1.0
+    if abs(s - 100.0) <= 0.2:
+        return 0.01
+    raise ValueError("the abundances must add up to 1 (fractions) or to 100 (percent)")
+
+
+def average_atomic_mass(masses, abundances):
+    if len(masses) != len(abundances):
+        raise ValueError("give one abundance per isotope mass")
+    if len(masses) < 2:
+        raise ValueError("at least two isotopes are needed")
+    for m in masses:
+        if not m > 0:
+            raise ValueError("isotope masses must be positive")
+    for f in abundances:
+        if f < 0:
+            raise ValueError("abundances cannot be negative")
+    scale = _abundance_scale(abundances)
+    s = 0.0
+    for m, f in zip(masses, abundances):
+        s += m * f
+    A = s * scale
+    return {"A_r": A, "M": A / 1000.0}
+
+
+def _ref_avg_mass(masses, abundances):
+    import numpy as np
+    f = np.asarray(abundances, dtype=float)
+    if abs(float(f.sum()) - 100.0) <= 0.2:
+        f = f / 100.0
+    return {"A_r": float(np.dot(np.asarray(masses, dtype=float), f))}
+
+
+def _rand_isotopes(rng):
+    n = rng.choice([2, 2, 3])
+    base = rng.randint(6, 200)
+    masses = [base + 2 * k + rng.uniform(-0.1, 0.1) for k in range(n)]
+    w = [rng.uniform(0.05, 1.0) for _ in range(n)]
+    tot = sum(w)
+    ab = [x / tot for x in w]
+    if rng.random() < 0.5:
+        ab = [100.0 * x for x in ab]
+    return {"masses": masses, "abundances": ab}
+
+
+_MASS_LIST = (r"(" + r"\d+(?:\.\d*)?(?:[eE][-+]?\d+)?(?:\s*(?:u|amu)\b)?(?:\s*(?:,\s*and|,|and)\s*"
+              r"\d+(?:\.\d*)?(?:[eE][-+]?\d+)?(?:\s*(?:u|amu)\b)?)+)")
+_AB_LIST = (r"(" + r"\d+(?:\.\d*)?(?:[eE][-+]?\d+)?\s*%?(?:\s*(?:,\s*and|,|and)\s*"
+            r"\d+(?:\.\d*)?(?:[eE][-+]?\d+)?\s*%?)+)")
+
+
+def _iso_masses(q):
+    """'isotope masses are 34.97 u and 36.97 u' -> (['34.97', '36.97'], span) or (None, None)."""
+    m = re.search(r"\bisotop\w*\s+masses?\s*(?:are|of|=|:)?\s*" + _MASS_LIST, q, re.I)
+    if not m:
+        return None, None
+    return re.findall(r"\d+(?:\.\d*)?(?:[eE][-+]?\d+)?", m.group(1)), m.span()
+
+
+def _avg_mass_text(q, spans):
+    out = []
+    vals, span = _iso_masses(q)
+    if vals:
+        out.append(("masses", ", ".join(repr(float(v)) for v in vals), span))
+    m = re.search(r"\babundances?\s*(?:are|of|=|:)?\s*" + _AB_LIST, q, re.I)
+    if m:
+        ab = [float(v) for v in re.findall(r"\d+(?:\.\d*)?(?:[eE][-+]?\d+)?", m.group(1))]
+        if "%" in m.group(1):                      # written in percent: read as fractions
+            if m.group(1).count("%") != len(ab):
+                return None
+            ab = [v / 100.0 for v in ab]
+        out.append(("abundances", ", ".join(repr(v) for v in ab), m.span()))
+    return out
+
+
+_proc("average_atomic_mass", name="Average atomic mass from isotopes", topic="atomic structure / isotopes",
+      level="beginner",
+      purpose="The average (relative) atomic mass of an element from the masses and natural abundances of its isotopes.",
+      inputs=[_inp("masses", "number", "mass of each isotope (u)", type="vector", min_length=2, max_length=10),
+              _inp("abundances", "number", "abundance of each isotope, in the same order (fractions adding up to 1, or "
+                   "percentages adding up to 100)", type="vector", min_length=2, max_length=10)],
+      outputs=[_out("A_r", "number", "average atomic mass (u, numerically g/mol)"),
+               _out("M", "molar_mass", "molar mass of the element")],
+      primary="A_r", run=average_atomic_mass,
+      verify=lambda i, o: (lambda A: _rel(o["A_r"], A) + _rel(o["M"] * 1000.0, A))(
+          average_atomic_mass(i["masses"], i["abundances"])["A_r"]),
+      reference=_ref_avg_mass,
+      wrong=lambda masses, abundances: (lambda A: {"A_r": A, "M": A / 1000.0})(sum(masses) / len(masses)),
+      rand=_rand_isotopes,
+      kw=[r"\baverage atomic mass|\batomic weight|\baverage (?:isotopic )?mass", r"isotop"],
+      nokw=[r"what (?:are|is) the (?:\w+ )?(?:\w+ )?abundances?|find the (?:\w+ )?abundances?|"
+            r"\babundances? of (?:each|the two|both)"],
+      text=_texts(_avg_mass_text), need=lambda t, qs: not qs,
+      latex=r"\bar{A} = \sum_i f_i\, m_i",
+      method="abundance-weighted sum of the isotope masses (abundances used as written)",
+      conditions=["one abundance per isotope", "abundances add up to 1 (within 0.002) or to 100 (within 0.2)",
+                  "masses > 0, abundances >= 0"],
+      templates=["Isotope masses are 34.97 u and 36.97 u with abundances 75.78% and 24.22%. What is the average atomic mass?"],
+      examples=[{"masses": "34.97, 36.97", "abundances": "75.78, 24.22"},
+                {"masses": "23.985, 24.986, 25.983", "abundances": "0.7899, 0.1000, 0.1101"}],
+      questions=["Isotope masses are 34.97 u and 36.97 u with abundances 75.78% and 24.22%. What is the average atomic mass?",
+                 "Find the average atomic mass of magnesium from isotope masses 23.985, 24.986 and 25.983 u and "
+                 "abundances 0.7899, 0.1000 and 0.1101.",
+                 "Isotope masses are 34.97 u and 36.97 u with abundances 75.78% and 30.00%. What is the average atomic mass?"])
+
+
+def isotope_abundance(m1, m2, A_r):
+    _pos(m1=m1, m2=m2, A_r=A_r)
+    if m1 == m2:
+        raise ValueError("the two isotope masses must differ")
+    if not min(m1, m2) < A_r < max(m1, m2):
+        raise ValueError("the average atomic mass must lie between the two isotope masses")
+    x1 = (A_r - m2) / (m1 - m2)
+    x2 = (m1 - A_r) / (m1 - m2)
+    return {"x1": x1, "x2": x2, "percent1": 100.0 * x1, "percent2": 100.0 * x2}
+
+
+def _rand_two_isotopes(rng):
+    m1 = rng.randint(6, 200) + rng.uniform(-0.1, 0.1)
+    m2 = m1 + rng.choice([1, 2]) + rng.uniform(-0.01, 0.01)
+    if rng.random() < 0.5:
+        m1, m2 = m2, m1
+    x = rng.uniform(0.05, 0.45) if rng.random() < 0.5 else rng.uniform(0.55, 0.95)
+    return {"m1": m1, "m2": m2, "A_r": x * m1 + (1.0 - x) * m2}
+
+
+def _two_masses_text(q, spans):
+    vals, span = _iso_masses(q)
+    if not vals:
+        return []
+    if len(vals) != 2:
+        return None                                    # this form solves two isotopes only
+    return [("m1", float(vals[0]), span), ("m2", float(vals[1]), (span[1], span[1]))]
+
+
+_AVG_LAB = [r"average atomic mass(?: of [a-z]+)?", r"atomic weight(?: of [a-z]+)?", r"average mass(?: of [a-z]+)?"]
+
+_proc("isotope_abundance", name="Abundances of two isotopes from the average atomic mass", topic="atomic structure / isotopes",
+      level="intermediate",
+      purpose="The natural abundances of an element's two isotopes from their masses and the average atomic mass.",
+      inputs=[_inp("m1", "number", "mass of the first isotope (u)", symbols=["m1"], label_only=True),
+              _inp("m2", "number", "mass of the second isotope (u)", symbols=["m2"], label_only=True),
+              _inp("A_r", "number", "average atomic mass (u)", labels=_AVG_LAB)],
+      outputs=[_out("x1", "number", "fractional abundance of the first isotope"),
+               _out("x2", "number", "fractional abundance of the second isotope"),
+               _out("percent1", "number", "percent abundance of the first isotope"),
+               _out("percent2", "number", "percent abundance of the second isotope")],
+      primary="percent1", run=isotope_abundance,
+      verify=lambda i, o: (abs(o["x1"] * i["m1"] + o["x2"] * i["m2"] - i["A_r"]) / i["A_r"] + abs(o["x1"] + o["x2"] - 1.0)
+                           + abs(o["percent1"] - 100.0 * o["x1"]) / 100.0 + abs(o["percent2"] - 100.0 * o["x2"]) / 100.0),
+      reference=lambda m1, m2, A_r: (lambda x: {"x1": x, "percent1": 100.0 * x})(
+          _brentq(lambda x: x * m1 + (1.0 - x) * m2 - A_r, 0.0, 1.0)),
+      wrong=lambda m1, m2, A_r: (lambda r: {"x1": r["x2"], "x2": r["x1"], "percent1": r["percent2"],
+                                            "percent2": r["percent1"]})(isotope_abundance(m1, m2, A_r)),
+      rand=_rand_two_isotopes,
+      kw=[r"abundance", r"isotop"], nokw=[r"\babundances?\s*(?:are|of|=|:)?\s*\d"],
+      text=_texts(_two_masses_text), need=_has("none", exactly=True),
+      latex=r"x_1 = \frac{\bar{A} - m_2}{m_1 - m_2},\quad x_2 = 1 - x_1",
+      method="the average mass is x1 m1 + (1 - x1) m2, solved for x1",
+      conditions=["two isotopes of different mass", "the average mass lies strictly between them"],
+      templates=["The average atomic mass of chlorine is 35.45 u. Its isotope masses are 34.97 u and 36.97 u. "
+                 "What are the percent abundances of the two isotopes?"],
+      examples=[{"m1": 34.97, "m2": 36.97, "A_r": 35.45}, {"m1": 62.93, "m2": 64.93, "A_r": 63.55}],
+      questions=["The average atomic mass of chlorine is 35.45 u. Its isotope masses are 34.97 u and 36.97 u. "
+                 "What are the percent abundances of the two isotopes?",
+                 "The average atomic mass of copper is 63.55 u and the isotope masses are 62.93 u and 64.93 u. "
+                 "Find the abundance of each isotope.",
+                 "The average atomic mass of copper is 66.00 u and the isotope masses are 62.93 u and 64.93 u. "
+                 "Find the abundance of each isotope."])
+
+
+# --- electrochemistry: the standard cell potential from two half-reactions ----------------------------------------
+def _cell_word(E):
+    if E > 0:
+        return "spontaneous (galvanic)"
+    if E < 0:
+        return "non-spontaneous (electrolytic)"
+    return "at equilibrium"
+
+
+def standard_cell_potential(E_cathode, E_anode):
+    _finite(E_cathode=E_cathode, E_anode=E_anode)
+    if abs(E_cathode) > 3.5 or abs(E_anode) > 3.5:
+        raise ValueError("standard reduction potentials lie between about -3.1 V and +3.0 V (|E°| <= 3.5 V accepted)")
+    E = E_cathode - E_anode
+    return {"E_cell": E, "spontaneity": _cell_word(E)}
+
+
+def _ref_cell(E_cathode, E_anode):
+    import scipy.constants as sc
+    Fc = sc.physical_constants["Faraday constant"][0]
+    dG = -Fc * E_cathode + Fc * E_anode           # per electron: reduction at the cathode plus oxidation at the anode
+    return {"E_cell": -dG / Fc}
+
+
+def _rand_cell(rng):
+    while True:
+        Ec, Ea = rng.uniform(-3.0, 3.0), rng.uniform(-3.0, 3.0)
+        if abs(Ea) >= 0.05 and abs(Ec - Ea) >= 0.05:
+            return {"E_cathode": Ec, "E_anode": Ea}
+
+
+_proc("standard_cell_potential", name="Standard cell potential from two half-reactions",
+      topic="electrochemistry / cell potentials", level="beginner",
+      purpose="The standard potential of a galvanic cell from the standard reduction potentials of its cathode and anode "
+              "half-reactions, and whether the cell reaction is spontaneous.",
+      inputs=[_inp("E_cathode", "voltage", "standard reduction potential of the cathode half-reaction", label_only=True,
+                   labels=[r"cathode\)?", r"\bcathode\b[^.;,]{0,40}?(?:e°|e0|e\^0|e\^o|potential)(?:\s*\(\s*red\s*\))?"]),
+              _inp("E_anode", "voltage", "standard reduction potential of the anode half-reaction", label_only=True,
+                   labels=[r"anode\)?", r"\banode\b[^.;,]{0,40}?(?:e°|e0|e\^0|e\^o|potential)(?:\s*\(\s*red\s*\))?"])],
+      outputs=[_out("E_cell", "voltage", "standard cell potential"),
+               _out("spontaneity", "text", "spontaneous (galvanic) or not (electrolytic)")],
+      primary="E_cell", run=standard_cell_potential,
+      verify=lambda i, o: (abs(o["E_cell"] - (i["E_cathode"] - i["E_anode"])) / max(1.0, abs(i["E_cathode"]), abs(i["E_anode"]))
+                           + (0.0 if o["spontaneity"] == _cell_word(i["E_cathode"] - i["E_anode"]) else 1.0)),
+      reference=_ref_cell,
+      wrong=lambda E_cathode, E_anode: {"E_cell": E_cathode + E_anode, "spontaneity": _cell_word(E_cathode + E_anode)},
+      rand=_rand_cell,
+      kw=[r"cathode", r"anode"], nokw=[r"nernst|\bq\b|quotient|δg|gibbs|equilibrium constant|electroly|deposit|plated"],
+      need=_has("voltage", "voltage", exactly=True),
+      latex=r"E^\circ_{cell} = E^\circ_{cathode} - E^\circ_{anode}",
+      method="both potentials are reduction potentials; the anode runs as an oxidation, so its potential is subtracted",
+      conditions=["both values are standard REDUCTION potentials", "|E°| <= 3.5 V"],
+      templates=["E°(cathode) = 0.34 V and E°(anode) = -0.76 V. What is the standard cell potential?"],
+      examples=[{"E_cathode": 0.34, "E_anode": -0.76}, {"E_cathode": 0.34, "E_anode": 0.80}],
+      questions=["E°(cathode) = 0.34 V and E°(anode) = -0.76 V. What is the standard cell potential?",
+                 "The cathode half-reaction has E° = 0.80 V and the anode half-reaction has E° = 0.34 V. "
+                 "Find the standard cell potential.",
+                 "E°(cathode) = 4.20 V and E°(anode) = -0.76 V. What is the standard cell potential?"])
+
+
+# --- bond enthalpies --------------------------------------------------------------------------------------------------
+def _bond_sum(ns, Ds):
+    s = 0.0
+    for n, D in zip(ns, Ds):
+        if not n > 0:
+            raise ValueError("bond counts must be positive")
+        if not D > 0:
+            raise ValueError("bond enthalpies are positive (the energy needed to break a bond)")
+        s += n * D
+    return s
+
+
+def bond_enthalpy_reaction(broken_n, broken_D, formed_n, formed_D):
+    if len(broken_n) != len(broken_D) or len(formed_n) != len(formed_D):
+        raise ValueError("give one count per bond enthalpy on each side")
+    B = _bond_sum(broken_n, broken_D)
+    Fm = _bond_sum(formed_n, formed_D)
+    dH = B - Fm
+    return {"dH": dH * 1000.0, "dH_kJ": dH, "broken_kJ": B, "formed_kJ": Fm}
+
+
+def _verify_bonds(i, o):
+    B = _bond_sum(i["broken_n"], i["broken_D"])
+    Fm = _bond_sum(i["formed_n"], i["formed_D"])
+    s = max(1.0, abs(B - Fm))
+    return (abs(o["dH_kJ"] - (B - Fm)) + abs(o["dH"] / 1000.0 - (B - Fm)) + abs(o["broken_kJ"] - B)
+            + abs(o["formed_kJ"] - Fm)) / s
+
+
+def _ref_bonds(broken_n, broken_D, formed_n, formed_D):
+    import numpy as np
+    dH = float(np.dot(broken_n, broken_D) - np.dot(formed_n, formed_D))
+    return {"dH": dH * 1000.0, "dH_kJ": dH}
+
+
+def _rand_bonds(rng):
+    out = {}
+    for side in ("broken", "formed"):
+        k = rng.randint(1, 4)
+        out[side + "_n"] = [float(rng.choice([1, 1, 2, 2, 3, 4, 6, 0.5])) for _ in range(k)]
+        out[side + "_D"] = [rng.uniform(150.0, 1100.0) for _ in range(k)]
+    return out
+
+
+_BTERM = r"(?:(\d+(?:\.\d*)?)\s*(?:×|x|\*)\s*)?(-?\d+(?:\.\d*)?)"
+_BLIST = (r"(?P<list>(?:\d+(?:\.\d*)?\s*(?:×|x|\*)\s*)?-?\d+(?:\.\d*)?"
+          r"(?:\s*(?:,|\+|and)\s*(?:\d+(?:\.\d*)?\s*(?:×|x|\*)\s*)?-?\d+(?:\.\d*)?)*)")
+
+
+def _bonds_text(q, spans):
+    out = []
+    for side, words in (("broken", r"broken"), ("formed", r"formed|made")):
+        m = re.search(r"\bbonds?\s+(?:" + words + r")\s*(?:\([^)]*\))?\s*(?::|=|are)?\s*" + _BLIST, q, re.I)
+        if not m:
+            continue
+        ns, Ds = [], []
+        for t in re.finditer(_BTERM, m.group("list")):
+            ns.append(float(t.group(1)) if t.group(1) else 1.0)
+            Ds.append(float(t.group(2)))
+        out.append((side + "_n", ", ".join(repr(v) for v in ns), m.span()))
+        out.append((side + "_D", ", ".join(repr(v) for v in Ds), (m.end(), m.end())))
+    return out
+
+
+_proc("bond_enthalpy_reaction", name="Reaction enthalpy from bond enthalpies", topic="thermochemistry / bond enthalpies",
+      level="intermediate",
+      purpose="An estimate of a gas-phase reaction enthalpy from the average bond enthalpies of the bonds broken and formed.",
+      inputs=[_inp("broken_n", "number", "number of each kind of bond broken", type="vector", min_length=1, max_length=12),
+              _inp("broken_D", "number", "bond enthalpy of each kind of bond broken (kJ/mol), same order", type="vector",
+                   min_length=1, max_length=12),
+              _inp("formed_n", "number", "number of each kind of bond formed", type="vector", min_length=1, max_length=12),
+              _inp("formed_D", "number", "bond enthalpy of each kind of bond formed (kJ/mol), same order", type="vector",
+                   min_length=1, max_length=12)],
+      outputs=[_out("dH", "molar_energy", "estimated reaction enthalpy"), _out("dH_kJ", "number", "in kJ/mol"),
+               _out("broken_kJ", "number", "energy to break the bonds (kJ/mol)"),
+               _out("formed_kJ", "number", "energy released forming the bonds (kJ/mol)")],
+      primary="dH", run=bond_enthalpy_reaction, verify=_verify_bonds, reference=_ref_bonds,
+      wrong=lambda broken_n, broken_D, formed_n, formed_D: (lambda r: dict(r, dH=-r["dH"], dH_kJ=-r["dH_kJ"]))(
+          bond_enthalpy_reaction(broken_n, broken_D, formed_n, formed_D)),
+      rand=_rand_bonds,
+      kw=[r"bond (?:enthalp|energ|dissociation)"], nokw=[r"lattice|born[- ]haber"],
+      text=_texts(_bonds_text), need=lambda t, qs: not qs,
+      latex=r"\Delta H \approx \sum_{\text{broken}} n\,D - \sum_{\text{formed}} n\,D",
+      method="energy to break the bonds minus energy released forming the new ones (average bond enthalpies)",
+      conditions=["bond counts and bond enthalpies > 0", "one count per bond enthalpy",
+                  "an estimate: average bond enthalpies, gas phase"],
+      templates=["Bonds broken: 4 × 413, 2 × 498; bonds formed: 2 × 799, 4 × 467 (all in kJ/mol). "
+                 "Estimate the reaction enthalpy from these bond enthalpies."],
+      examples=[{"broken_n": "4, 2", "broken_D": "413, 498", "formed_n": "2, 4", "formed_D": "799, 467"},
+                {"broken_n": "1, 1", "broken_D": "436, 243", "formed_n": "2", "formed_D": "432"}],
+      questions=["Bonds broken: 4 × 413, 2 × 498; bonds formed: 2 × 799, 4 × 467 (all in kJ/mol). "
+                 "Estimate the reaction enthalpy from these bond enthalpies.",
+                 "Bonds broken: 436, 243; bonds formed: 2 × 432. Estimate the reaction enthalpy from bond enthalpies in kJ/mol.",
+                 "Bonds broken: 436, -243; bonds formed: 2 × 432. Estimate the reaction enthalpy from bond enthalpies in kJ/mol."])
+
+
+# --- Henry's law ----------------------------------------------------------------------------------------------------
+def henry_solubility(kH, P):
+    _pos(kH=kH, P=P)
+    c = kH * P
+    return {"c": c, "c_molL": c / 1000.0}
+
+
+_proc("henry_law_solubility", name="Henry's law: solubility of a gas", topic="solutions / gas solubility",
+      level="beginner", purpose="The concentration of a dissolved gas from its Henry's law constant and its partial pressure.",
+      inputs=[_inp("kH", "henry_constant", "Henry's law constant (solubility form, c = kH P)"),
+              _inp("P", "pressure", "partial pressure of the gas")],
+      outputs=[_out("c", "molar_concentration", "dissolved gas concentration"), _out("c_molL", "number", "in mol/L")],
+      primary="c", run=henry_solubility,
+      verify=lambda i, o: _rel(o["c"], i["kH"] * i["P"]) + _rel(o["c_molL"] * 1000.0, i["kH"] * i["P"]),
+      reference=lambda kH, P: {"c": _brentq(lambda c: c / kH - P, 0.0, 2.0 * kH * P)},
+      wrong=lambda kH, P: {"c": P / kH, "c_molL": P / kH / 1000.0},
+      rand=lambda rng: {"kH": _u_(rng, 1e-5, 1e-1) * 1000.0 / ATM, "P": _u_(rng, 1e3, 1e6)},
+      kw=[r"\bhenry"], nokw=[r"what (?:partial )?pressure|pressure (?:is )?(?:needed|required)"],
+      need=_has("henry_constant", "pressure", exactly=True),
+      latex=r"c = k_H\, P", method="c = kH P", conditions=["kH, P > 0", "dilute solution, no reaction with the solvent"],
+      templates=["The Henry's law constant for O2 in water is 1.3e-3 M/atm. What is the solubility of O2 at a partial "
+                 "pressure of 0.21 atm?"],
+      examples=[{"kH": 1.3e-3 * 1000.0 / ATM, "P": 0.21 * ATM}, {"kH": 3.4e-2 * 1000.0 / ATM, "P": 4.0 * ATM}],
+      questions=["The Henry's law constant for O2 in water is 1.3e-3 M/atm. What is the solubility of O2 at a partial "
+                 "pressure of 0.21 atm?",
+                 "Henry's law constant of CO2 = 3.4e-2 M/atm. Find the solubility of CO2 when its partial pressure is 4.0 atm.",
+                 "The Henry's law constant for N2 in water is 6.1e-4 M/atm. What is the solubility of N2 at a partial "
+                 "pressure of -0.78 atm?"])
+
+
+# --- the reaction quotient: direction of shift, and the precipitation test ------------------------------------------
+def _shift_word(lgQ, lgK):
+    if abs(lgQ - lgK) <= 1e-12 * max(1.0, abs(lgK)):
+        return "at equilibrium"
+    if lgQ < lgK:
+        return "forward (toward products)"
+    return "reverse (toward reactants)"
+
+
+def reaction_quotient(equation, conc, K):
+    nu, sp = _ice_terms(equation)
+    if len(conc) != len(sp):
+        raise ValueError(f"give one concentration per species ({', '.join(sp)})")
+    for c in conc:
+        if not c > 0:
+            raise ValueError("every concentration must be above zero")
+    _pos(K=K)
+    Q = 1.0
+    lg = 0.0
+    for c, n in zip(conc, nu):
+        Q *= c ** n
+        lg += n * math.log10(c)
+    return {"Q": Q, "log10_Q": lg, "direction": _shift_word(lg, math.log10(K))}
+
+
+def _verify_quotient(i, o):
+    r = reaction_quotient(i["equation"], i["conc"], i["K"])
+    return (_rel(o["Q"], r["Q"]) + abs(o["log10_Q"] - r["log10_Q"]) / max(1.0, abs(r["log10_Q"]))
+            + (0.0 if o["direction"] == r["direction"] else 1.0))
+
+
+def _ref_nu(equation):
+    t = re.sub(r"\((?:s|l|g|aq)\)", "", equation)
+    left, right = re.split(r"\s*(?:<=>|⇌|->|→|=)\s*", t)
+    co = lambda side: [float(re.match(r"\s*(\d*)", x).group(1) or 1) for x in side.split("+")]
+    return [-c for c in co(left)] + co(right)
+
+
+def _ref_quotient(equation, conc, K):
+    import numpy as np
+    nu = np.asarray(_ref_nu(equation), dtype=float)
+    c = np.asarray(conc, dtype=float)
+    return {"Q": float(np.prod(np.power(c, nu))), "log10_Q": float(np.dot(nu, np.log10(c)))}
+
+
+def _conc_text_as(sym):
+    """The equation and one '[X] = value' per species, written into `sym`."""
+    def f(q):
+        preset, spans = _conc_text(q)
+        if "initial" in preset:
+            preset[sym] = preset.pop("initial")
+        return preset, spans
+    return f
+
+
+_proc("reaction_quotient_direction", name="Reaction quotient and the direction of shift",
+      topic="equilibrium / reaction quotient", level="intermediate",
+      purpose="The reaction quotient Q from the current concentrations (or partial pressures) and, compared with K, "
+              "the direction in which the reaction proceeds to reach equilibrium.",
+      inputs=[_inp("equation", "number", "the reaction as written (its coefficients define Q and K)", type="text",
+                   min_length=4, max_length=200),
+              _inp("conc", "number", "current concentration of each species in the order written (mol/L, or atm for Kp)",
+                   type="vector", min_length=2, max_length=10),
+              _K_IN()],
+      outputs=[_out("Q", "number", "reaction quotient"), _out("log10_Q", "number", "log10 Q"),
+               _out("direction", "text", "direction of the shift")],
+      primary="Q", run=reaction_quotient, verify=_verify_quotient, reference=_ref_quotient,
+      wrong=lambda equation, conc, K: (lambda r: {"Q": 1.0 / r["Q"], "log10_Q": -r["log10_Q"],
+                                                  "direction": _shift_word(-r["log10_Q"], math.log10(K))})(
+          reaction_quotient(equation, conc, K)),
+      rand=lambda rng: (lambda eq: {"equation": eq, "conc": [rng.uniform(0.01, 2.0) for _ in _ice_terms(eq)[1]],
+                                    "K": _u_(rng, 1e-3, 1e3)})(rng.choice(_ICE_REACTIONS)),
+      kw=[r"reaction quotient|\bq\b", r"direction|shift|proceed|which way|predict"],
+      nokw=[r"δg|gibbs|nernst|potential|ksp|precipit|equilibrium concentrations"],
+      text=_conc_text_as("conc"), need=lambda t, qs: len(qs) <= 1,
+      latex=r"Q = \prod_i c_i^{\nu_i};\ Q < K \Rightarrow \text{forward},\ Q > K \Rightarrow \text{reverse}",
+      method="mass-action product of the current concentrations, compared with K",
+      conditions=["one reaction, coefficients as written", "no pure solids or liquids in the equation",
+                  "every concentration > 0", "K > 0"],
+      templates=["For N2 + 3 H2 ⇌ 2 NH3, Kc = 0.105. The concentrations are [N2] = 0.20 M, [H2] = 0.30 M and "
+                 "[NH3] = 0.10 M. Calculate the reaction quotient Q and predict the direction of the shift."],
+      examples=[{"equation": "N2 + 3 H2 ⇌ 2 NH3", "conc": "0.20, 0.30, 0.10", "K": 0.105},
+                {"equation": "H2 + I2 ⇌ 2 HI", "conc": "0.10, 0.20, 0.40", "K": 50.0}],
+      questions=["For N2 + 3 H2 ⇌ 2 NH3, Kc = 0.105. The concentrations are [N2] = 0.20 M, [H2] = 0.30 M and "
+                 "[NH3] = 0.10 M. Calculate the reaction quotient Q and predict the direction of the shift.",
+                 "For H2 + I2 ⇌ 2 HI, K = 50.0. The concentrations are [H2] = 0.10 M, [I2] = 0.20 M and [HI] = 0.40 M. "
+                 "Find the reaction quotient and the direction of the shift.",
+                 "For N2O4 ⇌ 2 NO2, Kc = 4.6e-3. The concentrations are [N2O4] = 0.10 M and [NO2] = 0 M. "
+                 "Calculate the reaction quotient and the direction of the shift."])
+
+
+def _precip_word(lgQ, lgK):
+    d = lgQ - lgK
+    if abs(d) <= 1e-12 * max(1.0, abs(lgK)):
+        return "saturated (Q = Ksp)"
+    if d > 0:
+        return "precipitate forms (Q > Ksp)"
+    return "no precipitate (Q < Ksp)"
+
+
+def precipitation_test(Ksp, x, y, c_cation, c_anion):
+    _pos(Ksp=Ksp, c_cation=c_cation, c_anion=c_anion)
+    x, y = int(x), int(y)
+    if x < 1 or y < 1:
+        raise ValueError("x and y are whole numbers >= 1")
+    a = c_cation / 1000.0
+    b = c_anion / 1000.0
+    lg = x * math.log10(a) + y * math.log10(b)
+    return {"Q": a ** x * b ** y, "log10_Q": lg, "result": _precip_word(lg, math.log10(Ksp))}
+
+
+def _verify_precip(i, o):
+    r = precipitation_test(i["Ksp"], i["x"], i["y"], i["c_cation"], i["c_anion"])
+    return (_rel(o["Q"], r["Q"]) + abs(o["log10_Q"] - r["log10_Q"]) / max(1.0, abs(r["log10_Q"]))
+            + (0.0 if o["result"] == r["result"] else 1.0))
+
+
+def _ref_precip(Ksp, x, y, c_cation, c_anion):
+    import numpy as np
+    c = np.array([c_cation / 1000.0, c_anion / 1000.0])
+    e = np.array([float(x), float(y)])
+    return {"Q": float(np.prod(np.power(c, e))), "log10_Q": float(np.dot(e, np.log10(c)))}
+
+
+def _precip_text(q, spans):
+    f, span = _formula_at(q, r"(?:Ksp of|ksp of|KSP of|Ksp for|ksp for|K_sp of|K_sp for)")
+    if not f:
+        return []
+    ions = salt_ions(f)
+    if not ions:
+        return None
+    cat, x, an, y = ions
+    out = [("x", float(x), span), ("y", float(y), (span[1], span[1]))]
+    seen = []
+    for m in re.finditer(r"\[\s*([^\]]+?)\s*\]\s*(?:=|:|is)\s*(" + _NUMX + r")\s*(M\b|mol/L|mM\b)?", q):
+        ion = re.sub(r"[\s^]", "", m.group(1))
+        v = float(m.group(2)) * (1.0 if m.group(3) == "mM" else 1000.0)
+        if ion.startswith(cat) and re.fullmatch(r"\d*\+", ion[len(cat):]):
+            key = "c_cation"
+        elif ion.startswith(an) and re.fullmatch(r"\d*-", ion[len(an):]):
+            key = "c_anion"
+        else:
+            return None                                # an ion that is not one of the salt's: never guessed
+        if key in seen:
+            return None
+        seen.append(key)
+        out.append((key, v, m.span()))
+    return out
+
+
+_proc("precipitation_test", name="Precipitation test (Q versus Ksp)", topic="equilibrium / solubility",
+      level="intermediate",
+      purpose="Whether a salt MxAy precipitates from a solution with given ion concentrations: the ion product Q "
+              "compared with Ksp.",
+      inputs=[_KSP()] + _XY() + [
+          _inp("c_cation", "molar_concentration", "cation concentration (after any mixing)", symbols=["c_cation"],
+               label_only=True),
+          _inp("c_anion", "molar_concentration", "anion concentration (after any mixing)", symbols=["c_anion"],
+               label_only=True)],
+      outputs=[_out("Q", "number", "ion product Q"), _out("log10_Q", "number", "log10 Q"),
+               _out("result", "text", "precipitate forms or not")],
+      primary="log10_Q", run=precipitation_test, verify=_verify_precip, reference=_ref_precip,
+      wrong=lambda Ksp, x, y, c_cation, c_anion: (lambda a, b: {"Q": a * b, "log10_Q": math.log10(a) + math.log10(b),
+                                                                "result": _precip_word(math.log10(a) + math.log10(b),
+                                                                                       math.log10(Ksp))})(
+          c_cation / 1000.0, c_anion / 1000.0),
+      rand=lambda rng: (lambda xy: {"Ksp": _u_(rng, 1e-30, 1e-4), "x": xy[0], "y": xy[1],
+                                    "c_cation": 1000.0 * _u_(rng, 1e-6, 0.5), "c_anion": 1000.0 * _u_(rng, 1e-6, 0.5)})(
+          rng.choice([(1, 2), (2, 1), (1, 3), (3, 2), (2, 3), (1, 1)])),
+      kw=[r"precipit", r"\bksp\b|\bk_sp\b"],
+      nokw=[r"\bsolubility\b|selective|precipitates? first|what concentration|minimum concentration|how much"],
+      text=_texts(_precip_text), need=lambda t, qs: len(qs) <= 1,
+      latex=r"Q = [M]^x[A]^y;\ Q > K_{sp} \Rightarrow \text{precipitate}",
+      method="ion product from the stated ion concentrations, compared with Ksp (in logarithms)",
+      conditions=["Ksp > 0", "ion concentrations > 0 (mol/L, after mixing)", "the bracketed ions are the salt's own"],
+      templates=["The Ksp of PbI2 is 9.8e-9. If [Pb2+] = 0.010 M and [I-] = 0.0010 M after mixing, will a precipitate form?"],
+      examples=[{"Ksp": 9.8e-9, "x": 1, "y": 2, "c_cation": 10.0, "c_anion": 1.0},
+                {"Ksp": 1.8e-10, "x": 1, "y": 1, "c_cation": 0.01, "c_anion": 0.001},
+                {"Ksp": 3.9e-11, "x": 1, "y": 2, "c_cation": 0.2, "c_anion": 1.0}],
+      questions=["The Ksp of PbI2 is 9.8e-9. If [Pb2+] = 0.010 M and [I-] = 0.0010 M after mixing, will a precipitate form?",
+                 "The Ksp of AgCl is 1.8e-10. If [Ag+] = 1.0e-5 M and [Cl-] = 1.0e-6 M, will a precipitate form?",
+                 "The Ksp of CaF2 is 3.9e-11. If [Ca2+] = 2.0e-4 M and [F-] = 1.0e-3 M, will a precipitate form?",
+                 "The Ksp of PbI2 is 9.8e-9. If [Pb2+] = -0.010 M and [I-] = 0.0010 M after mixing, will a precipitate form?"])
+
+
+# --- standard reaction entropy and Gibbs energy from tabulated values -----------------------------------------------
+def _coef_sum(equation, values):
+    coefs, species, nr = _as_written_balanced(equation)
+    if len(values) != len(species):
+        raise ValueError(f"give one value per species in the order written ({', '.join(species)})")
+    terms = []
+    for j in range(len(species)):
+        c = coefs[j] if j >= nr else -coefs[j]
+        terms.append(c * values[j])
+    return math.fsum(terms)
+
+
+def _abs_sum(values):
+    s = 0.0
+    for v in values:
+        s += abs(v)
+    return s
+
+
+def _ref_coef_sum(equation, values):
+    import numpy as np
+    return float(np.dot(np.asarray(_ref_nu(equation), dtype=float), np.asarray(values, dtype=float)))
+
+
+def _plain_sum(equation, values):
+    """The wrong variants' sum: products minus reactants with every coefficient taken as 1."""
+    _c, species, nr = _as_written_balanced(equation)
+    s = 0.0
+    for j in range(len(species)):
+        s += values[j] if j >= nr else -values[j]
+    return s
+
+
+_FORM_REACTIONS = ["CH4 + 2 O2 -> CO2 + 2 H2O", "C3H8 + 5 O2 -> 3 CO2 + 4 H2O", "2 H2 + O2 -> 2 H2O", "N2 + 3 H2 -> 2 NH3",
+                   "CaCO3 -> CaO + CO2", "2 SO2 + O2 -> 2 SO3", "C2H5OH + 3 O2 -> 2 CO2 + 3 H2O",
+                   "Fe2O3 + 3 CO -> 2 Fe + 3 CO2", "4 NH3 + 5 O2 -> 4 NO + 6 H2O"]
+
+
+def reaction_entropy(equation, values):
+    return {"dS": _coef_sum(equation, values)}
+
+
+_proc("reaction_entropy_from_standard_entropies", name="Standard reaction entropy from standard molar entropies",
+      topic="thermochemistry / entropy", level="intermediate",
+      purpose="The standard entropy change of a reaction from the standard molar entropies of every species "
+              "(balanced equation).",
+      inputs=[_inp("equation", "number", "balanced equation", type="text", min_length=4, max_length=300),
+              _inp("values", "number", "standard molar entropy of each species in the order written (J/(mol·K))",
+                   type="vector", min_length=2, max_length=12)],
+      outputs=[_out("dS", "molar_entropy", "standard reaction entropy")],
+      primary="dS", run=reaction_entropy,
+      verify=lambda i, o: abs(o["dS"] - _coef_sum(i["equation"], i["values"])) / max(1.0, _abs_sum(i["values"])),
+      reference=lambda equation, values: {"dS": _ref_coef_sum(equation, values)},
+      wrong=lambda equation, values: {"dS": _plain_sum(equation, values)},
+      rand=lambda rng: (lambda eq: {"equation": eq, "values": [round(rng.uniform(5.0, 320.0), 1) for _ in
+                                                               _as_written_balanced(eq)[1]]})(rng.choice(_FORM_REACTIONS)),
+      kw=[r"entrop|δs"], nokw=[r"enthalp|δh|gibbs|δg|formation|spontan|temperature"],
+      text=_formation_text, need=lambda t, qs: not qs,
+      latex=r"\Delta S^\circ_{rxn} = \sum \nu_p S^\circ(p) - \sum \nu_r S^\circ(r)",
+      method="coefficient-weighted sum of standard molar entropies, products minus reactants",
+      conditions=["the equation as written conserves every element", "one value per species, in J/(mol·K)"],
+      templates=["Using standard molar entropies N2 = 191.6, H2 = 130.7, NH3 = 192.5 (J/(mol·K)), find ΔS° for "
+                 "N2 + 3 H2 -> 2 NH3."],
+      examples=[{"equation": "N2 + 3 H2 -> 2 NH3", "values": "191.6, 130.7, 192.5"},
+                {"equation": "CaCO3 -> CaO + CO2", "values": "92.9, 39.8, 213.7"}],
+      questions=["Using standard molar entropies N2 = 191.6, H2 = 130.7, NH3 = 192.5 (J/(mol·K)), find ΔS° for "
+                 "N2 + 3 H2 -> 2 NH3.",
+                 "Standard molar entropies: CaCO3 = 92.9, CaO = 39.8, CO2 = 213.7 J/(mol·K). Calculate the entropy "
+                 "change ΔS° for CaCO3 -> CaO + CO2.",
+                 "Using standard molar entropies N2 = 191.6, H2 = 130.7, NH3 = 192.5 (J/(mol·K)), find ΔS° for "
+                 "N2 + H2 -> NH3."])
+
+
+def _gibbs_word(g):
+    if g < 0:
+        return "spontaneous"
+    if g > 0:
+        return "non-spontaneous"
+    return "at equilibrium"
+
+
+def reaction_gibbs_formation(equation, values):
+    g = _coef_sum(equation, values)
+    return {"dG": g * 1000.0, "dG_kJ": g, "spontaneity": _gibbs_word(g)}
+
+
+def _verify_gibbs_formation(i, o):
+    g = _coef_sum(i["equation"], i["values"])
+    s = max(1.0, _abs_sum(i["values"]))
+    return (abs(o["dG_kJ"] - g) + abs(o["dG"] / 1000.0 - g)) / s + (0.0 if o["spontaneity"] == _gibbs_word(g) else 1.0)
+
+
+_proc("reaction_gibbs_from_formation", name="Standard reaction Gibbs energy from Gibbs energies of formation",
+      topic="thermochemistry / spontaneity", level="intermediate",
+      purpose="The standard Gibbs energy change of a reaction from the standard Gibbs energies of formation of every "
+              "species (balanced equation), and whether it is spontaneous under standard conditions.",
+      inputs=[_inp("equation", "number", "balanced equation", type="text", min_length=4, max_length=300),
+              _inp("values", "number", "standard Gibbs energy of formation of each species in the order written (kJ/mol)",
+                   type="vector", min_length=2, max_length=12)],
+      outputs=[_out("dG", "molar_energy", "standard reaction Gibbs energy"), _out("dG_kJ", "number", "in kJ/mol"),
+               _out("spontaneity", "text", "spontaneous / non-spontaneous under standard conditions")],
+      primary="dG", run=reaction_gibbs_formation, verify=_verify_gibbs_formation,
+      reference=lambda equation, values: {"dG": _ref_coef_sum(equation, values) * 1000.0},
+      wrong=lambda equation, values: (lambda g: {"dG": g * 1000.0, "dG_kJ": g, "spontaneity": _gibbs_word(g)})(
+          _plain_sum(equation, values)),
+      rand=lambda rng: (lambda eq: {"equation": eq, "values": [round(rng.uniform(-1200.0, 150.0), 1) for _ in
+                                                               _as_written_balanced(eq)[1]]})(rng.choice(_FORM_REACTIONS)),
+      kw=[r"gibbs|δg|free energ", r"formation"], nokw=[r"enthalp|δh|entrop|δs"],
+      text=_formation_text, need=lambda t, qs: not qs,
+      latex=r"\Delta G^\circ_{rxn} = \sum \nu_p \Delta G_f^\circ(p) - \sum \nu_r \Delta G_f^\circ(r)",
+      method="coefficient-weighted sum of Gibbs energies of formation, products minus reactants",
+      conditions=["the equation as written conserves every element", "one value per species, in kJ/mol"],
+      templates=["Using standard Gibbs energies of formation CH4 = -50.8, O2 = 0, CO2 = -394.4, H2O = -237.1 (kJ/mol), "
+                 "find ΔG° for CH4 + 2 O2 -> CO2 + 2 H2O."],
+      examples=[{"equation": "CH4 + 2 O2 -> CO2 + 2 H2O", "values": "-50.8, 0, -394.4, -237.1"},
+                {"equation": "N2 + 3 H2 -> 2 NH3", "values": "0, 0, -16.4"}],
+      questions=["Using standard Gibbs energies of formation CH4 = -50.8, O2 = 0, CO2 = -394.4, H2O = -237.1 (kJ/mol), "
+                 "find ΔG° for CH4 + 2 O2 -> CO2 + 2 H2O.",
+                 "Standard Gibbs energies of formation: NH3 = -16.4, N2 = 0, H2 = 0 kJ/mol. Find ΔG° for N2 + 3 H2 -> 2 NH3.",
+                 "Using standard Gibbs energies of formation CH4 = -50.8, O2 = 0, CO2 = -394.4, H2O = -237.1 (kJ/mol), "
+                 "find ΔG° for CH4 + O2 -> CO2 + H2O."])
+
+
+# --- nuclear chemistry: binding energy, decay with a half-life, radioactive dating ----------------------------------
+def nuclear_binding_energy(Z, A, mass):
+    Z, A = int(Z), int(A)
+    if A < 2 or Z < 1 or Z > A:
+        raise ValueError("need 1 <= Z <= A and A >= 2 (a nucleus of at least two nucleons)")
+    _pos(mass=mass)
+    if abs(mass - A) >= 0.5:
+        raise ValueError("the atomic mass (in u) must lie within 0.5 u of the mass number A")
+    dm = Z * M_H1_U + (A - Z) * M_N_U - mass
+    if not dm > 0:
+        raise ValueError("a bound nucleus is lighter than its separate nucleons (the mass defect must be positive)")
+    E = dm * U_MEV
+    return {"dm": dm, "E_b": E * MEV_J, "E_b_MeV": E, "E_per_nucleon_MeV": E / A}
+
+
+def _verify_binding(i, o):
+    r = nuclear_binding_energy(i["Z"], i["A"], i["mass"])
+    return (_rel(o["E_b_MeV"], r["E_b_MeV"]) + _rel(o["E_b"], r["E_b"]) + _rel(o["E_per_nucleon_MeV"], r["E_per_nucleon_MeV"])
+            + _rel(o["dm"], r["dm"]))
+
+
+def _ref_binding(Z, A, mass):
+    """Exact mass defect, then E = dm u c^2 with the SI constants (another route than the MeV-per-u factor)."""
+    import scipy.constants as sc
+    Z, A = int(Z), int(A)
+    dm = Z * Fraction("1.007825031898") + (A - Z) * Fraction("1.00866491606") - Fraction(repr(float(mass)))
+    E_J = float(dm) * U_KG * sc.c ** 2
+    return {"dm": float(dm), "E_b": E_J, "E_b_MeV": E_J / (sc.e * 1e6)}
+
+
+def _rand_nuclide(rng):
+    A = rng.randint(4, 240)
+    Z = max(1, min(A - 1, round(A / (2.0 + 0.0153 * A ** (2.0 / 3.0)))))
+    B = (15.8 * A - 18.3 * A ** (2.0 / 3.0) - 0.714 * Z * (Z - 1) / A ** (1.0 / 3.0)
+         - 23.2 * (A - 2 * Z) ** 2 / A)                # semi-empirical binding energy (MeV), a realistic mass
+    return {"Z": Z, "A": A, "mass": Z * M_H1_U + (A - Z) * M_N_U - B / U_MEV + rng.uniform(-0.002, 0.002)}
+
+
+def _za_text(q, spans):
+    out = []
+    for sym in ("Z", "A"):
+        ms = list(re.finditer(r"(?<![\w⟦])" + sym + r"\s*=\s*(\d+)(?![\d.])", q))
+        if len(ms) > 1:
+            return None
+        if ms:
+            out.append((sym, int(ms[0].group(1)), ms[0].span()))
+    return out
+
+
+_proc("nuclear_binding_energy", name="Mass defect and nuclear binding energy", topic="nuclear chemistry / binding energy",
+      level="advanced",
+      purpose="The mass defect, binding energy and binding energy per nucleon of a nuclide from its atomic mass.",
+      inputs=[_inp("Z", "integer", "atomic number (protons)", type="integer", min=1, max=118, symbols=["Z"], label_only=True),
+              _inp("A", "integer", "mass number (nucleons)", type="integer", min=1, max=300, symbols=["A"], label_only=True),
+              _inp("mass", "number", "atomic mass of the nuclide (u)",
+                   labels=[r"atomic mass(?: of [a-z]+(?:-\d+)?)?(?: is)?", r"(?:nuclide|isotope|atom) has (?:a |an )?mass(?: of)?"])],
+      outputs=[_out("dm", "number", "mass defect (u)"), _out("E_b", "energy", "binding energy"),
+               _out("E_b_MeV", "number", "binding energy in MeV"),
+               _out("E_per_nucleon_MeV", "number", "binding energy per nucleon in MeV")],
+      primary="E_b_MeV", run=nuclear_binding_energy, verify=_verify_binding, reference=_ref_binding,
+      wrong=lambda Z, A, mass: (lambda dm: {"dm": dm, "E_b": dm * U_MEV * MEV_J, "E_b_MeV": dm * U_MEV,
+                                            "E_per_nucleon_MeV": dm * U_MEV / int(A)})(
+          int(Z) * M_P_U + (int(A) - int(Z)) * M_N_U - mass),
+      rand=_rand_nuclide,
+      kw=[r"binding energy|mass defect"], nokw=[r"half[- ]life|decay|lattice|\bbonds?\b|ionization|work function"],
+      text=_texts(_za_text), need=lambda t, qs: len(qs) <= 1 and all(q[4] == "none" for q in qs),
+      latex=r"\Delta m = Z\,m(^1\mathrm{H}) + (A - Z)\,m_n - m_{atom},\quad E_b = \Delta m c^2",
+      method="mass defect with atomic masses (Z hydrogen atoms carry the electrons), times 931.494 MeV per u",
+      conditions=["1 <= Z <= A, A >= 2", "atomic mass in u, within 0.5 u of A", "mass defect > 0"],
+      templates=["Find the nuclear binding energy of a nuclide with Z = 2, A = 4 and atomic mass 4.0026 u."],
+      examples=[{"Z": 2, "A": 4, "mass": 4.0026}, {"Z": 26, "A": 56, "mass": 55.9349}],
+      questions=["Find the nuclear binding energy of a nuclide with Z = 2, A = 4 and atomic mass 4.0026 u.",
+                 "What is the mass defect and binding energy per nucleon of a nuclide with Z = 26, A = 56 and atomic "
+                 "mass 55.9349 u?",
+                 "Find the nuclear binding energy of a nuclide with Z = 26, A = 56 and atomic mass 65.9349 u."])
+
+
+def radioactive_remaining(m0, t_half, t):
+    _pos(m0=m0, t_half=t_half)
+    _finite(t=t)
+    if t < 0:
+        raise ValueError("the elapsed time cannot be negative")
+    n = t / t_half
+    f = 0.5 ** n
+    m = m0 * f
+    return {"m": m, "m_g": m * 1000.0, "fraction": f, "half_lives": n}
+
+
+_HALF_LAB = [r"half[- ]life(?: of [a-z0-9\-]+(?: [a-z0-9\-]+)?)?(?: is| of)?"]
+
+_proc("radioactive_decay_remaining", name="Amount remaining after radioactive decay (half-life)",
+      topic="nuclear chemistry / radioactive decay", level="intermediate",
+      purpose="The mass of a radioactive nuclide that remains after a time, from its half-life.",
+      inputs=[_inp("m0", "mass", "initial mass", labels=[r"sample of", r"\binitial(?:ly)?(?: mass)?(?: of| is)?",
+                                                         r"\boriginal(?: mass)?(?: of| is)?", r"starts? with"]),
+              _inp("t_half", "time", "half-life", labels=_HALF_LAB),
+              _inp("t", "time", "elapsed time", labels=[r"\bafter", r"elapsed time(?: of| is)?", r"\bfor"])],
+      outputs=[_out("m", "mass", "mass remaining"), _out("m_g", "number", "in grams"),
+               _out("fraction", "number", "fraction remaining"), _out("half_lives", "number", "number of half-lives")],
+      primary="m", run=radioactive_remaining,
+      verify=lambda i, o: (lambda n, f: _rel(o["m"], i["m0"] * f) + _rel(o["m_g"], 1000.0 * i["m0"] * f)
+                           + _rel(o["fraction"], f) + _rel(o["half_lives"], n))(
+          i["t"] / i["t_half"], 0.5 ** (i["t"] / i["t_half"])),
+      reference=lambda m0, t_half, t: {"m": _ode(lambda a: math.log(2.0) / t_half * a, m0, t)},
+      wrong=lambda m0, t_half, t: (lambda f: {"m": m0 * f, "m_g": 1000.0 * m0 * f, "fraction": f,
+                                              "half_lives": t / t_half})(math.exp(-t / t_half)),
+      rand=lambda rng: (lambda th: {"m0": _u_(rng, 1e-6, 1.0), "t_half": th, "t": th * rng.uniform(0.05, 8.0)})(
+          _u_(rng, 1.0, 1e15)),
+      kw=[r"half[- ]life", r"remain|\bleft\b|how much|what mass"],
+      nokw=[r"how long|how old|\bage\b|first[- ]order|rate constant|binding|fraction remaining|% of the (?:original|initial)"],
+      need=_has("mass", "time", "time", exactly=True),
+      latex=r"m = m_0 \left(\tfrac{1}{2}\right)^{t/t_{1/2}}", method="m = m0 (1/2)^(t / t1/2)",
+      conditions=["m0, t1/2 > 0", "t >= 0"],
+      templates=["The half-life of iodine-131 is 8.02 days. How much of a 100 mg sample remains after 24.06 days?"],
+      examples=[{"m0": 1e-4, "t_half": 8.02 * 86400.0, "t": 24.06 * 86400.0},
+                {"m0": 0.005, "t_half": 5730 * YEAR_S, "t": 11460 * YEAR_S},
+                {"m0": 0.001, "t_half": 30.0, "t": 15.0}],
+      questions=["The half-life of iodine-131 is 8.02 days. How much of a 100 mg sample remains after 24.06 days?",
+                 "Carbon-14 has a half-life of 5730 years. What mass of a 5.00 g sample is left after 11460 years?",
+                 "The half-life of iodine-131 is 8.02 days. How much of a 100 mg sample remains after -5.0 days?"])
+
+
+def radioactive_age(fraction, t_half):
+    _pos(t_half=t_half)
+    if not 0 < fraction <= 1:
+        raise ValueError("the fraction remaining lies between 0 and 1")
+    n = -math.log(fraction) / LN2 + 0.0
+    t = n * t_half
+    return {"t": t, "t_years": t / YEAR_S, "half_lives": n}
+
+
+def _ref_age(fraction, t_half):
+    from scipy.integrate import solve_ivp
+    k = math.log(2.0) / t_half
+    T = t_half * (math.log2(1.0 / fraction) + 1.0)
+    s = solve_ivp(lambda _t, y: [-k * y[0]], (0.0, T), [1.0], method="DOP853", rtol=1e-13, atol=1e-16, dense_output=True)
+    return {"t": _brentq(lambda t: s.sol(t)[0] - fraction, 0.0, T)}
+
+
+def _remaining_text(q, spans):
+    m = re.search(r"(\d+(?:\.\d*)?(?:[eE][-+]?\d+)?)\s*(?:%|percent|per cent)\s+of\s+(?:the|its)\s+(?:original|initial)",
+                  q, re.I)
+    if m:
+        return [("fraction", float(m.group(1)) / 100.0, m.span())]
+    m = re.search(r"\b(?:fraction remaining|remaining fraction|fraction left)\s*(?:is|=|:|of)?\s*(" + _NUMX + r")", q, re.I)
+    if m:
+        return [("fraction", float(m.group(1)), m.span())]
+    return []
+
+
+_proc("radioactive_dating_age", name="Age from the fraction remaining (radioactive dating)",
+      topic="nuclear chemistry / radioactive decay", level="intermediate",
+      purpose="The age of a sample (the time elapsed) from the fraction of a radioactive nuclide remaining and its half-life.",
+      inputs=[_inp("fraction", "number", "fraction of the original nuclide remaining (0 < f <= 1)", symbols=["fraction"],
+                   label_only=True),
+              _inp("t_half", "time", "half-life", labels=_HALF_LAB)],
+      outputs=[_out("t", "time", "age (time elapsed)"), _out("t_years", "number", "in years"),
+               _out("half_lives", "number", "number of half-lives")],
+      primary="t", run=radioactive_age,
+      verify=lambda i, o: (abs(0.5 ** (o["t"] / i["t_half"]) - i["fraction"]) / i["fraction"]
+                           + _rel(o["t_years"] * YEAR_S, o["t"]) + abs(o["half_lives"] - o["t"] / i["t_half"]) / max(1.0, abs(o["half_lives"]))),
+      reference=_ref_age,
+      wrong=lambda fraction, t_half: (lambda n: {"t": n * t_half, "t_years": n * t_half / YEAR_S, "half_lives": n})(
+          -math.log(fraction)),
+      rand=lambda rng: {"fraction": rng.uniform(0.02, 0.9), "t_half": _u_(rng, 1.0, 1e15)},
+      kw=[r"half[- ]life", r"how old|\bage\b|how long ago|how many years ago"],
+      nokw=[r"how much (?:remains|is left)|what mass|first[- ]order|rate constant|binding"],
+      text=_texts(_remaining_text), need=lambda t, qs: len(qs) <= 1 and all(q[4] == "time" for q in qs),
+      latex=r"t = t_{1/2}\,\log_2\frac{1}{f}", method="t = t1/2 ln(1/f) / ln 2",
+      conditions=["0 < f <= 1", "t1/2 > 0"],
+      templates=["A wood sample has 25% of the original carbon-14 remaining. The half-life of carbon-14 is 5730 years. "
+                 "How old is the sample?"],
+      examples=[{"fraction": 0.25, "t_half": 5730 * YEAR_S}, {"fraction": 0.1, "t_half": 5730 * YEAR_S}],
+      questions=["A wood sample has 25% of the original carbon-14 remaining. The half-life of carbon-14 is 5730 years. "
+                 "How old is the sample?",
+                 "The fraction remaining is 0.10 and the half-life is 5730 years. What is the age of the sample?",
+                 "The fraction remaining is 1.5 and the half-life is 5730 years. What is the age of the sample?"])
+
+
+# --- conjugate acid-base pairs: Ka Kb = Kw ---------------------------------------------------------------------------
+def _conj_word(known):
+    return "Kb of the conjugate base" if known == "Ka" else "Ka of the conjugate acid"
+
+
+def conjugate_constant(K, known):
+    _pos(K=K)
+    if known != "Ka" and known != "Kb":
+        raise ValueError("the given constant is Ka (of an acid) or Kb (of a base)")
+    Kc = KW / K
+    return {"K_conj": Kc, "pK": -math.log10(K), "pK_conj": -math.log10(Kc), "conjugate": _conj_word(known)}
+
+
+def _k_given_text(q, spans):
+    hits = list(re.finditer(r"\b(p?)k_?(a|b)\b\s*(?:\([^)]*\)\s*)?(?:(?:of|for)\s+[A-Za-z0-9()+\- ]{1,30}?\s*)?"
+                            r"(?:=|:|\bis\b)\s*(" + _NUMX + r")", q, re.I))
+    if not hits:
+        return []
+    if len(hits) != 1:
+        return None                                    # two stated constants: this form takes one
+    m = hits[0]
+    v = float(m.group(3))
+    K = 10.0 ** -v if m.group(1) else v
+    return [("K", K, m.span()), ("known", "K" + m.group(2).lower(), (m.end(), m.end()))]
+
+
+_proc("conjugate_dissociation_constant", name="Conjugate acid-base constants (Ka Kb = Kw)",
+      topic="acids and bases / conjugate pairs", level="beginner",
+      purpose="The dissociation constant of the conjugate base of an acid (or of the conjugate acid of a base), with "
+              "pKa and pKb, at 25 °C.",
+      inputs=[_inp("K", "number", "the given Ka (acid) or Kb (base)", symbols=["K"], label_only=True),
+              _inp("known", "number", "which constant is given", type="choice", choices=["Ka", "Kb"])],
+      outputs=[_out("K_conj", "number", "dissociation constant of the conjugate"),
+               _out("pK", "number", "pK of the given constant"), _out("pK_conj", "number", "pK of the conjugate"),
+               _out("conjugate", "text", "which constant the conjugate's is")],
+      primary="K_conj", run=conjugate_constant,
+      verify=lambda i, o: (_rel(o["K_conj"] * i["K"], KW) + abs(o["pK"] + math.log10(i["K"]))
+                           + abs(o["pK_conj"] - 14.0 - math.log10(i["K"]))
+                           + (0.0 if o["conjugate"] == _conj_word(i["known"]) else 1.0)),
+      reference=lambda K, known: (lambda np: {"K_conj": float(np.power(10.0, np.log10(1.0e-14) - np.log10(K))),
+                                              "pK_conj": float(14.0 + np.log10(K))})(__import__("numpy")),
+      wrong=lambda K, known: {"K_conj": 1.0 / K, "pK": -math.log10(K), "pK_conj": math.log10(K),
+                              "conjugate": _conj_word(known)},
+      rand=lambda rng: {"K": _u_(rng, 1e-13, 1e-1), "known": rng.choice(["Ka", "Kb"])},
+      kw=[r"conjugate", r"\bp?k_?[ab]\b"],
+      nokw=[r"\bph\b|\bpoh\b|buffer|titrat|ioni[sz]ation|concentration|\d\s*(?:m|mol/l|mm)\b"],
+      text=_texts(_k_given_text), need=lambda t, qs: not qs,
+      latex=r"K_a K_b = K_w,\quad \mathrm{p}K_a + \mathrm{p}K_b = 14",
+      method="K_conj = Kw / K; pK = -log10 K", conditions=["K > 0", "25 °C (Kw = 1.0e-14)"],
+      templates=["Ka of acetic acid = 1.8e-5. What is Kb of its conjugate base?"],
+      examples=[{"K": 1.8e-5, "known": "Ka"}, {"K": 1e-5, "known": "Kb"}],
+      questions=["Ka of acetic acid = 1.8e-5. What is Kb of its conjugate base?",
+                 "The pKa of an acid HA is 3.00. Find Kb of its conjugate base.",
+                 "The pKb of a base B is 5.00. What is Ka of its conjugate acid?",
+                 "Ka of an acid HA = -1.0e-5. What is Kb of its conjugate base?"])
+
+
+# --- stereochemistry: specific rotation and enantiomeric excess -----------------------------------------------------
+def specific_rotation(alpha, l, c):
+    _finite(alpha=alpha)
+    _pos(l=l, c=c)
+    return {"specific_rotation": 100.0 * alpha / (l * c)}
+
+
+def _rotation_text(q, spans):
+    out = []
+    a = list(re.finditer(r"(" + _NUMX + r")\s*°(?!\s*C\b)", q))
+    if len(a) > 1:
+        return None
+    if a:
+        out.append(("alpha", float(a[0].group(1)), a[0].span()))
+    ls = list(re.finditer(r"(" + _NUMX + r")\s*(dm|cm|mm)\b", q))
+    if len(ls) > 1:
+        return None
+    if ls:
+        out.append(("l", float(ls[0].group(1)) * {"dm": 0.1, "cm": 0.01, "mm": 0.001}[ls[0].group(2)], ls[0].span()))
+    cs = list(re.finditer(r"(" + _NUMX + r")\s*(g/mL|g/cm\^?3|g/100\s*mL|g/L)", q))
+    if len(cs) > 1:
+        return None
+    if cs:
+        fac = {"g/mL": 1000.0, "g/L": 1.0}.get(cs[0].group(2), 1000.0 if "cm" in cs[0].group(2) else 10.0)
+        out.append(("c", float(cs[0].group(1)) * fac, cs[0].span()))
+    return out
+
+
+_proc("specific_rotation", name="Specific rotation from an observed rotation", topic="organic chemistry / stereochemistry",
+      level="intermediate",
+      purpose="The specific rotation of an optically active compound from the observed rotation, the path length and "
+              "the concentration of its solution.",
+      inputs=[_inp("alpha", "number", "observed rotation (degrees)", symbols=["alpha"], label_only=True),
+              _inp("l", "length", "path length of the cell", symbols=["l"], label_only=True),
+              _inp("c", "density", "concentration in mass per volume (g/mL)", symbols=["c"], label_only=True)],
+      outputs=[_out("specific_rotation", "number", "specific rotation (degrees mL g^-1 dm^-1)")],
+      primary="specific_rotation", run=specific_rotation,
+      verify=lambda i, o: _rel(o["specific_rotation"] * i["l"] * i["c"] / 100.0, i["alpha"]),
+      reference=lambda alpha, l, c: (lambda x0: {"specific_rotation": _brentq(
+          lambda x: x * (l / 0.1) * (c / 1000.0) - alpha, -2.0 * abs(x0) - 1.0, 2.0 * abs(x0) + 1.0)})(100.0 * alpha / (l * c)),
+      wrong=lambda alpha, l, c: {"specific_rotation": 10.0 * alpha / (l * c)},
+      rand=lambda rng: {"alpha": rng.choice([-1, 1]) * rng.uniform(0.1, 20.0), "l": rng.choice([0.05, 0.1, 0.2]) * rng.uniform(0.5, 2.0),
+                        "c": _u_(rng, 1.0, 200.0)},
+      kw=[r"specific rotation"], nokw=[r"enantiomeric|optical purity|\bee\b|pure enantiomer"],
+      text=_texts(_rotation_text), need=lambda t, qs: not qs,
+      latex=r"[\alpha] = \frac{\alpha}{l\,c}\quad (l \text{ in dm},\ c \text{ in g/mL})",
+      method="observed rotation over path length (dm) times concentration (g/mL)",
+      conditions=["l, c > 0", "rotation in degrees, written with °"],
+      templates=["A solution of 0.0500 g/mL of a compound in a 1.00 dm tube shows an observed rotation of +1.20°. "
+                 "What is its specific rotation?"],
+      examples=[{"alpha": 1.2, "l": 0.1, "c": 50.0}, {"alpha": -4.32, "l": 0.2, "c": 120.0}],
+      questions=["A solution of 0.0500 g/mL of a compound in a 1.00 dm tube shows an observed rotation of +1.20°. "
+                 "What is its specific rotation?",
+                 "The observed rotation is -4.32° for a 0.120 g/mL solution in a 2.00 dm cell. Find the specific rotation.",
+                 "The observed rotation is -4.32° for a 0.120 g/mL solution in a 0 dm cell. Find the specific rotation."])
+
+
+def _ee_word(r):
+    if r > 0:
+        return "the same enantiomer as the pure sample"
+    if r < 0:
+        return "the opposite enantiomer"
+    return "neither (racemic)"
+
+
+def ee_from_rotation(alpha_obs, alpha_pure):
+    _finite(alpha_obs=alpha_obs, alpha_pure=alpha_pure)
+    if alpha_pure == 0:
+        raise ValueError("the pure enantiomer's specific rotation cannot be zero")
+    r = alpha_obs / alpha_pure
+    if abs(r) > 1.0:
+        raise ValueError("the observed rotation cannot be larger in size than the pure enantiomer's")
+    ee = 100.0 * abs(r)
+    major = 50.0 + ee / 2.0
+    return {"ee": ee, "major_percent": major, "minor_percent": 100.0 - major, "predominant": _ee_word(r)}
+
+
+def _verify_ee_rot(i, o):
+    r = i["alpha_obs"] / i["alpha_pure"]
+    return (abs(o["ee"] - 100.0 * abs(r)) / 100.0 + abs(o["major_percent"] - 50.0 - 50.0 * abs(r)) / 100.0
+            + abs(o["minor_percent"] - 50.0 + 50.0 * abs(r)) / 100.0 + (0.0 if o["predominant"] == _ee_word(r) else 1.0))
+
+
+def _rand_ee_rot(rng):
+    pure = rng.choice([-1, 1]) * rng.uniform(5.0, 200.0)
+    r = rng.choice([-1, 1]) * rng.uniform(0.02, 0.98)
+    return {"alpha_obs": r * pure, "alpha_pure": pure}
+
+
+_proc("enantiomeric_excess_from_rotation", name="Enantiomeric excess from optical rotation",
+      topic="organic chemistry / stereochemistry", level="intermediate",
+      purpose="The enantiomeric excess (optical purity) of a mixture and the percent of each enantiomer, from its "
+              "specific rotation and that of the pure enantiomer.",
+      inputs=[_inp("alpha_obs", "number", "specific rotation of the mixture (degrees)", label_only=True,
+                   labels=[r"observed (?:specific )?rotation(?: of (?:the |a )?(?:mixture|sample))?(?: is| of)?",
+                           r"(?:mixture|sample) (?:has|shows) (?:a |an )?(?:observed )?(?:specific )?rotation(?: of)?"]),
+              _inp("alpha_pure", "number", "specific rotation of the pure enantiomer (degrees)", label_only=True,
+                   labels=[r"pure (?:\w+ )?(?:enantiomer|compound|sample)(?: has| shows)? (?:a )?(?:specific )?rotation(?: of| is)?",
+                           r"(?:specific )?rotation of the pure (?:\w+ )?(?:enantiomer|compound)(?: is| of)?"])],
+      outputs=[_out("ee", "number", "enantiomeric excess (%)"), _out("major_percent", "number", "percent of the major enantiomer"),
+               _out("minor_percent", "number", "percent of the minor enantiomer"),
+               _out("predominant", "text", "which enantiomer predominates")],
+      primary="ee", run=ee_from_rotation, verify=_verify_ee_rot,
+      reference=lambda alpha_obs, alpha_pure: (lambda np: (lambda r: {"ee": float(100.0 * r), "major_percent": float(50.0 + 50.0 * r)})(
+          np.abs(np.divide(alpha_obs, alpha_pure))))(__import__("numpy")),
+      wrong=lambda alpha_obs, alpha_pure: dict(ee_from_rotation(alpha_obs, alpha_pure),
+                                               ee=50.0 + 50.0 * abs(alpha_obs / alpha_pure)),
+      rand=_rand_ee_rot,
+      kw=[r"enantiomeric excess|optical purity|\bee\b", r"rotation"],
+      need=_has("none", "none", exactly=True),
+      latex=r"ee = \frac{[\alpha]_{mixture}}{[\alpha]_{pure}} \times 100\%,\quad \%_{major} = 50 + \frac{ee}{2}",
+      method="optical purity = ratio of the specific rotations; the major enantiomer is 50% + ee/2",
+      conditions=["the pure enantiomer's rotation is not zero", "|observed| <= |pure|"],
+      templates=["The observed specific rotation of a mixture is +12.0° and the pure enantiomer has a specific rotation "
+                 "of +24.0°. What is the enantiomeric excess?"],
+      examples=[{"alpha_obs": 12.0, "alpha_pure": 24.0}, {"alpha_obs": -6.0, "alpha_pure": 24.0}],
+      questions=["The observed specific rotation of a mixture is +12.0° and the pure enantiomer has a specific rotation "
+                 "of +24.0°. What is the enantiomeric excess?",
+                 "The observed rotation of a sample is -6.0° and the pure enantiomer has a specific rotation of +24.0°. "
+                 "What is the optical purity (enantiomeric excess)?",
+                 "The observed specific rotation of a mixture is +30.0° and the pure enantiomer has a specific rotation "
+                 "of +24.0°. What is the enantiomeric excess?"])
+
+
+def _ee_comp_word(R, S):
+    if R > S:
+        return "R"
+    if S > R:
+        return "S"
+    return "neither (racemic)"
+
+
+def ee_from_composition(R, S):
+    _finite(R=R, S=S)
+    if R < 0 or S < 0:
+        raise ValueError("amounts cannot be negative")
+    tot = R + S
+    if not tot > 0:
+        raise ValueError("the mixture must contain some of either enantiomer")
+    return {"ee": 100.0 * abs(R - S) / tot, "percent_R": 100.0 * R / tot, "percent_S": 100.0 * S / tot,
+            "predominant": _ee_comp_word(R, S)}
+
+
+def _verify_ee_comp(i, o):
+    tot = i["R"] + i["S"]
+    return (abs(o["ee"] - 100.0 * abs(i["R"] - i["S"]) / tot) / 100.0 + abs(o["percent_R"] - 100.0 * i["R"] / tot) / 100.0
+            + abs(o["percent_S"] - 100.0 * i["S"] / tot) / 100.0
+            + (0.0 if o["predominant"] == _ee_comp_word(i["R"], i["S"]) else 1.0))
+
+
+def _enant_text(q, spans):
+    hits = list(re.finditer(r"(" + _NUMX + r")\s*(%|g|mg|mol|mmol)?\s*(?:of\s+)?(?:the\s+)?\(?([RS])\)?[- ]?"
+                            r"(?:enantiomer|isomer|form)\b", q))
+    if not hits:
+        return []
+    got, units, out = {}, set(), []
+    for m in hits:
+        if m.group(3) in got:
+            return None
+        got[m.group(3)] = float(m.group(1))
+        units.add(m.group(2) or "")
+        out.append((m.group(3), float(m.group(1)), m.span()))
+    if len(units) != 1:
+        return None                                    # amounts in different units: never compared
+    if units == {"%"} and len(got) == 2 and abs(got["R"] + got["S"] - 100.0) > 0.5:
+        return None
+    return out
+
+
+_proc("enantiomeric_excess_from_composition", name="Enantiomeric excess from the composition of a mixture",
+      topic="organic chemistry / stereochemistry", level="beginner",
+      purpose="The enantiomeric excess and the percent of each enantiomer from the amounts of the R and S enantiomers.",
+      inputs=[_inp("R", "number", "amount of the R enantiomer (any unit, the same for both)", symbols=["R"], label_only=True),
+              _inp("S", "number", "amount of the S enantiomer (same unit)", symbols=["S"], label_only=True)],
+      outputs=[_out("ee", "number", "enantiomeric excess (%)"), _out("percent_R", "number", "percent R"),
+               _out("percent_S", "number", "percent S"), _out("predominant", "text", "which enantiomer predominates")],
+      primary="ee", run=ee_from_composition, verify=_verify_ee_comp,
+      reference=lambda R, S: (lambda np: {"ee": float(100.0 * np.abs(np.subtract(R, S)) / np.add(R, S)),
+                                          "percent_R": float(100.0 * np.divide(R, np.add(R, S)))})(__import__("numpy")),
+      wrong=lambda R, S: dict(ee_from_composition(R, S), ee=100.0 * max(R, S) / (R + S)),
+      rand=lambda rng: {"R": _u_(rng, 0.01, 10.0), "S": _u_(rng, 0.01, 10.0)},
+      kw=[r"enantiomeric excess|optical purity|\bee\b"], nokw=[r"rotation"],
+      text=_texts(_enant_text), need=lambda t, qs: not qs,
+      latex=r"ee = \frac{|n_R - n_S|}{n_R + n_S} \times 100\%",
+      method="difference of the two amounts over their sum", conditions=["amounts >= 0, not both zero", "one unit for both"],
+      templates=["A mixture contains 75% of the R enantiomer and 25% of the S enantiomer. What is the enantiomeric excess?"],
+      examples=[{"R": 75.0, "S": 25.0}, {"R": 1.0, "S": 3.0}],
+      questions=["A mixture contains 75% of the R enantiomer and 25% of the S enantiomer. What is the enantiomeric excess?",
+                 "A sample contains 1.0 g of the (R)-enantiomer and 3.0 g of the (S)-enantiomer. Find the enantiomeric excess.",
+                 "A sample contains -1.0 g of the (R)-enantiomer and 3.0 g of the (S)-enantiomer. Find the enantiomeric excess."])
 
 
 # ====================================================================================================================

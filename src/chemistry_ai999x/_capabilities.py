@@ -15,7 +15,7 @@ def _bind(product) -> None:
     _P = product
 
 
-CapabilityId = Literal["activation_energy", "arrhenius_k2", "arrhenius_rate_constant", "atoms_of_element", "balance_equation", "beer_lambert_absorbance", "beer_lambert_concentration", "boiling_point_elevation", "boyle_final_pressure", "boyle_final_volume", "buffer_ph", "calorimetry_heat", "charles_final_volume", "clausius_clapeyron_enthalpy", "clausius_clapeyron_pressure", "combined_gas_final_pressure", "combined_gas_final_temperature", "combined_gas_final_volume", "common_ion_solubility", "consecutive_first_order", "crossover_temperature", "dalton_mixture", "degree_of_unsaturation", "delta_g_from_cell_potential", "delta_g_from_k", "delta_g_nonstandard", "dilution_final_concentration", "dilution_volume", "electrolysis_mass", "electrolysis_time", "empirical_formula", "enthalpy_from_calorimetry", "equilibrium_ice", "first_order_concentration", "first_order_half_life", "first_order_time", "freezing_point_depression", "gas_density", "gay_lussac_final_pressure", "gibbs_free_energy", "graham_molar_mass", "graham_rate_ratio", "heat_from_reaction_mass", "hydrogen_transition_wavelength", "hydronium_from_ph", "ideal_gas_mass", "ideal_gas_moles", "ideal_gas_pressure", "ideal_gas_temperature", "ideal_gas_volume", "k_from_cell_potential", "k_from_delta_g", "ka_from_ph", "kc_from_kp", "kp_from_kc", "ksp_from_solubility", "ksp_molar_solubility", "limiting_reagent", "mass_from_moles", "mass_of_element", "mass_percent", "mean_speed", "molality", "molar_mass", "molar_mass_from_freezing_point", "molar_mass_from_gas_density", "molar_mass_from_gas_sample", "molar_mass_from_osmotic_pressure", "molarity_from_mass", "mole_fraction", "molecular_formula", "moles_from_mass", "moles_from_particles", "nernst_potential", "osmotic_pressure", "partial_pressure", "particles_from_mass", "particles_from_moles", "percent_yield", "ph_diprotic_acid", "ph_from_hydronium", "ph_from_hydroxide", "ph_salt_of_weak_acid", "ph_strong_acid", "ph_strong_base", "ph_weak_acid", "ph_weak_base", "photon_energy", "photon_wavelength", "raoult_vapor_pressure", "reaction_enthalpy_from_formation", "reaction_order_from_rates", "rms_speed", "second_order_concentration", "solute_mass_for_solution", "theoretical_yield", "titration_equivalence_volume", "titration_ph_strong_acid_strong_base", "titration_ph_weak_acid_strong_base", "van_der_waals_pressure", "vant_hoff_k2", "vibrational_wavenumber", "zero_order_concentration"]
+CapabilityId = Literal["activation_energy", "arrhenius_k2", "arrhenius_rate_constant", "atoms_of_element", "average_atomic_mass", "balance_equation", "beer_lambert_absorbance", "beer_lambert_concentration", "boiling_point_elevation", "bond_enthalpy_reaction", "boyle_final_pressure", "boyle_final_volume", "buffer_ph", "calorimetry_heat", "charles_final_volume", "clausius_clapeyron_enthalpy", "clausius_clapeyron_pressure", "combined_gas_final_pressure", "combined_gas_final_temperature", "combined_gas_final_volume", "common_ion_solubility", "conjugate_dissociation_constant", "consecutive_first_order", "crossover_temperature", "dalton_mixture", "degree_of_unsaturation", "delta_g_from_cell_potential", "delta_g_from_k", "delta_g_nonstandard", "dilution_final_concentration", "dilution_volume", "electrolysis_mass", "electrolysis_time", "empirical_formula", "enantiomeric_excess_from_composition", "enantiomeric_excess_from_rotation", "enthalpy_from_calorimetry", "equilibrium_ice", "first_order_concentration", "first_order_half_life", "first_order_time", "freezing_point_depression", "gas_density", "gay_lussac_final_pressure", "gibbs_free_energy", "graham_molar_mass", "graham_rate_ratio", "heat_from_reaction_mass", "henry_law_solubility", "hydrogen_transition_wavelength", "hydronium_from_ph", "ideal_gas_mass", "ideal_gas_moles", "ideal_gas_pressure", "ideal_gas_temperature", "ideal_gas_volume", "isotope_abundance", "k_from_cell_potential", "k_from_delta_g", "ka_from_ph", "kc_from_kp", "kp_from_kc", "ksp_from_solubility", "ksp_molar_solubility", "limiting_reagent", "mass_from_moles", "mass_of_element", "mass_percent", "mean_speed", "molality", "molar_mass", "molar_mass_from_freezing_point", "molar_mass_from_gas_density", "molar_mass_from_gas_sample", "molar_mass_from_osmotic_pressure", "molarity_from_mass", "mole_fraction", "molecular_formula", "moles_from_mass", "moles_from_particles", "nernst_potential", "nuclear_binding_energy", "osmotic_pressure", "partial_pressure", "particles_from_mass", "particles_from_moles", "percent_yield", "ph_diprotic_acid", "ph_from_hydronium", "ph_from_hydroxide", "ph_salt_of_weak_acid", "ph_strong_acid", "ph_strong_base", "ph_weak_acid", "ph_weak_base", "photon_energy", "photon_wavelength", "precipitation_test", "radioactive_dating_age", "radioactive_decay_remaining", "raoult_vapor_pressure", "reaction_enthalpy_from_formation", "reaction_entropy_from_standard_entropies", "reaction_gibbs_from_formation", "reaction_order_from_rates", "reaction_quotient_direction", "rms_speed", "second_order_concentration", "solute_mass_for_solution", "specific_rotation", "standard_cell_potential", "theoretical_yield", "titration_equivalence_volume", "titration_ph_strong_acid_strong_base", "titration_ph_weak_acid_strong_base", "van_der_waals_pressure", "vant_hoff_k2", "vibrational_wavenumber", "zero_order_concentration"]
 
 
 def solve(find: CapabilityId | str, given: dict | None = None, conditions=(), *, target: str | None = None, **inputs):
@@ -84,6 +84,18 @@ def atoms_of_element(formula=None, element=None, m=None):
     given = {k: v for k, v in dict(formula=formula, element=element, m=m).items() if v is not None}
     return _P.solve("atoms_of_element", **given)
 
+def average_atomic_mass(masses=None, abundances=None):
+    """Average atomic mass from isotopes. The average (relative) atomic mass of an element from the masses and natural abundances of its isotopes.
+    Formula: \\bar{A} = \\sum_i f_i\\, m_i
+    Inputs:
+        masses: mass of each isotope (u)
+        abundances: abundance of each isotope, in the same order (fractions adding up to 1, or percentages adding up to 100)
+    Outputs: A_r (average atomic mass (u, numerically g/mol)), M (molar mass of the element)
+    See also: help("average_atomic_mass")
+    """
+    given = {k: v for k, v in dict(masses=masses, abundances=abundances).items() if v is not None}
+    return _P.solve("average_atomic_mass", **given)
+
 def balance_equation(equation=None):
     """Balancing a chemical equation. The smallest whole-number coefficients that balance a chemical equation.
     Formula: A\\,\\boldsymbol{\\nu} = \\mathbf{0},\\ \\boldsymbol{\\nu} \\in \\mathbb{Z}_{>0}^{n}
@@ -133,6 +145,20 @@ def boiling_point_elevation(i=None, K=None, b=None):
     """
     given = {k: v for k, v in dict(i=i, K=K, b=b).items() if v is not None}
     return _P.solve("boiling_point_elevation", **given)
+
+def bond_enthalpy_reaction(broken_n=None, broken_D=None, formed_n=None, formed_D=None):
+    """Reaction enthalpy from bond enthalpies. An estimate of a gas-phase reaction enthalpy from the average bond enthalpies of the bonds broken and formed.
+    Formula: \\Delta H \\approx \\sum_{\\text{broken}} n\\,D - \\sum_{\\text{formed}} n\\,D
+    Inputs:
+        broken_n: number of each kind of bond broken
+        broken_D: bond enthalpy of each kind of bond broken (kJ/mol), same order
+        formed_n: number of each kind of bond formed
+        formed_D: bond enthalpy of each kind of bond formed (kJ/mol), same order
+    Outputs: dH (estimated reaction enthalpy), dH_kJ (in kJ/mol), broken_kJ (energy to break the bonds (kJ/mol)), formed_kJ (energy released forming the bonds (kJ/mol))
+    See also: help("bond_enthalpy_reaction")
+    """
+    given = {k: v for k, v in dict(broken_n=broken_n, broken_D=broken_D, formed_n=formed_n, formed_D=formed_D).items() if v is not None}
+    return _P.solve("bond_enthalpy_reaction", **given)
 
 def boyle_final_pressure(P1=None, V1=None, V2=None):
     """Boyle's law: final pressure. The pressure of a gas after a volume change at constant temperature.
@@ -288,6 +314,18 @@ def common_ion_solubility(Ksp=None, x=None, y=None, c_common=None, common=None):
     given = {k: v for k, v in dict(Ksp=Ksp, x=x, y=y, c_common=c_common, common=common).items() if v is not None}
     return _P.solve("common_ion_solubility", **given)
 
+def conjugate_dissociation_constant(K=None, known=None):
+    """Conjugate acid-base constants (Ka Kb = Kw). The dissociation constant of the conjugate base of an acid (or of the conjugate acid of a base), with pKa and pKb, at 25 °C.
+    Formula: K_a K_b = K_w,\\quad \\mathrm{p}K_a + \\mathrm{p}K_b = 14
+    Inputs:
+        K: the given Ka (acid) or Kb (base)
+        known: which constant is given
+    Outputs: K_conj (dissociation constant of the conjugate), pK (pK of the given constant), pK_conj (pK of the conjugate), conjugate (which constant the conjugate's is)
+    See also: help("conjugate_dissociation_constant")
+    """
+    given = {k: v for k, v in dict(K=K, known=known).items() if v is not None}
+    return _P.solve("conjugate_dissociation_constant", **given)
+
 def consecutive_first_order(A0=None, k1=None, k2=None, t=None):
     """Consecutive first-order reactions (A -> B -> C). Concentrations of the reactant and the intermediate of A -> B -> C (both steps first order) at a time.
     Formula: [B] = \\frac{k_1 [A]_0}{k_2 - k_1}\\left(e^{-k_1 t} - e^{-k_2 t}\\right)
@@ -438,6 +476,30 @@ def empirical_formula(composition=None):
     """
     given = {k: v for k, v in dict(composition=composition).items() if v is not None}
     return _P.solve("empirical_formula", **given)
+
+def enantiomeric_excess_from_composition(R=None, S=None):
+    """Enantiomeric excess from the composition of a mixture. The enantiomeric excess and the percent of each enantiomer from the amounts of the R and S enantiomers.
+    Formula: ee = \\frac{|n_R - n_S|}{n_R + n_S} \\times 100\\%
+    Inputs:
+        R: amount of the R enantiomer (any unit, the same for both)
+        S: amount of the S enantiomer (same unit)
+    Outputs: ee (enantiomeric excess (%)), percent_R (percent R), percent_S (percent S), predominant (which enantiomer predominates)
+    See also: help("enantiomeric_excess_from_composition")
+    """
+    given = {k: v for k, v in dict(R=R, S=S).items() if v is not None}
+    return _P.solve("enantiomeric_excess_from_composition", **given)
+
+def enantiomeric_excess_from_rotation(alpha_obs=None, alpha_pure=None):
+    """Enantiomeric excess from optical rotation. The enantiomeric excess (optical purity) of a mixture and the percent of each enantiomer, from its specific rotation and that of the pure enantiomer.
+    Formula: ee = \\frac{[\\alpha]_{mixture}}{[\\alpha]_{pure}} \\times 100\\%,\\quad \\%_{major} = 50 + \\frac{ee}{2}
+    Inputs:
+        alpha_obs: specific rotation of the mixture (degrees)
+        alpha_pure: specific rotation of the pure enantiomer (degrees)
+    Outputs: ee (enantiomeric excess (%)), major_percent (percent of the major enantiomer), minor_percent (percent of the minor enantiomer), predominant (which enantiomer predominates)
+    See also: help("enantiomeric_excess_from_rotation")
+    """
+    given = {k: v for k, v in dict(alpha_obs=alpha_obs, alpha_pure=alpha_pure).items() if v is not None}
+    return _P.solve("enantiomeric_excess_from_rotation", **given)
 
 def enthalpy_from_calorimetry(m=None, c=None, T1=None, T2=None, n=None):
     """Reaction enthalpy from coffee-cup calorimetry. The molar enthalpy of a reaction from the temperature change of the solution it takes place in.
@@ -593,6 +655,18 @@ def heat_from_reaction_mass(formula=None, m=None, dH=None):
     given = {k: v for k, v in dict(formula=formula, m=m, dH=dH).items() if v is not None}
     return _P.solve("heat_from_reaction_mass", **given)
 
+def henry_law_solubility(kH=None, P=None):
+    """Henry's law: solubility of a gas. The concentration of a dissolved gas from its Henry's law constant and its partial pressure.
+    Formula: c = k_H\\, P
+    Inputs:
+        kH: Henry's law constant (solubility form, c = kH P)
+        P: partial pressure of the gas
+    Outputs: c (dissolved gas concentration), c_molL (in mol/L)
+    See also: help("henry_law_solubility")
+    """
+    given = {k: v for k, v in dict(kH=kH, P=P).items() if v is not None}
+    return _P.solve("henry_law_solubility", **given)
+
 def hydrogen_transition_wavelength(n_upper=None, n_lower=None):
     """Hydrogen atom transition wavelength (Rydberg). The wavelength of the photon emitted or absorbed in a transition between two levels of hydrogen.
     Formula: \\frac{1}{\\lambda} = R_H\\left(\\frac{1}{n_1^2} - \\frac{1}{n_2^2}\\right)
@@ -681,6 +755,19 @@ def ideal_gas_volume(n=None, P=None, T=None):
     """
     given = {k: v for k, v in dict(n=n, P=P, T=T).items() if v is not None}
     return _P.solve("ideal_gas_volume", **given)
+
+def isotope_abundance(m1=None, m2=None, A_r=None):
+    """Abundances of two isotopes from the average atomic mass. The natural abundances of an element's two isotopes from their masses and the average atomic mass.
+    Formula: x_1 = \\frac{\\bar{A} - m_2}{m_1 - m_2},\\quad x_2 = 1 - x_1
+    Inputs:
+        m1: mass of the first isotope (u)
+        m2: mass of the second isotope (u)
+        A_r: average atomic mass (u)
+    Outputs: x1 (fractional abundance of the first isotope), x2 (fractional abundance of the second isotope), percent1 (percent abundance of the first isotope), percent2 (percent abundance of the second isotope)
+    See also: help("isotope_abundance")
+    """
+    given = {k: v for k, v in dict(m1=m1, m2=m2, A_r=A_r).items() if v is not None}
+    return _P.solve("isotope_abundance", **given)
 
 def k_from_cell_potential(n=None, E=None, T=None):
     """Equilibrium constant from a standard cell potential. The equilibrium constant of a cell reaction from its standard potential (ln K = nFE°/RT).
@@ -993,6 +1080,19 @@ def nernst_potential(E0=None, n=None, Q=None, T=None):
     given = {k: v for k, v in dict(E0=E0, n=n, Q=Q, T=T).items() if v is not None}
     return _P.solve("nernst_potential", **given)
 
+def nuclear_binding_energy(Z=None, A=None, mass=None):
+    """Mass defect and nuclear binding energy. The mass defect, binding energy and binding energy per nucleon of a nuclide from its atomic mass.
+    Formula: \\Delta m = Z\\,m(^1\\mathrm{H}) + (A - Z)\\,m_n - m_{atom},\\quad E_b = \\Delta m c^2
+    Inputs:
+        Z: atomic number (protons)
+        A: mass number (nucleons)
+        mass: atomic mass of the nuclide (u)
+    Outputs: dm (mass defect (u)), E_b (binding energy), E_b_MeV (binding energy in MeV), E_per_nucleon_MeV (binding energy per nucleon in MeV)
+    See also: help("nuclear_binding_energy")
+    """
+    given = {k: v for k, v in dict(Z=Z, A=A, mass=mass).items() if v is not None}
+    return _P.solve("nuclear_binding_energy", **given)
+
 def osmotic_pressure(i=None, c=None, T=None):
     """Osmotic pressure. The osmotic pressure of a dilute solution (van 't Hoff equation).
     Formula: \\Pi = i c R T
@@ -1172,6 +1272,46 @@ def photon_wavelength(E=None):
     given = {k: v for k, v in dict(E=E).items() if v is not None}
     return _P.solve("photon_wavelength", **given)
 
+def precipitation_test(Ksp=None, x=None, y=None, c_cation=None, c_anion=None):
+    """Precipitation test (Q versus Ksp). Whether a salt MxAy precipitates from a solution with given ion concentrations: the ion product Q compared with Ksp.
+    Formula: Q = [M]^x[A]^y;\\ Q > K_{sp} \\Rightarrow \\text{precipitate}
+    Inputs:
+        Ksp: solubility product
+        x: cations per formula unit
+        y: anions per formula unit
+        c_cation: cation concentration (after any mixing)
+        c_anion: anion concentration (after any mixing)
+    Outputs: Q (ion product Q), log10_Q (log10 Q), result (precipitate forms or not)
+    See also: help("precipitation_test")
+    """
+    given = {k: v for k, v in dict(Ksp=Ksp, x=x, y=y, c_cation=c_cation, c_anion=c_anion).items() if v is not None}
+    return _P.solve("precipitation_test", **given)
+
+def radioactive_dating_age(fraction=None, t_half=None):
+    """Age from the fraction remaining (radioactive dating). The age of a sample (the time elapsed) from the fraction of a radioactive nuclide remaining and its half-life.
+    Formula: t = t_{1/2}\\,\\log_2\\frac{1}{f}
+    Inputs:
+        fraction: fraction of the original nuclide remaining (0 < f <= 1)
+        t_half: half-life
+    Outputs: t (age (time elapsed)), t_years (in years), half_lives (number of half-lives)
+    See also: help("radioactive_dating_age")
+    """
+    given = {k: v for k, v in dict(fraction=fraction, t_half=t_half).items() if v is not None}
+    return _P.solve("radioactive_dating_age", **given)
+
+def radioactive_decay_remaining(m0=None, t_half=None, t=None):
+    """Amount remaining after radioactive decay (half-life). The mass of a radioactive nuclide that remains after a time, from its half-life.
+    Formula: m = m_0 \\left(\\tfrac{1}{2}\\right)^{t/t_{1/2}}
+    Inputs:
+        m0: initial mass
+        t_half: half-life
+        t: elapsed time
+    Outputs: m (mass remaining), m_g (in grams), fraction (fraction remaining), half_lives (number of half-lives)
+    See also: help("radioactive_decay_remaining")
+    """
+    given = {k: v for k, v in dict(m0=m0, t_half=t_half, t=t).items() if v is not None}
+    return _P.solve("radioactive_decay_remaining", **given)
+
 def raoult_vapor_pressure(formula_solute=None, m_solute=None, formula_solvent=None, m_solvent=None, P0=None):
     """Vapor pressure of a solution (Raoult's law). The vapor pressure of a solvent above a solution of a nonvolatile solute, from the masses of both.
     Formula: P = x_{\\text{solvent}} P^\\circ
@@ -1199,6 +1339,30 @@ def reaction_enthalpy_from_formation(equation=None, values=None):
     given = {k: v for k, v in dict(equation=equation, values=values).items() if v is not None}
     return _P.solve("reaction_enthalpy_from_formation", **given)
 
+def reaction_entropy_from_standard_entropies(equation=None, values=None):
+    """Standard reaction entropy from standard molar entropies. The standard entropy change of a reaction from the standard molar entropies of every species (balanced equation).
+    Formula: \\Delta S^\\circ_{rxn} = \\sum \\nu_p S^\\circ(p) - \\sum \\nu_r S^\\circ(r)
+    Inputs:
+        equation: balanced equation
+        values: standard molar entropy of each species in the order written (J/(mol·K))
+    Outputs: dS (standard reaction entropy)
+    See also: help("reaction_entropy_from_standard_entropies")
+    """
+    given = {k: v for k, v in dict(equation=equation, values=values).items() if v is not None}
+    return _P.solve("reaction_entropy_from_standard_entropies", **given)
+
+def reaction_gibbs_from_formation(equation=None, values=None):
+    """Standard reaction Gibbs energy from Gibbs energies of formation. The standard Gibbs energy change of a reaction from the standard Gibbs energies of formation of every species (balanced equation), and whether it is spontaneous under standard conditions.
+    Formula: \\Delta G^\\circ_{rxn} = \\sum \\nu_p \\Delta G_f^\\circ(p) - \\sum \\nu_r \\Delta G_f^\\circ(r)
+    Inputs:
+        equation: balanced equation
+        values: standard Gibbs energy of formation of each species in the order written (kJ/mol)
+    Outputs: dG (standard reaction Gibbs energy), dG_kJ (in kJ/mol), spontaneity (spontaneous / non-spontaneous under standard conditions)
+    See also: help("reaction_gibbs_from_formation")
+    """
+    given = {k: v for k, v in dict(equation=equation, values=values).items() if v is not None}
+    return _P.solve("reaction_gibbs_from_formation", **given)
+
 def reaction_order_from_rates(c1=None, r1=None, c2=None, r2=None):
     """Reaction order from initial rates. The order with respect to one reactant from two initial-rate experiments (other concentrations fixed).
     Formula: n = \\frac{\\ln(r_2/r_1)}{\\ln(c_2/c_1)}
@@ -1212,6 +1376,19 @@ def reaction_order_from_rates(c1=None, r1=None, c2=None, r2=None):
     """
     given = {k: v for k, v in dict(c1=c1, r1=r1, c2=c2, r2=r2).items() if v is not None}
     return _P.solve("reaction_order_from_rates", **given)
+
+def reaction_quotient_direction(equation=None, conc=None, K=None):
+    """Reaction quotient and the direction of shift. The reaction quotient Q from the current concentrations (or partial pressures) and, compared with K, the direction in which the reaction proceeds to reach equilibrium.
+    Formula: Q = \\prod_i c_i^{\\nu_i};\\ Q < K \\Rightarrow \\text{forward},\\ Q > K \\Rightarrow \\text{reverse}
+    Inputs:
+        equation: the reaction as written (its coefficients define Q and K)
+        conc: current concentration of each species in the order written (mol/L, or atm for Kp)
+        K: equilibrium constant
+    Outputs: Q (reaction quotient), log10_Q (log10 Q), direction (direction of the shift)
+    See also: help("reaction_quotient_direction")
+    """
+    given = {k: v for k, v in dict(equation=equation, conc=conc, K=K).items() if v is not None}
+    return _P.solve("reaction_quotient_direction", **given)
 
 def rms_speed(formula=None, T=None):
     """Root-mean-square speed of gas molecules. The root-mean-square speed of the molecules of an ideal gas at a temperature.
@@ -1250,6 +1427,31 @@ def solute_mass_for_solution(formula=None, c=None, V=None):
     """
     given = {k: v for k, v in dict(formula=formula, c=c, V=V).items() if v is not None}
     return _P.solve("solute_mass_for_solution", **given)
+
+def specific_rotation(alpha=None, l=None, c=None):
+    """Specific rotation from an observed rotation. The specific rotation of an optically active compound from the observed rotation, the path length and the concentration of its solution.
+    Formula: [\\alpha] = \\frac{\\alpha}{l\\,c}\\quad (l \\text{ in dm},\\ c \\text{ in g/mL})
+    Inputs:
+        alpha: observed rotation (degrees)
+        l: path length of the cell
+        c: concentration in mass per volume (g/mL)
+    Outputs: specific_rotation (specific rotation (degrees mL g^-1 dm^-1))
+    See also: help("specific_rotation")
+    """
+    given = {k: v for k, v in dict(alpha=alpha, l=l, c=c).items() if v is not None}
+    return _P.solve("specific_rotation", **given)
+
+def standard_cell_potential(E_cathode=None, E_anode=None):
+    """Standard cell potential from two half-reactions. The standard potential of a galvanic cell from the standard reduction potentials of its cathode and anode half-reactions, and whether the cell reaction is spontaneous.
+    Formula: E^\\circ_{cell} = E^\\circ_{cathode} - E^\\circ_{anode}
+    Inputs:
+        E_cathode: standard reduction potential of the cathode half-reaction
+        E_anode: standard reduction potential of the anode half-reaction
+    Outputs: E_cell (standard cell potential), spontaneity (spontaneous (galvanic) or not (electrolytic))
+    See also: help("standard_cell_potential")
+    """
+    given = {k: v for k, v in dict(E_cathode=E_cathode, E_anode=E_anode).items() if v is not None}
+    return _P.solve("standard_cell_potential", **given)
 
 def theoretical_yield(equation=None, reactant=None, m=None, product=None):
     """Theoretical yield from one reactant. The mass of a product formed from a given mass of one reactant (in excess of the others).
@@ -1363,4 +1565,4 @@ def zero_order_concentration(A0=None, k=None, t=None):
     return _P.solve("zero_order_concentration", **given)
 
 
-__all__ = ["CapabilityId", "solve", "help", "activation_energy", "arrhenius_k2", "arrhenius_rate_constant", "atoms_of_element", "balance_equation", "beer_lambert_absorbance", "beer_lambert_concentration", "boiling_point_elevation", "boyle_final_pressure", "boyle_final_volume", "buffer_ph", "calorimetry_heat", "charles_final_volume", "clausius_clapeyron_enthalpy", "clausius_clapeyron_pressure", "combined_gas_final_pressure", "combined_gas_final_temperature", "combined_gas_final_volume", "common_ion_solubility", "consecutive_first_order", "crossover_temperature", "dalton_mixture", "degree_of_unsaturation", "delta_g_from_cell_potential", "delta_g_from_k", "delta_g_nonstandard", "dilution_final_concentration", "dilution_volume", "electrolysis_mass", "electrolysis_time", "empirical_formula", "enthalpy_from_calorimetry", "equilibrium_ice", "first_order_concentration", "first_order_half_life", "first_order_time", "freezing_point_depression", "gas_density", "gay_lussac_final_pressure", "gibbs_free_energy", "graham_molar_mass", "graham_rate_ratio", "heat_from_reaction_mass", "hydrogen_transition_wavelength", "hydronium_from_ph", "ideal_gas_mass", "ideal_gas_moles", "ideal_gas_pressure", "ideal_gas_temperature", "ideal_gas_volume", "k_from_cell_potential", "k_from_delta_g", "ka_from_ph", "kc_from_kp", "kp_from_kc", "ksp_from_solubility", "ksp_molar_solubility", "limiting_reagent", "mass_from_moles", "mass_of_element", "mass_percent", "mean_speed", "molality", "molar_mass", "molar_mass_from_freezing_point", "molar_mass_from_gas_density", "molar_mass_from_gas_sample", "molar_mass_from_osmotic_pressure", "molarity_from_mass", "mole_fraction", "molecular_formula", "moles_from_mass", "moles_from_particles", "nernst_potential", "osmotic_pressure", "partial_pressure", "particles_from_mass", "particles_from_moles", "percent_yield", "ph_diprotic_acid", "ph_from_hydronium", "ph_from_hydroxide", "ph_salt_of_weak_acid", "ph_strong_acid", "ph_strong_base", "ph_weak_acid", "ph_weak_base", "photon_energy", "photon_wavelength", "raoult_vapor_pressure", "reaction_enthalpy_from_formation", "reaction_order_from_rates", "rms_speed", "second_order_concentration", "solute_mass_for_solution", "theoretical_yield", "titration_equivalence_volume", "titration_ph_strong_acid_strong_base", "titration_ph_weak_acid_strong_base", "van_der_waals_pressure", "vant_hoff_k2", "vibrational_wavenumber", "zero_order_concentration"]
+__all__ = ["CapabilityId", "solve", "help", "activation_energy", "arrhenius_k2", "arrhenius_rate_constant", "atoms_of_element", "average_atomic_mass", "balance_equation", "beer_lambert_absorbance", "beer_lambert_concentration", "boiling_point_elevation", "bond_enthalpy_reaction", "boyle_final_pressure", "boyle_final_volume", "buffer_ph", "calorimetry_heat", "charles_final_volume", "clausius_clapeyron_enthalpy", "clausius_clapeyron_pressure", "combined_gas_final_pressure", "combined_gas_final_temperature", "combined_gas_final_volume", "common_ion_solubility", "conjugate_dissociation_constant", "consecutive_first_order", "crossover_temperature", "dalton_mixture", "degree_of_unsaturation", "delta_g_from_cell_potential", "delta_g_from_k", "delta_g_nonstandard", "dilution_final_concentration", "dilution_volume", "electrolysis_mass", "electrolysis_time", "empirical_formula", "enantiomeric_excess_from_composition", "enantiomeric_excess_from_rotation", "enthalpy_from_calorimetry", "equilibrium_ice", "first_order_concentration", "first_order_half_life", "first_order_time", "freezing_point_depression", "gas_density", "gay_lussac_final_pressure", "gibbs_free_energy", "graham_molar_mass", "graham_rate_ratio", "heat_from_reaction_mass", "henry_law_solubility", "hydrogen_transition_wavelength", "hydronium_from_ph", "ideal_gas_mass", "ideal_gas_moles", "ideal_gas_pressure", "ideal_gas_temperature", "ideal_gas_volume", "isotope_abundance", "k_from_cell_potential", "k_from_delta_g", "ka_from_ph", "kc_from_kp", "kp_from_kc", "ksp_from_solubility", "ksp_molar_solubility", "limiting_reagent", "mass_from_moles", "mass_of_element", "mass_percent", "mean_speed", "molality", "molar_mass", "molar_mass_from_freezing_point", "molar_mass_from_gas_density", "molar_mass_from_gas_sample", "molar_mass_from_osmotic_pressure", "molarity_from_mass", "mole_fraction", "molecular_formula", "moles_from_mass", "moles_from_particles", "nernst_potential", "nuclear_binding_energy", "osmotic_pressure", "partial_pressure", "particles_from_mass", "particles_from_moles", "percent_yield", "ph_diprotic_acid", "ph_from_hydronium", "ph_from_hydroxide", "ph_salt_of_weak_acid", "ph_strong_acid", "ph_strong_base", "ph_weak_acid", "ph_weak_base", "photon_energy", "photon_wavelength", "precipitation_test", "radioactive_dating_age", "radioactive_decay_remaining", "raoult_vapor_pressure", "reaction_enthalpy_from_formation", "reaction_entropy_from_standard_entropies", "reaction_gibbs_from_formation", "reaction_order_from_rates", "reaction_quotient_direction", "rms_speed", "second_order_concentration", "solute_mass_for_solution", "specific_rotation", "standard_cell_potential", "theoretical_yield", "titration_equivalence_volume", "titration_ph_strong_acid_strong_base", "titration_ph_weak_acid_strong_base", "van_der_waals_pressure", "vant_hoff_k2", "vibrational_wavenumber", "zero_order_concentration"]

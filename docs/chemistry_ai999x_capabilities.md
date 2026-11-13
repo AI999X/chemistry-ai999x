@@ -19,6 +19,7 @@ result.show()
 | topic | capabilities |
 |---|---|
 | Acids and bases / buffers | [Buffer pH (Henderson-Hasselbalch)](#buffer_ph) |
+| Acids and bases / conjugate pairs | [Conjugate acid-base constants (Ka Kb = Kw)](#conjugate_dissociation_constant) |
 | Acids and bases / pH | [PH from the hydronium concentration](#ph_from_hydronium), [Hydronium concentration from pH](#hydronium_from_ph), [PH from the hydroxide concentration](#ph_from_hydroxide) |
 | Acids and bases / polyprotic acids | [PH of a diprotic acid](#ph_diprotic_acid) |
 | Acids and bases / salt hydrolysis | [PH of a salt of a weak acid](#ph_salt_of_weak_acid) |
@@ -27,12 +28,14 @@ result.show()
 | Acids and bases / titrations | [Titration: equivalence-point volume](#titration_equivalence_volume), [PH during a strong acid - strong base titration](#titration_ph_strong_acid_strong_base), [PH during a weak acid - strong base titration](#titration_ph_weak_acid_strong_base) |
 | Acids and bases / weak acids | [PH of a weak acid](#ph_weak_acid), [Ka from the pH of a weak acid](#ka_from_ph) |
 | Acids and bases / weak bases | [PH of a weak base](#ph_weak_base) |
-| Electrochemistry / cell potentials | [Nernst equation](#nernst_potential) |
+| Atomic structure / isotopes | [Average atomic mass from isotopes](#average_atomic_mass), [Abundances of two isotopes from the average atomic mass](#isotope_abundance) |
+| Electrochemistry / cell potentials | [Nernst equation](#nernst_potential), [Standard cell potential from two half-reactions](#standard_cell_potential) |
 | Electrochemistry / cell thermodynamics | [Gibbs energy from a cell potential](#delta_g_from_cell_potential), [Equilibrium constant from a standard cell potential](#k_from_cell_potential) |
 | Electrochemistry / electrolysis | [Mass deposited in electrolysis (Faraday's law)](#electrolysis_mass), [Time for electrolysis (Faraday's law)](#electrolysis_time) |
 | Equilibrium / equilibrium constants | [Kp from Kc](#kp_from_kc), [Kc from Kp](#kc_from_kp) |
 | Equilibrium / ICE tables | [Equilibrium concentrations (ICE table)](#equilibrium_ice) |
-| Equilibrium / solubility | [Molar solubility from Ksp](#ksp_molar_solubility), [Ksp from molar solubility](#ksp_from_solubility), [Molar solubility with a common ion](#common_ion_solubility) |
+| Equilibrium / reaction quotient | [Reaction quotient and the direction of shift](#reaction_quotient_direction) |
+| Equilibrium / solubility | [Molar solubility from Ksp](#ksp_molar_solubility), [Ksp from molar solubility](#ksp_from_solubility), [Molar solubility with a common ion](#common_ion_solubility), [Precipitation test (Q versus Ksp)](#precipitation_test) |
 | Equilibrium / temperature dependence | [Van 't Hoff equation: K at another temperature](#vant_hoff_k2) |
 | Equilibrium / thermodynamics of equilibrium | [Equilibrium constant from the standard Gibbs energy](#k_from_delta_g), [Standard Gibbs energy from the equilibrium constant](#delta_g_from_k), [Gibbs energy change at non-standard conditions](#delta_g_nonstandard) |
 | Gases / gas laws | [Boyle's law: final volume](#boyle_final_volume), [Boyle's law: final pressure](#boyle_final_pressure), [Charles's law: final volume](#charles_final_volume), [Gay-Lussac's law: final pressure](#gay_lussac_final_pressure), [Combined gas law: final volume](#combined_gas_final_volume), [Combined gas law: final pressure](#combined_gas_final_pressure), [Combined gas law: final temperature](#combined_gas_final_temperature) |
@@ -46,9 +49,13 @@ result.show()
 | Kinetics / rate laws | [Reaction order from initial rates](#reaction_order_from_rates) |
 | Kinetics / temperature dependence | [Arrhenius equation: rate constant at another temperature](#arrhenius_k2), [Activation energy from two rate constants](#activation_energy), [Arrhenius equation: rate constant](#arrhenius_rate_constant) |
 | Molecular properties / structure | [Degree of unsaturation](#degree_of_unsaturation) |
+| Nuclear chemistry / binding energy | [Mass defect and nuclear binding energy](#nuclear_binding_energy) |
+| Nuclear chemistry / radioactive decay | [Amount remaining after radioactive decay (half-life)](#radioactive_decay_remaining), [Age from the fraction remaining (radioactive dating)](#radioactive_dating_age) |
+| Organic chemistry / stereochemistry | [Specific rotation from an observed rotation](#specific_rotation), [Enantiomeric excess from optical rotation](#enantiomeric_excess_from_rotation), [Enantiomeric excess from the composition of a mixture](#enantiomeric_excess_from_composition) |
 | Solutions / colligative properties | [Vapor pressure of a solution (Raoult's law)](#raoult_vapor_pressure), [Freezing-point depression](#freezing_point_depression), [Boiling-point elevation](#boiling_point_elevation), [Molar mass from freezing-point depression](#molar_mass_from_freezing_point), [Osmotic pressure](#osmotic_pressure), [Molar mass from osmotic pressure](#molar_mass_from_osmotic_pressure) |
 | Solutions / concentration | [Molarity from a dissolved mass](#molarity_from_mass), [Mass of solute for a solution](#solute_mass_for_solution), [Molality of a solution](#molality), [Mole fraction in a solution](#mole_fraction) |
 | Solutions / dilution | [Dilution: final concentration](#dilution_final_concentration), [Dilution: volume of stock needed](#dilution_volume) |
+| Solutions / gas solubility | [Henry's law: solubility of a gas](#henry_law_solubility) |
 | Spectroscopy / absorption | [Beer-Lambert law: absorbance](#beer_lambert_absorbance), [Beer-Lambert law: concentration](#beer_lambert_concentration) |
 | Spectroscopy / atomic spectra | [Hydrogen atom transition wavelength (Rydberg)](#hydrogen_transition_wavelength) |
 | Spectroscopy / infrared | [Vibrational wavenumber of a diatomic molecule](#vibrational_wavenumber) |
@@ -58,11 +65,13 @@ result.show()
 | Stoichiometry / molar mass | [Molar mass of a formula](#molar_mass) |
 | Stoichiometry / reaction yields | [Limiting reagent and theoretical yield](#limiting_reagent), [Theoretical yield from one reactant](#theoretical_yield), [Percent yield of a reaction](#percent_yield) |
 | Stoichiometry / the mole | [Moles from a mass](#moles_from_mass), [Mass from moles](#mass_from_moles), [Number of molecules in a mass](#particles_from_mass), [Number of particles in an amount](#particles_from_moles), [Moles from a number of particles](#moles_from_particles), [Atoms of an element in a mass of compound](#atoms_of_element) |
+| Thermochemistry / bond enthalpies | [Reaction enthalpy from bond enthalpies](#bond_enthalpy_reaction) |
 | Thermochemistry / calorimetry | [Heat from a temperature change](#calorimetry_heat), [Reaction enthalpy from coffee-cup calorimetry](#enthalpy_from_calorimetry) |
+| Thermochemistry / entropy | [Standard reaction entropy from standard molar entropies](#reaction_entropy_from_standard_entropies) |
 | Thermochemistry / Hess's law | [Reaction enthalpy from enthalpies of formation (Hess's law)](#reaction_enthalpy_from_formation) |
 | Thermochemistry / phase equilibria | [Clausius-Clapeyron: vapor pressure at another temperature](#clausius_clapeyron_pressure), [Clausius-Clapeyron: enthalpy of vaporization](#clausius_clapeyron_enthalpy) |
 | Thermochemistry / reaction enthalpy | [Heat of reaction for a given mass](#heat_from_reaction_mass) |
-| Thermochemistry / spontaneity | [Gibbs energy change (dG = dH - T dS)](#gibbs_free_energy), [Temperature at which dG = 0](#crossover_temperature) |
+| Thermochemistry / spontaneity | [Gibbs energy change (dG = dH - T dS)](#gibbs_free_energy), [Temperature at which dG = 0](#crossover_temperature), [Standard reaction Gibbs energy from Gibbs energies of formation](#reaction_gibbs_from_formation) |
 
 ## Outcomes
 
@@ -205,6 +214,22 @@ Call `solve("<id>", **inputs)` with plain numbers; the result's `values` holds e
 | hydrogen_transition_wavelength | Hydrogen atom transition wavelength (Rydberg) | n_upper, n_lower | lam, lam_nm, E |
 | degree_of_unsaturation | Degree of unsaturation | formula | dou |
 | vibrational_wavenumber | Vibrational wavenumber of a diatomic molecule | molecule, k | wavenumber, wavenumber_cm, nu |
+| average_atomic_mass | Average atomic mass from isotopes | masses, abundances | A_r, M |
+| isotope_abundance | Abundances of two isotopes from the average atomic mass | m1, m2, A_r | x1, x2, percent1, percent2 |
+| standard_cell_potential | Standard cell potential from two half-reactions | E_cathode, E_anode | E_cell, spontaneity |
+| bond_enthalpy_reaction | Reaction enthalpy from bond enthalpies | broken_n, broken_D, formed_n, formed_D | dH, dH_kJ, broken_kJ, formed_kJ |
+| henry_law_solubility | Henry's law: solubility of a gas | kH, P | c, c_molL |
+| reaction_quotient_direction | Reaction quotient and the direction of shift | equation, conc, K | Q, log10_Q, direction |
+| precipitation_test | Precipitation test (Q versus Ksp) | Ksp, x, y, c_cation, c_anion | Q, log10_Q, result |
+| reaction_entropy_from_standard_entropies | Standard reaction entropy from standard molar entropies | equation, values | dS |
+| reaction_gibbs_from_formation | Standard reaction Gibbs energy from Gibbs energies of formation | equation, values | dG, dG_kJ, spontaneity |
+| nuclear_binding_energy | Mass defect and nuclear binding energy | Z, A, mass | dm, E_b, E_b_MeV, E_per_nucleon_MeV |
+| radioactive_decay_remaining | Amount remaining after radioactive decay (half-life) | m0, t_half, t | m, m_g, fraction, half_lives |
+| radioactive_dating_age | Age from the fraction remaining (radioactive dating) | fraction, t_half | t, t_years, half_lives |
+| conjugate_dissociation_constant | Conjugate acid-base constants (Ka Kb = Kw) | K, known | K_conj, pK, pK_conj, conjugate |
+| specific_rotation | Specific rotation from an observed rotation | alpha, l, c | specific_rotation |
+| enantiomeric_excess_from_rotation | Enantiomeric excess from optical rotation | alpha_obs, alpha_pure | ee, major_percent, minor_percent, predominant |
+| enantiomeric_excess_from_composition | Enantiomeric excess from the composition of a mixture | R, S | ee, percent_R, percent_S, predominant |
 
 <a id="molar_mass"></a>
 
@@ -1943,8 +1968,8 @@ chemistry_ai999x.solve('molarity_from_mass', formula='NaCl', m=0.00585, V=0.0002
 ```
 
 ```python
-chemistry_ai999x.solve('molarity_from_mass', formula='C6H12O6', m=0.09, V=0.5)
-# -> c = 0.999134 mol/m^3, c_molL = 0.000999134   (SOLVED)
+chemistry_ai999x.solve('molarity_from_mass', formula='C6H12O6', m=0.09, V=0.0005)
+# -> c = 999.134 mol/m^3, c_molL = 0.999134   (SOLVED)
 ```
 
 **Questions in words (documented forms), as executed:**
@@ -2026,10 +2051,10 @@ $$
 
 ![c2 (final concentration) against V2 (final volume) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/dilution-final-concentration-curve)
 
-*c2 (final concentration) against V2 (final volume) from 0.25 m^3 to 0.75 m^3. One curve for each value of c1 (initial concentration): 6000 mol/m^3, 3000 mol/m^3, 12000 mol/m^3. Other inputs as in the worked example: V1 = 0.025 m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, V2 = 0.5 m^3, c2 = 300 mol/m^3.*
+*c2 (final concentration) against V2 (final volume) from 0.00025 m^3 to 0.00075 m^3. One curve for each value of c1 (initial concentration): 6000 mol/m^3, 3000 mol/m^3, 12000 mol/m^3. Other inputs as in the worked example: V1 = 2.5e-05 m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, V2 = 0.0005 m^3, c2 = 300 mol/m^3.*
 
 ```python
-chemistry_ai999x.solve('dilution_final_concentration', c1=6000.0, V1=0.025, V2=0.5)
+chemistry_ai999x.solve('dilution_final_concentration', c1=6000.0, V1=2.5e-05, V2=0.0005)
 # -> c2 = 300 mol/m^3, c2_molL = 0.3   (SOLVED)
 ```
 
@@ -2067,11 +2092,11 @@ $$
 
 ![V1 (volume of stock solution) against c1 (stock concentration) from 6000 mol/m^3 to 18000 mol/m^3](https://www.ai999x.com/?ax_fig=chemistry-ai999x/dilution-volume-curve)
 
-*V1 (volume of stock solution) against c1 (stock concentration) from 6000 mol/m^3 to 18000 mol/m^3. One curve for each value of c2 (target concentration): 100 mol/m^3, 50 mol/m^3, 200 mol/m^3. Other inputs as in the worked example: V2 = 0.5 m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, c1 = 12000 mol/m^3, V1 = 0.00416667 m^3.*
+*V1 (volume of stock solution) against c1 (stock concentration) from 6000 mol/m^3 to 18000 mol/m^3. One curve for each value of c2 (target concentration): 100 mol/m^3, 50 mol/m^3, 200 mol/m^3. Other inputs as in the worked example: V2 = 0.0005 m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, c1 = 12000 mol/m^3, V1 = 4.1667e-06 m^3.*
 
 ```python
-chemistry_ai999x.solve('dilution_volume', c1=12000.0, c2=100.0, V2=0.5)
-# -> V1 = 0.00416667 m^3, V1_mL = 4166.67   (SOLVED)
+chemistry_ai999x.solve('dilution_volume', c1=12000.0, c2=100.0, V2=0.0005)
+# -> V1 = 4.16667e-06 m^3, V1_mL = 4.16667   (SOLVED)
 ```
 
 **Questions in words (documented forms), as executed:**
@@ -4801,3 +4826,797 @@ chemistry_ai999x.solve('vibrational_wavenumber', molecule='CO', k=1902.0)
 |---|---|---|
 | What is the vibrational wavenumber of HCl if its force constant is 516 N/m? | SOLVED | wavenumber = 299004 1/m, wavenumber_cm = 2990.04, nu = 8.96391e+13 Hz |
 | Find the vibrational frequency of CO with a force constant of 1902 N/m. | SOLVED | wavenumber = 216989 1/m, wavenumber_cm = 2169.89, nu = 6.50517e+13 Hz |
+
+<a id="average_atomic_mass"></a>
+
+### Average atomic mass from isotopes: `average_atomic_mass`
+
+The average (relative) atomic mass of an element from the masses and natural abundances of its isotopes.
+
+$$
+\bar{A} = \sum_i f_i\, m_i
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `masses` | mass of each isotope (u) |  |
+| `abundances` | abundance of each isotope, in the same order (fractions adding up to 1, or percentages adding up to 100) |  |
+
+| output | meaning |
+|---|---|
+| `A_r` | average atomic mass (u, numerically g/mol) |
+| `M` | molar mass of the element |
+
+- **Method:** abundance-weighted sum of the isotope masses (abundances used as written)
+- **Assumes:** one abundance per isotope; abundances add up to 1 (within 0.002) or to 100 (within 0.2); masses > 0, abundances >= 0
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![A_r (average atomic mass (u, numerically g/mol)) as value 2 of masses (mass of each isotope (u)) moves from 33](https://www.ai999x.com/?ax_fig=chemistry-ai999x/average-atomic-mass-sensitivity)
+
+*A_r (average atomic mass (u, numerically g/mol)) as value 2 of masses (mass of each isotope (u)) moves from 33.97 to 37.97, the other values as given (34.97, 36.97); 41 runs of chemistry-ai999x. Other inputs: abundances = 75.78, 24.22. Marked: the worked example, masses[2] = 36.97, A_r = 35.4544.*
+
+```python
+chemistry_ai999x.solve('average_atomic_mass', masses='34.97, 36.97', abundances='75.78, 24.22')
+# -> A_r = 35.4544, M = 0.0354544 kg/mol   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('average_atomic_mass', masses='23.985, 24.986, 25.983', abundances='0.7899, 0.1000, 0.1101')
+# -> A_r = 24.3051, M = 0.0243051 kg/mol   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| Isotope masses are 34.97 u and 36.97 u with abundances 75.78% and 24.22%. What is the average atomic mass? | SOLVED | A_r = 35.4544, M = 0.0354544 kg/mol |
+| Find the average atomic mass of magnesium from isotope masses 23.985, 24.986 and 25.983 u and abundances 0.7899, 0.1000 and 0.1101. | SOLVED | A_r = 24.3051, M = 0.0243051 kg/mol |
+| Isotope masses are 34.97 u and 36.97 u with abundances 75.78% and 30.00%. What is the average atomic mass? | INVALID_INPUT | Average atomic mass from isotopes: the abundances must add up to 1 (fractions) or to 100 (percent). |
+
+<a id="isotope_abundance"></a>
+
+### Abundances of two isotopes from the average atomic mass, `isotope_abundance`
+
+The natural abundances of an element's two isotopes from their masses and the average atomic mass.
+
+$$
+x_1 = \frac{\bar{A} - m_2}{m_1 - m_2},\quad x_2 = 1 - x_1
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `m1` | mass of the first isotope (u) |  |
+| `m2` | mass of the second isotope (u) |  |
+| `A_r` | average atomic mass (u) |  |
+
+| output | meaning |
+|---|---|
+| `x1` | fractional abundance of the first isotope |
+| `x2` | fractional abundance of the second isotope |
+| `percent1` | percent abundance of the first isotope |
+| `percent2` | percent abundance of the second isotope |
+
+- **Method:** the average mass is x1 $m_{1} + (1 - x_{1})$ m2, solved for x1
+- **Assumes:** two isotopes of different mass; the average mass lies strictly between them
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![percent1 (percent abundance of the first isotope) against m2 (mass of the second isotope (u)) from 18](https://www.ai999x.com/?ax_fig=chemistry-ai999x/isotope-abundance-curve)
+
+*percent1 (percent abundance of the first isotope) against m2 (mass of the second isotope (u)) from 18.485 to 55.455. One curve for each value of m1 (mass of the first isotope (u)): 34.97, 17.485, 69.94. Other inputs as in the worked example: A_r = 35.45. 17 points per curve computed by chemistry-ai999x; marked: the worked example, m2 = 36.97, percent1 = 76.*
+
+```python
+chemistry_ai999x.solve('isotope_abundance', m1=34.97, m2=36.97, A_r=35.45)
+# -> x1 = 0.76, x2 = 0.24, percent1 = 76, percent2 = 24   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('isotope_abundance', m1=62.93, m2=64.93, A_r=63.55)
+# -> x1 = 0.69, x2 = 0.31, percent1 = 69, percent2 = 31   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| The average atomic mass of chlorine is 35.45 u. Its isotope masses are 34.97 u and 36.97 u. What are the percent abundances of the two isotopes? | SOLVED | x1 = 0.76, x2 = 0.24, percent1 = 76, percent2 = 24 |
+| The average atomic mass of copper is 63.55 u and the isotope masses are 62.93 u and 64.93 u. Find the abundance of each isotope. | SOLVED | x1 = 0.69, x2 = 0.31, percent1 = 69, percent2 = 31 |
+| The average atomic mass of copper is 66.00 u and the isotope masses are 62.93 u and 64.93 u. Find the abundance of each isotope. | INVALID_INPUT | Abundances of two isotopes from the average atomic mass: the average atomic mass must lie between the two isotope masses |
+
+<a id="standard_cell_potential"></a>
+
+### Standard cell potential from two half-reactions, `standard_cell_potential`
+
+The standard potential of a galvanic cell from the standard reduction potentials of its cathode and anode half-reactions, and whether the cell reaction is spontaneous.
+
+$$
+E^\circ_{cell} = E^\circ_{cathode} - E^\circ_{anode}
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `E_cathode` | standard reduction potential of the cathode half-reaction |  |
+| `E_anode` | standard reduction potential of the anode half-reaction |  |
+
+| output | meaning |
+|---|---|
+| `E_cell` | standard cell potential |
+| `spontaneity` | spontaneous (galvanic) or not (electrolytic) |
+
+- **Method:** both potentials are reduction potentials; the anode runs as an oxidation, so its potential is subtracted
+- **Assumes:** both values are standard REDUCTION potentials; |E°| <= 3.5 V
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![E_cell (standard cell potential) against E_cathode (standard reduction potential of the cathode half-reaction) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/standard-cell-potential-curve)
+
+*E_cell (standard cell potential) against E_cathode (standard reduction potential of the cathode half-reaction) from 0.17 V to 0.51 V. One curve for each value of E_anode (standard reduction potential of the anode half-reaction): -0.76 V, -0.38 V, -1.52 V. 31 points per curve computed by chemistry-ai999x; marked: the worked example, E_cathode = 0.34 V, E_cell = 1.1 V.*
+
+![E_cell (standard cell potential) over E_cathode (standard reduction potential of the cathode half-reaction) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/standard-cell-potential-field)
+
+*E_cell (standard cell potential) over E_cathode (standard reduction potential of the cathode half-reaction) from 0.17 V to 0.51 V and E_anode (standard reduction potential of the anode half-reaction) from -1.14 V to -0.38 V: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 0.55 V to dark 1.65 V); iso-lines at E_cell = 0.6, 0.8, 1, 1.2, 1.4, 1.6 V. Marked: the worked example, E_cathode = 0.34 V, E_anode = -0.76 V, E_cell = 1.1 V.*
+
+```python
+chemistry_ai999x.solve('standard_cell_potential', E_cathode=0.34, E_anode=-0.76)
+# -> E_cell = 1.1 V, spontaneity = spontaneous (galvanic)   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('standard_cell_potential', E_cathode=0.34, E_anode=0.8)
+# -> E_cell = -0.46 V, spontaneity = non-spontaneous (electrolytic)   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| E°(cathode) = 0.34 V and E°(anode) = -0.76 V. What is the standard cell potential? | SOLVED | E_cell = 1.1 V, spontaneity = spontaneous (galvanic) |
+| The cathode half-reaction has E° = 0.80 V and the anode half-reaction has E° = 0.34 V. Find the standard cell potential. | SOLVED | E_cell = 0.46 V, spontaneity = spontaneous (galvanic) |
+| E°(cathode) = 4.20 V and E°(anode) = -0.76 V. What is the standard cell potential? | INVALID_INPUT | Standard cell potential from two half-reactions: standard reduction potentials lie between about -3.1 V and +3.0 V (\|E°\| |
+
+<a id="bond_enthalpy_reaction"></a>
+
+### Reaction enthalpy from bond enthalpies: `bond_enthalpy_reaction`
+
+An estimate of a gas-phase reaction enthalpy from the average bond enthalpies of the bonds broken and formed.
+
+$$
+\Delta H \approx \sum_{\text{broken}} n\,D - \sum_{\text{formed}} n\,D
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `broken_n` | number of each kind of bond broken |  |
+| `broken_D` | bond enthalpy of each kind of bond broken (kJ/mol), same order |  |
+| `formed_n` | number of each kind of bond formed |  |
+| `formed_D` | bond enthalpy of each kind of bond formed (kJ/mol), same order |  |
+
+| output | meaning |
+|---|---|
+| `dH` | estimated reaction enthalpy |
+| `dH_kJ` | in kJ/mol |
+| `broken_kJ` | energy to break the bonds (kJ/mol) |
+| `formed_kJ` | energy released forming the bonds (kJ/mol) |
+
+- **Method:** energy to break the bonds minus energy released forming the new ones (average bond enthalpies)
+- **Assumes:** bond counts and bond enthalpies > 0; one count per bond enthalpy; an estimate: average bond enthalpies, gas phase
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![dH (estimated reaction enthalpy) as value 2 of broken_n (number of each kind of bond broken) moves from 1 to 5, the other values as given (4, 2); 41 runs of chemistry-ai999x](https://www.ai999x.com/?ax_fig=chemistry-ai999x/bond-enthalpy-reaction-sensitivity)
+
+*dH (estimated reaction enthalpy) as value 2 of broken_n (number of each kind of bond broken) moves from 1 to 5, the other values as given (4, 2); 41 runs of chemistry-ai999x. Other inputs: broken_D = 413, 498, formed_n = 2, 4, formed_D = 799, 467. Marked: the worked example, broken_n[2] = 2, dH = -818000 J/mol.*
+
+```python
+chemistry_ai999x.solve('bond_enthalpy_reaction', broken_n='4, 2', broken_D='413, 498', formed_n='2, 4', formed_D='799, 467')
+# -> dH = -818000 J/mol, dH_kJ = -818, broken_kJ = 2648, formed_kJ = 3466   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('bond_enthalpy_reaction', broken_n='1, 1', broken_D='436, 243', formed_n='2', formed_D='432')
+# -> dH = -185000 J/mol, dH_kJ = -185, broken_kJ = 679, formed_kJ = 864   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| Bonds broken: 4 × 413, 2 × 498; bonds formed: 2 × 799, 4 × 467 (all in kJ/mol). Estimate the reaction enthalpy from these bond enthalpies. | SOLVED | dH = -818000 J/mol, dH_kJ = -818, broken_kJ = 2648, formed_kJ = 3466 |
+| Bonds broken: 436, 243; bonds formed: 2 × 432. Estimate the reaction enthalpy from bond enthalpies in kJ/mol. | SOLVED | dH = -185000 J/mol, dH_kJ = -185, broken_kJ = 679, formed_kJ = 864 |
+| Bonds broken: 436, -243; bonds formed: 2 × 432. Estimate the reaction enthalpy from bond enthalpies in kJ/mol. | INVALID_INPUT | Reaction enthalpy from bond enthalpies: bond enthalpies are positive (the energy needed to break a bond). |
+
+<a id="henry_law_solubility"></a>
+
+### Henry's law: solubility of a gas, `henry_law_solubility`
+
+The concentration of a dissolved gas from its Henry's law constant and its partial pressure.
+
+$$
+c = k_H\, P
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `kH` | Henry's law constant (solubility form, $c = kH$ P) |  |
+| `P` | partial pressure of the gas |  |
+
+| output | meaning |
+|---|---|
+| `c` | dissolved gas concentration |
+| `c_molL` | in mol/L |
+
+- **Method:** $c = kH$ P
+- **Assumes:** kH, $P > 0$; dilute solution, no reaction with the solvent
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![c (dissolved gas concentration) against kH (Henry's law constant (solubility form, c = kH P)) from 6](https://www.ai999x.com/?ax_fig=chemistry-ai999x/henry-law-solubility-curve)
+
+*c (dissolved gas concentration) against kH (Henry's law constant (solubility form, c = kH P)) from 6.4150e-06 mol/(m^3*Pa) to 1.9245e-05 mol/(m^3*Pa). One curve for each value of P (partial pressure of the gas): 21278.2 Pa, 10639.1 Pa, 42556.5 Pa. 31 points per curve computed by chemistry-ai999x; marked: the worked example, kH = 1.2830e-05 mol/(m^3*Pa), c = 0.273 mol/m^3.*
+
+![c (dissolved gas concentration) over kH (Henry's law constant (solubility form, c = kH P)) from 6](https://www.ai999x.com/?ax_fig=chemistry-ai999x/henry-law-solubility-field)
+
+*c (dissolved gas concentration) over kH (Henry's law constant (solubility form, c = kH P)) from 6.4150e-06 mol/(m^3*Pa) to 1.9245e-05 mol/(m^3*Pa) and P (partial pressure of the gas) from 10639.1 Pa to 31917.4 Pa: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 0.06825 mol/m^3 to dark 0.61425 mol/m^3); iso-lines at c = 0.1, 0.2, 0.3, 0.4, 0.5 mol/m^3. Marked: the worked example, kH = 1.2830e-05 mol/(m^3*Pa), P = 21278.2 Pa, c = 0.273 mol/m^3.*
+
+```python
+chemistry_ai999x.solve('henry_law_solubility', kH=1.2830002467308166e-05, P=21278.25)
+# -> c = 0.273 mol/m^3, c_molL = 0.000273   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('henry_law_solubility', kH=0.00033555391068344434, P=405300.0)
+# -> c = 136 mol/m^3, c_molL = 0.136   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| The Henry's law constant for O2 in water is 1.3e-3 M/atm. What is the solubility of O2 at a partial pressure of 0.21 atm? | SOLVED | c = 0.273 mol/m^3, c_molL = 0.000273 |
+| Henry's law constant of CO2 = 3.4e-2 M/atm. Find the solubility of CO2 when its partial pressure is 4.0 atm. | SOLVED | c = 136 mol/m^3, c_molL = 0.136 |
+| The Henry's law constant for N2 in water is 6.1e-4 M/atm. What is the solubility of N2 at a partial pressure of -0.78 atm? | INVALID_INPUT | Henry's law: solubility of a gas: P must be a positive number. |
+
+<a id="reaction_quotient_direction"></a>
+
+### Reaction quotient and the direction of shift, `reaction_quotient_direction`
+
+The reaction quotient Q from the current concentrations (or partial pressures) and, compared with K, the direction in which the reaction proceeds to reach equilibrium.
+
+$$
+Q = \prod_i c_i^{\nu_i};\ Q < K \Rightarrow \text{forward},\ Q > K \Rightarrow \text{reverse}
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `equation` | the reaction as written (its coefficients define Q and K) |  |
+| `conc` | current concentration of each species in the order written (mol/L, or atm for Kp) |  |
+| `K` | equilibrium constant |  |
+
+| output | meaning |
+|---|---|
+| `Q` | reaction quotient |
+| `log10_Q` | log10 Q |
+| `direction` | direction of the shift |
+
+- **Method:** mass-action product of the current concentrations, compared with K
+- **Assumes:** one reaction, coefficients as written; no pure solids or liquids in the equation; every concentration > 0; $K > 0$
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![Q (reaction quotient) as value 3 of conc (current concentration of each species in the order written (mol/L, or atm for Kp)) moves from 1](https://www.ai999x.com/?ax_fig=chemistry-ai999x/reaction-quotient-direction-sensitivity)
+
+*Q (reaction quotient) as value 3 of conc (current concentration of each species in the order written (mol/L, or atm for Kp)) moves from 1.3878e-17 to 0.4, the other values as given (0.20, 0.30, 0.10); 41 runs of chemistry-ai999x. Other inputs: equation = N2 + 3 H2 ⇌ 2 NH3, K = 0.105. Marked: the worked example, conc[3] = 0.1, Q = 1.85185.*
+
+```python
+chemistry_ai999x.solve('reaction_quotient_direction', equation='N2 + 3 H2 ⇌ 2 NH3', conc='0.20, 0.30, 0.10', K=0.105)
+# -> Q = 1.85185, log10_Q = 0.267606, direction = reverse (toward reactants)   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('reaction_quotient_direction', equation='H2 + I2 ⇌ 2 HI', conc='0.10, 0.20, 0.40', K=50.0)
+# -> Q = 8, log10_Q = 0.90309, direction = forward (toward products)   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| For N2 + 3 H2 ⇌ 2 NH3, Kc = 0.105. The concentrations are [N2] = 0.20 M, [H2] = 0.30 M and [NH3] = 0.10 M. Calculate the reaction quotient Q and predict the direction of the shift. | SOLVED | Q = 1.85185, log10_Q = 0.267606, direction = reverse (toward reactants) |
+| For H2 + I2 ⇌ 2 HI, K = 50.0. The concentrations are [H2] = 0.10 M, [I2] = 0.20 M and [HI] = 0.40 M. Find the reaction quotient and the direction of the shift. | SOLVED | Q = 8, log10_Q = 0.90309, direction = forward (toward products) |
+| For N2O4 ⇌ 2 NO2, Kc = 4.6e-3. The concentrations are [N2O4] = 0.10 M and [NO2] = 0 M. Calculate the reaction quotient and the direction of the shift. | INVALID_INPUT | Reaction quotient and the direction of shift: every concentration must be above zero. |
+
+<a id="precipitation_test"></a>
+
+### Precipitation test (Q versus Ksp): `precipitation_test`
+
+Whether a salt MxAy precipitates from a solution with given ion concentrations: the ion product Q compared with Ksp.
+
+$$
+Q = [M]^x[A]^y;\ Q > K_{sp} \Rightarrow \text{precipitate}
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `Ksp` | solubility product |  |
+| `x` | cations per formula unit |  |
+| `y` | anions per formula unit |  |
+| `c_cation` | cation concentration (after any mixing) |  |
+| `c_anion` | anion concentration (after any mixing) |  |
+
+| output | meaning |
+|---|---|
+| `Q` | ion product Q |
+| `log10_Q` | log10 Q |
+| `result` | precipitate forms or not |
+
+- **Method:** ion product from the stated ion concentrations, compared with Ksp (in logarithms)
+- **Assumes:** Ksp > 0; ion concentrations > 0 (mol/L, after mixing); the bracketed ions are the salt's own
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![log10_Q (log10 Q) against c_anion (anion concentration (after any mixing)) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/precipitation-test-curve)
+
+*log10_Q (log10 Q) against c_anion (anion concentration (after any mixing)) from 0.5 mol/m^3 to 1.5 mol/m^3. One curve for each value of y (anions per formula unit): 2, 3, 4. Other inputs as in the worked example: Ksp = 9.8e-09, x = 1, c_cation = 10.0 mol/m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, c_anion = 1 mol/m^3, log10_Q = -8.*
+
+```python
+chemistry_ai999x.solve('precipitation_test', Ksp=9.8e-09, x=1, y=2, c_cation=10.0, c_anion=1.0)
+# -> Q = 1e-08, log10_Q = -8, result = precipitate forms (Q > Ksp)   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('precipitation_test', Ksp=1.8e-10, x=1, y=1, c_cation=0.01, c_anion=0.001)
+# -> Q = 1e-11, log10_Q = -11, result = no precipitate (Q < Ksp)   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('precipitation_test', Ksp=3.9e-11, x=1, y=2, c_cation=0.2, c_anion=1.0)
+# -> Q = 2e-10, log10_Q = -9.69897, result = precipitate forms (Q > Ksp)   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| The Ksp of PbI2 is 9.8e-9. If [Pb2+] = 0.010 M and [I-] = 0.0010 M after mixing, will a precipitate form? | SOLVED | Q = 1e-08, log10_Q = -8, result = precipitate forms (Q > Ksp) |
+| The Ksp of AgCl is 1.8e-10. If [Ag+] = 1.0e-5 M and [Cl-] = 1.0e-6 M, will a precipitate form? | SOLVED | Q = 1e-11, log10_Q = -11, result = no precipitate (Q < Ksp) |
+| The Ksp of CaF2 is 3.9e-11. If [Ca2+] = 2.0e-4 M and [F-] = 1.0e-3 M, will a precipitate form? | SOLVED | Q = 2e-10, log10_Q = -9.69897, result = precipitate forms (Q > Ksp) |
+| The Ksp of PbI2 is 9.8e-9. If [Pb2+] = -0.010 M and [I-] = 0.0010 M after mixing, will a precipitate form? | INVALID_INPUT | Precipitation test (Q versus Ksp): c_cation must be a positive number. |
+
+<a id="reaction_entropy_from_standard_entropies"></a>
+
+### Standard reaction entropy from standard molar entropies, `reaction_entropy_from_standard_entropies`
+
+The standard entropy change of a reaction from the standard molar entropies of every species (balanced equation).
+
+$$
+\Delta S^\circ_{rxn} = \sum \nu_p S^\circ(p) - \sum \nu_r S^\circ(r)
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `equation` | balanced equation |  |
+| `values` | standard molar entropy of each species in the order written (J/(mol·K)) |  |
+
+| output | meaning |
+|---|---|
+| `dS` | standard reaction entropy |
+
+- **Method:** coefficient-weighted sum of standard molar entropies, products minus reactants
+- **Assumes:** the equation as written conserves every element; one value per species, in J/(mol·K)
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![dS (standard reaction entropy) as value 3 of values (standard molar entropy of each species in the order written (J/(mol·K))) moves from 99](https://www.ai999x.com/?ax_fig=chemistry-ai999x/reaction-entropy-from-standard-entropies-sensitivity)
+
+*dS (standard reaction entropy) as value 3 of values (standard molar entropy of each species in the order written (J/(mol·K))) moves from 99.8 to 223.4, the other values as given (191.6, 130.7, 192.5); 41 runs of chemistry-ai999x. Other inputs: equation = N2 + 3 H2 -> 2 NH3. Marked: the worked example, values[3] = 192.5, dS = -198.7 J/(mol*K).*
+
+```python
+chemistry_ai999x.solve('reaction_entropy_from_standard_entropies', equation='N2 + 3 H2 -> 2 NH3', values='191.6, 130.7, 192.5')
+# -> dS = -198.7 J/(mol*K)   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('reaction_entropy_from_standard_entropies', equation='CaCO3 -> CaO + CO2', values='92.9, 39.8, 213.7')
+# -> dS = 160.6 J/(mol*K)   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| Using standard molar entropies N2 = 191.6, H2 = 130.7, NH3 = 192.5 (J/(mol·K)), find ΔS° for N2 + 3 H2 -> 2 NH3. | SOLVED | dS = -198.7 J/(mol*K) |
+| Standard molar entropies: CaCO3 = 92.9, CaO = 39.8, CO2 = 213.7 J/(mol·K). Calculate the entropy change ΔS° for CaCO3 -> CaO + CO2. | SOLVED | dS = 160.6 J/(mol*K) |
+| Using standard molar entropies N2 = 191.6, H2 = 130.7, NH3 = 192.5 (J/(mol·K)), find ΔS° for N2 + H2 -> NH3. | INVALID_INPUT | Standard reaction entropy from standard molar entropies: the equation as written is not balanced; balance it first. |
+
+<a id="reaction_gibbs_from_formation"></a>
+
+### Standard reaction Gibbs energy from Gibbs energies of formation, `reaction_gibbs_from_formation`
+
+The standard Gibbs energy change of a reaction from the standard Gibbs energies of formation of every species (balanced equation), and whether it is spontaneous under standard conditions.
+
+$$
+\Delta G^\circ_{rxn} = \sum \nu_p \Delta G_f^\circ(p) - \sum \nu_r \Delta G_f^\circ(r)
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `equation` | balanced equation |  |
+| `values` | standard Gibbs energy of formation of each species in the order written (kJ/mol) |  |
+
+| output | meaning |
+|---|---|
+| `dG` | standard reaction Gibbs energy |
+| `dG_kJ` | in kJ/mol |
+| `spontaneity` | spontaneous / non-spontaneous under standard conditions |
+
+- **Method:** coefficient-weighted sum of Gibbs energies of formation, products minus reactants
+- **Assumes:** the equation as written conserves every element; one value per species, in kJ/mol
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![dG (standard reaction Gibbs energy) as value 4 of values (standard Gibbs energy of formation of each species in the order written (kJ/mol)) moves from -591](https://www.ai999x.com/?ax_fig=chemistry-ai999x/reaction-gibbs-from-formation-sensitivity)
+
+*dG (standard reaction Gibbs energy) as value 4 of values (standard Gibbs energy of formation of each species in the order written (kJ/mol)) moves from -591.6 to 197.2, the other values as given (-50.8, 0, -394.4, -237.1); 41 runs of chemistry-ai999x. Other inputs: equation = CH4 + 2 O2 -> CO2 + 2 H2O. Marked: the worked example, values[4] = -237.1, dG = -817800 J/mol.*
+
+```python
+chemistry_ai999x.solve('reaction_gibbs_from_formation', equation='CH4 + 2 O2 -> CO2 + 2 H2O', values='-50.8, 0, -394.4, -237.1')
+# -> dG = -817800 J/mol, dG_kJ = -817.8, spontaneity = spontaneous   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('reaction_gibbs_from_formation', equation='N2 + 3 H2 -> 2 NH3', values='0, 0, -16.4')
+# -> dG = -32800 J/mol, dG_kJ = -32.8, spontaneity = spontaneous   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| Using standard Gibbs energies of formation CH4 = -50.8, O2 = 0, CO2 = -394.4, H2O = -237.1 (kJ/mol), find ΔG° for CH4 + 2 O2 -> CO2 + 2 H2O. | SOLVED | dG = -817800 J/mol, dG_kJ = -817.8, spontaneity = spontaneous |
+| Standard Gibbs energies of formation: NH3 = -16.4, N2 = 0, H2 = 0 kJ/mol. Find ΔG° for N2 + 3 H2 -> 2 NH3. | SOLVED | dG = -32800 J/mol, dG_kJ = -32.8, spontaneity = spontaneous |
+| Using standard Gibbs energies of formation CH4 = -50.8, O2 = 0, CO2 = -394.4, H2O = -237.1 (kJ/mol), find ΔG° for CH4 + O2 -> CO2 + H2O. | INVALID_INPUT | Standard reaction Gibbs energy from Gibbs energies of formation: the equation as written is not balanced; balance it fir |
+
+<a id="nuclear_binding_energy"></a>
+
+### Mass defect and nuclear binding energy: `nuclear_binding_energy`
+
+The mass defect, binding energy and binding energy per nucleon of a nuclide from its atomic mass.
+
+$$
+\Delta m = Z\,m(^1\mathrm{H}) + (A - Z)\,m_n - m_{atom},\quad E_b = \Delta m c^2
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `Z` | atomic number (protons) |  |
+| `A` | mass number (nucleons) |  |
+| `mass` | atomic mass of the nuclide (u) |  |
+
+| output | meaning |
+|---|---|
+| `dm` | mass defect (u) |
+| `E_b` | binding energy |
+| `E_b_MeV` | binding energy in MeV |
+| `E_per_nucleon_MeV` | binding energy per nucleon in MeV |
+
+- **Method:** mass defect with atomic masses (Z hydrogen atoms carry the electrons), times 931.494 MeV per u
+- **Assumes:** $1  \leq  Z  \leq  A$, $A  \geq  2$; atomic mass in u, within 0.5 u of A; mass defect > 0
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![E_b_MeV (binding energy in MeV) against mass (atomic mass of the nuclide (u)) from 3](https://www.ai999x.com/?ax_fig=chemistry-ai999x/nuclear-binding-energy-curve)
+
+*E_b_MeV (binding energy in MeV) against mass (atomic mass of the nuclide (u)) from 3.60234 to 4.40286. Other inputs as in the worked example: Z = 2, A = 4. 17 points computed by chemistry-ai999x; marked: the worked example, mass = 4.0026, E_b_MeV = 28.2987.*
+
+```python
+chemistry_ai999x.solve('nuclear_binding_energy', Z=2, A=4, mass=4.0026)
+# -> dm = 0.0303799, E_b = 4.53395e-12 J, E_b_MeV = 28.2987, E_per_nucleon_MeV = 7.07467   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('nuclear_binding_energy', Z=26, A=56, mass=55.9349)
+# -> dm = 0.528498, E_b = 7.8874e-11 J, E_b_MeV = 492.293, E_per_nucleon_MeV = 8.79095   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| Find the nuclear binding energy of a nuclide with Z = 2, A = 4 and atomic mass 4.0026 u. | SOLVED | dm = 0.0303799, E_b = 4.53395e-12 J, E_b_MeV = 28.2987, E_per_nucleon_MeV = 7.07467 |
+| What is the mass defect and binding energy per nucleon of a nuclide with Z = 26, A = 56 and atomic mass 55.9349 u? | SOLVED | dm = 0.528498, E_b = 7.8874e-11 J, E_b_MeV = 492.293, E_per_nucleon_MeV = 8.79095 |
+| Find the nuclear binding energy of a nuclide with Z = 26, A = 56 and atomic mass 65.9349 u. | INVALID_INPUT | Mass defect and nuclear binding energy: the atomic mass (in u) must lie within 0.5 u of the mass number A. |
+
+<a id="radioactive_decay_remaining"></a>
+
+### Amount remaining after radioactive decay (half-life), `radioactive_decay_remaining`
+
+The mass of a radioactive nuclide that remains after a time, from its half-life.
+
+$$
+m = m_0 \left(\tfrac{1}{2}\right)^{t/t_{1/2}}
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `m0` | initial mass |  |
+| `t_half` | half-life |  |
+| `t` | elapsed time |  |
+
+| output | meaning |
+|---|---|
+| `m` | mass remaining |
+| `m_g` | in grams |
+| `fraction` | fraction remaining |
+| `half_lives` | number of half-lives |
+
+- **Method:** $m = m_{0}$ $(1/2)^{t / t_{1}/2}$
+- **Assumes:** m0, $t_{1}/2 > 0$; $t  \geq  0$
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![m (mass remaining) against t_half (half-life) from 69292](https://www.ai999x.com/?ax_fig=chemistry-ai999x/radioactive-decay-remaining-curve)
+
+*m (mass remaining) against t_half (half-life) from 69292.8 s to 6.92928e+06 s on a logarithmic axis, logarithmic output axis. One curve for each value of m0 (initial mass): 0.0001 kg, 5.0000e-05 kg, 0.0002 kg. Other inputs as in the worked example: t = 2078784.0 s. 41 points per curve computed by chemistry-ai999x; marked: the worked example, t_half = 692928 s, m = 1.2500e-05 kg.*
+
+```python
+chemistry_ai999x.solve('radioactive_decay_remaining', m0=0.0001, t_half=692928.0, t=2078784.0)
+# -> m = 1.25e-05 kg, m_g = 0.0125, fraction = 0.125, half_lives = 3   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('radioactive_decay_remaining', m0=0.005, t_half=180825048000.0, t=361650096000.0)
+# -> m = 0.00125 kg, m_g = 1.25, fraction = 0.25, half_lives = 2   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('radioactive_decay_remaining', m0=0.001, t_half=30.0, t=15.0)
+# -> m = 0.000707107 kg, m_g = 0.707107, fraction = 0.707107, half_lives = 0.5   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| The half-life of iodine-131 is 8.02 days. How much of a 100 mg sample remains after 24.06 days? | SOLVED | m = 1.25e-05 kg, m_g = 0.0125, fraction = 0.125, half_lives = 3 |
+| Carbon-14 has a half-life of 5730 years. What mass of a 5.00 g sample is left after 11460 years? | SOLVED | m = 0.00125 kg, m_g = 1.25, fraction = 0.25, half_lives = 2 |
+| The half-life of iodine-131 is 8.02 days. How much of a 100 mg sample remains after -5.0 days? | INVALID_INPUT | Amount remaining after radioactive decay (half-life): the elapsed time cannot be negative. |
+
+<a id="radioactive_dating_age"></a>
+
+### Age from the fraction remaining (radioactive dating), `radioactive_dating_age`
+
+The age of a sample (the time elapsed) from the fraction of a radioactive nuclide remaining and its half-life.
+
+$$
+t = t_{1/2}\,\log_2\frac{1}{f}
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `fraction` | fraction of the original nuclide remaining $(0 < f  \leq  1)$ |  |
+| `t_half` | half-life |  |
+
+| output | meaning |
+|---|---|
+| `t` | age (time elapsed) |
+| `t_years` | in years |
+| `half_lives` | number of half-lives |
+
+- **Method:** $t = t_{1}/2$ ln(1/f) / ln 2
+- **Assumes:** $0 < f  \leq  1$; $t_{1}/2 > 0$
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![t (age (time elapsed)) against fraction (fraction of the original nuclide remaining (0 < f <= 1)) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/radioactive-dating-age-curve)
+
+*t (age (time elapsed)) against fraction (fraction of the original nuclide remaining (0 < f <= 1)) from 0.02 to 0.98. One curve for each value of t_half (half-life): 1.8083e+11 s, 9.0413e+10 s, 3.6165e+11 s. 41 points per curve computed by chemistry-ai999x; marked: the worked example, fraction = 0.25, t = 3.6165e+11 s.*
+
+![t (age (time elapsed)) over t_half (half-life) from 9](https://www.ai999x.com/?ax_fig=chemistry-ai999x/radioactive-dating-age-field)
+
+*t (age (time elapsed)) over t_half (half-life) from 9.0413e+10 s to 2.7124e+11 s and fraction (fraction of the original nuclide remaining (0 < f <= 1)) from 0.02 to 0.98: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 2.6352e+09 s to dark 1.5308e+12 s); iso-lines at t = 5.00e11, 1.00e12 s. Marked: the worked example, t_half = 1.8083e+11 s, fraction = 0.25, t = 3.6165e+11 s.*
+
+```python
+chemistry_ai999x.solve('radioactive_dating_age', fraction=0.25, t_half=180825048000.0)
+# -> t = 3.6165e+11 s, t_years = 11460, half_lives = 2   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('radioactive_dating_age', fraction=0.1, t_half=180825048000.0)
+# -> t = 6.00688e+11 s, t_years = 19034.6, half_lives = 3.32193   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| A wood sample has 25% of the original carbon-14 remaining. The half-life of carbon-14 is 5730 years. How old is the sample? | SOLVED | t = 3.6165e+11 s, t_years = 11460, half_lives = 2 |
+| The fraction remaining is 0.10 and the half-life is 5730 years. What is the age of the sample? | SOLVED | t = 6.00688e+11 s, t_years = 19034.6, half_lives = 3.32193 |
+| The fraction remaining is 1.5 and the half-life is 5730 years. What is the age of the sample? | INVALID_INPUT | Age from the fraction remaining (radioactive dating): the fraction remaining lies between 0 and 1. |
+
+<a id="conjugate_dissociation_constant"></a>
+
+### Conjugate acid-base constants (Ka Kb = Kw), `conjugate_dissociation_constant`
+
+The dissociation constant of the conjugate base of an acid (or of the conjugate acid of a base), with pKa and pKb, at 25 °C.
+
+$$
+K_a K_b = K_w,\quad \mathrm{p}K_a + \mathrm{p}K_b = 14
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `K` | the given Ka (acid) or Kb (base) |  |
+| `known` | which constant is given |  |
+
+| output | meaning |
+|---|---|
+| `K_conj` | dissociation constant of the conjugate |
+| `pK` | pK of the given constant |
+| `pK_conj` | pK of the conjugate |
+| `conjugate` | which constant the conjugate's is |
+
+- **Method:** K_conj = Kw / K; $pK = -log10$ K
+- **Assumes:** $K > 0$; 25 °C $(Kw = 1.0e-14)$
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![K_conj (dissociation constant of the conjugate) against K (the given Ka (acid) or Kb (base)) from 9](https://www.ai999x.com/?ax_fig=chemistry-ai999x/conjugate-dissociation-constant-curve)
+
+*K_conj (dissociation constant of the conjugate) against K (the given Ka (acid) or Kb (base)) from 9.0000e-06 to 2.7000e-05. Other inputs as in the worked example: known = Ka. 31 points computed by chemistry-ai999x; marked: the worked example, K = 1.8000e-05, K_conj = 5.5556e-10.*
+
+```python
+chemistry_ai999x.solve('conjugate_dissociation_constant', K=1.8e-05, known='Ka')
+# -> K_conj = 5.55556e-10, pK = 4.74473, pK_conj = 9.25527, conjugate = Kb of the conjugate base   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('conjugate_dissociation_constant', K=1e-05, known='Kb')
+# -> K_conj = 1e-09, pK = 5, pK_conj = 9, conjugate = Ka of the conjugate acid   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| Ka of acetic acid = 1.8e-5. What is Kb of its conjugate base? | SOLVED | K_conj = 5.55556e-10, pK = 4.74473, pK_conj = 9.25527, conjugate = Kb of the conjugate base |
+| The pKa of an acid HA is 3.00. Find Kb of its conjugate base. | SOLVED | K_conj = 1e-11, pK = 3, pK_conj = 11, conjugate = Kb of the conjugate base |
+| The pKb of a base B is 5.00. What is Ka of its conjugate acid? | SOLVED | K_conj = 1e-09, pK = 5, pK_conj = 9, conjugate = Ka of the conjugate acid |
+| Ka of an acid HA = -1.0e-5. What is Kb of its conjugate base? | INVALID_INPUT | Conjugate acid-base constants (Ka Kb = Kw): K must be a positive number. |
+
+<a id="specific_rotation"></a>
+
+### Specific rotation from an observed rotation, `specific_rotation`
+
+The specific rotation of an optically active compound from the observed rotation, the path length and the concentration of its solution.
+
+$$
+[\alpha] = \frac{\alpha}{l\,c}\quad (l \text{ in dm},\ c \text{ in g/mL})
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `alpha` | observed rotation (degrees) |  |
+| `l` | path length of the cell |  |
+| `c` | concentration in mass per volume (g/mL) |  |
+
+| output | meaning |
+|---|---|
+| `specific_rotation` | specific rotation (degrees mL $g^{-1}$ dm^-1) |
+
+- **Method:** observed rotation over path length (dm) times concentration (g/mL)
+- **Assumes:** l, $c > 0$; rotation in degrees, written with °
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![specific_rotation (specific rotation (degrees mL g^-1 dm^-1)) against l (path length of the cell) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/specific-rotation-curve)
+
+*specific_rotation (specific rotation (degrees mL g^-1 dm^-1)) against l (path length of the cell) from 0.05 m to 0.15 m. One curve for each value of alpha (observed rotation (degrees)): 1.2, 0.6, 2.4. Other inputs as in the worked example: c = 50.0 kg/m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, l = 0.1 m, specific_rotation = 24.*
+
+```python
+chemistry_ai999x.solve('specific_rotation', alpha=1.2, l=0.1, c=50.0)
+# -> specific_rotation = 24   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('specific_rotation', alpha=-4.32, l=0.2, c=120.0)
+# -> specific_rotation = -18   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| A solution of 0.0500 g/mL of a compound in a 1.00 dm tube shows an observed rotation of +1.20°. What is its specific rotation? | SOLVED | specific_rotation = 24 |
+| The observed rotation is -4.32° for a 0.120 g/mL solution in a 2.00 dm cell. Find the specific rotation. | SOLVED | specific_rotation = -18 |
+| The observed rotation is -4.32° for a 0.120 g/mL solution in a 0 dm cell. Find the specific rotation. | INVALID_INPUT | Specific rotation from an observed rotation: l must be a positive number. |
+
+<a id="enantiomeric_excess_from_rotation"></a>
+
+### Enantiomeric excess from optical rotation: `enantiomeric_excess_from_rotation`
+
+The enantiomeric excess (optical purity) of a mixture and the percent of each enantiomer, from its specific rotation and that of the pure enantiomer.
+
+$$
+ee = \frac{[\alpha]_{mixture}}{[\alpha]_{pure}} \times 100\%,\quad \%_{major} = 50 + \frac{ee}{2}
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `alpha_obs` | specific rotation of the mixture (degrees) |  |
+| `alpha_pure` | specific rotation of the pure enantiomer (degrees) |  |
+
+| output | meaning |
+|---|---|
+| `ee` | enantiomeric excess (%) |
+| `major_percent` | percent of the major enantiomer |
+| `minor_percent` | percent of the minor enantiomer |
+| `predominant` | which enantiomer predominates |
+
+- **Method:** optical purity = ratio of the specific rotations; the major enantiomer is 50% + $ee/2$
+- **Assumes:** the pure enantiomer's rotation is not zero; |observed| <= |pure|
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![ee (enantiomeric excess (%)) against alpha_pure (specific rotation of the pure enantiomer (degrees)) from 12 to 36](https://www.ai999x.com/?ax_fig=chemistry-ai999x/enantiomeric-excess-from-rotation-curve)
+
+*ee (enantiomeric excess (%)) against alpha_pure (specific rotation of the pure enantiomer (degrees)) from 12 to 36. One curve for each value of alpha_obs (specific rotation of the mixture (degrees)): 12, 6, 24. 31 points per curve computed by chemistry-ai999x; marked: the worked example, alpha_pure = 24, ee = 50.*
+
+![ee (enantiomeric excess (%)) over alpha_pure (specific rotation of the pure enantiomer (degrees)) from 12 to 36 and alpha_obs (specific rotation of the mixture (degrees)) from 6 to 18: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 16](https://www.ai999x.com/?ax_fig=chemistry-ai999x/enantiomeric-excess-from-rotation-field)
+
+*ee (enantiomeric excess (%)) over alpha_pure (specific rotation of the pure enantiomer (degrees)) from 12 to 36 and alpha_obs (specific rotation of the mixture (degrees)) from 6 to 18: each of the 21 × 15 cells is one run of chemistry-ai999x, shaded by its value (light 16.6667 to dark 100); iso-lines at ee = 20, 40, 60, 80; blank cells: inputs the capability refuses. Marked: the worked example, alpha_pure = 24, alpha_obs = 12, ee = 50.*
+
+```python
+chemistry_ai999x.solve('enantiomeric_excess_from_rotation', alpha_obs=12.0, alpha_pure=24.0)
+# -> ee = 50, major_percent = 75, minor_percent = 25, predominant = the same enantiomer as the pure sample   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('enantiomeric_excess_from_rotation', alpha_obs=-6.0, alpha_pure=24.0)
+# -> ee = 25, major_percent = 62.5, minor_percent = 37.5, predominant = the opposite enantiomer   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| The observed specific rotation of a mixture is +12.0° and the pure enantiomer has a specific rotation of +24.0°. What is the enantiomeric excess? | SOLVED | ee = 50, major_percent = 75, minor_percent = 25, predominant = the same enantiomer as the pure sample |
+| The observed rotation of a sample is -6.0° and the pure enantiomer has a specific rotation of +24.0°. What is the optical purity (enantiomeric excess)? | SOLVED | ee = 25, major_percent = 62.5, minor_percent = 37.5, predominant = the opposite enantiomer |
+| The observed specific rotation of a mixture is +30.0° and the pure enantiomer has a specific rotation of +24.0°. What is the enantiomeric excess? | INVALID_INPUT | Enantiomeric excess from optical rotation: the observed rotation cannot be larger in size than the pure enantiomer's. |
+
+<a id="enantiomeric_excess_from_composition"></a>
+
+### Enantiomeric excess from the composition of a mixture, `enantiomeric_excess_from_composition`
+
+The enantiomeric excess and the percent of each enantiomer from the amounts of the R and S enantiomers.
+
+$$
+ee = \frac{|n_R - n_S|}{n_R + n_S} \times 100\%
+$$
+
+| input | meaning | condition |
+|---|---|---|
+| `R` | amount of the R enantiomer (any unit, the same for both) |  |
+| `S` | amount of the S enantiomer (same unit) |  |
+
+| output | meaning |
+|---|---|
+| `ee` | enantiomeric excess (%) |
+| `percent_R` | percent R |
+| `percent_S` | percent S |
+| `predominant` | which enantiomer predominates |
+
+- **Method:** difference of the two amounts over their sum
+- **Assumes:** amounts >= 0, not both zero; one unit for both
+- **Evidence:** certified procedure (gates: conditions, control, examples, fast_enough, questions, reference, sensitivity, templates)
+
+![which enantiomer predominates (predominant) over R (amount of the R enantiomer (any unit, the same for both)) from 7](https://www.ai999x.com/?ax_fig=chemistry-ai999x/enantiomeric-excess-from-composition-decision)
+
+*which enantiomer predominates (predominant) over R (amount of the R enantiomer (any unit, the same for both)) from 7.5 to 750 and S (amount of the S enantiomer (same unit)) from 2.5 to 250 (logarithmic axes): each of the 31 × 21 cells is one run of chemistry-ai999x, coloured by the verdict it returned, R: 459 cells, S: 192 cells. Marked: the worked example, R = 75, S = 25 → R.*
+
+![ee (enantiomeric excess (%)) against R (amount of the R enantiomer (any unit, the same for both)) from 7](https://www.ai999x.com/?ax_fig=chemistry-ai999x/enantiomeric-excess-from-composition-curve)
+
+*ee (enantiomeric excess (%)) against R (amount of the R enantiomer (any unit, the same for both)) from 7.5 to 750 on a logarithmic axis. One curve for each value of S (amount of the S enantiomer (same unit)): 25, 12.5, 50. 41 points per curve computed by chemistry-ai999x; marked: the worked example, R = 75, ee = 50.*
+
+```python
+chemistry_ai999x.solve('enantiomeric_excess_from_composition', R=75.0, S=25.0)
+# -> ee = 50, percent_R = 75, percent_S = 25, predominant = R   (SOLVED)
+```
+
+```python
+chemistry_ai999x.solve('enantiomeric_excess_from_composition', R=1.0, S=3.0)
+# -> ee = 50, percent_R = 25, percent_S = 75, predominant = S   (SOLVED)
+```
+
+**Questions in words (documented forms), as executed:**
+
+| question | outcome | result |
+|---|---|---|
+| A mixture contains 75% of the R enantiomer and 25% of the S enantiomer. What is the enantiomeric excess? | SOLVED | ee = 50, percent_R = 75, percent_S = 25, predominant = R |
+| A sample contains 1.0 g of the (R)-enantiomer and 3.0 g of the (S)-enantiomer. Find the enantiomeric excess. | SOLVED | ee = 50, percent_R = 25, percent_S = 75, predominant = S |
+| A sample contains -1.0 g of the (R)-enantiomer and 3.0 g of the (S)-enantiomer. Find the enantiomeric excess. | INVALID_INPUT | Enantiomeric excess from the composition of a mixture: amounts cannot be negative. |

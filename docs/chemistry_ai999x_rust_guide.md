@@ -1,8 +1,8 @@
 # chemistry: the Chemistry program, user guide
 
-**chemistry-ai999x 1.1.0**, Rust build: command line, desktop app and browser. **Creator / engineer:** Ibnul Jaif Farabi · **Company:** AI999X · support@ai999x.com
+**chemistry-ai999x 1.6.0**, Rust build: command line, desktop app and browser. **Creator / engineer:** Ibnul Jaif Farabi · **Company:** AI999X · support@ai999x.com
 
-Chemistry covers stoichiometry, gas laws, solutions, chemical equilibrium, acids and bases, kinetics, thermochemistry, electrochemistry, molecular properties and spectroscopy. This guide is about `chemistry`, the model as a self-contained program for Windows and Linux: 103 capabilities in 10 topics, answered on your own computer with no network, no Python and nothing else to install. The same compiled model runs in the AI999X desktop app and in the browser on the model's page (https://www.ai999x.com/models/chemistry-ai999x/); the Python package (`pip install chemistry-ai999x`) has its own guide. Every command output printed here is what the program printed.
+Chemistry covers stoichiometry, gas laws, solutions, chemical equilibrium, acids and bases, kinetics, thermochemistry, electrochemistry, molecular properties and spectroscopy. This guide is about `chemistry`, the model as a self-contained program for Windows and Linux: 119 capabilities in 13 topics, answered on your own computer with no network, no Python and nothing else to install. The same compiled model runs in the AI999X desktop app and in the browser on the model's page (https://www.ai999x.com/models/chemistry-ai999x/); the Python package (`pip install chemistry-ai999x`) has its own guide. Every command output printed here is what the program printed.
 
 ## Contents
 
@@ -17,37 +17,37 @@ Chemistry covers stoichiometry, gas laws, solutions, chemical equilibrium, acids
 
 ## 1. Get it
 
-Version 1.5.0 of the AI999X desktop app and of the command-line bundle. Checksums for every file: https://downloads.ai999x.com/desktop/1.5.0/SHA256SUMS; the newest version is always under https://downloads.ai999x.com/desktop/latest/. Full instructions: https://www.ai999x.com/desktop-cli/
+Version 1.6.0 of the AI999X desktop app and of the command-line bundle. Checksums for every file: https://downloads.ai999x.com/desktop/1.6.0/SHA256SUMS; the newest version is always under https://downloads.ai999x.com/desktop/latest/. Full instructions: https://www.ai999x.com/desktop-cli/
 
 | what | system | download |
 |---|---|---|
-| Desktop app: Chemistry | Windows x86-64 | https://downloads.ai999x.com/desktop/1.5.0/ai999x-chemistry-1.5.0-windows-x86_64.zip |
-| Desktop app: Chemistry | Linux x86-64 | https://downloads.ai999x.com/desktop/1.5.0/ai999x-chemistry-1.5.0-linux-x86_64.tar.gz |
-| Desktop app: all models | Windows x86-64 | https://downloads.ai999x.com/desktop/1.5.0/ai999x-1.5.0-windows-x86_64.zip |
-| Desktop app: all models | Linux x86-64 | https://downloads.ai999x.com/desktop/1.5.0/ai999x-1.5.0-linux-x86_64.tar.gz |
-| Command line | Windows x86-64 | https://downloads.ai999x.com/desktop/1.5.0/ai999x-cli-1.5.0-windows-x86_64.zip |
-| Command line | Linux x86-64 | https://downloads.ai999x.com/desktop/1.5.0/ai999x-cli-1.5.0-linux-x86_64.tar.gz |
+| Desktop app: Chemistry | Windows x86-64 | https://downloads.ai999x.com/desktop/1.6.0/ai999x-chemistry-1.6.0-windows-x86_64.zip |
+| Desktop app: Chemistry | Linux x86-64 | https://downloads.ai999x.com/desktop/1.6.0/ai999x-chemistry-1.6.0-linux-x86_64.tar.gz |
+| Desktop app: all models | Windows x86-64 | https://downloads.ai999x.com/desktop/1.6.0/ai999x-1.6.0-windows-x86_64.zip |
+| Desktop app: all models | Linux x86-64 | https://downloads.ai999x.com/desktop/1.6.0/ai999x-1.6.0-linux-x86_64.tar.gz |
+| Command line | Windows x86-64 | https://downloads.ai999x.com/desktop/1.6.0/ai999x-cli-1.6.0-windows-x86_64.zip |
+| Command line | Linux x86-64 | https://downloads.ai999x.com/desktop/1.6.0/ai999x-cli-1.6.0-linux-x86_64.tar.gz |
 
 ### Desktop app
 
-Chemistry in its own app: search, questions in words, input forms, live figures and explanations. Windows: Download ai999x-chemistry-1.5.0-windows-x86_64.zip, right-click it → Extract All, then open the folder and start ai999x-chemistry.exe. If Windows SmartScreen asks, choose More info → Run anyway. Linux:
+Chemistry in its own app: search, questions in words, input forms, live figures and explanations. Windows: Download ai999x-chemistry-1.6.0-windows-x86_64.zip, right-click it → Extract All, then open the folder and start ai999x-chemistry.exe. If Windows SmartScreen asks, choose More info → Run anyway. Linux:
 
 ```shell
-curl -LO https://downloads.ai999x.com/desktop/1.5.0/ai999x-chemistry-1.5.0-linux-x86_64.tar.gz
-curl -LO https://downloads.ai999x.com/desktop/1.5.0/SHA256SUMS
+curl -LO https://downloads.ai999x.com/desktop/1.6.0/ai999x-chemistry-1.6.0-linux-x86_64.tar.gz
+curl -LO https://downloads.ai999x.com/desktop/1.6.0/SHA256SUMS
 sha256sum -c --ignore-missing SHA256SUMS
-tar xzf ai999x-chemistry-1.5.0-linux-x86_64.tar.gz
-./ai999x-chemistry-1.5.0-linux-x86_64/ai999x-chemistry
+tar xzf ai999x-chemistry-1.6.0-linux-x86_64.tar.gz
+./ai999x-chemistry-1.6.0-linux-x86_64/ai999x-chemistry
 ```
 
-It opens on this model: type a question or pick a capability, fill in the form and press Compute. The AI999X desktop app with every model works the same way (choose the model first). Windows: Download ai999x-1.5.0-windows-x86_64.zip, right-click it → Extract All, then open the folder and start ai999x.exe. If Windows SmartScreen asks, choose More info → Run anyway. Linux:
+It opens on this model: type a question or pick a capability, fill in the form and press Compute. The AI999X desktop app with every model works the same way (choose the model first). Windows: Download ai999x-1.6.0-windows-x86_64.zip, right-click it → Extract All, then open the folder and start ai999x.exe. If Windows SmartScreen asks, choose More info → Run anyway. Linux:
 
 ```shell
-curl -LO https://downloads.ai999x.com/desktop/1.5.0/ai999x-1.5.0-linux-x86_64.tar.gz
-curl -LO https://downloads.ai999x.com/desktop/1.5.0/SHA256SUMS
+curl -LO https://downloads.ai999x.com/desktop/1.6.0/ai999x-1.6.0-linux-x86_64.tar.gz
+curl -LO https://downloads.ai999x.com/desktop/1.6.0/SHA256SUMS
 sha256sum -c --ignore-missing SHA256SUMS
-tar xzf ai999x-1.5.0-linux-x86_64.tar.gz
-./ai999x-1.5.0-linux-x86_64/ai999x
+tar xzf ai999x-1.6.0-linux-x86_64.tar.gz
+./ai999x-1.6.0-linux-x86_64/ai999x
 ```
 
 ### Command line: Linux
@@ -55,11 +55,11 @@ tar xzf ai999x-1.5.0-linux-x86_64.tar.gz
 The bundle holds one program per model; `chemistry` is this one. The checksum line should print OK.
 
 ```shell
-curl -LO https://downloads.ai999x.com/desktop/1.5.0/ai999x-cli-1.5.0-linux-x86_64.tar.gz
-curl -LO https://downloads.ai999x.com/desktop/1.5.0/SHA256SUMS
+curl -LO https://downloads.ai999x.com/desktop/1.6.0/ai999x-cli-1.6.0-linux-x86_64.tar.gz
+curl -LO https://downloads.ai999x.com/desktop/1.6.0/SHA256SUMS
 sha256sum -c --ignore-missing SHA256SUMS
-mkdir -p ~/.local/share && tar xzf ai999x-cli-1.5.0-linux-x86_64.tar.gz -C ~/.local/share
-echo 'export PATH="$HOME/.local/share/ai999x-cli-1.5.0-linux-x86_64:$PATH"' >> ~/.bashrc && source ~/.bashrc
+mkdir -p ~/.local/share && tar xzf ai999x-cli-1.6.0-linux-x86_64.tar.gz -C ~/.local/share
+echo 'export PATH="$HOME/.local/share/ai999x-cli-1.6.0-linux-x86_64:$PATH"' >> ~/.bashrc && source ~/.bashrc
 chemistry --version
 ```
 
@@ -68,12 +68,12 @@ chemistry --version
 The fourth line should print True.
 
 ```powershell
-$F = "ai999x-cli-1.5.0-windows-x86_64.zip"
-Invoke-WebRequest "https://downloads.ai999x.com/desktop/1.5.0/$F" -OutFile $F
-Invoke-WebRequest "https://downloads.ai999x.com/desktop/1.5.0/SHA256SUMS" -OutFile SHA256SUMS
+$F = "ai999x-cli-1.6.0-windows-x86_64.zip"
+Invoke-WebRequest "https://downloads.ai999x.com/desktop/1.6.0/$F" -OutFile $F
+Invoke-WebRequest "https://downloads.ai999x.com/desktop/1.6.0/SHA256SUMS" -OutFile SHA256SUMS
 (Get-FileHash $F -Algorithm SHA256).Hash.ToLower() -eq ((Select-String -SimpleMatch $F SHA256SUMS).Line -split ' ')[0]
 Expand-Archive $F -DestinationPath "$env:LOCALAPPDATA\AI999X" -Force
-$D = "$env:LOCALAPPDATA\AI999X\ai999x-cli-1.5.0-windows-x86_64"; $env:Path += ";$D"
+$D = "$env:LOCALAPPDATA\AI999X\ai999x-cli-1.6.0-windows-x86_64"; $env:Path += ";$D"
 [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$D", "User")
 chemistry --version
 ```
@@ -96,7 +96,7 @@ Prints the model, its version and that this is the Rust build.
 
 ```shell
 $ chemistry --version
-chemistry-ai999x 1.5.0 (Rust build, ax-engine 1.5.0)
+chemistry-ai999x 1.6.0 (Rust build, ax-engine 1.6.0)
 ```
 
 ### 2.2 Ask in words
@@ -129,7 +129,7 @@ ph_weak_base                         pH of a weak base  (acids and bases / weak 
 ph_diprotic_acid                     pH of a diprotic acid  (acids and bases / polyprotic acids)
 ph_strong_acid                       pH of a strong monoprotic acid  (acids and bases / strong acids)
 titration_ph_strong_acid_strong_base pH during a strong acid - strong base titration  (acids and bases / titrations)
-… 6 more
+… 7 more
 ```
 
 ### 2.4 List the capabilities
@@ -142,11 +142,11 @@ activation_energy                        Activation energy from two rate constan
 arrhenius_k2                             Arrhenius equation: rate constant at another temperature
 arrhenius_rate_constant                  Arrhenius equation: rate constant
 atoms_of_element                         Atoms of an element in a mass of compound
+average_atomic_mass                      Average atomic mass from isotopes
 balance_equation                         Balancing a chemical equation
 beer_lambert_absorbance                  Beer-Lambert law: absorbance
 beer_lambert_concentration               Beer-Lambert law: concentration
-boiling_point_elevation                  Boiling-point elevation
-… 95 more
+… 111 more
 ```
 
 ### 2.5 What a capability needs
@@ -289,7 +289,7 @@ The same model is a WebAssembly module, `chemistry_ai999x.wasm` (https://www.ai9
 
 By topic. For each: what it does, what it needs and gives, when it applies, and a command with what the program printed for it. `chemistry info <id>` shows the same inputs and outputs in the terminal.
 
-### Acids and bases (14)
+### Acids and bases (15)
 
 <a id="buffer_ph"></a>
 
@@ -321,6 +321,41 @@ pH = 4.936091259
 ```
 
 **What the worked example means:** This calculation determines the pH of a buffer solution using the Henderson-Hasselbalch equation. By combining the pKa, which is derived from the input Ka value of 1.7378e-05, with the logarithm of the ratio between the conjugate base concentration 150 mol/m^3 and the weak acid concentration 100 mol/m^3, the model predicts the equilibrium acidity. The resulting pH value of 4.93609 indicates how resistant the solution is to changes in hydrogen ion concentration, assuming ideal behavior where activity coefficients are close to one.
+
+<a id="conjugate_dissociation_constant"></a>
+
+#### Conjugate acid-base constants (Ka Kb = Kw), `conjugate_dissociation_constant`
+
+The dissociation constant of the conjugate base of an acid (or of the conjugate acid of a base), with pKa and pKb, at 25 °C.
+
+$$
+K_a K_b = K_w,\quad \mathrm{p}K_a + \mathrm{p}K_b = 14
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `K` | in | the given Ka (acid) or Kb (base) | - |
+| `known` | in | which constant is given | - |
+| `K_conj` | out | dissociation constant of the conjugate | - |
+| `pK` | out | pK of the given constant | - |
+| `pK_conj` | out | pK of the conjugate | - |
+| `conjugate` | out | which constant the conjugate's is | - |
+
+**Applies when:** K > 0; 25 °C (Kw = 1.0e-14).
+
+```shell
+$ chemistry solve conjugate_dissociation_constant K=1.8e-05 known=Ka
+K_conj = 5.555555556e-10
+pK = 4.744727495
+pK_conj = 9.255272505
+conjugate = Kb of the conjugate base
+  by: Conjugate acid-base constants (Ka Kb = Kw)  (K_conj = Kw / K; pK = -log10 K)
+  K = 1.8e-05
+  known = Ka
+  assumes: K > 0; 25 °C (Kw = 1.0e-14)
+```
+
+In the worked example, K = 1.8e-05, known = Ka go through the equation above and give K_conj = 5.555555556e-10, pK = 4.744727495, pK_conj = 9.255272505, conjugate = Kb of the conjugate base. It applies only when K > 0; 25 °C (Kw = 1.0e-14): outside that it says what is wrong instead of returning a number.
 
 <a id="hydronium_from_ph"></a>
 
@@ -736,7 +771,75 @@ V_eq_mL = 37.5
 
 **What the worked example means:** This calculation determines the volume of titrant required to reach the equivalence point, which is 3.75e-05 m^3. It uses the analyte concentration of 150 mol/m^3, the analyte volume of 2.5e-05 m^3, and the titrant concentration of 100 mol/m^3, adjusted by the stoichiometric ratio of 1. The result indicates how much base or acid must be added to completely neutralize the sample.
 
-### Electrochemistry (5)
+### Atomic structure (2)
+
+<a id="isotope_abundance"></a>
+
+#### Abundances of two isotopes from the average atomic mass, `isotope_abundance`
+
+The natural abundances of an element's two isotopes from their masses and the average atomic mass.
+
+$$
+x_1 = \frac{\bar{A} - m_2}{m_1 - m_2},\quad x_2 = 1 - x_1
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `m1` | in | mass of the first isotope (u) | - |
+| `m2` | in | mass of the second isotope (u) | - |
+| `A_r` | in | average atomic mass (u) | - |
+| `x1` | out | fractional abundance of the first isotope | - |
+| `x2` | out | fractional abundance of the second isotope | - |
+| `percent1` | out | percent abundance of the first isotope | - |
+| `percent2` | out | percent abundance of the second isotope | - |
+
+**Applies when:** two isotopes of different mass; the average mass lies strictly between them.
+
+```shell
+$ chemistry solve isotope_abundance m1=34.97 m2=36.97 A_r=35.45
+x1 = 0.76
+x2 = 0.24
+percent1 = 76
+percent2 = 24
+  by: Abundances of two isotopes from the average atomic mass  (the average mass is x1 m1 + (1 - x1) m2, solved for x1)
+  m1 = 34.97
+  m2 = 36.97
+  A_r = 35.45
+  assumes: two isotopes of different mass; the average mass lies strictly between them
+```
+
+In the worked example, m1 = 34.97, m2 = 36.97, A_r = 35.45 go through the equation above and give x1 = 0.76, x2 = 0.24, percent1 = 76, percent2 = 24. It applies only when two isotopes of different mass; the average mass lies strictly between them: outside that it says what is wrong instead of returning a number.
+
+<a id="average_atomic_mass"></a>
+
+#### Average atomic mass from isotopes: `average_atomic_mass`
+
+The average (relative) atomic mass of an element from the masses and natural abundances of its isotopes.
+
+$$
+\bar{A} = \sum_i f_i\, m_i
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `masses` | in | mass of each isotope (u) | - |
+| `abundances` | in | abundance of each isotope, in the same order (fractions adding up to 1, or percentages adding up to 100) | - |
+| `A_r` | out | average atomic mass (u, numerically g/mol) | - |
+| `M` | out | molar mass of the element | kg/mol |
+
+**Applies when:** one abundance per isotope; abundances add up to 1 (within 0.002) or to 100 (within 0.2); masses > 0, abundances >= 0.
+
+```shell
+$ chemistry solve average_atomic_mass "masses=[34.97, 36.97]" "abundances=[0.7578, 0.2422]"
+A_r = 35.4544
+M = 0.0354544 kg/mol
+  by: Average atomic mass from isotopes  (abundance-weighted sum of the isotope masses (abundances used as written))
+  assumes: one abundance per isotope; abundances add up to 1 (within 0.002) or to 100 (within 0.2); masses > 0, abundances >= 0
+```
+
+In the worked example, masses = [34.97, 36.97], abundances = [0.7578, 0.2422] go through the equation above and give A_r = 35.4544, M = 0.0354544 kg/mol. It applies only when one abundance per isotope; abundances add up to 1 (within 0.002) or to 100 (within 0.2); masses > 0, abundances >= 0: outside that it says what is wrong instead of returning a number.
+
+### Electrochemistry (6)
 
 <a id="k_from_cell_potential"></a>
 
@@ -870,6 +973,37 @@ E = 1.159129586 V
 
 **What the worked example means:** This calculation determines the actual voltage of an electrochemical cell under non-standard conditions using the Nernst equation. Starting with a standard cell potential of 1.1 V, the model adjusts this value based on the number of electrons transferred, which is 2, and the current reaction quotient, 0.01, at a temperature of 298 K. The resulting cell potential of 1.15913 V indicates whether the reaction remains spontaneous or how its driving force changes as concentrations shift away from standard states.
 
+<a id="standard_cell_potential"></a>
+
+#### Standard cell potential from two half-reactions, `standard_cell_potential`
+
+The standard potential of a galvanic cell from the standard reduction potentials of its cathode and anode half-reactions, and whether the cell reaction is spontaneous.
+
+$$
+E^\circ_{cell} = E^\circ_{cathode} - E^\circ_{anode}
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `E_cathode` | in | standard reduction potential of the cathode half-reaction | V |
+| `E_anode` | in | standard reduction potential of the anode half-reaction | V |
+| `E_cell` | out | standard cell potential | V |
+| `spontaneity` | out | spontaneous (galvanic) or not (electrolytic) | - |
+
+**Applies when:** both values are standard REDUCTION potentials; |E°| <= 3.5 V.
+
+```shell
+$ chemistry solve standard_cell_potential "E_cathode=0.34 V" "E_anode=-0.76 V"
+E_cell = 1.1 V
+spontaneity = spontaneous (galvanic)
+  by: Standard cell potential from two half-reactions  (both potentials are reduction potentials; the anode runs as an oxidation, so its potential is subtracted)
+  E_cathode = 0.34 V
+  E_anode = -0.76 V
+  assumes: both values are standard REDUCTION potentials; |E°| <= 3.5 V
+```
+
+In the worked example, E_cathode = 0.34 V, E_anode = -0.76 V go through the equation above and give E_cell = 1.1 V, spontaneity = spontaneous (galvanic). It applies only when both values are standard REDUCTION potentials; |E°| <= 3.5 V: outside that it says what is wrong instead of returning a number.
+
 <a id="electrolysis_time"></a>
 
 #### Time for electrolysis (Faraday's law): `electrolysis_time`
@@ -903,7 +1037,7 @@ t = 6575.593827 s
 
 **What the worked example means:** This calculation determines the time needed to deposit a specific mass of metal using Faraday's law. By inputting the desired mass 0.01 kg, the applied current 5 A, and the number of electrons transferred 2, the model computes the duration 6575.59 s. This result indicates how long the electrolysis process must run to achieve the target deposition under ideal conditions.
 
-### Equilibrium (10)
+### Equilibrium (12)
 
 <a id="equilibrium_ice"></a>
 
@@ -1158,6 +1292,77 @@ log10_s = -8.408935461
 ```
 
 **What the worked example means:** This calculation determines the molar solubility of a salt when one of its ions is already present in the solution. Using the provided inputs, the result shows that the equilibrium shifts to reduce dissolution, yielding a solubility of 3.9e-06 mol/m^3. This value represents the maximum amount of the solid that can dissolve under these specific conditions.
+
+<a id="precipitation_test"></a>
+
+#### Precipitation test (Q versus Ksp): `precipitation_test`
+
+Whether a salt MxAy precipitates from a solution with given ion concentrations: the ion product Q compared with Ksp.
+
+$$
+Q = [M]^x[A]^y;\ Q > K_{sp} \Rightarrow \text{precipitate}
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `Ksp` | in | solubility product | - |
+| `x` | in | cations per formula unit | - |
+| `y` | in | anions per formula unit | - |
+| `c_cation` | in | cation concentration (after any mixing) | mol/m^3 |
+| `c_anion` | in | anion concentration (after any mixing) | mol/m^3 |
+| `Q` | out | ion product Q | - |
+| `log10_Q` | out | log10 Q | - |
+| `result` | out | precipitate forms or not | - |
+
+**Applies when:** Ksp > 0; ion concentrations > 0 (mol/L, after mixing); the bracketed ions are the salt's own.
+
+```shell
+$ chemistry solve precipitation_test x=1 y=2 "c_cation=10 mol/m^3" "c_anion=1 mol/m^3" Ksp=9.8e-09
+Q = 1e-08
+log10_Q = -8
+result = precipitate forms (Q > Ksp)
+  by: Precipitation test (Q versus Ksp)  (ion product from the stated ion concentrations, compared with Ksp (in logarithms))
+  c_cation = 10 mol/m^3
+  c_anion = 1 mol/m^3
+  Ksp = 9.8e-09
+  assumes: Ksp > 0; ion concentrations > 0 (mol/L, after mixing); the bracketed ions are the salt's own
+```
+
+In the worked example, x = 1, y = 2, c_cation = 10 mol/m^3, c_anion = 1 mol/m^3, Ksp = 9.8e-09 go through the equation above and give Q = 1e-08, log10_Q = -8, result = precipitate forms (Q > Ksp). It applies only when Ksp > 0; ion concentrations > 0 (mol/L, after mixing); the bracketed ions are the salt's own: outside that it says what is wrong instead of returning a number.
+
+<a id="reaction_quotient_direction"></a>
+
+#### Reaction quotient and the direction of shift, `reaction_quotient_direction`
+
+The reaction quotient Q from the current concentrations (or partial pressures) and, compared with K, the direction in which the reaction proceeds to reach equilibrium.
+
+$$
+Q = \prod_i c_i^{\nu_i};\ Q < K \Rightarrow \text{forward},\ Q > K \Rightarrow \text{reverse}
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `equation` | in | the reaction as written (its coefficients define Q and K) | - |
+| `conc` | in | current concentration of each species in the order written (mol/L, or atm for Kp) | - |
+| `K` | in | equilibrium constant | - |
+| `Q` | out | reaction quotient | - |
+| `log10_Q` | out | log10 Q | - |
+| `direction` | out | direction of the shift | - |
+
+**Applies when:** one reaction, coefficients as written; no pure solids or liquids in the equation; every concentration > 0; K > 0.
+
+```shell
+$ chemistry solve reaction_quotient_direction "equation=N2 + 3 H2 ⇌ 2 NH3" "conc=[0.2, 0.3, 0.1]" K=0.105
+Q = 1.851851852
+log10_Q = 0.2676062402
+direction = reverse (toward reactants)
+  by: Reaction quotient and the direction of shift  (mass-action product of the current concentrations, compared with K)
+  K = 0.105
+  equation = N2 + 3 H2 ⇌ 2 NH3
+  assumes: one reaction, coefficients as written; no pure solids or liquids in the equation; every concentration > 0; K > 0
+```
+
+In the worked example, equation = N2 + 3 H2 ⇌ 2 NH3, conc = [0.2, 0.3, 0.1], K = 0.105 go through the equation above and give Q = 1.851851852, log10_Q = 0.2676062402, direction = reverse (toward reactants). It applies only when one reaction, coefficients as written; no pure solids or liquids in the equation; every concentration > 0; K > 0: outside that it says what is wrong instead of returning a number.
 
 <a id="delta_g_from_k"></a>
 
@@ -2295,7 +2500,217 @@ dou = 4
 
 **What the worked example means:** This calculation determines the degree of unsaturation from the molecular formula C6H6. The result, 4, represents the sum of rings and pi bonds implied by the atom counts. It helps predict structural features such as double bonds, triple bonds, or cyclic structures without needing a detailed diagram.
 
-### Solutions (12)
+### Nuclear chemistry (3)
+
+<a id="radioactive_dating_age"></a>
+
+#### Age from the fraction remaining (radioactive dating), `radioactive_dating_age`
+
+The age of a sample (the time elapsed) from the fraction of a radioactive nuclide remaining and its half-life.
+
+$$
+t = t_{1/2}\,\log_2\frac{1}{f}
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `fraction` | in | fraction of the original nuclide remaining (0 < f <= 1) | - |
+| `t_half` | in | half-life | s |
+| `t` | out | age (time elapsed) | s |
+| `t_years` | out | in years | - |
+| `half_lives` | out | number of half-lives | - |
+
+**Applies when:** 0 < f <= 1; t1/2 > 0.
+
+```shell
+$ chemistry solve radioactive_dating_age fraction=0.25 "t_half=1.80825048e+11 s"
+t = 3.61650096e+11 s
+t_years = 11460
+half_lives = 2
+  by: Age from the fraction remaining (radioactive dating)  (t = t1/2 ln(1/f) / ln 2)
+  fraction = 0.25
+  t_half = 1.80825048e+11 s
+  assumes: 0 < f <= 1; t1/2 > 0
+```
+
+In the worked example, fraction = 0.25, t_half = 1.80825048e+11 s go through the equation above and give t = 3.61650096e+11 s, t_years = 11460, half_lives = 2. It applies only when 0 < f <= 1; t1/2 > 0: outside that it says what is wrong instead of returning a number.
+
+<a id="radioactive_decay_remaining"></a>
+
+#### Amount remaining after radioactive decay (half-life), `radioactive_decay_remaining`
+
+The mass of a radioactive nuclide that remains after a time, from its half-life.
+
+$$
+m = m_0 \left(\tfrac{1}{2}\right)^{t/t_{1/2}}
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `m0` | in | initial mass | kg |
+| `t_half` | in | half-life | s |
+| `t` | in | elapsed time | s |
+| `m` | out | mass remaining | kg |
+| `m_g` | out | in grams | - |
+| `fraction` | out | fraction remaining | - |
+| `half_lives` | out | number of half-lives | - |
+
+**Applies when:** m0, t1/2 > 0; t >= 0.
+
+```shell
+$ chemistry solve radioactive_decay_remaining "t_half=692928 s" "t=2078784 s" "m0=0.0001 kg"
+m = 1.25e-05 kg
+m_g = 0.0125
+fraction = 0.125
+half_lives = 3
+  by: Amount remaining after radioactive decay (half-life)  (m = m0 (1/2)^(t / t1/2))
+  t_half = 692928 s
+  t = 2078784 s
+  m0 = 0.0001 kg
+  assumes: m0, t1/2 > 0; t >= 0
+```
+
+In the worked example, t_half = 692928 s, t = 2078784 s, m0 = 0.0001 kg go through the equation above and give m = 1.25e-05 kg, m_g = 0.0125, fraction = 0.125, half_lives = 3. It applies only when m0, t1/2 > 0; t >= 0: outside that it says what is wrong instead of returning a number.
+
+<a id="nuclear_binding_energy"></a>
+
+#### Mass defect and nuclear binding energy: `nuclear_binding_energy`
+
+The mass defect, binding energy and binding energy per nucleon of a nuclide from its atomic mass.
+
+$$
+\Delta m = Z\,m(^1\mathrm{H}) + (A - Z)\,m_n - m_{atom},\quad E_b = \Delta m c^2
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `Z` | in | atomic number (protons) | - |
+| `A` | in | mass number (nucleons) | - |
+| `mass` | in | atomic mass of the nuclide (u) | - |
+| `dm` | out | mass defect (u) | - |
+| `E_b` | out | binding energy | J |
+| `E_b_MeV` | out | binding energy in MeV | - |
+| `E_per_nucleon_MeV` | out | binding energy per nucleon in MeV | - |
+
+**Applies when:** 1 <= Z <= A, A >= 2; atomic mass in u, within 0.5 u of A; mass defect > 0.
+
+```shell
+$ chemistry solve nuclear_binding_energy Z=2 A=4 mass=4.0026
+dm = 0.03037989592
+E_b = 4.533950617e-12 J
+E_b_MeV = 28.29869392
+E_per_nucleon_MeV = 7.074673479
+  by: Mass defect and nuclear binding energy  (mass defect with atomic masses (Z hydrogen atoms carry the electrons), times 931.494 MeV per u)
+  mass = 4.0026
+  assumes: 1 <= Z <= A, A >= 2; atomic mass in u, within 0.5 u of A; mass defect > 0
+```
+
+In the worked example, Z = 2, A = 4, mass = 4.0026 go through the equation above and give dm = 0.03037989592, E_b = 4.533950617e-12 J, E_b_MeV = 28.29869392, E_per_nucleon_MeV = 7.074673479. It applies only when 1 <= Z <= A, A >= 2; atomic mass in u, within 0.5 u of A; mass defect > 0: outside that it says what is wrong instead of returning a number.
+
+### Organic chemistry (3)
+
+<a id="enantiomeric_excess_from_rotation"></a>
+
+#### Enantiomeric excess from optical rotation: `enantiomeric_excess_from_rotation`
+
+The enantiomeric excess (optical purity) of a mixture and the percent of each enantiomer, from its specific rotation and that of the pure enantiomer.
+
+$$
+ee = \frac{[\alpha]_{mixture}}{[\alpha]_{pure}} \times 100\%,\quad \%_{major} = 50 + \frac{ee}{2}
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `alpha_obs` | in | specific rotation of the mixture (degrees) | - |
+| `alpha_pure` | in | specific rotation of the pure enantiomer (degrees) | - |
+| `ee` | out | enantiomeric excess (%) | - |
+| `major_percent` | out | percent of the major enantiomer | - |
+| `minor_percent` | out | percent of the minor enantiomer | - |
+| `predominant` | out | which enantiomer predominates | - |
+
+**Applies when:** the pure enantiomer's rotation is not zero; |observed| <= |pure|.
+
+```shell
+$ chemistry solve enantiomeric_excess_from_rotation alpha_obs=12 alpha_pure=24
+ee = 50
+major_percent = 75
+minor_percent = 25
+predominant = the same enantiomer as the pure sample
+  by: Enantiomeric excess from optical rotation  (optical purity = ratio of the specific rotations; the major enantiomer is 50% + ee/2)
+  alpha_obs = 12
+  alpha_pure = 24
+  assumes: the pure enantiomer's rotation is not zero; |observed| <= |pure|
+```
+
+In the worked example, alpha_obs = 12, alpha_pure = 24 go through the equation above and give ee = 50, major_percent = 75, minor_percent = 25, predominant = the same enantiomer as the pure sample. It applies only when the pure enantiomer's rotation is not zero; |observed| <= |pure|: outside that it says what is wrong instead of returning a number.
+
+<a id="enantiomeric_excess_from_composition"></a>
+
+#### Enantiomeric excess from the composition of a mixture, `enantiomeric_excess_from_composition`
+
+The enantiomeric excess and the percent of each enantiomer from the amounts of the R and S enantiomers.
+
+$$
+ee = \frac{|n_R - n_S|}{n_R + n_S} \times 100\%
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `R` | in | amount of the R enantiomer (any unit, the same for both) | - |
+| `S` | in | amount of the S enantiomer (same unit) | - |
+| `ee` | out | enantiomeric excess (%) | - |
+| `percent_R` | out | percent R | - |
+| `percent_S` | out | percent S | - |
+| `predominant` | out | which enantiomer predominates | - |
+
+**Applies when:** amounts >= 0, not both zero; one unit for both.
+
+```shell
+$ chemistry solve enantiomeric_excess_from_composition R=75 S=25
+ee = 50
+percent_R = 75
+percent_S = 25
+predominant = R
+  by: Enantiomeric excess from the composition of a mixture  (difference of the two amounts over their sum)
+  R = 75
+  S = 25
+  assumes: amounts >= 0, not both zero; one unit for both
+```
+
+In the worked example, R = 75, S = 25 go through the equation above and give ee = 50, percent_R = 75, percent_S = 25, predominant = R. It applies only when amounts >= 0, not both zero; one unit for both: outside that it says what is wrong instead of returning a number.
+
+<a id="specific_rotation"></a>
+
+#### Specific rotation from an observed rotation, `specific_rotation`
+
+The specific rotation of an optically active compound from the observed rotation, the path length and the concentration of its solution.
+
+$$
+[\alpha] = \frac{\alpha}{l\,c}\quad (l \text{ in dm},\ c \text{ in g/mL})
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `alpha` | in | observed rotation (degrees) | - |
+| `l` | in | path length of the cell | m |
+| `c` | in | concentration in mass per volume (g/mL) | kg/m^3 |
+| `specific_rotation` | out | specific rotation (degrees mL g^-1 dm^-1) | - |
+
+**Applies when:** l, c > 0; rotation in degrees, written with °.
+
+```shell
+$ chemistry solve specific_rotation alpha=1.2 "l=0.1 m" "c=50 kg/m^3"
+specific_rotation = 24
+  by: Specific rotation from an observed rotation  (observed rotation over path length (dm) times concentration (g/mL))
+  alpha = 1.2
+  l = 0.1 m
+  c = 50 kg/m^3
+  assumes: l, c > 0; rotation in degrees, written with °
+```
+
+In the worked example, alpha = 1.2, l = 0.1 m, c = 50 kg/m^3 go through the equation above and give specific_rotation = 24. It applies only when l, c > 0; rotation in degrees, written with °: outside that it says what is wrong instead of returning a number.
+
+### Solutions (13)
 
 <a id="boiling_point_elevation"></a>
 
@@ -2424,6 +2839,37 @@ dT = 0.93 K
 ```
 
 **What the worked example means:** This calculation determines the change in the freezing point of a solvent, denoted as 0.93 K, caused by dissolving a solute. The result is derived using the formula delta T equals i times K times b, where 1 represents the van 't Hoff factor indicating particle count, 1.86 K*kg/mol is the specific cryoscopic constant of the solvent, and 0.5 mol/kg is the molality of the solution. A higher value for any of these inputs leads to a greater reduction in the freezing temperature.
+
+<a id="henry_law_solubility"></a>
+
+#### Henry's law: solubility of a gas, `henry_law_solubility`
+
+The concentration of a dissolved gas from its Henry's law constant and its partial pressure.
+
+$$
+c = k_H\, P
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `kH` | in | Henry's law constant (solubility form, c = kH P) | mol/(m^3*Pa) |
+| `P` | in | partial pressure of the gas | Pa |
+| `c` | out | dissolved gas concentration | mol/m^3 |
+| `c_molL` | out | in mol/L | - |
+
+**Applies when:** kH, P > 0; dilute solution, no reaction with the solvent.
+
+```shell
+$ chemistry solve henry_law_solubility "kH=1.283000247e-05 mol/(m^3*Pa)" "P=21278.25 Pa"
+c = 0.2730000001 mol/m^3
+c_molL = 0.0002730000001
+  by: Henry's law: solubility of a gas  (c = kH P)
+  kH = 1.283000247e-05 mol/(m^3*Pa)
+  P = 21278.25 Pa
+  assumes: kH, P > 0; dilute solution, no reaction with the solvent
+```
+
+In the worked example, kH = 1.283000247e-05 mol/(m^3*Pa), P = 21278.25 Pa go through the equation above and give c = 0.273 mol/m^3, c_molL = 0.000273. It applies only when kH, P > 0; dilute solution, no reaction with the solvent: outside that it says what is wrong instead of returning a number.
 
 <a id="solute_mass_for_solution"></a>
 
@@ -3376,7 +3822,7 @@ n_product = 0.9973197033 mol
 
 **What the worked example means:** This calculation determines the maximum possible mass of a product, denoted as 0.043891 kg, that can be formed from a specific mass of one reactant, given as 0.016 kg. The process assumes that all other necessary reactants are present in excess and that the chemical reaction proceeds completely according to its balanced stoichiometry. Converting the input mass into moles, applying the ratio of coefficients between the reactant and the product, and then converting back to mass using the product's molar mass gives the theoretical limit for this reaction scenario.
 
-### Thermochemistry (8)
+### Thermochemistry (11)
 
 <a id="clausius_clapeyron_enthalpy"></a>
 
@@ -3545,6 +3991,41 @@ heat_released = 554759.085 J
 
 **What the worked example means:** This calculation determines the total thermal energy change by converting the given mass of reactant into moles and multiplying by the standard enthalpy change per mole. For a reactant mass of 0.01 kg and an enthalpy change of -890000 J/mol, the resulting heat exchange is -554759 J. A negative value indicates that 554759 J of energy was released to the surroundings, while a positive value would indicate absorption.
 
+<a id="bond_enthalpy_reaction"></a>
+
+#### Reaction enthalpy from bond enthalpies: `bond_enthalpy_reaction`
+
+An estimate of a gas-phase reaction enthalpy from the average bond enthalpies of the bonds broken and formed.
+
+$$
+\Delta H \approx \sum_{\text{broken}} n\,D - \sum_{\text{formed}} n\,D
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `broken_n` | in | number of each kind of bond broken | - |
+| `broken_D` | in | bond enthalpy of each kind of bond broken (kJ/mol), same order | - |
+| `formed_n` | in | number of each kind of bond formed | - |
+| `formed_D` | in | bond enthalpy of each kind of bond formed (kJ/mol), same order | - |
+| `dH` | out | estimated reaction enthalpy | J/mol |
+| `dH_kJ` | out | in kJ/mol | - |
+| `broken_kJ` | out | energy to break the bonds (kJ/mol) | - |
+| `formed_kJ` | out | energy released forming the bonds (kJ/mol) | - |
+
+**Applies when:** bond counts and bond enthalpies > 0; one count per bond enthalpy; an estimate: average bond enthalpies, gas phase.
+
+```shell
+$ chemistry solve bond_enthalpy_reaction "broken_n=[4, 2]" "broken_D=[413, 498]" "formed_n=[2, 4]" "formed_D=[799, 467]"
+dH = -818000 J/mol
+dH_kJ = -818
+broken_kJ = 2648
+formed_kJ = 3466
+  by: Reaction enthalpy from bond enthalpies  (energy to break the bonds minus energy released forming the new ones (average bond enthalpies))
+  assumes: bond counts and bond enthalpies > 0; one count per bond enthalpy; an estimate: average bond enthalpies, gas phase
+```
+
+In the worked example, broken_n = [4, 2], broken_D = [413, 498], formed_n = [2, 4], formed_D = [799, 467] go through the equation above and give dH = -818000 J/mol, dH_kJ = -818, broken_kJ = 2648, formed_kJ = 3466. It applies only when bond counts and bond enthalpies > 0; one count per bond enthalpy; an estimate: average bond enthalpies, gas phase: outside that it says what is wrong instead of returning a number.
+
 <a id="enthalpy_from_calorimetry"></a>
 
 #### Reaction enthalpy from coffee-cup calorimetry, `enthalpy_from_calorimetry`
@@ -3613,6 +4094,66 @@ dH_kJ = -890.3
 ```
 
 **What the worked example means:** This calculation determines the heat change for the balanced chemical equation by applying Hess's Law. It sums the standard enthalpies of formation for all product species, each multiplied by its stoichiometric coefficient, and subtracts the corresponding sum for all reactant species. The resulting value, -890.3, represents the energy released or absorbed under standard conditions.
+
+<a id="reaction_entropy_from_standard_entropies"></a>
+
+#### Standard reaction entropy from standard molar entropies, `reaction_entropy_from_standard_entropies`
+
+The standard entropy change of a reaction from the standard molar entropies of every species (balanced equation).
+
+$$
+\Delta S^\circ_{rxn} = \sum \nu_p S^\circ(p) - \sum \nu_r S^\circ(r)
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `equation` | in | balanced equation | - |
+| `values` | in | standard molar entropy of each species in the order written (J/(mol·K)) | - |
+| `dS` | out | standard reaction entropy | J/(mol*K) |
+
+**Applies when:** the equation as written conserves every element; one value per species, in J/(mol·K).
+
+```shell
+$ chemistry solve reaction_entropy_from_standard_entropies "equation=N2 + 3 H2 -> 2 NH3" "values=[191.6, 130.7, 192.5]"
+dS = -198.7 J/(mol*K)
+  by: Standard reaction entropy from standard molar entropies  (coefficient-weighted sum of standard molar entropies, products minus reactants)
+  equation = N2 + 3 H2 -> 2 NH3
+  assumes: the equation as written conserves every element; one value per species, in J/(mol·K)
+```
+
+In the worked example, equation = N2 + 3 H2 -> 2 NH3, values = [191.6, 130.7, 192.5] go through the equation above and give dS = -198.7 J/(mol*K). It applies only when the equation as written conserves every element; one value per species, in J/(mol·K): outside that it says what is wrong instead of returning a number.
+
+<a id="reaction_gibbs_from_formation"></a>
+
+#### Standard reaction Gibbs energy from Gibbs energies of formation, `reaction_gibbs_from_formation`
+
+The standard Gibbs energy change of a reaction from the standard Gibbs energies of formation of every species (balanced equation), and whether it is spontaneous under standard conditions.
+
+$$
+\Delta G^\circ_{rxn} = \sum \nu_p \Delta G_f^\circ(p) - \sum \nu_r \Delta G_f^\circ(r)
+$$
+
+| symbol |  | meaning | SI unit |
+|---|---|---|---|
+| `equation` | in | balanced equation | - |
+| `values` | in | standard Gibbs energy of formation of each species in the order written (kJ/mol) | - |
+| `dG` | out | standard reaction Gibbs energy | J/mol |
+| `dG_kJ` | out | in kJ/mol | - |
+| `spontaneity` | out | spontaneous / non-spontaneous under standard conditions | - |
+
+**Applies when:** the equation as written conserves every element; one value per species, in kJ/mol.
+
+```shell
+$ chemistry solve reaction_gibbs_from_formation "equation=CH4 + 2 O2 -> CO2 + 2 H2O" "values=[-50.8, 0, -394.4, -237.1]"
+dG = -817800 J/mol
+dG_kJ = -817.8
+spontaneity = spontaneous
+  by: Standard reaction Gibbs energy from Gibbs energies of formation  (coefficient-weighted sum of Gibbs energies of formation, products minus reactants)
+  equation = CH4 + 2 O2 -> CO2 + 2 H2O
+  assumes: the equation as written conserves every element; one value per species, in kJ/mol
+```
+
+In the worked example, equation = CH4 + 2 O2 -> CO2 + 2 H2O, values = [-50.8, 0, -394.4, -237.1] go through the equation above and give dG = -817800 J/mol, dG_kJ = -817.8, spontaneity = spontaneous. It applies only when the equation as written conserves every element; one value per species, in kJ/mol: outside that it says what is wrong instead of returning a number.
 
 <a id="crossover_temperature"></a>
 

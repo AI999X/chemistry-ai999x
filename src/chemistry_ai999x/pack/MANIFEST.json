@@ -1,5 +1,5 @@
 {
- "package": "1.5.0",
+ "package": "1.6.0",
  "pack": "1.0.1",
  "knowledge_db": null,
  "files": {
@@ -7,9 +7,9 @@
   "dictionary/terms.json": "3781eac9e78cc74a52dfbb7f7c6ecd5f218e2a208be5aad6dabd1094f82ddc60",
   "knowledge/relations.json": "7db9e1b8ccc4d69495d7fec6047e0550e73131519834831d97dee59646386121",
   "knowledge/reference_cases.json": "7414a14e2c4202a7fae8cdd14e1a2ef7267f35a9665b0633001349c698d4e4e7",
-  "capabilities/procedure_examples.py": "8b72dca27f14aafa0d969ed517ad12f93843e34ffbeefbd67686d00beccee5fa",
-  "capabilities/procedures.py": "c8c465bef929d5d6e9dd661a2701d6586cc16267fde8f4535f99cbe550393e3d",
-  "capabilities/procedures_certified.json": "67646e2a961b0cdbbe9dff834cb12012374f4b3be2b110a3d9d4edf7c599e2fb",
+  "capabilities/procedure_examples.py": "3f5351e3eeba09ca3c1a72ac1969376cc9ee4d0811a6a0483ae0a4b11e1e3a69",
+  "capabilities/procedures.py": "897400257ad31527b23c41a25e6ddd40843558e3a10e7c412be468956a868cea",
+  "capabilities/procedures_certified.json": "270de6eda0b63ca56d63338514ce81f74562f071f4719bd48338dd81d73ca22e",
   "chemistry_knowledge_public.sqlite": "a838fcadbc3776d29863c2ead839c4b9ab0840f06845189f806dd68b47a46214"
  },
  "engine": [

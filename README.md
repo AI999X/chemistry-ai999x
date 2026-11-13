@@ -4,11 +4,11 @@
 
 **[Desktop app & command line](https://www.ai999x.com/desktop-cli/)** · **[Compute in your browser](https://www.ai999x.com/models/chemistry-ai999x/#try)** · **[Install (Python)](https://pypi.org/project/chemistry-ai999x/)** · **[Guides](https://huggingface.co/AI999X/chemistry-ai999x/tree/main/docs)** · **[Evaluation](https://huggingface.co/AI999X/chemistry-ai999x/tree/main/evaluation)** · **[AI999X on Hugging Face](https://huggingface.co/AI999X)** · **[Website](https://ai999x.com)** · **[Support: Buy Me a Coffee](https://buymeacoffee.com/ibnuljaiffarabi)**
 
-License: Apache-2.0 · Author: Ibnul Jaif Farabi (creator and engineer) · Organization: AI999X · Version 1.5.0
+License: Apache-2.0 · Author: Ibnul Jaif Farabi (creator and engineer) · Organization: AI999X · Version 1.6.0
 
 Field: **Physical Sciences** · Tasks: Question Answering
 
-chemistry-ai999x is an offline, deterministic chemistry solver written in Rust: a desktop app, a command-line program, a browser module and a Python package. It answers chemistry questions with verified results from 103 certified capabilities, gives 377 documented answers identically on Windows and Linux, and refuses rather than guesses when an answer cannot be verified.
+chemistry-ai999x is an offline, deterministic chemistry solver written in Rust: a desktop app, a command-line program, a browser module and a Python package. It answers chemistry questions with verified results from 119 certified capabilities, gives 461 documented answers identically on Windows and Linux, and refuses rather than guesses when an answer cannot be verified.
 
 **chemistry-ai999x** reads a question in plain English (or a typed call), picks a certified chemistry capability, computes the answer exactly, checks it, and returns the result with its steps, units, LaTeX and assumptions, or a refusal that says what is missing. It runs fully offline on any CPU, needs no GPU, no API key and no internet, and is built to give **zero wrong answers**: when it is not sure, it refuses instead of guessing.
 
@@ -20,13 +20,13 @@ chemistry-ai999x is an offline, deterministic chemistry solver written in Rust: 
 
 | Way to run it | For | Get it |
 |---|---|---|
-| **AI999X Chemistry desktop app** 1.5.0 | Windows, Linux. This model in its own app: search, ask in words, forms, live figures, explanations, offline | [Windows (x86-64)](https://downloads.ai999x.com/desktop/1.5.0/ai999x-chemistry-1.5.0-windows-x86_64.zip) · [Linux (x86-64)](https://downloads.ai999x.com/desktop/1.5.0/ai999x-chemistry-1.5.0-linux-x86_64.tar.gz) |
-| **AI999X desktop app** 1.5.0 | Windows, Linux. Every AI999X model in one app: search, ask in words, forms, live figures, explanations, offline | [Windows (x86-64)](https://downloads.ai999x.com/desktop/1.5.0/ai999x-1.5.0-windows-x86_64.zip) · [Linux (x86-64)](https://downloads.ai999x.com/desktop/1.5.0/ai999x-1.5.0-linux-x86_64.tar.gz) |
-| **Command line** (`chemistry`) | Windows, Linux. One program per model, offline, no Python | [Windows (x86-64)](https://downloads.ai999x.com/desktop/1.5.0/ai999x-cli-1.5.0-windows-x86_64.zip) · [Linux (x86-64)](https://downloads.ai999x.com/desktop/1.5.0/ai999x-cli-1.5.0-linux-x86_64.tar.gz) |
+| **AI999X Chemistry desktop app** 1.6.0 | Windows, Linux. This model in its own app: search, ask in words, forms, live figures, explanations, offline | [Windows (x86-64)](https://downloads.ai999x.com/desktop/1.6.0/ai999x-chemistry-1.6.0-windows-x86_64.zip) · [Linux (x86-64)](https://downloads.ai999x.com/desktop/1.6.0/ai999x-chemistry-1.6.0-linux-x86_64.tar.gz) |
+| **AI999X desktop app** 1.6.0 | Windows, Linux. Every AI999X model in one app: search, ask in words, forms, live figures, explanations, offline | [Windows (x86-64)](https://downloads.ai999x.com/desktop/1.6.0/ai999x-1.6.0-windows-x86_64.zip) · [Linux (x86-64)](https://downloads.ai999x.com/desktop/1.6.0/ai999x-1.6.0-linux-x86_64.tar.gz) |
+| **Command line** (`chemistry`) | Windows, Linux. One program per model, offline, no Python | [Windows (x86-64)](https://downloads.ai999x.com/desktop/1.6.0/ai999x-cli-1.6.0-windows-x86_64.zip) · [Linux (x86-64)](https://downloads.ai999x.com/desktop/1.6.0/ai999x-cli-1.6.0-linux-x86_64.tar.gz) |
 | **In your browser** | any device. Nothing to install | [Compute on the model page](https://www.ai999x.com/models/chemistry-ai999x/#try) |
 | **Python** | Python 3.10+ | `pip install chemistry-ai999x` |
 
-Checksums: [SHA256SUMS](https://downloads.ai999x.com/desktop/1.5.0/SHA256SUMS) · every version: [https://downloads.ai999x.com/desktop/latest/](https://downloads.ai999x.com/desktop/latest/) · install guide: [desktop & command line](https://www.ai999x.com/desktop-cli/)
+Checksums: [SHA256SUMS](https://downloads.ai999x.com/desktop/1.6.0/SHA256SUMS) · every version: [https://downloads.ai999x.com/desktop/latest/](https://downloads.ai999x.com/desktop/latest/) · install guide: [desktop & command line](https://www.ai999x.com/desktop-cli/)
 
 ## Quick start
 
@@ -37,11 +37,11 @@ Download **AI999X Chemistry** for your system (above), unpack it and start it; t
 Linux, from a terminal:
 
 ```bash
-curl -LO https://downloads.ai999x.com/desktop/1.5.0/ai999x-chemistry-1.5.0-linux-x86_64.tar.gz
-curl -LO https://downloads.ai999x.com/desktop/1.5.0/SHA256SUMS
+curl -LO https://downloads.ai999x.com/desktop/1.6.0/ai999x-chemistry-1.6.0-linux-x86_64.tar.gz
+curl -LO https://downloads.ai999x.com/desktop/1.6.0/SHA256SUMS
 sha256sum -c --ignore-missing SHA256SUMS
-tar xzf ai999x-chemistry-1.5.0-linux-x86_64.tar.gz
-./ai999x-chemistry-1.5.0-linux-x86_64/ai999x-chemistry
+tar xzf ai999x-chemistry-1.6.0-linux-x86_64.tar.gz
+./ai999x-chemistry-1.6.0-linux-x86_64/ai999x-chemistry
 ```
 
 ### Command line
@@ -49,23 +49,23 @@ tar xzf ai999x-chemistry-1.5.0-linux-x86_64.tar.gz
 Linux:
 
 ```bash
-curl -LO https://downloads.ai999x.com/desktop/1.5.0/ai999x-cli-1.5.0-linux-x86_64.tar.gz
-curl -LO https://downloads.ai999x.com/desktop/1.5.0/SHA256SUMS
+curl -LO https://downloads.ai999x.com/desktop/1.6.0/ai999x-cli-1.6.0-linux-x86_64.tar.gz
+curl -LO https://downloads.ai999x.com/desktop/1.6.0/SHA256SUMS
 sha256sum -c --ignore-missing SHA256SUMS
-mkdir -p ~/.local/share && tar xzf ai999x-cli-1.5.0-linux-x86_64.tar.gz -C ~/.local/share
-echo 'export PATH="$HOME/.local/share/ai999x-cli-1.5.0-linux-x86_64:$PATH"' >> ~/.bashrc && source ~/.bashrc
+mkdir -p ~/.local/share && tar xzf ai999x-cli-1.6.0-linux-x86_64.tar.gz -C ~/.local/share
+echo 'export PATH="$HOME/.local/share/ai999x-cli-1.6.0-linux-x86_64:$PATH"' >> ~/.bashrc && source ~/.bashrc
 chemistry --version
 ```
 
 Windows (PowerShell):
 
 ```powershell
-$F = "ai999x-cli-1.5.0-windows-x86_64.zip"
-Invoke-WebRequest "https://downloads.ai999x.com/desktop/1.5.0/$F" -OutFile $F
-Invoke-WebRequest "https://downloads.ai999x.com/desktop/1.5.0/SHA256SUMS" -OutFile SHA256SUMS
+$F = "ai999x-cli-1.6.0-windows-x86_64.zip"
+Invoke-WebRequest "https://downloads.ai999x.com/desktop/1.6.0/$F" -OutFile $F
+Invoke-WebRequest "https://downloads.ai999x.com/desktop/1.6.0/SHA256SUMS" -OutFile SHA256SUMS
 (Get-FileHash $F -Algorithm SHA256).Hash.ToLower() -eq ((Select-String -SimpleMatch $F SHA256SUMS).Line -split ' ')[0]
 Expand-Archive $F -DestinationPath "$env:LOCALAPPDATA\AI999X" -Force
-$D = "$env:LOCALAPPDATA\AI999X\ai999x-cli-1.5.0-windows-x86_64"; $env:Path += ";$D"
+$D = "$env:LOCALAPPDATA\AI999X\ai999x-cli-1.6.0-windows-x86_64"; $env:Path += ";$D"
 [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$D", "User")
 chemistry --version
 ```
@@ -172,6 +172,35 @@ Browser: [open this capability on the model page](https://www.ai999x.com/models/
 
 _What this means:_ This calculation determines the pH of a buffer solution using the Henderson-Hasselbalch equation. By combining the pKa, which is derived from the input Ka value of 1.7378e-05, with the logarithm of the ratio between the conjugate base concentration 150 mol/m^3 and the weak acid concentration 100 mol/m^3, the model predicts the equilibrium acidity. The resulting pH value of 4.93609 indicates how resistant the solution is to changes in hydrogen ion concentration, assuming ideal behavior where activity coefficients are close to one.
 
+### Conjugate acid-base constants (Ka Kb = Kw)
+
+The dissociation constant of the conjugate base of an acid (or of the conjugate acid of a base), with pKa and pKb, at 25 °C.
+
+Command line:
+
+```console
+$ chemistry solve conjugate_dissociation_constant K=1.8e-05 known=Ka
+K_conj = 5.555555556e-10
+pK = 4.744727495
+pK_conj = 9.255272505
+conjugate = Kb of the conjugate base
+  by: Conjugate acid-base constants (Ka Kb = Kw)  (K_conj = Kw / K; pK = -log10 K)
+  K = 1.8e-05
+  known = Ka
+  assumes: K > 0; 25 °C (Kw = 1.0e-14)
+```
+
+Python:
+
+```python
+import chemistry_ai999x as m
+
+a = m.solve("conjugate_dissociation_constant", K="1.8e-05", known="Ka")
+print(a.values or (a.value, a.unit))
+```
+
+Browser: [open this capability on the model page](https://www.ai999x.com/models/chemistry-ai999x/#cap-conjugate_dissociation_constant) and press **Compute in your browser**.
+
 ### Hydronium concentration from pH
 
 [H3O+], [OH-] and pOH from the pH at 25 °C.
@@ -231,36 +260,6 @@ Browser: [open this capability on the model page](https://www.ai999x.com/models/
 
 _What this means:_ This calculation determines the acid dissociation constant for a weak monoprotic acid using experimental data. By applying the charge balance equation to find the conjugate base concentration and substituting it into the mass-action expression, the model computes Ka as 1.84458e-05 and pKa as 4.7341. These values quantify the strength of the acid in solution, indicating how readily it donates protons under the specific conditions of 25 degrees Celsius.
 
-### pH during a strong acid - strong base titration
-
-The pH after adding a volume of strong base to a strong monoprotic acid (exact, any point of the titration).
-
-Command line:
-
-```console
-$ chemistry solve titration_ph_strong_acid_strong_base "V_a=2.5e-05 m^3" "c_a=100 mol/m^3" "c_b=100 mol/m^3" "V_b=1e-05 m^3"
-pH = 1.367976785
-  by: pH during a strong acid - strong base titration  (excess strong acid or base after mixing, with water's ionization (exact at the equivalence point too))
-  V_a = 2.5e-05 m^3
-  c_a = 100 mol/m^3
-  c_b = 100 mol/m^3
-  V_b = 1e-05 m^3
-  assumes: strong monoprotic acid titrated with a strong monohydroxide base; 25 °C
-```
-
-Python:
-
-```python
-import chemistry_ai999x as m
-
-a = m.solve("titration_ph_strong_acid_strong_base", V_a="2.5e-05 m^3", c_a="100 mol/m^3", c_b="100 mol/m^3", V_b="1e-05 m^3")
-print(a.values or (a.value, a.unit))
-```
-
-Browser: [open this capability on the model page](https://www.ai999x.com/models/chemistry-ai999x/#cap-titration_ph_strong_acid_strong_base) and press **Compute in your browser**.
-
-_What this means:_ This calculation determines the pH at any point during a titration of a strong monoprotic acid with a strong monohydroxide base. It uses the initial acid concentration 100 mol/m^3 and volume 2.5e-05 m^3, along with the added base concentration 100 mol/m^3 and volume 1e-05 m^3, to find the net hydronium ion concentration. By accounting for water's autoionization, it provides an exact result, yielding a final pH of 1.36798. This value indicates whether the solution is acidic, neutral, or basic based on the relative amounts of reactants mixed.
-
 ## Documentation
 
 - **Rust user guide**: the command line, every capability with a command and what it printed: [PDF](https://huggingface.co/AI999X/chemistry-ai999x/blob/main/docs/chemistry_ai999x_rust_guide.pdf) · [Markdown](https://huggingface.co/AI999X/chemistry-ai999x/blob/main/docs/chemistry_ai999x_rust_guide.md)
@@ -271,7 +270,7 @@ _What this means:_ This calculation determines the pH at any point during a titr
 ## Highlights
 
 - **Verified, not generated.** Every answer is computed by a certified chemistry capability and checked (substituted back, dimension-checked or compared with an independent computation) before it is returned.
-- **Zero wrong answers by design.** Seven explicit outcomes (SOLVED, NEEDS_INPUT, AMBIGUOUS, INVALID_INPUT, OUT_OF_SCOPE, UNRECOGNIZED_FORMAT, INTERNAL_ERROR), never a silent guess. Every one of its 377 documented answers is reproduced exactly on every tested platform.
+- **Zero wrong answers by design.** Seven explicit outcomes (SOLVED, NEEDS_INPUT, AMBIGUOUS, INVALID_INPUT, OUT_OF_SCOPE, UNRECOGNIZED_FORMAT, INTERNAL_ERROR), never a silent guess. Every one of its 461 documented answers is reproduced exactly on every tested platform.
 - **Plain-English questions and a guaranteed typed interface.** `ask()` reads documented question forms; `solve(capability_id, **inputs)` always solves a supported task with valid inputs.
 - **Explains itself.** Steps, formulas in LaTeX, units, assumptions and the model used, ready for notebooks, tutoring apps and homework checkers.
 - **Native and in the browser.** Every capability also computes natively in Rust: the desktop app and the `chemistry` command line for Windows and Linux, and WebAssembly on the model page, no Python, no network.
@@ -282,11 +281,11 @@ _What this means:_ This calculation determines the pH at any point during a titr
 
 | Property | Value |
 |---|---|
-| Package | `chemistry-ai999x` 1.5.0 (import `chemistry_ai999x`) |
+| Package | `chemistry-ai999x` 1.6.0 (import `chemistry_ai999x`) |
 | Type | Deterministic neuro-symbolic chemistry engine (rule-based reading + certified symbolic capabilities) |
-| Capabilities | 103 certified procedures |
+| Capabilities | 119 certified procedures |
 | Knowledge pack | version 1.0.1 |
-| Golden answers | 377 documented answers, identical on every tested platform |
+| Golden answers | 461 documented answers, identical on every tested platform |
 | Platforms tested | Windows (Python 3.13), Linux x86-64 (Python 3.10, 3.11, 3.12, 3.13, 3.14) |
 | Runtime | CPU only, offline; no GPU, no network, no API key |
 | License | Apache-2.0 |
@@ -316,7 +315,7 @@ chemistry.ask("Who created you?").message
 # -> chemistry-ai999x was created and engineered by Ibnul Jaif Farabi at AI999X.
 ```
 
-The Python package also installs a Python command, `chemistry-ai999x "<question>"`; for the native program use `chemistry` (above). The outputs above were produced by running this exact code on chemistry-ai999x 1.5.0.
+The Python package also installs a Python command, `chemistry-ai999x "<question>"`; for the native program use `chemistry` (above). The outputs above were produced by running this exact code on chemistry-ai999x 1.6.0.
 
 ## How every answer is verified
 
@@ -391,15 +390,15 @@ Each question was put to `chemistry-ai999x`; the answer is the one it returned, 
 
 </details>
 
-**Gibbs energy from a cell potential** · _Electrochemistry_
+**Average atomic mass from isotopes** · _Atomic structure_
 
-> A cell has E° = 1.10 V and n = 2. What is ΔG°?
+> Isotope masses are 34.97 u and 36.97 u with abundances 75.78% and 24.22%. What is the average atomic mass?
 
-→ **dG = -212267.7307 J/mol, dG_kJ = -212.2677307**
+→ **A_r = 35.4544, M = 0.0354544 kg/mol**
 
 <details><summary>Steps</summary>
 
-- Gibbs energy from a cell potential: n = 2, E = 1.1 V → dG = -212267.7307 J/mol, dG_kJ = -212.2677307 J/mol
+- Average atomic mass from isotopes: masses = [34.97, 36.97], abundances = [0.7578, 0.2422] → A_r = 35.4544, M = 0.0354544 kg/mol
 
 </details>
 
@@ -445,9 +444,9 @@ _Arrhenius plot: the rate constant (logarithmic axis) against 1000/T for A = 1.0
 
 ## Capabilities
 
-103 certified procedures. A few of them:
+119 certified procedures. A few of them:
 
-- **Procedures:** Activation energy from two rate constants; Arrhenius equation: rate constant; Arrhenius equation: rate constant at another temperature; Atoms of an element in a mass of compound; Balancing a chemical equation; Beer-Lambert law: absorbance; Beer-Lambert law: concentration; Boiling-point elevation; Boyle's law: final pressure; Boyle's law: final volume; Buffer pH (Henderson-Hasselbalch); Charles's law: final volume; Clausius-Clapeyron: enthalpy of vaporization; Clausius-Clapeyron: vapor pressure at another temperature; Combined gas law: final pressure; Combined gas law: final temperature; Combined gas law: final volume; Consecutive first-order reactions (A -> B -> C); Degree of unsaturation; Density of an ideal gas; Dilution: final concentration; Dilution: volume of stock needed; Empirical formula from percent composition; Energy of a photon from its wavelength …
+- **Procedures:** Abundances of two isotopes from the average atomic mass; Activation energy from two rate constants; Age from the fraction remaining (radioactive dating); Amount remaining after radioactive decay (half-life); Arrhenius equation: rate constant; Arrhenius equation: rate constant at another temperature; Atoms of an element in a mass of compound; Average atomic mass from isotopes; Balancing a chemical equation; Beer-Lambert law: absorbance; Beer-Lambert law: concentration; Boiling-point elevation; Boyle's law: final pressure; Boyle's law: final volume; Buffer pH (Henderson-Hasselbalch); Charles's law: final volume; Clausius-Clapeyron: enthalpy of vaporization; Clausius-Clapeyron: vapor pressure at another temperature; Combined gas law: final pressure; Combined gas law: final temperature; Combined gas law: final volume; Conjugate acid-base constants (Ka Kb = Kw); Consecutive first-order reactions (A -> B -> C); Degree of unsaturation …
 
 `chemistry_ai999x.templates()` lists every question form `ask()` reads; the capability guide (PDF, every example executed) is included in this repository.
 
@@ -466,10 +465,10 @@ _Arrhenius plot: the rate constant (logarithmic axis) against 1000/T for A = 1.0
 ## Citation
 
 ```bibtex
-@software{chemistry_ai999x_1_5_0,
+@software{chemistry_ai999x_1_6_0,
   title  = {chemistry-ai999x: an offline, verified chemistry solver},
   author = {Farabi, Ibnul Jaif}, organization = {AI999X},
-  year   = {2026}, version = {1.5.0},
+  year   = {2026}, version = {1.6.0},
   url    = {https://huggingface.co/AI999X/chemistry-ai999x}
 }
 ```
@@ -486,7 +485,7 @@ Created and engineered by **Ibnul Jaif Farabi** · **[AI999X](https://huggingfac
 
 ## Source and releases
 
-This repository holds the installable source of each release, exactly as published on [PyPI](https://pypi.org/project/chemistry-ai999x/) (`pip install .` builds it). Releases are tagged `v1.5.0`; the [GitHub release](https://github.com/AI999X/chemistry-ai999x/releases/tag/v1.5.0) carries the wheel, the desktop app and the command-line program for Windows and Linux, and their checksums.
+This repository holds the installable source of each release, exactly as published on [PyPI](https://pypi.org/project/chemistry-ai999x/) (`pip install .` builds it). Releases are tagged `v1.6.0`; the [GitHub release](https://github.com/AI999X/chemistry-ai999x/releases/tag/v1.6.0) carries the wheel, the desktop app and the command-line program for Windows and Linux, and their checksums.
 
 ## Build the program from source
 
