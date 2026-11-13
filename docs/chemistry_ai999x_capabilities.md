@@ -2051,7 +2051,7 @@ $$
 
 ![c2 (final concentration) against V2 (final volume) from 0](https://www.ai999x.com/?ax_fig=chemistry-ai999x/dilution-final-concentration-curve)
 
-*c2 (final concentration) against V2 (final volume) from 0.00025 m^3 to 0.00075 m^3. One curve for each value of c1 (initial concentration): 6000 mol/m^3, 3000 mol/m^3, 12000 mol/m^3. Other inputs as in the worked example: V1 = 2.5e-05 m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, V2 = 0.0005 m^3, c2 = 300 mol/m^3.*
+*c2 (final concentration) against V2 (final volume) from 0.00025 m^3 to 0.00075 m^3. One curve for each value of c1 (initial concentration): 6000 mol/m^3, 3000 mol/m^3, 12000 mol/m^3. Other inputs as in the worked example: V1 = 2.4999999999999998e-05 m^3. 31 points per curve computed by chemistry-ai999x; marked: the worked example, V2 = 0.0005 m^3, c2 = 300 mol/m^3.*
 
 ```python
 chemistry_ai999x.solve('dilution_final_concentration', c1=6000.0, V1=2.5e-05, V2=0.0005)
@@ -2449,7 +2449,7 @@ $$
 
 ![M (molar mass) against V (volume of solution) from 5](https://www.ai999x.com/?ax_fig=chemistry-ai999x/molar-mass-from-osmotic-pressure-curve)
 
-*M (molar mass) against V (volume of solution) from 5.0000e-05 m^3 to 0.00015 m^3. One curve for each value of m (mass of solute): 0.001 kg, 0.0005 kg, 0.002 kg. Other inputs as in the worked example: Pi = 333.30592105263156 Pa, T = 298.15 K, i = 1.0. 31 points per curve computed by chemistry-ai999x; marked: the worked example, V = 0.0001 m^3, M = 74.3748 kg/mol.*
+*M (molar mass) against V (volume of solution) from 5.0000e-05 m^3 to 0.00015 m^3. One curve for each value of m (mass of solute): 0.001 kg, 0.0005 kg, 0.002 kg. Other inputs as in the worked example: Pi = 333.30592105263156 Pa, T = 298.15 K, i = 1.0. 31 points per curve computed by chemistry-ai999x; marked: the worked example, V = 1.0000e-04 m^3, M = 74.3748 kg/mol.*
 
 ```python
 chemistry_ai999x.solve('molar_mass_from_osmotic_pressure', m=0.001, V=0.0001, Pi=333.30592105263156, T=298.15, i=1.0)
@@ -3439,7 +3439,7 @@ $$
 
 ![pH (pH) against c_b (base concentration) from 10 mol/m^3 to 1000 mol/m^3 on a logarithmic axis](https://www.ai999x.com/?ax_fig=chemistry-ai999x/titration-ph-weak-acid-strong-base-curve)
 
-*pH (pH) against c_b (base concentration) from 10 mol/m^3 to 1000 mol/m^3 on a logarithmic axis. One curve for each value of V_a (acid volume): 2.5000e-05 m^3, 1.2500e-05 m^3, 5.0000e-05 m^3. Other inputs as in the worked example: Ka = 1.8e-05, c_a = 100.0 mol/m^3, V_b = 1.25e-05 m^3. 41 points per curve computed by chemistry-ai999x; marked: the worked example, c_b = 100 mol/m^3, pH = 4.7452.*
+*pH (pH) against c_b (base concentration) from 10 mol/m^3 to 1000 mol/m^3 on a logarithmic axis. One curve for each value of V_a (acid volume): 2.5000e-05 m^3, 1.2500e-05 m^3, 5.0000e-05 m^3. Other inputs as in the worked example: Ka = 1.8e-05, c_a = 100.0 mol/m^3, V_b = 1.2499999999999999e-05 m^3. 41 points per curve computed by chemistry-ai999x; marked: the worked example, c_b = 100 mol/m^3, pH = 4.7452.*
 
 ```python
 chemistry_ai999x.solve('titration_ph_weak_acid_strong_base', Ka=1.8e-05, c_a=100.0, V_a=2.5e-05, c_b=100.0, V_b=1.25e-05)
@@ -5346,7 +5346,7 @@ $$
 
 ![m (mass remaining) against t_half (half-life) from 69292](https://www.ai999x.com/?ax_fig=chemistry-ai999x/radioactive-decay-remaining-curve)
 
-*m (mass remaining) against t_half (half-life) from 69292.8 s to 6.92928e+06 s on a logarithmic axis, logarithmic output axis. One curve for each value of m0 (initial mass): 0.0001 kg, 5.0000e-05 kg, 0.0002 kg. Other inputs as in the worked example: t = 2078784.0 s. 41 points per curve computed by chemistry-ai999x; marked: the worked example, t_half = 692928 s, m = 1.2500e-05 kg.*
+*m (mass remaining) against t_half (half-life) from 69292.8 s to 6.92928e+06 s on a logarithmic axis, logarithmic output axis. One curve for each value of m0 (initial mass): 1.0000e-04 kg, 5.0000e-05 kg, 0.0002 kg. Other inputs as in the worked example: t = 2078784.0 s. 41 points per curve computed by chemistry-ai999x; marked: the worked example, t_half = 692928 s, m = 1.2500e-05 kg.*
 
 ```python
 chemistry_ai999x.solve('radioactive_decay_remaining', m0=0.0001, t_half=692928.0, t=2078784.0)
