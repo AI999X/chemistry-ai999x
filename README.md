@@ -10,8 +10,8 @@ Chemistry covers stoichiometry, gas laws, solutions, chemical equilibrium, acids
 
 | | |
 |---|---|
-| **Desktop app** (Windows, Linux) | [Windows](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.6/ai999x-chemistry-1.6.6-windows-x86_64.zip) · [Linux](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.6/ai999x-chemistry-1.6.6-linux-x86_64.tar.gz) |
-| **Command line** `chemistry` (Windows, Linux) | [Windows](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.6/ai999x-cli-1.6.6-windows-x86_64.zip) · [Linux](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.6/ai999x-cli-1.6.6-linux-x86_64.tar.gz) |
+| **Desktop app** (Windows, Linux) | [Windows](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.7/ai999x-chemistry-1.6.7-windows-x86_64.zip) · [Linux](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.7/ai999x-chemistry-1.6.7-linux-x86_64.tar.gz) |
+| **Command line** `chemistry` (Windows, Linux) | [Windows](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.7/ai999x-cli-1.6.7-windows-x86_64.zip) · [Linux](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.7/ai999x-cli-1.6.7-linux-x86_64.tar.gz) |
 | **Browser** (any device) | [Try it on the model page](https://www.ai999x.com/models/chemistry-ai999x/#capabilities) |
 | **Python** 3.10+ | `pip install chemistry-ai999x`: on Windows and Linux (x86-64) `pip` installs the same compiled engine; on other systems (macOS, ARM) it installs a pure-Python build that gives the same answers |
 
@@ -142,74 +142,6 @@ print(a.outcome, a.values)
 # SOLVED {'c2': 300.0, 'c2_molL': 0.3}
 ```
 
-## Command line: 15 examples
-
-Each command below was run with `chemistry` of this release; the lines under it are the answer it printed (the full answer goes on with the method, every input in SI units and the conditions it assumes).
-
-```text
-$ chemistry solve buffer_ph Ka=1.737800829e-05 "c_base=150 mol/m^3" "c_acid=100 mol/m^3"
-pH = 4.936091259
-
-$ chemistry solve isotope_abundance m1=34.97 m2=36.97 A_r=35.45
-x1 = 0.76
-x2 = 0.24
-percent1 = 76
-percent2 = 24
-
-$ chemistry solve k_from_cell_potential n=2 "E=0.46 V" "T=298 K"
-lnK = 35.8260291
-K = 3.622819917e+15
-
-$ chemistry solve equilibrium_ice "equation=N2O4 ⇌ 2 NO2" "initial=[0.1, 0]" K=0.0046
-x = 0.0101642097
-equilibrium = [0.08983579029909557,0.020328419401808878]
-
-$ chemistry solve boyle_final_pressure "V2=0.001 m^3" "P1=101325 Pa" "V1=0.004 m^3"
-P2 = 405300 Pa
-
-$ chemistry solve activation_energy k1=0.001 "T1=300 K" k2=0.005 "T2=320 K"
-Ea = 64231.73452 J/mol
-Ea_kJ = 64.23173452
-
-$ chemistry solve degree_of_unsaturation formula=C6H6
-dou = 4
-
-$ chemistry solve radioactive_dating_age fraction=0.25 "t_half=1.80825048e+11 s"
-t = 3.61650096e+11 s
-t_years = 11460
-half_lives = 2
-
-$ chemistry solve enantiomeric_excess_from_rotation alpha_obs=12 alpha_pure=24
-ee = 50
-major_percent = 75
-minor_percent = 25
-predominant = the same enantiomer as the pure sample
-
-$ chemistry solve boiling_point_elevation "K=0.512 K*kg/mol" "b=0.5 mol/kg" i=1
-dT = 0.256 K
-
-$ chemistry solve beer_lambert_absorbance "l=0.01 m" "c=0.02 mol/m^3" "eps=1500 m^2/mol"
-A = 0.3
-T_percent = 50.11872336
-
-$ chemistry solve atoms_of_element element=O formula=CO2 "m=0.01 kg"
-N_atoms = 2.736776914e+23
-n_element = 0.4544524984 mol
-
-$ chemistry solve clausius_clapeyron_enthalpy "P1=13332.23684 Pa" "T1=300 K" "P2=53328.94737 Pa" "T2=340 K"
-dH = 29392.04624 J/mol
-
-$ chemistry solve conjugate_dissociation_constant K=1.8e-05 known=Ka
-K_conj = 5.555555556e-10
-pK = 4.744727495
-pK_conj = 9.255272505
-conjugate = Kb of the conjugate base
-
-$ chemistry solve average_atomic_mass "masses=[34.97, 36.97]" "abundances=[0.7578, 0.2422]"
-A_r = 35.4544
-M = 0.0354544 kg/mol
-```
-
 ## Guides
 
 - Desktop app guide: the window, every calculation, scenes and charts: [PDF](https://huggingface.co/AI999X/chemistry-ai999x/blob/main/docs/chemistry_ai999x_desktop_guide.pdf) · [HTML](https://huggingface.co/AI999X/chemistry-ai999x/blob/main/docs/chemistry_ai999x_desktop_guide.html) · [Markdown](https://huggingface.co/AI999X/chemistry-ai999x/blob/main/docs/chemistry_ai999x_desktop_guide.md)
@@ -218,13 +150,13 @@ M = 0.0354544 kg/mol
 
 Every calculation, with its formula, a worked example and its figures: **[Chemistry on ai999x.com](https://www.ai999x.com/models/chemistry-ai999x/)**. Install guides for the app and the command line: [https://www.ai999x.com/desktop-cli/](https://www.ai999x.com/desktop-cli/).
 
-Version 1.6.6 · License: Apache-2.0 · Author: Ibnul Jaif Farabi · Organization: AI999X · Contact: support@ai999x.com · [Support the project](https://buymeacoffee.com/ibnuljaiffarabi)
+Version 1.6.7 · License: Apache-2.0 · Author: Ibnul Jaif Farabi · Organization: AI999X · Contact: support@ai999x.com · [Support the project](https://buymeacoffee.com/ibnuljaiffarabi)
 
 *The Future Is Self-Improving.*
 
 ## Source and releases
 
-This repository holds the installable source of each release, exactly as published on [PyPI](https://pypi.org/project/chemistry-ai999x/) (`pip install .` builds it). Releases are tagged `v1.6.6`; the [GitHub release](https://github.com/AI999X/chemistry-ai999x/releases/tag/v1.6.6) carries the wheel, the desktop app and the command-line program for Windows and Linux, and their checksums.
+This repository holds the installable source of each release, exactly as published on [PyPI](https://pypi.org/project/chemistry-ai999x/) (`pip install .` builds it). Releases are tagged `v1.6.7`; the [GitHub release](https://github.com/AI999X/chemistry-ai999x/releases/tag/v1.6.7) carries the wheel, the desktop app and the command-line program for Windows and Linux, and their checksums.
 
 ## Build the program from source
 
