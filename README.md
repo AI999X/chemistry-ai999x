@@ -10,8 +10,8 @@ Chemistry covers stoichiometry, gas laws, solutions, chemical equilibrium, acids
 
 | | |
 |---|---|
-| **Desktop app** (Windows, Linux) | [Windows](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.5/ai999x-chemistry-1.6.5-windows-x86_64.zip) · [Linux](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.5/ai999x-chemistry-1.6.5-linux-x86_64.tar.gz) |
-| **Command line** `chemistry` (Windows, Linux) | [Windows](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.4/ai999x-cli-1.6.4-windows-x86_64.zip) · [Linux](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.4/ai999x-cli-1.6.4-linux-x86_64.tar.gz) |
+| **Desktop app** (Windows, Linux) | [Windows](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.6/ai999x-chemistry-1.6.6-windows-x86_64.zip) · [Linux](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.6/ai999x-chemistry-1.6.6-linux-x86_64.tar.gz) |
+| **Command line** `chemistry` (Windows, Linux) | [Windows](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.6/ai999x-cli-1.6.6-windows-x86_64.zip) · [Linux](https://github.com/AI999X/ai999x-desktop/releases/download/v1.6.6/ai999x-cli-1.6.6-linux-x86_64.tar.gz) |
 | **Browser** (any device) | [Try it on the model page](https://www.ai999x.com/models/chemistry-ai999x/#capabilities) |
 | **Python** 3.10+ | `pip install chemistry-ai999x`: on Windows and Linux (x86-64) `pip` installs the same compiled engine; on other systems (macOS, ARM) it installs a pure-Python build that gives the same answers |
 
@@ -210,101 +210,6 @@ A_r = 35.4544
 M = 0.0354544 kg/mol
 ```
 
-## Rust library: 15 examples
-
-The crate `chemistry-ai999x` (in `rust/` of the GitHub repository) answers a JSON request with `chemistry_ai999x::solve_json`. Each call below was compiled and run on this release; the comment under it is what it printed. The whole program is `rust/chemistry/examples/readme.rs`: `cd rust && cargo run --release --example readme -p chemistry-ai999x`.
-
-```rust
-use serde_json::{json, Value};
-
-fn show(request: Value) {
-    let answer: Value = serde_json::from_str(&chemistry_ai999x::solve_json(&request.to_string())).unwrap();
-    println!("{}", answer["outcome"].as_str().unwrap_or(""));
-    for v in answer["values"].as_array().into_iter().flatten() {
-        let unit = v[2].as_str().unwrap_or("");
-        let unit = if unit.is_empty() || unit == "1" { String::new() } else { format!(" {unit}") };
-        println!("{} = {}{}", v[0].as_str().unwrap_or(""), v[1], unit);
-    }
-}
-
-show(json!({"key": "buffer_ph", "inputs": {"Ka": "1.737800829e-05", "c_base": "150 mol/m^3", "c_acid": "100 mol/m^3"}}));
-// SOLVED
-// pH = 4.936091258993048
-
-show(json!({"key": "isotope_abundance", "inputs": {"m1": "34.97", "m2": "36.97", "A_r": "35.45"}}));
-// SOLVED
-// x1 = 0.759999999999998
-// x2 = 0.240000000000002
-// percent1 = 75.9999999999998
-// percent2 = 24.0000000000002
-
-show(json!({"key": "k_from_cell_potential", "inputs": {"n": "2", "E": "0.46 V", "T": "298 K"}}));
-// SOLVED
-// lnK = 35.8260291000875
-// K = 3622819916970735.0
-
-show(json!({"key": "equilibrium_ice", "inputs": {"equation": "N2O4 ⇌ 2 NO2", "initial": [0.1, 0], "K": "0.0046"}}));
-// SOLVED
-// x = 0.010164209700904439
-// equilibrium = [0.08983579029909557,0.020328419401808878]
-
-show(json!({"key": "boyle_final_pressure", "inputs": {"V2": "0.001 m^3", "P1": "101325 Pa", "V1": "0.004 m^3"}}));
-// SOLVED
-// P2 = 405300.0 Pa
-
-show(json!({"key": "activation_energy", "inputs": {"k1": "0.001", "T1": "300 K", "k2": "0.005", "T2": "320 K"}}));
-// SOLVED
-// Ea = 64231.73452402517 J/mol
-// Ea_kJ = 64.23173452402517
-
-show(json!({"key": "degree_of_unsaturation", "inputs": {"formula": "C6H6"}}));
-// SOLVED
-// dou = 4.0
-
-show(json!({"key": "radioactive_dating_age", "inputs": {"fraction": "0.25", "t_half": "1.80825048e+11 s"}}));
-// SOLVED
-// t = 361650096000.0 s
-// t_years = 11460.0
-// half_lives = 2.0
-
-show(json!({"key": "enantiomeric_excess_from_rotation", "inputs": {"alpha_obs": "12", "alpha_pure": "24"}}));
-// SOLVED
-// ee = 50.0
-// major_percent = 75.0
-// minor_percent = 25.0
-// predominant = "the same enantiomer as the pure sample"
-
-show(json!({"key": "boiling_point_elevation", "inputs": {"K": "0.512 K*kg/mol", "b": "0.5 mol/kg", "i": "1"}}));
-// SOLVED
-// dT = 0.256 K
-
-show(json!({"key": "beer_lambert_absorbance", "inputs": {"l": "0.01 m", "c": "0.02 mol/m^3", "eps": "1500 m^2/mol"}}));
-// SOLVED
-// A = 0.3
-// T_percent = 50.11872336272722
-
-show(json!({"key": "atoms_of_element", "inputs": {"element": "O", "formula": "CO2", "m": "0.01 kg"}}));
-// SOLVED
-// N_atoms = 2.7367769138130837e+23
-// n_element = 0.4544524983526097 mol
-
-show(json!({"key": "clausius_clapeyron_enthalpy", "inputs": {"P1": "13332.23684 Pa", "T1": "300 K", "P2": "53328.94737 Pa", "T2": "340 K"}}));
-// SOLVED
-// dH = 29392.046244359954 J/mol
-
-show(json!({"key": "conjugate_dissociation_constant", "inputs": {"K": "1.8e-05", "known": "Ka"}}));
-// SOLVED
-// K_conj = 5.555555555555555e-10
-// pK = 4.7447274948966935
-// pK_conj = 9.255272505103306
-// conjugate = "Kb of the conjugate base"
-
-show(json!({"key": "average_atomic_mass", "inputs": {"masses": [34.97, 36.97], "abundances": [0.7578, 0.2422]}}));
-// SOLVED
-// A_r = 35.4544
-// M = 0.0354544 kg/mol
-```
-
 ## Guides
 
 - Desktop app guide: the window, every calculation, scenes and charts: [PDF](https://huggingface.co/AI999X/chemistry-ai999x/blob/main/docs/chemistry_ai999x_desktop_guide.pdf) · [HTML](https://huggingface.co/AI999X/chemistry-ai999x/blob/main/docs/chemistry_ai999x_desktop_guide.html) · [Markdown](https://huggingface.co/AI999X/chemistry-ai999x/blob/main/docs/chemistry_ai999x_desktop_guide.md)
@@ -313,7 +218,7 @@ show(json!({"key": "average_atomic_mass", "inputs": {"masses": [34.97, 36.97], "
 
 Every calculation, with its formula, a worked example and its figures: **[Chemistry on ai999x.com](https://www.ai999x.com/models/chemistry-ai999x/)**. Install guides for the app and the command line: [https://www.ai999x.com/desktop-cli/](https://www.ai999x.com/desktop-cli/).
 
-Version 1.6.4 · License: Apache-2.0 · Author: Ibnul Jaif Farabi · Organization: AI999X · Contact: support@ai999x.com · [Support the project](https://buymeacoffee.com/ibnuljaiffarabi)
+Version 1.6.6 · License: Apache-2.0 · Author: Ibnul Jaif Farabi · Organization: AI999X · Contact: support@ai999x.com · [Support the project](https://buymeacoffee.com/ibnuljaiffarabi)
 
 *The Future Is Self-Improving.*
 
